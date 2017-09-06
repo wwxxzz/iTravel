@@ -1,6 +1,8 @@
 package com.example.aa.itravel;
 
 import android.app.Application;
+
+import org.xutils.BuildConfig;
 import org.xutils.x;
 
 /**
