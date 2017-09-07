@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aa.itravel.activity.Login_activity"
-
-    >
+    tools:context="com.example.aa.itravel.activity.Login_activity">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center">
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,7 +44,7 @@
                     android:hint="请输入手机号"
                     android:inputType="number"
                     android:maxLength="11"
-                    android:padding="10dp"></EditText>
+                    android:padding="10dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -73,7 +70,7 @@
                     android:hint="请输入密码"
                     android:inputType="textPassword"
                     android:maxLength="16"
-                    android:padding="10dp"></EditText>
+                    android:padding="10dp"/>
             </RelativeLayout>
 
             <Button
@@ -85,7 +82,7 @@
                 android:gravity="center"
                 android:text="登 录"
                 android:textColor="#ffffffff"
-                android:textSize="18sp"></Button>
+                android:textSize="18sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -116,15 +113,10 @@
                     android:background="@null"
                     android:text="免费注册"
                     android:textColor="@color/grayfont"
-                    android:textSize="14sp"></Button>
+                    android:textSize="14sp"/>
             </RelativeLayout>
 
-
         </LinearLayout>
-
-
     </RelativeLayout>
-
-
 </android.support.constraint.ConstraintLayout>
 

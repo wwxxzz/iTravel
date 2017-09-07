@@ -44,6 +44,9 @@
         <activity
             android:name=".activity.Message_activity"
             android:label="好友动态"/>
+        <activity
+            android:name=".activity.Preference_activity"
+            android:label="偏好设置"/>
 
     </application>
 
