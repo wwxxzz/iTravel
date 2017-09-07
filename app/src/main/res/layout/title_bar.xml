@@ -17,7 +17,7 @@
         android:paddingLeft="75.0dip"
         android:paddingRight="75.0dip"
         android:singleLine="true"
-        android:text="iTravel"
+        android:text="233333"
         android:textColor="#ffffff"
         android:textSize="22sp" />
     <ImageView
