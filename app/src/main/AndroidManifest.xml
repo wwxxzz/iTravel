@@ -45,6 +45,9 @@
             android:name=".activity.Message_activity"
             android:label="好友动态"/>
 
+        <fragment android:name=".fragment.Banner"/>
+        <fragment android:name=".fragment.BottomBar"/>
+
     </application>
 
 </manifest>
