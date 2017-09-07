@@ -44,6 +44,7 @@
         <activity
             android:name=".activity.Message_activity"
             android:label="好友动态"/>
+<<<<<<< HEAD
         <activity android:name=".adapter.ServerTestActivity"
             android:label="登录测试">
         </activity>
@@ -53,6 +54,15 @@
         <fragment
             android:name=".fragment.FriendContentFragment">
         </fragment>
+=======
+        <activity
+            android:name=".activity.Preference_activity"
+            android:label="偏好设置"/>
+
+        <fragment android:name=".fragment.Banner"/>
+        <fragment android:name=".fragment.BottomBar"/>
+
+>>>>>>> e1105e51b824bf07c1e48158efffaf498abdfd58
     </application>
 
 </manifest>

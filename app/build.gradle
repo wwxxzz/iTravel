@@ -36,7 +36,10 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.zhy:okhttputils:2.0.0'
     compile 'org.xutils:xutils:3.3.36'
+<<<<<<< HEAD
     compile 'com.google.code.gson:gson:2.6.2'
+=======
+>>>>>>> e1105e51b824bf07c1e48158efffaf498abdfd58
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
 }

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/im_photo"
+                    android:layout_centerVertical="true"
+                    android:text="头像  "
+                    android:textSize="25dp" />
+
+                <ImageView
+                    android:id="@+id/im_photo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tv_photo"
+                    android:layout_toRightOf="@+id/tv_photo"
+                    android:src="@drawable/ic_home" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="昵称  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_name"
+                    android:layout_alignBottom="@+id/tv_name"
+                    android:layout_toEndOf="@+id/tv_name"
+                    android:layout_toRightOf="@+id/tv_name"
+                    android:text="dalao"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="年龄  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_age"
+                    android:layout_alignBottom="@+id/tv_age"
+                    android:layout_toEndOf="@+id/tv_age"
+                    android:layout_toRightOf="@+id/tv_age"
+                    android:text="100"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="生日  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showbirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_birthday"
+                    android:layout_alignBottom="@+id/tv_birthday"
+                    android:layout_toEndOf="@+id/tv_birthday"
+                    android:layout_toRightOf="@+id/tv_birthday"
+                    android:text=" 2 月 31 日"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_occupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/showoccupation"
+                    android:layout_alignBottom="@+id/showoccupation"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="职业  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showoccupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tv_occupation"
+                    android:layout_toRightOf="@+id/tv_occupation"
+                    android:text="搬砖"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="所在地  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_location"
+                    android:layout_alignBottom="@+id/tv_location"
+                    android:layout_toEndOf="@+id/tv_location"
+                    android:layout_toRightOf="@+id/tv_location"
+                    android:text="江苏 南京"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="邮箱  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tv_email"
+                    android:layout_toRightOf="@+id/tv_email"
+                    android:text="123456789@qq.com"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="手机  "
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_phone"
+                    android:layout_alignBottom="@+id/tv_phone"
+                    android:layout_toEndOf="@+id/tv_phone"
+                    android:layout_toRightOf="@+id/tv_phone"
+                    android:text="12345678901"
+                    android:textColor="@color/blackfont"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+

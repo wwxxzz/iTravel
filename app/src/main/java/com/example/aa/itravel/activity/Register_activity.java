@@ -145,10 +145,15 @@ public class Register_activity extends AppCompatActivity {
 
     @Event(value = {R.id.bt_register})
     private void event(View view){
-        if(checkPwd()&&checkCode()){
-           // checkUser();
-            Log.i("I","成功");
 
+        if(checkUser()&&checkPwd()&&checkCode()){
+            //RegisterAdapter
+            //存储用户数据
+            Toast.makeText(Register_activity.this,"注册成功",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(mContext,Home_activity.class);
+            startActivity(intent);
+        }else if (!checkUser()){
+            Toast.makeText(Register_activity.this,"账户已注册",Toast.LENGTH_SHORT).show();
         }else if(!checkPwd()){
             Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
         }else {
