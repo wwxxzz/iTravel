@@ -59,34 +59,21 @@ public class Home_activity extends FragmentActivity {
             tt.commit();*/
 
         }
-<<<<<<< HEAD
-    @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
-=======
+   // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
 
-    @Event(value = {R.id.button_friend,R.id.button_message})
->>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
+
+   @Event(value = {R.id.button_friend,R.id.button_message})
     private void event(View view){
         Intent intent;
         switch (view.getId()){
             case R.id.button_friend:
-                 intent = new Intent(mContext,Friend_activity.class);
+                intent = new Intent(mContext,Friend_activity.class);
                 startActivity(intent);
                 break;
             case R.id.button_message:
                 intent = new Intent(mContext,Message_activity.class);
                 startActivity(intent);
                 break;
-<<<<<<< HEAD
-            case R.id.prefence:
-                intent = new Intent(mContext,Preference_activity.class);
-                startActivity(intent);
-                break;
-            case R.id.footprint:
-                intent = new Intent(mContext,Footprint_activity.class);
-                startActivity(intent);
-                break;
-=======
->>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
         }
     }
 }
