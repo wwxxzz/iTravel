@@ -27,18 +27,18 @@ public class Friend_activity extends Activity{
         mContext =this;
         x.view().inject(this);
     }
-    @Event(value = {R.id.bt_home,R.id.bt_message})
-    private void event(View view) {
-        Intent intent;
-        switch (view.getId()) {
-            case R.id.bt_message:
-                intent = new Intent(mContext, Message_activity.class);
-                startActivity(intent);
-                break;
-            case R.id.bt_home:
-                intent = new Intent(mContext, Home_activity.class);
-                startActivity(intent);
-                break;
-        }
-    }
+//    @Event(value = {R.id.bt_home,R.id.bt_message})
+//    private void event(View view) {
+//        Intent intent;
+//        switch (view.getId()) {
+//            case R.id.bt_message:
+//                intent = new Intent(mContext, Message_activity.class);
+//                startActivity(intent);
+//                break;
+//            case R.id.bt_home:
+//                intent = new Intent(mContext, Home_activity.class);
+//                startActivity(intent);
+//                break;
+//        }
+//    }
 }

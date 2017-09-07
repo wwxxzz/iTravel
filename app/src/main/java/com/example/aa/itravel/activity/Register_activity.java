@@ -131,9 +131,13 @@ public class Register_activity extends AppCompatActivity {
         ///确认两次密码是否相同
         String user_psw1 = password.getText().toString();
         String user_psw2 = ensurepwd.getText().toString();
-        if(user_psw1 == user_psw2){
+        Log.i("TST",user_psw1);
+        Log.i("TES",user_psw2);
+        if(user_psw1.equals(user_psw2)){
+            Log.i("YE","suce");
             return true;
         }else{
+            Log.i("NO","fail");
             return false;
         }
 
@@ -146,14 +150,10 @@ public class Register_activity extends AppCompatActivity {
     @Event(value = {R.id.bt_register})
     private void event(View view){
 
-        if(checkUser()&&checkPwd()&&checkCode()){
-            //RegisterAdapter
-            //存储用户数据
-            Toast.makeText(Register_activity.this,"注册成功",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(mContext,Home_activity.class);
-            startActivity(intent);
-        }else if (!checkUser()){
-            Toast.makeText(Register_activity.this,"账户已注册",Toast.LENGTH_SHORT).show();
+       if(checkPwd()&&checkCode()){
+            Log.i("I", "成功");
+            checkUser();
+            Log.i("I", "成功");
         }else if(!checkPwd()){
             Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
         }else {
