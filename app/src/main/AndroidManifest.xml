@@ -16,6 +16,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.Login_activity"
@@ -25,6 +26,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+=======
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.Login_activity"
+            android:label="@string/app_name">
+
+>>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
         </activity>
         <activity
             android:name=".activity.Register_activity"
@@ -37,12 +45,23 @@
             android:label="@string/app_name" />
         <activity
             android:name=".activity.Home_activity"
+<<<<<<< HEAD
             android:label="首页推荐" />
+=======
+            android:label="首页推荐">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            </activity>
+>>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
         <activity
             android:name=".activity.Friend_activity"
             android:label="消息通知" />
         <activity
             android:name=".activity.Message_activity"
+<<<<<<< HEAD
             android:label="好友动态" />
         <activity
             android:name=".activity.Preference_activity"
@@ -50,6 +69,25 @@
         <activity android:name=".activity.Footprint_activity"
             android:label="足迹" />
         <activity android:name=".fragment.map_fragment" />
+=======
+            android:label="好友动态"/>
+
+        <activity android:name=".adapter.ServerTestActivity"
+            android:label="登录测试">
+        </activity>
+        <fragment
+            android:name=".fragment.FriendTopFragment">
+        </fragment>
+        <fragment
+            android:name=".fragment.FriendContentFragment">
+        </fragment>
+        <activity
+            android:name=".activity.Preference_activity"
+            android:label="偏好设置"/>
+        <fragment android:name=".fragment.Banner"/>
+        <fragment android:name=".fragment.BottomBar"/>
+
+>>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
     </application>
 
 </manifest>
