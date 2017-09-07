@@ -57,7 +57,7 @@ public class Register_activity extends AppCompatActivity {
     @Event(value = {R.id.bt_register})
     private void event(View view){
         if(checkUser()&&checkPwd()&&checkCode()){
-            //建新类
+            //RegisterAdapter
             //存储用户数据
             Toast.makeText(Register_activity.this,"注册成功",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(mContext,Home_activity.class);
