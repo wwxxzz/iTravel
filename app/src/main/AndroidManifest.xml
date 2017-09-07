@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.aa.itravel">
+    package="com.example.aa.itravel">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ITravelApplication"
@@ -16,38 +16,40 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.Login_activity"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.Register_activity"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Forgetpwd"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Resetpwd"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.Home_activity"
-            android:label="首页推荐"/>
+            android:label="首页推荐" />
         <activity
             android:name=".activity.Friend_activity"
-            android:label="消息通知"/>
+            android:label="消息通知" />
         <activity
             android:name=".activity.Message_activity"
-            android:label="好友动态"/>
+            android:label="好友动态" />
         <activity
             android:name=".activity.Preference_activity"
-            android:label="偏好设置"/>
-
+            android:label="偏好设置" />
+        <activity android:name=".activity.Footprint_activity"
+            android:label="足迹" />
+        <activity android:name=".fragment.map_fragment" />
     </application>
 
 </manifest>

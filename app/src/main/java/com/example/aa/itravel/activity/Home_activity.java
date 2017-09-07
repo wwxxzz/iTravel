@@ -29,7 +29,7 @@ public class Home_activity extends Activity{
             mContext =this;
             x.view().inject(this);
         }
-    @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence})
+    @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
     private void event(View view){
         Intent intent;
         switch (view.getId()){
@@ -43,6 +43,10 @@ public class Home_activity extends Activity{
                 break;
             case R.id.prefence:
                 intent = new Intent(mContext,Preference_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.footprint:
+                intent = new Intent(mContext,Footprint_activity.class);
                 startActivity(intent);
                 break;
         }
