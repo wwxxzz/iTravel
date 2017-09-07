@@ -7,7 +7,7 @@
     <include layout="@layout/title_bar"
         android:id="@+id/include" />
 
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/tab_menu"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -49,7 +49,7 @@
 
         >
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <!--
     <View
@@ -79,13 +79,14 @@
         android:layout_below="@+id/include"
          />-->
 
-    <!--<fragment
+    <fragment
+        android:id="@+id/bottombar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.example.aa.itravel.fragment.BottomBar"
         android:layout_alignParentBottom="true"
         >
-    </fragment>-->
+    </fragment>
 
 
 </RelativeLayout>

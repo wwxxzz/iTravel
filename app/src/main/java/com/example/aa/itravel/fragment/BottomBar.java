@@ -1,14 +1,20 @@
 package com.example.aa.itravel.fragment;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.activity.Friend_activity;
+import com.example.aa.itravel.activity.Message_activity;
+
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,92 +24,50 @@ import com.example.aa.itravel.R;
  * Use the {@link BottomBar#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+@ContentView(R.layout.fragment_bottom_bar)
 public class BottomBar extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public BottomBar() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BottomBar.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BottomBar newInstance(String param1, String param2) {
-        BottomBar fragment = new BottomBar();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        Log.w("TEST","onCreate");
+
+        //setViewPager();
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedINstanceState){
+        //return super.onCreateView(inflater,container,savedINstanceState);
+        //return x.view().inject(this,inflater,container);
+
+        View view = inflater.inflate(R.layout.fragment_bottom_bar, null);  // View android.view.LayoutInflater.inflate(int resource, ViewGroup root)
+        return view;
+
+    }
+
+    public void onPause(){
+        super.onPause();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_bar, container, false);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    /*@Event(value = {R.id.button_friend,R.id.button_message})
+    private void event(View view){
+        Intent intent;
+        switch (view.getId()){
+            case R.id.button_friend:
+                intent = new Intent(getActivity(),Friend_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_message:
+                intent = new Intent(getActivity(),Message_activity.class);
+                startActivity(intent);
+                break;
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+    }*/
 }

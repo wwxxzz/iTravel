@@ -1,8 +1,9 @@
 package com.example.aa.itravel.fragment;
 
-import android.app.Fragment;
+//import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -15,14 +16,11 @@ import android.widget.LinearLayout;
 import com.example.aa.itravel.R;
 
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-
-//import android.support.v4.app.Fragment;
 
 /**
  * Created by aa on 2017/9/7.
@@ -36,7 +34,7 @@ public class Banner extends Fragment {
     //@ViewInject(R.id.view_pager)
     private ViewPager view_pager;
 
-    @ViewInject(R.id.dotgroup)
+    //@ViewInject(R.id.dotgroup)
     private LinearLayout ll_dotGroup;
 
 
@@ -64,7 +62,7 @@ public class Banner extends Fragment {
         //return super.onCreateView(inflater,container,savedINstanceState);
         //return x.view().inject(this,inflater,container);
 
-        View view = inflater.inflate(R.layout.banner_fragment, null);  // View android.view.LayoutInflater.inflate(int resource, ViewGroup root)
+        View view = inflater.inflate(R.layout.banner_fragment, null);// View android.view.LayoutInflater.inflate(int resource, ViewGroup root)
         return view;
 
     }
@@ -82,8 +80,8 @@ public class Banner extends Fragment {
     private void setViewPager() {
 
         //newsTitle=(TextView)findViewById(R.id.NewsTitle);
-        //view_pager = (ViewPager) findViewById(R.id.view_pager);
-        //ll_dotGroup = (LinearLayout) findViewById(R.id.dotgroup);
+        //view_pager = (ViewPager) view.findViewById(R.id.view_pager);
+        //ll_dotGroup = (LinearLayout) view.findViewById(R.id.dotgroup);
 
 
 
