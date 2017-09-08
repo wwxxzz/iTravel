@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- The main content view -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!-- The navigation drawer -->
+    <!--<ListView android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#111"></ListView>-->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@drawable/img4"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+            <com.infzm.slidingmenu.demo.view.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+
+                />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="28.0dip"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/profile_image"
+                android:gravity="center_vertical"
+                android:paddingLeft="15.0dip"
+                android:text="dalao"
+                android:textColor="@color/whitefont"
+                android:textSize="14.0sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_myinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="50.0dip"
+            android:clickable="true"
+            android:drawablePadding="1.0dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="10.0dip"
+            android:text="个人资料"
+            android:textColor="@color/whitefont"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/tv_mycollect"
+            android:layout_width="wrap_content"
+            android:layout_height="50.0dip"
+            android:clickable="true"
+            android:drawablePadding="1.0dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="10.0dip"
+            android:text="我的收藏"
+            android:textColor="@color/whitefont"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/tv_myfootprint"
+            android:layout_width="wrap_content"
+            android:layout_height="50.0dip"
+            android:clickable="true"
+            android:drawablePadding="1.0dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="10.0dip"
+            android:text="我的足迹"
+            android:textColor="@color/whitefont"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/tv_mypreference"
+            android:layout_width="wrap_content"
+            android:layout_height="50.0dip"
+            android:clickable="true"
+            android:drawablePadding="1.0dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="10.0dip"
+            android:text="偏好设置"
+            android:textColor="@color/whitefont"
+            android:textSize="16.0sp" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
+
+
+

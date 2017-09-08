@@ -1,24 +1,24 @@
 package com.example.aa.itravel.adapter;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.example.aa.itravel.R;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.*;
+import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import okhttp3.MediaType;
+import java.io.IOException;
+
 import okhttp3.Call;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
-import com.example.aa.itravel.tools.User;
-import com.google.gson.*;
 
 public class ServerTestActivity extends AppCompatActivity {
 	String TAG = "MainActivity";

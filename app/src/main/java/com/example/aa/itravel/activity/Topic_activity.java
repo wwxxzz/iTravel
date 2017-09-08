@@ -1,33 +1,28 @@
-package com.example.aa.itravel.fragment;
+package com.example.aa.itravel.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.example.aa.itravel.R;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-/**
- * Created by Ynez on 2017/9/7.
- */
-@ContentView(R.layout.map_fragment)
-public class map_fragment extends Activity{
-    private Context mContext;
-    /*
-    各种国家图片小构件,未点亮/点亮
-    */
+@ContentView(R.layout.activity_topic)
+public class Topic_activity extends Activity {
+
+    @ViewInject(R.id.title_bar_name)
+    private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mContext = this;
         x.view().inject(this);
-    }
-
-    private void lightupMap() {//参数为国家编号
-        //点亮地图
+        textView.setText("话题");
+        //setContentView(R.layout.activity_topic);
     }
 }
