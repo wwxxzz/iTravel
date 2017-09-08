@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
-
+    android:layout_height="match_parent">
+    <include layout="@layout/title_bar"
+             android:id="@+id/include" />
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -63,7 +62,7 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showname"
+                    android:id="@+id/changename"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="dalao"
@@ -81,27 +80,27 @@
                 android:layout_height="50dp">
 
                 <TextView
-                    android:id="@+id/tv_age"
+                    android:id="@+id/tv_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="年龄  "
+                    android:text="性别"
                     android:textSize="25dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showage"
+                    android:id="@+id/changesex"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:text="男"
                     android:textSize="25dp"
                     android:background="@drawable/edit_bg"
                     android:textColor="@color/blackfont"
-                    android:layout_alignBaseline="@+id/tv_age"
-                    android:layout_alignBottom="@+id/tv_age"
-                    android:layout_toRightOf="@+id/tv_age"
-                    android:layout_toEndOf="@+id/tv_age" />
+                    android:layout_alignBaseline="@+id/tv_sex"
+                    android:layout_alignBottom="@+id/tv_sex"
+                    android:layout_toRightOf="@+id/tv_sex"
+                    android:layout_toEndOf="@+id/tv_sex" />
 
             </RelativeLayout>
 
@@ -120,10 +119,10 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showbirthday"
+                    android:id="@+id/changebirthday"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text=" 2 月 31 日"
+                    android:text="2000-03-21"
                     android:textSize="25dp"
                     android:background="@drawable/edit_bg"
                     android:textColor="@color/blackfont"
@@ -150,7 +149,7 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showoccupation"
+                    android:id="@+id/changeoccupation"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="搬砖"
@@ -178,7 +177,7 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showlocation"
+                    android:id="@+id/changelocation"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="江苏 南京"
@@ -207,7 +206,7 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showemail"
+                    android:id="@+id/changeemail"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="123456789@qq.com"
@@ -235,7 +234,7 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/showphone"
+                    android:id="@+id/changephone"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="12345678901"

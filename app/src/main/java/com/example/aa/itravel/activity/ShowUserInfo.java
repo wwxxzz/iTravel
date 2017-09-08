@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.DrawableRes;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -63,6 +68,12 @@ public class ShowUserInfo extends Activity {
 	private TextView user_birth;
 	@ViewInject(R.id.showsex)
 	private TextView user_sex;
+	@ViewInject(R.id.toolbar)
+	private Toolbar toolbar;
+	@ViewInject(R.id.title_bar_name)
+	private  TextView titlebar;
+	@ViewInject(R.id.iv_right)
+	private ImageView right_icon;
 
 	private Handler mmHandler = new Handler(){
 		@Override
@@ -97,6 +108,8 @@ public class ShowUserInfo extends Activity {
 		Bundle bundle = this.getIntent().getExtras();
 
 		mContext = this;
+		titlebar.setText("个人资料");
+		right_icon.setImageResource(R.drawable.edit);
         /*获取Bundle中的数据，注意类型和key*/
 		session = bundle.getString("sessionId");
 		Log.i(TAG,session);
@@ -127,4 +140,12 @@ public class ShowUserInfo extends Activity {
 			}
 		}
 	};
+
+	@Event(value={R.id.iv_right})
+	private void event(View view){
+		Intent intent = new Intent(mContext,ChangeUserInfo.class);
+		intent.putExtra("sessionId", session);
+		startActivity(intent);
+		finish();
+	}
 }

@@ -141,10 +141,10 @@ private void postRequest(String name,String pwd)  {
                 Call call = okhttpc.newCall(request);
                 response = call.execute();
                 //获取回复的header 剥离sessionId
-                Headers headers = response.headers();
-                List<String> cookies = headers.values("Set-Cookie");
-                String session = cookies.get(0);
-                s = session.substring(0,session.indexOf(";"));
+//                Headers headers = response.headers();
+//                List<String> cookies = headers.values("Set-Cookie");
+//                String session = cookies.get(0);
+//                s = session.substring(0,session.indexOf(";"));
 
                 if (response.code()==200) {
                     //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui

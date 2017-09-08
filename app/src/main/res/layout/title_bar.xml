@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="45.0dip"
-    android:background="@color/button"
-    android:gravity="top" >
-
-
+<merge>
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="fill_parent"
+                                       android:layout_height="wrap_content"
+                                       android:background="@color/button"
+                                       android:id="@+id/toolbar">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:gravity="top">
     <TextView
         android:id="@+id/title_bar_name"
         android:layout_width="wrap_content"
@@ -21,29 +22,25 @@
         android:textColor="#ffffff"
         android:textSize="22sp" />
     <ImageView
-        android:id="@+id/iv_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:src="@drawable/ic_home"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/title_bar_name"
-        android:layout_toEndOf="@+id/title_bar_name" />
-
-    <ImageView
         android:id="@+id/iv_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:src="@drawable/ic_home"
-        android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/title_bar_name"
+        android:layout_toEndOf="@+id/title_bar_name" />
+
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:src="@drawable/ic_home"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/title_bar_name"
         android:layout_toStartOf="@+id/title_bar_name" />
 
-
-
 </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    </merge>

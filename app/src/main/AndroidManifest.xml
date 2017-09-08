@@ -60,6 +60,12 @@
         <activity android:name=".adapter.ServerTestActivity"
             android:label="登录测试">
         </activity>
+        <activity android:name=".activity.ShowUserInfo"
+                  android:label="显示用户信息">
+        </activity>
+        <activity android:name=".activity.ChangeUserInfo"
+                  android:label="修改用户信息">
+        </activity>
         <fragment
             android:name=".fragment.FriendTopFragment">
         </fragment>
