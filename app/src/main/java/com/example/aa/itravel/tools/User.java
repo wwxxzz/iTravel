@@ -1,20 +1,6 @@
 package com.example.aa.itravel.tools;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.example.aa.itravel.activity.Login_activity;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
 import java.util.Date;
-
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 /**
  * Created by admin on 2017/9/7.
@@ -199,6 +185,10 @@ public class User {
 
 	public void setUserphoto(byte[] userphoto) {
 		this.userphoto = userphoto;
+	}
+
+	public void setPassword(String s) {
+
 	}
 }
 

@@ -19,6 +19,13 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:orientation="vertical">
+        <fragment
+            android:name="com.example.aa.itravel.fragment.mapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/map_fragment"
+            android:layout_weight="1">
+        </fragment>
         <Button
             android:id="@+id/lightup"
             style="@style/Widget.AppCompat.Button.Colored"

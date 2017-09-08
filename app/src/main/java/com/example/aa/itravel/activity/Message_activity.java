@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -25,7 +25,7 @@ import static com.example.aa.itravel.R.id.button_message;
  * Created by aa on 2017/9/5.
  */
 @ContentView(R.layout.message)
-public class Message_activity extends FragmentActivity {
+public class Message_activity extends AppCompatActivity {
     private Context mContext;
 
     @ViewInject(R.id.title_bar_name)
@@ -39,7 +39,6 @@ public class Message_activity extends FragmentActivity {
         x.view().inject(this);
 
         textView.setText("好友动态");
-
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
         Button home =(Button) exFragment.getView().findViewById(button_message);

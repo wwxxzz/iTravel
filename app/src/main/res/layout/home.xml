@@ -111,7 +111,6 @@
         android:name="com.example.aa.itravel.fragment.BottomBar"
         android:layout_alignParentBottom="true">
     </fragment>
->>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
 
    <!-- <fragment
         android:layout_width="wrap_content"

@@ -1,8 +1,8 @@
 package com.example.aa.itravel.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -16,7 +16,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 @ContentView(R.layout.activity_footprint)
-public class Footprint_activity extends AppCompatActivity {
+public class Footprint_activity extends Activity {
     private Context mContext;
     @ViewInject(R.id.title_bar_name)
     private TextView title;
