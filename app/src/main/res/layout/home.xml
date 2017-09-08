@@ -49,6 +49,9 @@
 
         >
 
+<<<<<<< HEAD
+    </LinearLayout>
+=======
     </LinearLayout>-->
 
     <!--
@@ -63,6 +66,7 @@
 
     <!--<FrameLayout
 =======
+>>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
     <Button
         android:id="@+id/prefence"
         android:layout_width="wrap_content"
@@ -71,6 +75,16 @@
         android:text="偏好设置"
         android:layout_below="@+id/linearLayout2"
         android:layout_centerHorizontal="true" />
+<<<<<<< HEAD
+    <Button
+        android:id="@+id/footprint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="足迹"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true" />
+=======
     <FrameLayout
 >>>>>>> origin/master
         android:id="@+id/fragment_container"
@@ -95,9 +109,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.example.aa.itravel.fragment.BottomBar"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
     </fragment>
+>>>>>>> 5d3a8cddd011a27cf5b178273cc1ce042a21b3a3
 
    <!-- <fragment
         android:layout_width="wrap_content"

@@ -21,6 +21,9 @@ import org.xutils.x;
 import static com.example.aa.itravel.R.id.bottombar;
 import static com.example.aa.itravel.R.id.button_friend;
 
+import static com.example.aa.itravel.R.id.button_home;
+
+
 /**
  * Created by aa on 2017/9/5.
  */
@@ -31,6 +34,8 @@ public class Friend_activity extends FragmentActivity {
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
 
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,13 +43,12 @@ public class Friend_activity extends FragmentActivity {
         mContext =this;
         x.view().inject(this);
 
-        textView.setText("消息通知");
+        textView.setText("好友消息");
 
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
         Button home =(Button) exFragment.getView().findViewById(button_friend);
         home.setTextColor(Color.parseColor("#f75b47"));
-
 
     }
     @Event(value = {R.id.button_home,R.id.button_message})
