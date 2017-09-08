@@ -1,15 +1,16 @@
 package com.example.aa.itravel.fragment;
 
 //import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -37,12 +38,11 @@ public class Banner extends Fragment {
     //@ViewInject(R.id.dotgroup)
     private LinearLayout ll_dotGroup;
 
-
     //private TextView newsTitle;
     //存储图片
     private int imgResIds[] = new int[]{R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4};
     //存储目录
-    //private String textview[] = new String[]{"门前大桥下","游过一群鸭","快来快来数一数","二四六七八"};
+   // private String textview[] = new String[]{"门前大桥下","游过一群鸭","快来快来数一数","二四六七八"};
     //记录当前滚动的位置
     private int curIndex =0;
     PicsAdapter picsAdapter;
@@ -50,9 +50,9 @@ public class Banner extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-       Log.w("TEST","onCreate");
+        //Log.w("TEST","onCreate");
 
-        //setViewPager();
+        setViewPager();
 
     }
 
@@ -67,6 +67,12 @@ public class Banner extends Fragment {
 
     }
 
+    /*public void onViewCreated(View view,Bundle savedInstanceState){
+        super.onViewCreated(view,savedInstanceState);
+        view_pager = (ViewPager) view.findViewById(R.id.view_pager);
+        ll_dotGroup = (LinearLayout) view.findViewById(R.id.dotgroup);
+    }*/
+
     public void onPause(){
         super.onPause();
     }
@@ -80,9 +86,9 @@ public class Banner extends Fragment {
     private void setViewPager() {
 
         //newsTitle=(TextView)findViewById(R.id.NewsTitle);
-        //view_pager = (ViewPager) view.findViewById(R.id.view_pager);
-        //ll_dotGroup = (LinearLayout) view.findViewById(R.id.dotgroup);
 
+        view_pager = (ViewPager) getActivity().findViewById(R.id.view_pager);
+        ll_dotGroup = (LinearLayout) getActivity().findViewById(R.id.dotgroup);
 
 
         PicsAdapter picsAdapter = new PicsAdapter(); // 创建适配器
