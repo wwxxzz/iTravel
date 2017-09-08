@@ -23,7 +23,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
-            android:text="首页" />
+            android:text="首页"
+            android:background="@color/whitefont"/>
 
         <Button
             android:id="@+id/button_friend"
@@ -33,7 +34,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
-            android:text="消息" />
+            android:text="消息"
+            android:background="@color/whitefont"/>
 
         <Button
             android:id="@+id/button_message"
@@ -44,7 +46,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_weight="1"
-            android:text="动态" />
+            android:text="动态"
+            android:background="@color/whitefont"/>
 
     </LinearLayout>
 

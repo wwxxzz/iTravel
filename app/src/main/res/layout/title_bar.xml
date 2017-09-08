@@ -21,28 +21,27 @@
         android:textColor="#ffffff"
         android:textSize="22sp" />
     <ImageView
-        android:id="@+id/iv_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iv_right"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:visibility="visible"
-        android:src="@drawable/ic_home"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
+        android:src="@drawable/ic_share"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/title_bar_name"
         android:layout_toEndOf="@+id/title_bar_name" />
 
     <ImageView
-        android:id="@+id/iv_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iv_left"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:visibility="visible"
-        android:src="@drawable/ic_home"
-        android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp"
+        android:src="@drawable/ic_list"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/title_bar_name"
-        android:layout_toStartOf="@+id/title_bar_name" />
+        android:layout_toLeftOf="@+id/title_bar_name" />
 
 
 
