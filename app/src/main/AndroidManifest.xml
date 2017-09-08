@@ -62,7 +62,12 @@
             android:name=".activity.Collection_activity"
             android:label="收藏">
         </activity>
-
+        <activity android:name=".activity.ShowUserInfo"
+                  android:label="显示用户信息">
+        </activity>
+        <activity android:name=".activity.ChangeUserInfo"
+                  android:label="修改用户信息">
+        </activity>
 
         <fragment android:name=".fragment.FriendTopFragment"/>
         <fragment android:name=".fragment.FriendContentFragment"/>
@@ -70,7 +75,6 @@
         <fragment android:name=".fragment.BottomBar" />
         <fragment android:name=".fragment.MessageFragment" />
         <fragment android:name=".fragment.CollectionFragment"/>
-
         <fragment
             android:name=".fragment.map_fragment"
             android:label="地图" />
