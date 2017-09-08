@@ -46,7 +46,7 @@ public class ServerTestActivity extends AppCompatActivity {
 
 							User user = new User();
 							user.setUsername("root");
-							user.setPassword("1234");
+							user.setUserpassword("1234");
 							Gson gson = new GsonBuilder().create();
 							String content =gson.toJson(user);
 
