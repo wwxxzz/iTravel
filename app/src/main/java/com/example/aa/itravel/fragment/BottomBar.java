@@ -1,6 +1,5 @@
 package com.example.aa.itravel.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,20 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.activity.Friend_activity;
-import com.example.aa.itravel.activity.Message_activity;
 
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.Event;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BottomBar.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BottomBar#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 
 @ContentView(R.layout.fragment_bottom_bar)
 public class BottomBar extends Fragment {
