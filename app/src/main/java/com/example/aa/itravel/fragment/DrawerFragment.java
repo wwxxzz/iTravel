@@ -16,7 +16,7 @@ import org.xutils.view.annotation.ContentView;
  * Created by aa on 2017/9/7.
  */
 
-@ContentView(R.layout.layout_menu)
+@ContentView(R.layout.fragment_drawer)
 public class DrawerFragment extends Fragment implements OnClickListener{
 
     private View myInfo;
@@ -37,7 +37,7 @@ public class DrawerFragment extends Fragment implements OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_menu, null);
+        View view = inflater.inflate(R.layout.fragment_drawer, null);
         findViews(view);
 
         return view;

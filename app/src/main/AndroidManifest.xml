@@ -20,7 +20,9 @@
         <activity
             android:name=".activity.Login_activity"
             android:label="@string/app_name"
+
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".activity.Register_activity"
             android:label="@string/app_name" />
@@ -33,7 +35,11 @@
         <activity
             android:name=".activity.Home_activity"
             android:label="首页推荐">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.Friend_activity"
@@ -55,10 +61,6 @@
         <activity
             android:name=".activity.Collection_activity"
             android:label="收藏">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <fragment android:name=".fragment.FriendTopFragment"/>
@@ -67,6 +69,19 @@
         <fragment android:name=".fragment.BottomBar" />
         <fragment android:name=".fragment.MessageFragment" />
         <fragment android:name=".fragment.CollectionFragment"/>
+        <fragment
+            android:name=".fragment.map_fragment"
+            android:label="地图" />
+
+        <fragment android:name=".fragment.FriendTopFragment"></fragment>
+        <fragment android:name=".fragment.FriendContentFragment"></fragment>
+        <fragment android:name=".fragment.Banner" />
+        <fragment android:name=".fragment.BottomBar" />
+        <fragment android:name=".fragment.HomeFragment" />
+
+        <activity android:name=".activity.Topic_activity">
+
+        </activity>
     </application>
 
 </manifest>
