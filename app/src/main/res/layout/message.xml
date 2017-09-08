@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/title_bar" />
+    <include layout="@layout/title_bar"
+        android:id="@+id/include" />
     <LinearLayout
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -168,5 +169,11 @@
         </RelativeLayout>
 
     </LinearLayout>
-
+    <fragment
+        android:id="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.aa.itravel.fragment.BottomBar"
+        android:layout_alignParentBottom="true">
+    </fragment>
 </RelativeLayout>
