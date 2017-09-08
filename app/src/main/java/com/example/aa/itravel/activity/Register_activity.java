@@ -69,6 +69,7 @@ public class Register_activity extends AppCompatActivity {
                     Toast.makeText(Register_activity.this,"注册成功",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(mContext,Home_activity.class);
                     startActivity(intent);
+                    finish();
                 }else if(back.equals("existed")){
                     Toast.makeText(Register_activity.this,"用户已存在", Toast.LENGTH_LONG).show();
                 }
@@ -85,7 +86,6 @@ public class Register_activity extends AppCompatActivity {
         mContext =this;
     }
 
-
     public void checkUser(){
         //新建一个线程，用于得到服务器响应的参数
         new Thread(new Runnable() {
@@ -98,9 +98,9 @@ public class Register_activity extends AppCompatActivity {
                 try {
                     //回调
                     User user = new User();
-                    user.setUsetel(user_tel);
+                    user.setUsertel(user_tel);
                     user.setUsername(user_name);
-                    user.setPassword(user_psw);
+                    user.setUserpassword(user_psw);
                     Gson gson = new GsonBuilder().create();
                     String content = gson.toJson(user);
 
