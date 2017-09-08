@@ -27,7 +27,6 @@ import static com.example.aa.itravel.R.id.button_message;
 @ContentView(R.layout.message)
 public class Message_activity extends FragmentActivity {
     private Context mContext;
-
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
 
@@ -40,7 +39,7 @@ public class Message_activity extends FragmentActivity {
 
         textView.setText("好友动态");
 
-        //设置当前页面 首页 字体为红色
+;        //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
         Button home =(Button) exFragment.getView().findViewById(button_message);
         home.setTextColor(Color.parseColor("#f75b47"));

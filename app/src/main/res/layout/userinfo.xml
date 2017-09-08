@@ -5,11 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/title_bar"
+             android:id="@+id/include" />
+
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:gravity="center"
-        >
+        android:gravity="center">
 
 
         <LinearLayout
