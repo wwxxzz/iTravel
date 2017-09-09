@@ -45,8 +45,8 @@ public class ChangeUserInfo extends Activity {
 	String TAG = "CHANGE_INFO_Activity";
 	String session;
 	OkHttpClient client = new OkHttpClient();
-	String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/personalinfo";
-	String path = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/editpersonalinfo";
+	String path1 = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/personalinfo";
+	String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/editpersonalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.changename)
@@ -84,10 +84,10 @@ public class ChangeUserInfo extends Activity {
 				if(back.equals("true") ){
 					Log.i(TAG,"修改成功");
 					//Log.i(TAG,"sessionId"+s);
-					Toast.makeText(ChangeUserInfo.this,"登陆成功，即将跳转", Toast.LENGTH_SHORT).show();
+					Toast.makeText(ChangeUserInfo.this,"修改成功，即将跳转", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent();
 					intent = new Intent(mContext, ShowUserInfo.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					//intent.putExtra("sessionId", s);
+					intent.putExtra("sessionId", session);
 					startActivity(intent);
 					finish();
 				}else {
@@ -113,8 +113,7 @@ public class ChangeUserInfo extends Activity {
 				user_career.setText(re.getUsercareer());
 				user_email.setText(re.getUseremail());
 				user_phone.setText(re.getUsertel());
-				DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-				user_birth.setText(df.format(re.getUserbirth()));
+				user_birth.setText(re.getUserbirth());
 				user_sex.setText(re.getUsersex());
 			}
 
@@ -161,14 +160,7 @@ public class ChangeUserInfo extends Activity {
 					user.setUsercareer(usercareer);
 					user.setUseremail(useremail);
 					user.setUsersex(usersex);
-//					try{
-//						SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
-//						String dstr = userbirth;
-//						java.util.Date date = sdf.parse(dstr);
-//						user.setUserbirth(date);
-//					}catch (Exception e){
-//						e.printStackTrace();
-//					}
+					user.setUserbirth(userbirth);
 
 					Gson gson = new GsonBuilder().create();
 					String content = gson.toJson(user);

@@ -53,7 +53,7 @@ public class Login_activity extends Activity {
     String s;
     Response response;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/login";
+    String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/login";
    // String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -141,10 +141,10 @@ private void postRequest(String name,String pwd)  {
                 Call call = okhttpc.newCall(request);
                 response = call.execute();
                 //获取回复的header 剥离sessionId
-//                Headers headers = response.headers();
-//                List<String> cookies = headers.values("Set-Cookie");
-//                String session = cookies.get(0);
-//                s = session.substring(0,session.indexOf(";"));
+                Headers headers = response.headers();
+                List<String> cookies = headers.values("Set-Cookie");
+                String session = cookies.get(0);
+                s = session.substring(0,session.indexOf(";"));
 
                 if (response.code()==200) {
                     //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
