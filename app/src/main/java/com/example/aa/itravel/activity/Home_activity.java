@@ -56,6 +56,9 @@ public class Home_activity extends FragmentActivity {
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
 
+    String TAG = "HOME_Activity";
+    //s用来保存sessionid     发送refresh请求
+    String session;
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -67,7 +70,10 @@ public class Home_activity extends FragmentActivity {
             setViewPager();
             textView.setText("首页推荐");
 
-
+            /*获取Intent中的Bundle对象*/
+            Bundle bundle = this.getIntent().getExtras();
+            /*获取Bundle中的数据，注意类型和key*/
+            session = bundle.getString("sessionId");
 
             //设置当前页面 首页 字体为红色
             Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
@@ -101,10 +107,12 @@ public class Home_activity extends FragmentActivity {
                 switch (curIndex){
                     case 0:
                         intent = new Intent(mContext,Topic_activity.class);
+                        intent.putExtra("sessionId", session);
                         startActivity(intent);
                         break;
                     case 1:
                         intent = new Intent(mContext,Topic_activity2.class);
+                        intent.putExtra("sessionId", session);
                         startActivity(intent);
                         break;
                     case 2:
@@ -113,6 +121,7 @@ public class Home_activity extends FragmentActivity {
                         break;
                     case 3:
                         intent = new Intent(mContext,Topic_activity4.class);
+                        intent.putExtra("sessionId", session);
                         startActivity(intent);
                         break;
 
