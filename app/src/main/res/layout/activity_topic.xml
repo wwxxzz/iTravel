@@ -15,10 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:scaleType="fitXY"
+        android:src="@drawable/img3"
+        android:layout_below="@+id/include"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/include"
-        android:src="@drawable/img3" />
+        android:layout_marginTop="55dp"/>
 
     <TextView
         android:id="@+id/tv_topic"
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
 
             <RelativeLayout
                 android:id="@+id/relativeLayout1"
@@ -358,6 +360,7 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 
 </RelativeLayout>

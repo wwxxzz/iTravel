@@ -7,4 +7,5 @@
     <color name="grayfont">#aaaaaa</color>
     <color name="blackfont">#101010</color>
     <color name="whitefont">#ffffff</color>
+    <color name="topic">#ecf0f1</color>
 </resources>

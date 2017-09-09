@@ -86,10 +86,14 @@
         <fragment android:name=".fragment.Banner" />
         <fragment android:name=".fragment.BottomBar" />
         <fragment android:name=".fragment.HomeFragment" />
+        <fragment android:name=".fragment.TopicComment" />
 
         <activity android:name=".activity.Topic_activity">
 
         </activity>
+        <activity android:name=".activity.Topic_activity2"></activity>
+        <activity android:name=".activity.Topic_activity3"></activity>
+        <activity android:name=".activity.Topic_activity4"></activity>
     </application>
 
 </manifest>
