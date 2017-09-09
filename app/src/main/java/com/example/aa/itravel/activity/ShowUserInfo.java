@@ -51,7 +51,7 @@ public class ShowUserInfo extends Activity {
 	String session;
 	Response response;
 	OkHttpClient client = new OkHttpClient();
-	String path = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/personalinfo";
+	String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/personalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.showname)
@@ -90,8 +90,7 @@ public class ShowUserInfo extends Activity {
 				user_career.setText(re.getUsercareer());
 				user_email.setText(re.getUseremail());
 				user_phone.setText(re.getUsertel());
-				DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-				user_birth.setText(df.format(re.getUserbirth()));
+				user_birth.setText(re.getUserbirth());
 				user_sex.setText(re.getUsersex());
 			}
 
@@ -134,8 +133,7 @@ public class ShowUserInfo extends Activity {
 				} else {
 					throw new IOException("Unexpected code:" + response);
 				}
-
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
