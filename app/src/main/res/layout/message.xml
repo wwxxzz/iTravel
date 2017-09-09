@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <include layout="@layout/title_bar"
         android:id="@+id/include" />
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.lulu.weichatfriends.MainActivity"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="60dp">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -27,148 +27,143 @@
                 android:layout_alignParentStart="true">
                 <Button
                     android:id="@+id/ic_head01"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ic_home" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_home"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
                 <TextView
                     android:id="@+id/tr_user01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:text="Dalao"
                     android:layout_toRightOf="@+id/ic_head01"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     />
                 <TextView
                     android:id="@+id/tr_time01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5分钟前"
+                    android:textSize="12dp"
                     android:layout_toRightOf="@+id/ic_head01"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_below="@+id/tr_user01"
+                    android:layout_marginTop="5dp"/>
                 <TextView
                     android:id="@+id/tr_textdata01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="动态正文"
                     android:layout_below="@+id/ic_head01"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
                 <ImageView
                     android:id="@+id/tr_imagedata01"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/map"
-                    android:layout_below="@+id/tr_textdata01" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/img1"
+                    android:layout_below="@+id/tr_textdata01"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
                 <TextView
                     android:id="@+id/tr_location01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="China"
+                    android:textSize="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:layout_below="@+id/tr_imagedata01"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="30dp"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tr_comment01"
-                    android:minHeight="10dp">
-                    <ListView
-                        android:id="@+id/tr_comments01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-                </LinearLayout>
+                    android:layout_alignRight="@+id/ic_head01"
+                    android:layout_alignEnd="@+id/ic_head01" />
 
                 <EditText
                     android:id="@+id/tr_comment01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="评论"
+                    android:textSize="14dp"
                     android:background="@drawable/edit_bg"
-                    android:drawablePadding="10dp"
-                    android:padding="10dp"
+                    android:drawablePadding="5dp"
+                    android:padding="5dp"
                     android:maxLength="60"
                     android:layout_below="@+id/tr_location01"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_toLeftOf="@+id/tr_send01"
-                    android:layout_toStartOf="@+id/tr_send01" />
+                    android:layout_alignParentStart="true" />
                 <Button
                     android:id="@+id/tr_transfer01"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tr_comment01"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_above="@+id/tr_location01"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:text="转"
                     android:gravity="center"
-                    android:textSize="8dp"/>
+                    android:background="@drawable/transfer"/>
                 <TextView
                     android:id="@+id/tr_commentnum01"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="0"
                     android:gravity="center"
-                    android:textSize="8dp"
+                    android:textSize="10dp"
                     android:layout_alignBaseline="@+id/tr_transfer01"
                     android:layout_alignBottom="@+id/tr_transfer01"
                     android:layout_toLeftOf="@+id/tr_transfer01"
                     android:layout_toStartOf="@+id/tr_transfer01" />
                 <TextView
                     android:id="@+id/tr_comment_ic01"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:text="评论"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:gravity="center"
-                    android:textSize="8dp"
-                    android:layout_above="@+id/tr_comment01"
+                    android:layout_above="@+id/tr_location01"
                     android:layout_toLeftOf="@+id/tr_commentnum01"
-                    android:layout_toStartOf="@+id/tr_commentnum01" />
+                    android:layout_toStartOf="@+id/tr_commentnum01"
+                    android:background="@drawable/comment"
+                    android:layout_marginBottom="1dp"/>
                 <Button
                     android:id="@+id/tr_collection01"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tr_comment01"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_above="@+id/tr_location01"
                     android:layout_toLeftOf="@+id/tr_comment_ic01"
                     android:layout_toStartOf="@+id/tr_comment_ic01"
-                    android:text="收"
                     android:gravity="center"
-                    android:textSize="8dp"/>
+                    android:background="@drawable/collection_selector"/>
                 <TextView
                     android:id="@+id/tr_likenum01"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:text="0"
                     android:gravity="center"
-                    android:textSize="8dp"
+                    android:textSize="10dp"
                     android:layout_alignBaseline="@+id/tr_collection01"
                     android:layout_alignBottom="@+id/tr_collection01"
                     android:layout_toLeftOf="@+id/tr_collection01"
                     android:layout_toStartOf="@+id/tr_collection01" />
                 <Button
                     android:id="@+id/tr_like"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tr_comment01"
+                    android:layout_width="25dp"
+                    android:layout_height="28dp"
+                    android:layout_above="@+id/tr_location01"
                     android:layout_toLeftOf="@+id/tr_likenum01"
                     android:layout_toStartOf="@+id/tr_likenum01"
-                    android:text="赞"
                     android:gravity="center"
-                    android:textSize="8dp"/>
+                    android:background="@drawable/like_selector"/>
                 <Button
                     android:id="@+id/tr_send01"
                     android:layout_width="60dp"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:text="发送"
                     style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_alignBaseline="@+id/tr_comment01"
-                    android:layout_alignBottom="@+id/tr_comment01"
+                    android:layout_toRightOf="@+id/tr_comment01"
+                    android:layout_marginTop="-5dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
             </RelativeLayout>
 
         </RelativeLayout>
 
-    </LinearLayout>
+
     <fragment
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
@@ -176,4 +171,5 @@
         android:name="com.example.aa.itravel.fragment.BottomBar"
         android:layout_alignParentBottom="true">
     </fragment>
+    </RelativeLayout>
 </RelativeLayout>

@@ -37,7 +37,6 @@
             android:label="首页推荐">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -79,8 +78,8 @@
             android:name=".fragment.map_fragment"
             android:label="地图" />
 
-        <fragment android:name=".fragment.FriendTopFragment"></fragment>
-        <fragment android:name=".fragment.FriendContentFragment"></fragment>
+        <fragment android:name=".fragment.FriendTopFragment"/>
+        <fragment android:name=".fragment.FriendContentFragment"/>
         <fragment android:name=".fragment.Banner" />
         <fragment android:name=".fragment.BottomBar" />
         <fragment android:name=".fragment.HomeFragment" />

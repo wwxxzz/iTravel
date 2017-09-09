@@ -17,7 +17,10 @@
             android:id="@+id/cl_viewpage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cl_tab" />
+            android:layout_below="@+id/cl_tab"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

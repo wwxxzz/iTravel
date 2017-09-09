@@ -34,29 +34,38 @@ public class Message_activity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //setContentView(R.layout.message);
-        mContext =this;
+        mContext = this;
         x.view().inject(this);
 
-        textView.setText("好友动态");
-
-;        //设置当前页面 首页 字体为红色
-        Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
-        Button home =(Button) exFragment.getView().findViewById(button_message);
+        //设置当前页面 首页 字体为红色
+        Fragment exFragment = (Fragment) getSupportFragmentManager().findFragmentById(bottombar);
+        Button home = (Button) exFragment.getView().findViewById(button_message);
         home.setTextColor(Color.parseColor("#f75b47"));
-
     }
-    @Event(value = {R.id.button_friend,R.id.button_home})
-    private void event(View view){
+    @ViewInject(R.id.tr_like)
+    private Button like;
+    @ViewInject(R.id.tr_collection01)
+    private Button collect;
+
+    @Event(value = {R.id.button_friend, R.id.button_home,R.id.tr_like,R.id.tr_collection01})
+    private void event(View view) {
         Intent intent;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.button_friend:
-                intent = new Intent(mContext,Friend_activity.class);
+                intent = new Intent(mContext, Friend_activity.class);
                 startActivity(intent);
                 break;
             case R.id.button_home:
-                intent = new Intent(mContext,Home_activity.class);
+                intent = new Intent(mContext, Home_activity.class);
                 startActivity(intent);
+                break;
+            case R.id.tr_like:
+                like.setSelected(true);
+                break;
+            case R.id.tr_collection01:
+                collect.setSelected(true);
                 break;
         }
     }
+
 }
