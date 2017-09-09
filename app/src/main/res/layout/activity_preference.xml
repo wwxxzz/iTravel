@@ -30,33 +30,44 @@
 
                 <CheckBox
                     android:id="@+id/cb_food"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dip"
+                    android:layout_height="80dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
+                    android:layout_marginRight="10dp"
                     android:text="美食"
-                    android:textSize="20sp" />
+                    android:paddingTop="60dip"
+                    android:paddingLeft="25dip"
+                    android:textSize="12sp"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_selector"/>
                 <CheckBox
                     android:id="@+id/cb_living"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dip"
+                    android:layout_height="80dip"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/cb_food"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
+                    android:layout_marginRight="10dp"
                     android:text="住宿"
-                    android:textSize="20sp"/>
+                    android:paddingTop="60dip"
+                    android:paddingLeft="25dip"
+                    android:textSize="12sp"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_selector"/>
                 <CheckBox
                     android:id="@+id/cb_shopping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dip"
+                    android:layout_height="80dip"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/cb_living"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
                     android:text="购物"
-                    android:textSize="20sp"/>
+                    android:paddingTop="60dip"
+                    android:paddingLeft="25dip"
+                    android:textSize="12sp"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_selector"/>
 
             </RelativeLayout>
 
@@ -75,7 +86,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="自驾"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_town"
                     android:layout_width="wrap_content"
@@ -85,7 +97,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="古镇"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_mountain"
                     android:layout_width="wrap_content"
@@ -95,7 +108,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="山地"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
 
             </RelativeLayout>
 
@@ -114,7 +128,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="游轮"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_savemoney"
                     android:layout_width="wrap_content"
@@ -124,7 +139,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="穷游"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_photographing"
                     android:layout_width="wrap_content"
@@ -134,7 +150,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="摄影"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
 
             </RelativeLayout>
 
@@ -152,7 +169,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="国外"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_domestic"
                     android:layout_width="wrap_content"
@@ -162,7 +180,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="国内"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
                 <CheckBox
                     android:id="@+id/cb_couple"
                     android:layout_width="wrap_content"
@@ -172,7 +191,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="情侣"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -189,7 +209,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:text="其他"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:button="@null"/>
             </RelativeLayout>
         </LinearLayout>
         <Button
