@@ -21,7 +21,13 @@
             android:name=".activity.Login_activity"
             android:label="@string/app_name"
 
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
 
         <activity
             android:name=".activity.Register_activity"
@@ -83,10 +89,14 @@
         <fragment android:name=".fragment.Banner" />
         <fragment android:name=".fragment.BottomBar" />
         <fragment android:name=".fragment.HomeFragment" />
+        <fragment android:name=".fragment.TopicComment" />
 
         <activity android:name=".activity.Topic_activity">
 
         </activity>
+        <activity android:name=".activity.Topic_activity2"></activity>
+        <activity android:name=".activity.Topic_activity3"></activity>
+        <activity android:name=".activity.Topic_activity4"></activity>
     </application>
 
 </manifest>

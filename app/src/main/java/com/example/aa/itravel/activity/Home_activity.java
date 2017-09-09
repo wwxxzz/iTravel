@@ -48,6 +48,7 @@ public class Home_activity extends FragmentActivity {
     private int imgResIds[] = new int[]{R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4};
     //存储目录
     //private String textview[] = new String[]{"门前大桥下","游过一群鸭","快来快来数一数","二四六七八","233333"};
+
     //记录当前滚动的位置
     private int curIndex =0;
     PicsAdapter picsAdapter;
@@ -55,6 +56,9 @@ public class Home_activity extends FragmentActivity {
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
 
+    String TAG = "HOME_Activity";
+    //s用来保存sessionid     发送refresh请求
+    String session;
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -66,7 +70,10 @@ public class Home_activity extends FragmentActivity {
             setViewPager();
             textView.setText("首页推荐");
 
-
+            /*获取Intent中的Bundle对象*/
+            Bundle bundle = this.getIntent().getExtras();
+            /*获取Bundle中的数据，注意类型和key*/
+            session = bundle.getString("sessionId");
 
             //设置当前页面 首页 字体为红色
             Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
@@ -84,7 +91,7 @@ public class Home_activity extends FragmentActivity {
    // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
 
 
-   @Event(value = {R.id.button_friend,R.id.button_message})
+   @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic})
     private void event(View view){
         Intent intent;
         switch (view.getId()){
@@ -96,8 +103,36 @@ public class Home_activity extends FragmentActivity {
                 intent = new Intent(mContext,Message_activity.class);
                 startActivity(intent);
                 break;
+            case R.id.bt_entertopic:
+                switch (curIndex){
+                    case 0:
+                        intent = new Intent(mContext,Topic_activity.class);
+                        intent.putExtra("sessionId", session);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(mContext,Topic_activity2.class);
+                        intent.putExtra("sessionId", session);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(mContext,Topic_activity3.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(mContext,Topic_activity4.class);
+                        intent.putExtra("sessionId", session);
+                        startActivity(intent);
+                        break;
+
+                }
+
+
+
         }
     }
+
+
 
     private void setViewPager() {
 
@@ -111,10 +146,9 @@ public class Home_activity extends FragmentActivity {
 
         view_pager.setOnPageChangeListener(new MyPageChangeListener()); //设置页面切换监听器
 
-        initPoints(imgResIds.length); // 初始化图片小圆点
+        initPoints(imgResIds.length); //初始化图片小圆点
         startAutoScroll(); // 开启自动播放
     }
-
 
     // 初始化图片轮播的小圆点和目录
     private void initPoints(int count) {
@@ -136,7 +170,6 @@ public class Home_activity extends FragmentActivity {
 
         //newsTitle.setText(textview[curIndex]);
     }
-
 
     // 自动播放
     private void startAutoScroll() {
@@ -217,7 +250,6 @@ public class Home_activity extends FragmentActivity {
         }
     }
 
-
     // 定义ViewPager控件适配器
     class PicsAdapter extends PagerAdapter {
 
@@ -283,5 +315,20 @@ public class Home_activity extends FragmentActivity {
         }
 
     }
+
+
+    /*class PagetoTopic implements ViewPager.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                Intent intent = new Intent();
+                case R.id.view_pager:
+                    intent = new Intent(mContext,Topic_activity.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    }*/
 
 }

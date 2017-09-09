@@ -6,205 +6,245 @@
     android:layout_height="match_parent"
     tools:context="com.example.aa.itravel.activity.Login_activity">
     <include layout="@layout/title_bar" />
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:gravity="center">
+        android:layout_marginTop="100dp"
+        tools:layout_editor_absoluteY="30dp">
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/linearLayout2">
+            android:layout_marginTop="10dp"
+            android:paddingLeft="24dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <CheckBox
                     android:id="@+id/cb_food"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="美食"
-                    android:textSize="20sp" />
+                    android:background="@drawable/checkbox1"
+                    android:button="@null"
+                    android:paddingLeft="25dip"
+                    android:paddingTop="60dip"
+                    android:textSize="12sp" />
+
                 <CheckBox
                     android:id="@+id/cb_living"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_food"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="住宿"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_food"
+                    android:background="@drawable/checkbox2"
+                    android:button="@null"
+                    android:paddingLeft="25dip"
+                    android:paddingTop="60dip"
+                    android:textSize="12sp" />
+
                 <CheckBox
                     android:id="@+id/cb_shopping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_living"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="购物"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_living"
+                    android:background="@drawable/checkbox3"
+                    android:button="@null"
+                    android:paddingLeft="25dip"
+                    android:paddingTop="60dip"
+                    android:textSize="12sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:gravity="center">
 
                 <CheckBox
                     android:id="@+id/cb_selfdriving"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="自驾"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/checkbox4"
+                    android:button="@null"
                     android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_town"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_selfdriving"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="古镇"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_selfdriving"
+                    android:background="@drawable/checkbox5"
+                    android:button="@null"
+                    android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_mountain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_town"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="山地"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_town"
+                    android:background="@drawable/checkbox6"
+                    android:button="@null"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:gravity="center">
 
                 <CheckBox
                     android:id="@+id/cb_boating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="游轮"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/checkbox7"
+                    android:button="@null"
                     android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_savemoney"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_boating"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="古镇"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_boating"
+                    android:background="@drawable/checkbox8"
+                    android:button="@null"
+                    android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_photographing"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_savemoney"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="摄影"
-                    android:textSize="20sp"/>
+                    android:layout_toRightOf="@+id/cb_savemoney"
+                    android:background="@drawable/checkbox9"
+                    android:button="@null"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:gravity="center">
+
                 <CheckBox
                     android:id="@+id/cb_abord"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="国外"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/checkbox10"
+                    android:button="@null"
                     android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_domestic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_abord"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="国内"
-                    android:textSize="20sp"/>
+                    android:layout_marginLeft="24dp"
+                    android:layout_toRightOf="@+id/cb_abord"
+                    android:background="@drawable/checkbox11"
+                    android:button="@null"
+                    android:textSize="20sp" />
+
                 <CheckBox
                     android:id="@+id/cb_couple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/cb_domestic"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="情侣"
-                    android:textSize="20sp"/>
+                    android:layout_marginLeft="24dp"
+                    android:layout_toRightOf="@+id/cb_domestic"
+                    android:background="@drawable/checkbox12"
+                    android:button="@null"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:gravity="center">
+
                 <CheckBox
                     android:id="@+id/cb_others"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="其他"
-                    android:textSize="20sp"/>
+                    android:background="@drawable/checkbox13"
+                    android:button="@null"
+                    android:textSize="20sp" />
             </RelativeLayout>
         </LinearLayout>
+
         <Button
             android:id="@+id/bt_savePreference"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_marginTop="30dp"
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="保 存"
             android:textColor="#ffffffff"
-            android:textSize="18sp"
-            android:layout_below="@+id/linearLayout2"
-            android:layout_centerHorizontal="true" />
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

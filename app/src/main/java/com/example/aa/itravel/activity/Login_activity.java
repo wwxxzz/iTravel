@@ -72,7 +72,7 @@ public class Login_activity extends Activity {
                     Log.i(TAG,"sessionId"+s);
                     Toast.makeText(Login_activity.this,"登陆成功，即将跳转", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent = new Intent(mContext, ShowUserInfo.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent = new Intent(mContext, Home_activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("sessionId", s);
                     startActivity(intent);
                     finish();

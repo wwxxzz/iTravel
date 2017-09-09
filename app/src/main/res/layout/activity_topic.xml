@@ -15,10 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:scaleType="fitXY"
+        android:src="@drawable/img3"
+        android:layout_below="@+id/include"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/include"
-        android:src="@drawable/img3" />
+        android:layout_marginTop="55dp"/>
 
     <TextView
         android:id="@+id/tv_topic"
@@ -30,26 +31,38 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/image_topic"
         android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/tv_topic_con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="话题内容话题内容？话题内容话题内容话题内容话题内容话题内容话题内容话题内容话题内容"
+        android:textColor="@color/grayfont"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_topic"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"/>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_topic"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp">
+        android:layout_below="@+id/tv_topic_con">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+
             <RelativeLayout
                 android:id="@+id/relativeLayout1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/tv_topic"
+                android:layout_below="@+id/tv_topic_con"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp">
@@ -62,12 +75,13 @@
 
                 <TextView
                     android:id="@+id/tv_username1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo1"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment1"
@@ -76,7 +90,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo1"
                     android:layout_toRightOf="@+id/image_photo1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber1"
@@ -114,12 +129,13 @@
 
                 <TextView
                     android:id="@+id/tv_username2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo2"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment2"
@@ -128,7 +144,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo2"
                     android:layout_toRightOf="@+id/image_photo2"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber2"
@@ -166,12 +183,13 @@
 
                 <TextView
                     android:id="@+id/tv_username3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo3"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment3"
@@ -180,7 +198,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo3"
                     android:layout_toRightOf="@+id/image_photo3"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber3"
@@ -218,12 +237,13 @@
 
                 <TextView
                     android:id="@+id/tv_username4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo4"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment4"
@@ -232,7 +252,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo4"
                     android:layout_toRightOf="@+id/image_photo4"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber4"
@@ -270,12 +291,13 @@
 
                 <TextView
                     android:id="@+id/tv_username5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo5"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment5"
@@ -284,7 +306,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo5"
                     android:layout_toRightOf="@+id/image_photo5"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber5"
@@ -322,12 +345,13 @@
 
                 <TextView
                     android:id="@+id/tv_username6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/image_photo6"
-                    android:text="dalao" />
+                    android:text="dalao"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_topicComment6"
@@ -336,7 +360,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/image_photo6"
                     android:layout_toRightOf="@+id/image_photo6"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber6"
@@ -358,6 +383,7 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 
 </RelativeLayout>
