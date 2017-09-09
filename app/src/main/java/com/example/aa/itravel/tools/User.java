@@ -39,7 +39,7 @@ public class User {
 
 	private String useremail;
 
-	private Date userbirth;
+	private String userbirth;
 
 	private byte[] userphoto;
 
@@ -171,11 +171,11 @@ public class User {
 		this.useremail = useremail == null ? null : useremail.trim();
 	}
 
-	public Date getUserbirth() {
+	public String getUserbirth() {
 		return userbirth;
 	}
 
-	public void setUserbirth(Date userbirth) {
+	public void setUserbirth(String userbirth) {
 		this.userbirth = userbirth;
 	}
 

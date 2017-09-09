@@ -123,7 +123,7 @@
                     android:layout_toRightOf="@+id/cb_boating"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="古镇"
+                    android:text="穷游"
                     android:textSize="20sp"/>
                 <CheckBox
                     android:id="@+id/cb_photographing"
