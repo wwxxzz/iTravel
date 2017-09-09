@@ -10,21 +10,18 @@
     <include layout="@layout/title_bar"
         android:id="@+id/include" />
 
-    <LinearLayout
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_below="@+id/include"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+    <RelativeLayout
+            android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/include"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:orientation="vertical">
-
+            android:layout_marginTop="55dp"
+            android:onClick="event"
+            android:descendantFocusability="beforeDescendants"
+            android:clickable="true">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"
@@ -34,6 +31,18 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"></android.support.v4.view.ViewPager>
+
+        <Button
+            android:id="@+id/bt_entertopic"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="=进入话题="
+            android:textAlignment="center"
+            android:textColor="@color/topic"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -55,18 +64,58 @@
 
                 </LinearLayout>
 
-
             </RelativeLayout>
 
         </RelativeLayout>
 
-    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/biaoqian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/banner"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_bq1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+            <TextView
+                android:id="@+id/tv_bq2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+            <TextView
+                android:id="@+id/tv_bq3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+            <TextView
+                android:id="@+id/tv_bq4"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+            <TextView
+                android:id="@+id/tv_bq5"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+            <TextView
+                android:id="@+id/tv_bq6"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="标签1" />
+
+
+        </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/banner"
+        android:layout_below="@+id/biaoqian"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         >
@@ -108,6 +157,7 @@
                     android:layout_toEndOf="@+id/image_photo1"
                     android:layout_toRightOf="@+id/image_photo1"
                     android:text="TextView" />
+
 
             </RelativeLayout>
 
