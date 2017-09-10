@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -27,13 +28,16 @@ public class Collection_activity extends AppCompatActivity {
     private CollectionAdapter clAdapter;
     private List<Fragment> fragments = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         x.view().inject(this);
         vp = (ViewPager) findViewById(R.id.cl_viewpage);
         tabLayout = (TabLayout) findViewById(R.id.cl_tab);
+        title.setText("查看收藏");
 
         clAdapter = new CollectionAdapter(getSupportFragmentManager());
         fragments.add(CollectionFragment.newInstance("0"));
