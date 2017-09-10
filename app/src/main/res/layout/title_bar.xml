@@ -35,8 +35,6 @@
                 android:layout_toRightOf="@+id/title_bar_name"
                 android:layout_marginLeft="22dp"/>
 
-<<<<<<< Updated upstream
-=======
             <ImageView
                 android:id="@+id/iv_left"
                 android:layout_width="30dp"
@@ -44,7 +42,6 @@
                 android:layout_marginRight="40dp"
                 android:src="@drawable/ic_list"
                 android:visibility="visible"/>
->>>>>>> Stashed changes
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>

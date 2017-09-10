@@ -145,6 +145,7 @@ public class Home_activity extends AppCompatActivity {
                 }
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
+	            intent.putExtra("sessionId", session);
                 startActivity(intent);
                 break;
             case R.id.bt_footprint:
@@ -157,6 +158,7 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.bt_preference:
                 intent = new Intent(mContext,Preference_activity.class);
+	            intent.putExtra("sessionId", session);
                 startActivity(intent);
                 break;
         }
