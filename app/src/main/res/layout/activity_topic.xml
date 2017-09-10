@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/image_topic"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:scaleType="fitXY"
         android:src="@drawable/img3"
         android:layout_below="@+id/include"
@@ -21,16 +21,33 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="55dp"/>
 
-    <TextView
-        android:id="@+id/tv_topic"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/topic_comment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="今日话题：旅游社交是一种怎样的体验？"
-        android:textColor="@color/button"
-        android:textSize="15dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/image_topic"
-        android:layout_marginTop="15dp"/>
+        android:orientation="horizontal"
+        android:layout_below="@+id/image_topic">
+
+        <TextView
+            android:id="@+id/tv_topic"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="今日话题：穷游是一种怎样的体验？"
+            android:textColor="@color/button"
+            android:textSize="15dp"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/img_comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/topic_comment"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_topic_con"
         android:layout_width="wrap_content"
@@ -39,7 +56,7 @@
         android:textColor="@color/grayfont"
         android:textSize="15dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tv_topic"
+        android:layout_below="@+id/topic_comment"
         android:layout_marginTop="10dip"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"/>

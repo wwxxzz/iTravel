@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -18,13 +20,20 @@ public class PushCommit extends Activity {
 	private Context mContext;
 
 	@ViewInject(R.id.title_bar_name)
-	private TextView textView;
+	private TextView titlebar;
+	@ViewInject(R.id.iv_right)
+	private ImageView right_icon;
+	@ViewInject(R.id.iv_left)
+	private ImageView left_icon;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.i("OUSH","评论");
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mContext =this;
 		x.view().inject(this);
-		textView.setText("发表评论");
+		titlebar.setText("发表评论");
+		right_icon.setImageResource(R.drawable.tick);
+		left_icon.setImageResource(R.drawable.back);
 	}
 }

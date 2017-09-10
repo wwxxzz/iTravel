@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -44,6 +45,8 @@ public class Topic_activity3 extends Activity {
 
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
+    @ViewInject(R.id.iv_right)
+    private ImageView right_icon;
     @ViewInject(R.id.tv_topic)
     private TextView topic_theme;
     @ViewInject(R.id.tv_topic_con)
@@ -151,6 +154,7 @@ public class Topic_activity3 extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         x.view().inject(this);
         textView.setText("话题3");
+        right_icon.setImageResource(R.drawable.heart);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/

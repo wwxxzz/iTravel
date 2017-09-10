@@ -72,10 +72,10 @@ public class Home_activity extends AppCompatActivity {
 
             textView.setText("首页推荐");
 
-            /*获取Intent中的Bundle对象*/
-            //Bundle bundle = this.getIntent().getExtras();
+
+            Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-            //session = bundle.getString("sessionId");
+            session = bundle.getString("sessionId");
 
             //设置当前页面 首页 字体为红色
             Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);

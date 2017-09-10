@@ -21,7 +21,7 @@
             android:layout_below="@+id/include"
             android:text="写评论…"
             android:inputType="textMultiLine"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"/>
+            android:gravity="top"
+            android:textColor="@color/grayfont"/>
 
 </LinearLayout>

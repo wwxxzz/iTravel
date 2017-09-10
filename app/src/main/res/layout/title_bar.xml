@@ -3,12 +3,12 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/button">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="45.0dip"
+            android:layout_height="fill_parent"
             android:gravity="top">
 
             <TextView
@@ -23,7 +23,7 @@
                 android:singleLine="true"
                 android:text="iTravel"
                 android:textColor="#ffffff"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/iv_right"
@@ -33,10 +33,18 @@
                 android:visibility="visible"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/title_bar_name"
-                android:layout_toEndOf="@+id/title_bar_name"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp" />
+                android:layout_marginLeft="22dp"/>
 
+<<<<<<< Updated upstream
+=======
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/ic_list"
+                android:visibility="visible"/>
+>>>>>>> Stashed changes
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
