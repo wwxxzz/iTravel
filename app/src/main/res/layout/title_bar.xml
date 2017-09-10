@@ -15,7 +15,7 @@
                 android:id="@+id/title_bar_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+
                 android:ellipsize="end"
                 android:gravity="center"
                 android:paddingLeft="75.0dip"
@@ -37,14 +37,6 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginStart="40dp" />
 
-            <ImageView
-                android:id="@+id/iv_left"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
-                android:src="@drawable/ic_list"
-                android:visibility="visible" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>

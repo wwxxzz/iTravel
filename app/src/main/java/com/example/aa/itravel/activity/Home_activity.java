@@ -4,13 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,16 +30,15 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import static com.example.aa.itravel.R.id.bottombar;
+//import org.xutils.view.annotation.ContentView;
+;import static com.example.aa.itravel.R.id.bottombar;
 import static com.example.aa.itravel.R.id.button_home;
-
-;
 
 /**
  * Created by aa on 2017/9/5.
  */
-@ContentView(R.layout.home)
-public class Home_activity extends FragmentActivity {
+@ContentView(R.layout.home_main)
+public class Home_activity extends AppCompatActivity {
 
     private Context mContext;
 
@@ -62,18 +63,19 @@ public class Home_activity extends FragmentActivity {
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            //setContentView(R.layout.home);
+            //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //setContentView(R.layout.home_main);
             mContext =this;
             x.view().inject(this);
 
             setViewPager();
+
             textView.setText("首页推荐");
 
             /*获取Intent中的Bundle对象*/
-            Bundle bundle = this.getIntent().getExtras();
+            //Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-            session = bundle.getString("sessionId");
+            //session = bundle.getString("sessionId");
 
             //设置当前页面 首页 字体为红色
             Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
@@ -87,11 +89,26 @@ public class Home_activity extends FragmentActivity {
             tt.commit();*/
 
 
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+            //监听drawer拉出、隐藏
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
+
+
+
         }
    // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
 
 
-   @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic})
+   @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
+                        R.id.bt_collection,R.id.bt_preference})
     private void event(View view){
         Intent intent;
         switch (view.getId()){
@@ -126,9 +143,22 @@ public class Home_activity extends FragmentActivity {
                         break;
 
                 }
-
-
-
+            case R.id.bt_info:
+                intent = new Intent(mContext,ShowUserInfo.class);
+                startActivity(intent);
+                break;
+            case R.id.bt_footprint:
+                intent = new Intent(mContext,Footprint_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.bt_collection:
+                intent = new Intent(mContext,Collection_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.bt_preference:
+                intent = new Intent(mContext,Preference_activity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -316,19 +346,5 @@ public class Home_activity extends FragmentActivity {
 
     }
 
-
-    /*class PagetoTopic implements ViewPager.OnClickListener{
-
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()){
-                Intent intent = new Intent();
-                case R.id.view_pager:
-                    intent = new Intent(mContext,Topic_activity.class);
-                    startActivity(intent);
-                    break;
-            }
-        }
-    }*/
 
 }

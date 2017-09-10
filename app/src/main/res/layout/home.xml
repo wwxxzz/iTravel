@@ -7,30 +7,29 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include layout="@layout/title_bar"
-        android:id="@+id/include" />
+    <include layout="@layout/title_bar"></include>
 
     <RelativeLayout
-            android:id="@+id/banner"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/include"
+        android:layout_marginTop="55dp"
+        android:onClick="event"
+        android:descendantFocusability="beforeDescendants"
+        android:clickable="true">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="vertical"
-            android:layout_below="@+id/include"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="55dp"
-            android:onClick="event"
-            android:descendantFocusability="beforeDescendants"
-            android:clickable="true">
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"></android.support.v4.view.ViewPager>
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"></android.support.v4.view.ViewPager>
 
         <Button
             android:id="@+id/bt_entertopic"
@@ -44,72 +43,72 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:id="@+id/dotgroup"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:paddingTop="23dp">
 
-                <LinearLayout
-                    android:id="@+id/dotgroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingRight="10dp"
-                    android:paddingTop="23dp">
-
-                </LinearLayout>
-
-            </RelativeLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 
+    </RelativeLayout>
+
     <LinearLayout
-            android:id="@+id/biaoqian"
-            android:layout_width="match_parent"
+        android:id="@+id/biaoqian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/banner"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_bq1"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            android:layout_below="@+id/banner"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tv_bq1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
-            <TextView
-                android:id="@+id/tv_bq2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
-            <TextView
-                android:id="@+id/tv_bq3"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
-            <TextView
-                android:id="@+id/tv_bq4"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
-            <TextView
-                android:id="@+id/tv_bq5"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
-            <TextView
-                android:id="@+id/tv_bq6"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="标签1" />
+            android:text="标签1" />
+        <TextView
+            android:id="@+id/tv_bq2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="标签1" />
+        <TextView
+            android:id="@+id/tv_bq3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="标签1" />
+        <TextView
+            android:id="@+id/tv_bq4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="标签1" />
+        <TextView
+            android:id="@+id/tv_bq5"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="标签1" />
+        <TextView
+            android:id="@+id/tv_bq6"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="标签1" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
     <ScrollView
