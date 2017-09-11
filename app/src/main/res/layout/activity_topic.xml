@@ -18,8 +18,7 @@
         android:src="@drawable/img3"
         android:layout_below="@+id/include"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp"/>
+        android:layout_alignParentStart="true"/>
 
     <LinearLayout
         android:id="@+id/topic_comment"

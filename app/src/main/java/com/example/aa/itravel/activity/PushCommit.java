@@ -48,8 +48,6 @@ public class PushCommit extends Activity {
 	private TextView titlebar;
 	@ViewInject(R.id.iv_right)
 	private ImageView right_icon;
-	@ViewInject(R.id.iv_left)
-	private ImageView left_icon;
 	@ViewInject(R.id.editText)
 	private EditText com_content;
 	public Integer ID;
@@ -106,7 +104,6 @@ public class PushCommit extends Activity {
 		x.view().inject(this);
 		titlebar.setText("发表评论");
 		right_icon.setImageResource(R.drawable.tick);
-		left_icon.setImageResource(R.drawable.back);
 		 /*获取Intent中的Bundle对象*/
 		Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
