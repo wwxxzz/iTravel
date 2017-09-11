@@ -2,27 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-    <include layout="@layout/title_bar"
-             android:id="@+id/include" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/title_bar"
+            android:id="@+id/include" />
         <android.support.design.widget.TabLayout
             android:id="@+id/FriendTop_tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"/>
-
+            android:layout_height="wrap_content" />
         <android.support.v4.view.ViewPager
             android:id="@+id/FriendTop_viewpage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/FriendTop_tab" />
+            />
+    </LinearLayout>
 
-    </RelativeLayout>
+    <fragment
+        android:id="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.aa.itravel.fragment.BottomBar"
+        android:layout_alignParentBottom="true">
+    </fragment>
     <!--<LinearLayout-->
         <!--android:id="@+id/tab_menu"-->
         <!--android:layout_width="match_parent"-->
@@ -86,16 +92,6 @@
         <!--android:layout_above="@+id/tab_menu"-->
         <!--tools:layout="@layout/fragment_friend_content">-->
     <!--</fragment>-->
-    <fragment
-        android:id="@+id/bottombar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.example.aa.itravel.fragment.BottomBar"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </fragment>
-
 
 
 

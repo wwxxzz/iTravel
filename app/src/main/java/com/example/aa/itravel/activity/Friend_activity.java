@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.adapter.FriendTopAdapter;
@@ -74,6 +75,8 @@ public class Friend_activity extends FragmentActivity {
         tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
         //设置下划线的颜色
         tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+
+
     }
 
     @Event(value = {R.id.button_home,R.id.button_message})
@@ -89,5 +92,16 @@ public class Friend_activity extends FragmentActivity {
                 startActivity(intent);
                 break;
         }
+        FriendTopFragment mFragment=(FriendTopFragment) FtAdapter.getItem(1);
+        view=mFragment.getView();
+        switch (view.getId()){
+            case R.id.fr_next_01:
+                Toast.makeText(Friend_activity.this,"有效",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(Friend_activity.this,"无效",Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
+
 }

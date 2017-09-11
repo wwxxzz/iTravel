@@ -3,11 +3,9 @@ package com.example.aa.itravel.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -21,12 +19,11 @@ import com.google.gson.GsonBuilder;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.MediaType;
@@ -34,8 +31,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
-import static com.example.aa.itravel.R.color.button;
 
 /**
  * Created by aa on 2017/9/3.
@@ -53,7 +48,7 @@ public class Login_activity extends Activity {
     String s;
     Response response;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.160.62:8080/iTravel_Server_SSM/AndroidService/login";
+    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/login";
    // String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 

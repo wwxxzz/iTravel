@@ -28,8 +28,8 @@ import static com.example.aa.itravel.R.id.button_message;
 public class Message_activity extends FragmentActivity {
     private Context mContext;
     @ViewInject(R.id.title_bar_name)
-    private TextView textView;
-
+    private
+    TextView textView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
