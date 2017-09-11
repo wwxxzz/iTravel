@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:clickable="true"
-    android:tag="left"
-    android:src="@drawable/img1">
+    android:tag="left">
 
     <ImageView android:id="@+id/iv_drawer_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/img1" />
+        android:src="@drawable/img2"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,58 +22,142 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:background="#30FFFFFF">
 
 
             <ImageView
                 android:id="@+id/iv_photo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_home"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:src="@drawable/ic_home" />
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:textSize="40dp"
-                android:text="大佬"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/iv_photo"
                 android:layout_toRightOf="@+id/iv_photo"
-                android:layout_toEndOf="@+id/iv_photo" />
+                android:text="大佬"
+                android:textColor="@color/whitefont"
+                android:textSize="40dp" />
+
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/bt_info"
-            style="@style/Widget.AppCompat.Button.Borderless"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我的资料" />
+            android:layout_height="fill_parent"
+            android:background="#30FFFFFF"
+            >
 
-        <Button
-            android:id="@+id/bt_footprint"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我的足迹" />
+            <RelativeLayout
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/bt_collection"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我的收藏" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_info"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"/>
 
-        <Button
-            android:id="@+id/bt_preference"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="偏好设置" />
+                <Button
+                    android:id="@+id/bt_info"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#11000000"
+                    android:text="我的资料"
+                    android:textColor="@color/whitefont"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/footprint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/info"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_foot"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"/>
+
+                <Button
+                android:id="@+id/bt_footprint"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#11000000"
+                android:text="我的足迹"
+                android:textColor="@color/whitefont" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/footprint">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_collection"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"/>
+
+                <Button
+                    android:id="@+id/bt_collection"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#11000000"
+                    android:text="我的收藏"
+                    android:textColor="@color/whitefont" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/collection"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_preference"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"/>
+
+                <Button
+                    android:id="@+id/bt_preference"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#11000000"
+                    android:text="偏好设置"
+                    android:textColor="@color/whitefont" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
     </LinearLayout>
+
+
 </android.support.design.widget.NavigationView>
 
