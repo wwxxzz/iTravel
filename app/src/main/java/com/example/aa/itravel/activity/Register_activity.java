@@ -51,7 +51,7 @@ public class Register_activity extends AppCompatActivity {
 //    @ViewInject(R.id.et_code)
 //    private EditText code;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/register";
+    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/register";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private Handler mHandler = new Handler(){

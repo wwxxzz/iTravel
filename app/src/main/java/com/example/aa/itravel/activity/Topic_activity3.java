@@ -39,8 +39,8 @@ public class Topic_activity3 extends Activity {
     String TAG = "TOPIC1_Activity";
     //s用来保存sessionid     发送refresh请求
     String session;
-    String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/gettopic3";
-    String path1 = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/entertopic";
+    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/gettopic3";
+    String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/entertopic";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @ViewInject(R.id.title_bar_name)
