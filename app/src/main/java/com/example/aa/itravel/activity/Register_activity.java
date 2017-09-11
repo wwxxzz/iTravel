@@ -67,7 +67,7 @@ public class Register_activity extends AppCompatActivity {
                 if(back.equals("succeeded") ){
                     Log.i("REGISTER","即将跳转");
                     Toast.makeText(Register_activity.this,"注册成功",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(mContext,Home_activity.class);
+                    Intent intent = new Intent(mContext,Login_activity.class);
                     startActivity(intent);
                     finish();
                 }else if(back.equals("existed")){

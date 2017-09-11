@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -124,24 +125,30 @@ public class Home_activity extends AppCompatActivity {
                 switch (curIndex){
                     case 0:
                         intent = new Intent(mContext,Topic_activity.class);
-                        intent.putExtra("sessionId", session);
+                        intent.putExtra("sessionID", session);
+                        Log.i(TAG,"进入话题1");
                         startActivity(intent);
                         break;
                     case 1:
                         intent = new Intent(mContext,Topic_activity2.class);
-                        intent.putExtra("sessionId", session);
+                        intent.putExtra("sessionID", session);
+                        Log.i(TAG,"进入话题2");
                         startActivity(intent);
                         break;
                     case 2:
                         intent = new Intent(mContext,Topic_activity3.class);
+                        intent.putExtra("sessionID", session);
+                        Log.i(TAG,"进入话题3");
                         startActivity(intent);
                         break;
                     case 3:
                         intent = new Intent(mContext,Topic_activity4.class);
-                        intent.putExtra("sessionId", session);
+                        intent.putExtra("sessionID", session);
+                        Log.i(TAG,"进入话题4");
                         startActivity(intent);
                         break;
                 }
+                break;
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
 	            intent.putExtra("sessionId", session);

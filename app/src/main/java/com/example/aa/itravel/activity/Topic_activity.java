@@ -161,12 +161,13 @@ public class Topic_activity extends Activity {
         x.view().inject(this);
 		mContext = this;
         textView.setText("话题1");
+		Log.i(TAG,"这是话题1");
 		right_icon.setImageResource(R.drawable.heart);
 	//	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionId");
+        session = bundle.getString("sessionID");
         Log.i(TAG,session);
         showTopic();
 
@@ -235,7 +236,10 @@ public class Topic_activity extends Activity {
 	private void event(View v){
 		Log.i(TAG,"点击成功");
 		Intent intent = new Intent(mContext,PushCommit.class);
-//		intent.putExtra("sessionId", session);
+		intent.putExtra("sessionID", session);
+		intent.putExtra("topicId",topicID);
+		intent.putExtra("Index",1);
 		startActivity(intent);
+		finish();
 	}
 }

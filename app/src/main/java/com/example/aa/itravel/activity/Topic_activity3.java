@@ -1,22 +1,29 @@
 package com.example.aa.itravel.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Comment;
 import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
+import com.example.aa.itravel.tools.PreferredType;
 import com.example.aa.itravel.tools.Topic;
+import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -34,7 +41,7 @@ import okhttp3.Response;
 
 @ContentView(R.layout.activity_topic)
 public class Topic_activity3 extends Activity {
-
+    private Context mContext;
 
     String TAG = "TOPIC1_Activity";
     //s用来保存sessionid     发送refresh请求
@@ -47,6 +54,8 @@ public class Topic_activity3 extends Activity {
     private TextView textView;
     @ViewInject(R.id.iv_right)
     private ImageView right_icon;
+    @ViewInject(R.id.img_comment)
+    private ImageView comment_img;
     @ViewInject(R.id.tv_topic)
     private TextView topic_theme;
     @ViewInject(R.id.tv_topic_con)
@@ -153,14 +162,15 @@ public class Topic_activity3 extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         x.view().inject(this);
-        textView.setText("话题3");
+        mContext = this;
+        textView.setText("话题1");
+        Log.i(TAG,"这是话题1");
         right_icon.setImageResource(R.drawable.heart);
+        //	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionId");
-        //setContentView(R.layout.activity_topic);
-        Log.i(TAG,session);
+        session = bundle.getString("sessionID");
         showTopic();
 
     }
@@ -223,5 +233,15 @@ public class Topic_activity3 extends Activity {
             }
         }).start();
     }
-}
 
+    @Event(value={R.id.img_comment})
+    private void event(View v){
+        Log.i(TAG,"点击成功");
+        Intent intent = new Intent(mContext,PushCommit.class);
+        intent.putExtra("sessionID", session);
+        intent.putExtra("topicId",topicID);
+        intent.putExtra("Index",3);
+        startActivity(intent);
+        finish();
+    }
+}
