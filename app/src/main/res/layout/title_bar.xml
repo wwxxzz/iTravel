@@ -1,48 +1,38 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <android.support.v7.widget.Toolbar
+<android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@color/button">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="top">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/title_bar_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/title_bar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text="iTravel"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
-                android:ellipsize="end"
-                android:gravity="center"
-                android:paddingLeft="75.0dip"
-                android:paddingRight="75.0dip"
-                android:singleLine="true"
-                android:text="iTravel"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_share"
+            android:visibility="visible" />
 
-            <ImageView
-                android:id="@+id/iv_right"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_share"
-                android:visibility="visible"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/title_bar_name"
-                android:layout_marginLeft="22dp"/>
+</RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_left"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="40dp"
-                android:src="@drawable/ic_list"
-                android:visibility="visible"/>
 
-        </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
-</merge>
+
+</android.support.v7.widget.Toolbar >

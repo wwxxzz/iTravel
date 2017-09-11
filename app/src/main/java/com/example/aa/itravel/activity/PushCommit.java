@@ -2,7 +2,6 @@ package com.example.aa.itravel.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -23,8 +22,8 @@ public class PushCommit extends Activity {
 	private TextView titlebar;
 	@ViewInject(R.id.iv_right)
 	private ImageView right_icon;
-	@ViewInject(R.id.iv_left)
-	private ImageView left_icon;
+	//@ViewInject(R.id.iv_left)
+	//private ImageView left_icon;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i("OUSH","评论");
@@ -34,6 +33,6 @@ public class PushCommit extends Activity {
 		x.view().inject(this);
 		titlebar.setText("发表评论");
 		right_icon.setImageResource(R.drawable.tick);
-		left_icon.setImageResource(R.drawable.back);
+		//left_icon.setImageResource(R.drawable.back);
 	}
 }

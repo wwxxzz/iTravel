@@ -6,20 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.DrawableRes;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -27,17 +22,11 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -51,7 +40,7 @@ public class ShowUserInfo extends Activity {
 	String session;
 	Response response;
 	OkHttpClient client = new OkHttpClient();
-	String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/personalinfo";
+	String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/personalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.showname)

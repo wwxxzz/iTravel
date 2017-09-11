@@ -1,11 +1,556 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/notic_view"
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/notice1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notice"
-        android:textSize="50dp"/>
+        >
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image1"
+            android:layout_toRightOf="@+id/image1"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name1"
+            android:layout_alignBottom="@+id/tv_name1"
+            android:layout_toEndOf="@+id/tv_name1"
+            android:layout_toRightOf="@+id/tv_name1"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name1"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image1"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image1"
+            android:layout_toRightOf="@+id/image1"
+            android:layout_toEndOf="@+id/image1"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image2"
+            android:layout_toRightOf="@+id/image2"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name2"
+            android:layout_alignBottom="@+id/tv_name2"
+            android:layout_toEndOf="@+id/tv_name2"
+            android:layout_toRightOf="@+id/tv_name2"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name2"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image2"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image2"
+            android:layout_toRightOf="@+id/image2"
+            android:layout_toEndOf="@+id/image2"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image3"
+            android:layout_toRightOf="@+id/image3"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name3"
+            android:layout_alignBottom="@+id/tv_name3"
+            android:layout_toEndOf="@+id/tv_name3"
+            android:layout_toRightOf="@+id/tv_name3"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name3"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image3"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image3"
+            android:layout_toRightOf="@+id/image3"
+            android:layout_toEndOf="@+id/image3"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image4"
+            android:layout_toRightOf="@+id/image4"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name4"
+            android:layout_alignBottom="@+id/tv_name4"
+            android:layout_toEndOf="@+id/tv_name4"
+            android:layout_toRightOf="@+id/tv_name4"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name4"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image4"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image4"
+            android:layout_toRightOf="@+id/image4"
+            android:layout_toEndOf="@+id/image4"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image5"
+            android:layout_toRightOf="@+id/image5"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name5"
+            android:layout_alignBottom="@+id/tv_name5"
+            android:layout_toEndOf="@+id/tv_name5"
+            android:layout_toRightOf="@+id/tv_name5"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name5"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image5"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image5"
+            android:layout_toRightOf="@+id/image5"
+            android:layout_toEndOf="@+id/image5"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image6"
+            android:layout_toRightOf="@+id/image6"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name6"
+            android:layout_alignBottom="@+id/tv_name6"
+            android:layout_toEndOf="@+id/tv_name6"
+            android:layout_toRightOf="@+id/tv_name6"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name6"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image6"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image6"
+            android:layout_toRightOf="@+id/image6"
+            android:layout_toEndOf="@+id/image6"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image7"
+            android:layout_toRightOf="@+id/image7"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name7"
+            android:layout_alignBottom="@+id/tv_name7"
+            android:layout_toEndOf="@+id/tv_name7"
+            android:layout_toRightOf="@+id/tv_name7"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name7"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image7"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image7"
+            android:layout_toRightOf="@+id/image7"
+            android:layout_toEndOf="@+id/image7"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image8"
+            android:layout_toRightOf="@+id/image8"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name8"
+            android:layout_alignBottom="@+id/tv_name8"
+            android:layout_toEndOf="@+id/tv_name8"
+            android:layout_toRightOf="@+id/tv_name8"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name8"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image8"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image8"
+            android:layout_toRightOf="@+id/image8"
+            android:layout_toEndOf="@+id/image8"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notice_like9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/fi_like" />
+
+        <TextView
+            android:id="@+id/tv_name9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/image9"
+            android:layout_toRightOf="@+id/image9"
+            android:text="dalao"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_type9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_name9"
+            android:layout_alignBottom="@+id/tv_name9"
+            android:layout_toEndOf="@+id/tv_name9"
+            android:layout_toRightOf="@+id/tv_name9"
+            android:text=" 点赞了你的动态： "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_messagecontent9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name9"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/image9"
+            android:text="今天天气超级棒"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_commentcontent9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     "
+            android:layout_below="@+id/image9"
+            android:layout_toRightOf="@+id/image9"
+            android:layout_toEndOf="@+id/image9"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
 </LinearLayout>
+
+</ScrollView>

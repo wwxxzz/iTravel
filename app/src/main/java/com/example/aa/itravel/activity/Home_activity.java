@@ -89,7 +89,7 @@ public class Home_activity extends AppCompatActivity {
             tt.commit();*/
 
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
             setSupportActionBar(toolbar);
 
 
@@ -141,7 +141,6 @@ public class Home_activity extends AppCompatActivity {
                         intent.putExtra("sessionId", session);
                         startActivity(intent);
                         break;
-
                 }
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
