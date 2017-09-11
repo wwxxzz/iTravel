@@ -3,29 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <include layout="@layout/title_bar"
         android:id="@+id/include" />
-    <RelativeLayout
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.lulu.weichatfriends.MainActivity"
-        android:layout_marginTop="60dp">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <RelativeLayout
+                android:id="@+id/msg_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
-                <Button
+                <ImageView
                     android:id="@+id/ic_head01"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -77,19 +69,6 @@
                     android:layout_alignRight="@+id/ic_head01"
                     android:layout_alignEnd="@+id/ic_head01" />
 
-                <EditText
-                    android:id="@+id/tr_comment01"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="评论"
-                    android:textSize="14dp"
-                    android:background="@drawable/edit_bg"
-                    android:drawablePadding="5dp"
-                    android:padding="5dp"
-                    android:maxLength="60"
-                    android:layout_below="@+id/tr_location01"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
                 <Button
                     android:id="@+id/tr_transfer01"
                     android:layout_width="28dp"
@@ -141,7 +120,7 @@
                     android:layout_toLeftOf="@+id/tr_collection01"
                     android:layout_toStartOf="@+id/tr_collection01" />
                 <Button
-                    android:id="@+id/tr_like"
+                    android:id="@+id/tr_like01"
                     android:layout_width="25dp"
                     android:layout_height="28dp"
                     android:layout_above="@+id/tr_location01"
@@ -149,21 +128,530 @@
                     android:layout_toStartOf="@+id/tr_likenum01"
                     android:gravity="center"
                     android:background="@drawable/like_selector"/>
-                <Button
-                    android:id="@+id/tr_send01"
-                    android:layout_width="60dp"
-                    android:layout_height="35dp"
-                    android:text="发送"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_toRightOf="@+id/tr_comment01"
-                    android:layout_marginTop="-5dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:layout_marginTop="10dp"
+                android:background="#bdb6b7" />
 
+        <RelativeLayout
+            android:id="@+id/msg_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ic_head02"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/ic_home" />
+
+            <TextView
+                android:id="@+id/tr_user02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ic_head02"
+                android:text="Dalao"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tr_time02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tr_user02"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/ic_head02"
+                android:text="5分钟前"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/tr_textdata02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ic_head02"
+                android:text="动态正文"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/tr_imagedata02"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tr_textdata02"
+                android:background="@drawable/img1" />
+
+            <TextView
+                android:id="@+id/tr_location02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_head02"
+                android:layout_alignRight="@+id/ic_head02"
+                android:layout_below="@+id/tr_imagedata02"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="China"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/tr_transfer02"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location02"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/transfer"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tr_commentnum02"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignBaseline="@+id/tr_transfer02"
+                android:layout_alignBottom="@+id/tr_transfer02"
+                android:layout_toLeftOf="@+id/tr_transfer02"
+                android:layout_toStartOf="@+id/tr_transfer02"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tr_comment_ic02"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_above="@+id/tr_location02"
+                android:layout_marginBottom="1dp"
+                android:layout_toLeftOf="@+id/tr_commentnum02"
+                android:layout_toStartOf="@+id/tr_commentnum02"
+                android:background="@drawable/comment"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/tr_collection02"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location02"
+                android:layout_toLeftOf="@+id/tr_comment_ic02"
+                android:layout_toStartOf="@+id/tr_comment_ic02"
+                android:background="@drawable/collection_selector"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tr_likenum02"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignBaseline="@+id/tr_collection02"
+                android:layout_alignBottom="@+id/tr_collection02"
+                android:layout_toLeftOf="@+id/tr_collection02"
+                android:layout_toStartOf="@+id/tr_collection02"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/tr_like02"
+                android:layout_width="25dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location02"
+                android:layout_toLeftOf="@+id/tr_likenum02"
+                android:layout_toStartOf="@+id/tr_likenum02"
+                android:background="@drawable/like_selector"
+                android:gravity="center" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginTop="10dp"
+            android:background="#bdb6b7" />
 
+        <RelativeLayout
+            android:id="@+id/msg_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <ImageView
+                android:id="@+id/ic_head03"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_home"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:id="@+id/tr_user03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dalao"
+                android:layout_toRightOf="@+id/ic_head03"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tr_time03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5分钟前"
+                android:textSize="12dp"
+                android:layout_toRightOf="@+id/ic_head03"
+                android:layout_below="@+id/tr_user03"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tr_textdata03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动态正文"
+                android:layout_below="@+id/ic_head03"
+                android:textSize="16dp"/>
+            <ImageView
+                android:id="@+id/tr_imagedata03"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/img1"
+                android:layout_below="@+id/tr_textdata03"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/tr_location03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="China"
+                android:textSize="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@+id/tr_imagedata03"
+                android:layout_alignRight="@+id/ic_head03"
+                android:layout_alignEnd="@+id/ic_head03" />
+
+            <Button
+                android:id="@+id/tr_transfer03"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location03"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:background="@drawable/transfer"/>
+            <TextView
+                android:id="@+id/tr_commentnum03"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_transfer03"
+                android:layout_alignBottom="@+id/tr_transfer03"
+                android:layout_toLeftOf="@+id/tr_transfer03"
+                android:layout_toStartOf="@+id/tr_transfer03" />
+            <TextView
+                android:id="@+id/tr_comment_ic03"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:layout_above="@+id/tr_location03"
+                android:layout_toLeftOf="@+id/tr_commentnum03"
+                android:layout_toStartOf="@+id/tr_commentnum03"
+                android:background="@drawable/comment"
+                android:layout_marginBottom="1dp"/>
+            <Button
+                android:id="@+id/tr_collection03"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location03"
+                android:layout_toLeftOf="@+id/tr_comment_ic03"
+                android:layout_toStartOf="@+id/tr_comment_ic03"
+                android:gravity="center"
+                android:background="@drawable/collection_selector"/>
+            <TextView
+                android:id="@+id/tr_likenum03"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_collection03"
+                android:layout_alignBottom="@+id/tr_collection03"
+                android:layout_toLeftOf="@+id/tr_collection03"
+                android:layout_toStartOf="@+id/tr_collection03" />
+            <Button
+                android:id="@+id/tr_like03"
+                android:layout_width="25dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location03"
+                android:layout_toLeftOf="@+id/tr_likenum03"
+                android:layout_toStartOf="@+id/tr_likenum03"
+                android:gravity="center"
+                android:background="@drawable/like_selector"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginTop="10dp"
+            android:background="#bdb6b7" />
+        <RelativeLayout
+            android:id="@+id/msg_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <ImageView
+                android:id="@+id/ic_head04"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_home"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:id="@+id/tr_user04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dalao"
+                android:layout_toRightOf="@+id/ic_head04"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tr_time04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5分钟前"
+                android:textSize="12dp"
+                android:layout_toRightOf="@+id/ic_head04"
+                android:layout_below="@+id/tr_user04"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tr_textdata04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动态正文"
+                android:layout_below="@+id/ic_head04"
+                android:textSize="16dp"/>
+            <ImageView
+                android:id="@+id/tr_imagedata04"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/img1"
+                android:layout_below="@+id/tr_textdata04"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/tr_location04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="China"
+                android:textSize="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@+id/tr_imagedata04"
+                android:layout_alignRight="@+id/ic_head04"
+                android:layout_alignEnd="@+id/ic_head04" />
+
+            <Button
+                android:id="@+id/tr_transfer04"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location04"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:background="@drawable/transfer"/>
+            <TextView
+                android:id="@+id/tr_commentnum04"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_transfer04"
+                android:layout_alignBottom="@+id/tr_transfer04"
+                android:layout_toLeftOf="@+id/tr_transfer04"
+                android:layout_toStartOf="@+id/tr_transfer04" />
+            <TextView
+                android:id="@+id/tr_comment_ic04"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:layout_above="@+id/tr_location04"
+                android:layout_toLeftOf="@+id/tr_commentnum04"
+                android:layout_toStartOf="@+id/tr_commentnum04"
+                android:background="@drawable/comment"
+                android:layout_marginBottom="1dp"/>
+            <Button
+                android:id="@+id/tr_collection04"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location04"
+                android:layout_toLeftOf="@+id/tr_comment_ic04"
+                android:layout_toStartOf="@+id/tr_comment_ic04"
+                android:gravity="center"
+                android:background="@drawable/collection_selector"/>
+            <TextView
+                android:id="@+id/tr_likenum04"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_collection04"
+                android:layout_alignBottom="@+id/tr_collection04"
+                android:layout_toLeftOf="@+id/tr_collection04"
+                android:layout_toStartOf="@+id/tr_collection04" />
+            <Button
+                android:id="@+id/tr_like04"
+                android:layout_width="25dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location04"
+                android:layout_toLeftOf="@+id/tr_likenum04"
+                android:layout_toStartOf="@+id/tr_likenum04"
+                android:gravity="center"
+                android:background="@drawable/like_selector"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginTop="10dp"
+            android:background="#bdb6b7" />
+
+        <RelativeLayout
+            android:id="@+id/msg_05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <ImageView
+                android:id="@+id/ic_head05"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_home"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:id="@+id/tr_user05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dalao"
+                android:layout_toRightOf="@+id/ic_head05"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tr_time05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5分钟前"
+                android:textSize="12dp"
+                android:layout_toRightOf="@+id/ic_head05"
+                android:layout_below="@+id/tr_user05"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tr_textdata05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动态正文"
+                android:layout_below="@+id/ic_head05"
+                android:textSize="16dp"/>
+            <ImageView
+                android:id="@+id/tr_imagedata05"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/img1"
+                android:layout_below="@+id/tr_textdata05"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/tr_location05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="China"
+                android:textSize="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@+id/tr_imagedata05"
+                android:layout_alignRight="@+id/ic_head05"
+                android:layout_alignEnd="@+id/ic_head05" />
+
+            <Button
+                android:id="@+id/tr_transfer05"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location05"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:background="@drawable/transfer"/>
+            <TextView
+                android:id="@+id/tr_commentnum05"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_transfer05"
+                android:layout_alignBottom="@+id/tr_transfer05"
+                android:layout_toLeftOf="@+id/tr_transfer05"
+                android:layout_toStartOf="@+id/tr_transfer05" />
+            <TextView
+                android:id="@+id/tr_comment_ic05"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:layout_above="@+id/tr_location05"
+                android:layout_toLeftOf="@+id/tr_commentnum05"
+                android:layout_toStartOf="@+id/tr_commentnum05"
+                android:background="@drawable/comment"
+                android:layout_marginBottom="1dp"/>
+            <Button
+                android:id="@+id/tr_collection05"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location05"
+                android:layout_toLeftOf="@+id/tr_comment_ic05"
+                android:layout_toStartOf="@+id/tr_comment_ic05"
+                android:gravity="center"
+                android:background="@drawable/collection_selector"/>
+            <TextView
+                android:id="@+id/tr_likenum05"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:layout_alignBaseline="@+id/tr_collection05"
+                android:layout_alignBottom="@+id/tr_collection05"
+                android:layout_toLeftOf="@+id/tr_collection05"
+                android:layout_toStartOf="@+id/tr_collection05" />
+            <Button
+                android:id="@+id/tr_like05"
+                android:layout_width="25dp"
+                android:layout_height="28dp"
+                android:layout_above="@+id/tr_location05"
+                android:layout_toLeftOf="@+id/tr_likenum05"
+                android:layout_toStartOf="@+id/tr_likenum05"
+                android:gravity="center"
+                android:background="@drawable/like_selector"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginTop="10dp"
+            android:background="#bdb6b7" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="没有更多了哦"
+            android:textSize="16dp"/>
+    </LinearLayout>
     <fragment
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
@@ -171,5 +659,4 @@
         android:name="com.example.aa.itravel.fragment.BottomBar"
         android:layout_alignParentBottom="true">
     </fragment>
-    </RelativeLayout>
 </RelativeLayout>
