@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
+import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.Topic;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,6 +47,8 @@ public class Topic_activity extends Activity {
     String session;
 	String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/gettopic1";
 	String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/entertopic";
+	String path2 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/newcollectionfortopic";
+	String path3 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/topicifcollected";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.title_bar_name)
@@ -115,7 +119,46 @@ public class Topic_activity extends Activity {
 //				topicID.setText(top.getTopicid());
 				Log.i(TAG,"进入函数");
 				showComment();
+				showCollection();
 
+			}
+		}
+	};
+	private Handler cHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg){
+			if(msg.what==1){
+				String qq = (String) msg.obj;
+				Log.i("COMMENT", qq);
+				Gson gson = new Gson();
+				Result re = gson.fromJson(qq, Result.class);
+				String back = re.getResult();
+				System.out.println(re.getResult());
+				if(back.equals("true") ){
+					right_icon.setImageResource(R.drawable.star_c);
+					Toast.makeText(Topic_activity.this,"收藏成功", Toast.LENGTH_SHORT).show();
+				}else{
+					right_icon.setImageResource(R.drawable.star_c);
+					Toast.makeText(Topic_activity.this,"已收藏", Toast.LENGTH_SHORT).show();
+				}
+
+			}
+		}
+	};
+
+	private Handler dHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg){
+			if(msg.what==1){
+				String qq = (String) msg.obj;
+				Gson gson = new Gson();
+				Result re = gson.fromJson(qq, Result.class);
+				String back = re.getResult();
+				System.out.println(re.getResult());
+				if(back.equals("true") ){
+					right_icon.setImageResource(R.drawable.star_c);
+				}else{
+				}
 			}
 		}
 	};
@@ -162,7 +205,7 @@ public class Topic_activity extends Activity {
 		mContext = this;
         textView.setText("话题1");
 		Log.i(TAG,"这是话题1");
-		right_icon.setImageResource(R.drawable.heart);
+		right_icon.setImageResource(R.drawable.star_co);
 	//	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
@@ -170,7 +213,6 @@ public class Topic_activity extends Activity {
         session = bundle.getString("sessionID");
         Log.i(TAG,session);
         showTopic();
-
     }
     public void showTopic(){
 	    //新建一个线程，用于得到服务器响应的参数
@@ -206,7 +248,6 @@ public class Topic_activity extends Activity {
 				try {
 					//回调
 					Topic topi = new Topic();
-					System.out.println(topicID+"sdjkhsajk大家啊都卡啊拉萨大家了");
 					topi.setTopicid(topicID);
 
 					Gson gson = new GsonBuilder().create();
@@ -241,5 +282,80 @@ public class Topic_activity extends Activity {
 		intent.putExtra("Index",1);
 		startActivity(intent);
 		finish();
+	}
+
+	@Event(value={R.id.iv_right})
+	private void event1(View v) {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+
+					//回调
+					Topic top = new Topic();
+					top.setTopicid(topicID);
+					Gson gson = new GsonBuilder().create();
+					String content = gson.toJson(top);
+
+					RequestBody body = RequestBody.create(JSON, content);
+
+					Request request = new Request.Builder()
+							.addHeader("cookie", session)
+							.url(path2)
+							.post(body)
+							.build();
+
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i(TAG, "响应成功");
+					if (response.isSuccessful()) {
+						Log.i(TAG, "响应成功");
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						cHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void showCollection(){
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						//回调
+						Topic top = new Topic();
+						top.setTopicid(topicID);
+						Gson gson = new GsonBuilder().create();
+						String content = gson.toJson(top);
+						RequestBody body = RequestBody.create(JSON, content);
+						Log.i("TOPIC","显示收藏");
+						Request request = new Request.Builder()
+								.addHeader("cookie", session)
+								.post(body)
+								.url(path3)
+								.build();
+
+						OkHttpClient okhttpc = new OkHttpClient();
+						Call call = okhttpc.newCall(request);
+						Response response = call.execute();
+						Log.i(TAG, "响应成功");
+						if (response.isSuccessful()) {
+							Log.i(TAG, "响应成功");
+							//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+							//System.out.println(response.body().string());
+							dHandler.obtainMessage(1, response.body().string()).sendToTarget();
+						} else {
+							throw new IOException("Unexpected code:" + response);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
 	}
 }

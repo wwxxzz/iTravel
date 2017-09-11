@@ -28,7 +28,6 @@ public class Collection_activity extends AppCompatActivity {
     private CollectionAdapter clAdapter;
     private List<Fragment> fragments = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

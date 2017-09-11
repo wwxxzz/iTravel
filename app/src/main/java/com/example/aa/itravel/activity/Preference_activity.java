@@ -82,8 +82,8 @@ public class Preference_activity extends Activity {
     String session;
     Response response;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/editpreference";
-    String path1 = "http://223.3.88.189:8080/iTravel_Server_SSM/AndroidService/showpreference";
+    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/editpreference";
+    String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/showpreference";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private Handler mmHandler = new Handler(){
