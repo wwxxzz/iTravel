@@ -160,6 +160,7 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.bt_collection:
                 intent = new Intent(mContext,Collection_activity.class);
+                intent.putExtra("sessionId", session);
                 startActivity(intent);
                 break;
             case R.id.bt_preference:

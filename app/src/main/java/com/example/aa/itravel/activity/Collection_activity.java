@@ -27,7 +27,8 @@ public class Collection_activity extends AppCompatActivity {
     private TabLayout tabLayout;
     private CollectionAdapter clAdapter;
     private List<Fragment> fragments = new ArrayList<>();
-
+    //s用来保存sessionid     发送refresh请求
+    String session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +38,14 @@ public class Collection_activity extends AppCompatActivity {
         vp = (ViewPager) findViewById(R.id.cl_viewpage);
         tabLayout = (TabLayout) findViewById(R.id.cl_tab);
         title.setText("查看收藏");
+        /*获取Intent中的Bundle对象*/
+        Bundle bundle = this.getIntent().getExtras();
+            /*获取Bundle中的数据，注意类型和key*/
+        session = bundle.getString("sessionId");
 
         clAdapter = new CollectionAdapter(getSupportFragmentManager());
-        fragments.add(CollectionFragment.newInstance("0"));
-        fragments.add(CollectionFragment.newInstance("1"));
+        fragments.add(CollectionFragment.newInstance("0",session));
+        fragments.add(CollectionFragment.newInstance("1",session));
         clAdapter.setFragments(fragments);
         vp.setAdapter(clAdapter);
         //设置tabLayout
