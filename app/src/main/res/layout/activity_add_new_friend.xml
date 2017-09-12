@@ -34,22 +34,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/search_ic"
+            android:layout_marginLeft="10dp"
             android:background="@null"
-            android:hint="  输入昵称"
+            android:hint="输入昵称"
             android:textSize="16dp"
             android:textColorHint="#a4a4a4"/>
 
     </RelativeLayout>
     <Button
         android:id="@+id/search_sure"
-        android:layout_width="44dp"
-        android:layout_height="22dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
         android:text="查找"
-        android:textColor="#a4a4a4"
-        android:background="@color/whitefont"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_below="@id/include"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="2dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
     <View
@@ -58,21 +58,33 @@
         android:layout_height="3px"
         android:layout_below="@+id/search"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:background="#bdb6b7" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newfriend_diliver"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
+        android:text="查找结果"/>
+    <View
+        android:id="@+id/newfriend_diliver1"
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_below="@+id/search"
+        android:layout_marginTop="35dp"
         android:background="#bdb6b7" />
     <RelativeLayout
         android:id="@+id/search_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/newfriend_diliver"
-        android:visibility="invisible">
+        android:layout_below="@+id/newfriend_diliver1"
+        android:visibility="gone">
         <ImageView
             android:id="@+id/newfriend_head"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:src="@mipmap/ic_launcher"/>
         <TextView
             android:id="@+id/newfriend_user"
@@ -81,25 +93,42 @@
             android:layout_toRightOf="@+id/newfriend_head"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
-            android:text="大佬01"
+            android:text="大佬"
             android:textSize="22dp"/>
         <Button
-            android:id="@+id/newfriend_next"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/next"
+            android:id="@+id/newfriend_add"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:text="添加"
             android:layout_alignParentRight="true" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3px"
-            android:background="#bdb6b7" />
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_below="@+id/search_result"
+        android:layout_marginTop="10dp"
+        android:background="#bdb6b7" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_result"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="8dp"
+        android:text="好友请求"/>
+    <View
+        android:id="@+id/newfriend_diliver2"
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_below="@+id/search_result"
+        android:layout_marginTop="35dp"
+        android:background="#bdb6b7" />
     <LinearLayout
         android:id="@+id/newfriend_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newfriend_diliver"
+        android:layout_below="@+id/newfriend_diliver2"
         android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/frrequest_01"
@@ -109,7 +138,8 @@
                 android:id="@+id/frrequest_head_01"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:id="@+id/frrequest_user_01"
@@ -153,7 +183,8 @@
                 android:id="@+id/frrequest_head_02"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:id="@+id/frrequest_user_02"
@@ -197,7 +228,8 @@
                 android:id="@+id/frrequest_head_03"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:id="@+id/frrequest_user_03"

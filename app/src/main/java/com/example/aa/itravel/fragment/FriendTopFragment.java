@@ -11,11 +11,29 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.activity.AddNewFriendActivity;
 import com.example.aa.itravel.activity.Message_activity;
 
 @SuppressLint("ValidFragment")
-public class FriendTopFragment extends Fragment implements OnClickListener {
+public class FriendTopFragment extends Fragment {
 	private String name;
+	private FriendData friendData=new FriendData();
+	private NewFriend newFriend=new NewFriend();
+
+	public class FriendData implements OnClickListener{
+
+		@Override
+		public void onClick(View view) {
+			startActivity(new Intent(getActivity(), Message_activity.class));
+		}
+	}
+	public class NewFriend implements OnClickListener{
+
+		@Override
+		public void onClick(View view) {
+			startActivity(new Intent(getActivity(), AddNewFriendActivity.class));
+		}
+	}
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +50,8 @@ public class FriendTopFragment extends Fragment implements OnClickListener {
 		switch (name) {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
-				view.findViewById(R.id.fr_next_01).setOnClickListener(this);
+				view.findViewById(R.id.fr_next_01).setOnClickListener(friendData);
+				view.findViewById(R.id.new_friend).setOnClickListener(newFriend);
 				break;
 			case "2":
 				view = inflater.inflate(R.layout.chat_fragment, null);
@@ -52,9 +71,4 @@ public class FriendTopFragment extends Fragment implements OnClickListener {
 		return fragment;
 	}
 
-	@Override
-	public void onClick(View view) {
-		//Log.i("info_out", "have clicked the button in the fragment ");
-		startActivity(new Intent(getActivity(), Message_activity.class));
-	}
 }

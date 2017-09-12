@@ -112,7 +112,7 @@ public class Friend_activity extends AppCompatActivity {
 
 
 
-    @Event(value = {R.id.button_home,R.id.button_message,R.id.new_friend})
+    @Event(value = {R.id.button_home,R.id.button_message})
     private void event(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -122,10 +122,6 @@ public class Friend_activity extends AppCompatActivity {
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
-                startActivity(intent);
-                break;
-            case R.id.new_friend:
-                intent = new Intent(mContext, AddNewFriendActivity.class);
                 startActivity(intent);
                 break;
         }
