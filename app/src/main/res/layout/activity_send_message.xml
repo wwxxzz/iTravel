@@ -28,6 +28,7 @@
         android:layout_height="80dp"
         android:background="@drawable/shape_gray_square_bg"
         android:src="@drawable/img_plus"
+        android:scaleType="centerCrop"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_alignBottom="@+id/msg_editText"

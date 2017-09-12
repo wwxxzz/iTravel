@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -29,6 +30,8 @@ public class Message_activity extends FragmentActivity {
     private Context mContext;
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
+    @ViewInject(R.id.iv_right)
+    private ImageView right_icon;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -36,6 +39,7 @@ public class Message_activity extends FragmentActivity {
         mContext = this;
         x.view().inject(this);
         textView.setText("好友动态");
+        right_icon.setImageResource(R.drawable.img_plus);
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment) getSupportFragmentManager().findFragmentById(bottombar);
         Button home = (Button) exFragment.getView().findViewById(button_message);
@@ -43,7 +47,7 @@ public class Message_activity extends FragmentActivity {
     }
 
 
-    @Event(value = {R.id.button_friend, R.id.button_home,R.id.msg_01})
+    @Event(value = {R.id.button_friend, R.id.button_home,R.id.msg_01,R.id.iv_right})
     private void event(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -57,6 +61,10 @@ public class Message_activity extends FragmentActivity {
                 break;
             case R.id.msg_01:
                 intent=new Intent(mContext,SingleMessageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_right:
+                intent=new Intent(mContext,SendMessageActivity.class);
                 startActivity(intent);
                 break;
         }
