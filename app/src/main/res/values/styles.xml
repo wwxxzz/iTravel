@@ -23,6 +23,9 @@
         <item name="actionMenuTextColor">@color/whitefont</item> <!--  敲定颜色-->
         <item name="android:textSize">18sp</item> <!--  搞掂字体大小-->
         <item name="colorControlNormal">@color/whitefont</item>
+        <item name="android:textColor">@color/button</item>
+        <item name="android:textColorPrimary">@color/whitefont</item>
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
     </style>
 
 
