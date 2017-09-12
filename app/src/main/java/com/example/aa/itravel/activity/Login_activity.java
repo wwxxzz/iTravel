@@ -49,7 +49,9 @@ public class Login_activity extends Activity {
     String s;
     Response response;
     OkHttpClient client = new OkHttpClient();
+
     String path = Network.URL+"login";
+
    // String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 

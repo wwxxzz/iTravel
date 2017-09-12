@@ -4,26 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.aa.itravel.R;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
@@ -31,9 +31,11 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-//import org.xutils.view.annotation.ContentView;
-;import static com.example.aa.itravel.R.id.bottombar;
+import static com.example.aa.itravel.R.id.bottombar;
 import static com.example.aa.itravel.R.id.button_home;
+
+//import org.xutils.view.annotation.ContentView;
+;
 
 /**
  * Created by aa on 2017/9/5.
@@ -55,8 +57,8 @@ public class Home_activity extends AppCompatActivity {
     private int curIndex =0;
     PicsAdapter picsAdapter;
 
-    @ViewInject(R.id.title_bar_name)
-    private TextView textView;
+    //@ViewInject(R.id.title_bar_name)
+    //private TextView textView;
 
     String TAG = "HOME_Activity";
     //s用来保存sessionid     发送refresh请求
@@ -71,7 +73,7 @@ public class Home_activity extends AppCompatActivity {
 
             setViewPager();
 
-            textView.setText("首页推荐");
+            //textView.setText("首页推荐");
 
 
             Bundle bundle = this.getIntent().getExtras();
@@ -106,6 +108,33 @@ public class Home_activity extends AppCompatActivity {
 
         }
    // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.addfriend:
+                intent = new Intent(mContext,Friend_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.newmessage:
+                intent = new Intent(mContext,Message_activity.class);
+                startActivity(intent);
+                break;
+            default:break;
+        }
+        return true;
+
+    }
+
 
 
    @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
@@ -170,7 +199,6 @@ public class Home_activity extends AppCompatActivity {
                 break;
         }
     }
-
 
 
     private void setViewPager() {

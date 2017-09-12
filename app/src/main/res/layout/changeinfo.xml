@@ -18,7 +18,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/linearLayout3">
 
 
             <RelativeLayout
@@ -250,6 +251,17 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/linearLayout3"
+            android:layout_alignRight="@+id/linearLayout3"
+            android:layout_alignTop="@+id/linearLayout3"
+            android:layout_marginEnd="34dp"
+            android:layout_marginRight="34dp"
+            android:text="修改头像" />
 
 
     </RelativeLayout>
