@@ -137,6 +137,7 @@ private void postRequest(String name,String pwd)  {
                         .build();
                 OkHttpClient okhttpc = new OkHttpClient();
                 Call call = okhttpc.newCall(request);
+                Log.i(TAG,request.toString());
                 response = call.execute();
                 //获取回复的header 剥离sessionId
                 Headers headers = response.headers();

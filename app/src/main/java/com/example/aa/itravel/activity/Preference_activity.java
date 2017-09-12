@@ -96,7 +96,6 @@ public class Preference_activity extends Activity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<PreferredType>>(){}.getType();
                 pre_list = gson.fromJson(qq,type);
-                System.out.println(pre_list.size());
                 for(int i=0; i<pre_list.size(); i++){
                     if(pre_list.get(i).getTypeid()== 1){
                         cb1.setChecked(true);

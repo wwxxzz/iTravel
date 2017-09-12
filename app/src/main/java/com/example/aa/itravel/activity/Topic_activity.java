@@ -108,8 +108,6 @@ public class Topic_activity extends Activity {
 		@Override
 		public void handleMessage(Message msg){
 			if(msg.what==1){
-				//Log.i(TAG,"进入");
-				//		Toast.makeText(ShowUserInfo.this,"成功", Toast.LENGTH_SHORT);
 				String qq = (String) msg.obj;
 				Log.i(TAG, qq);
 				Gson gson = new Gson();

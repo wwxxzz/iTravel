@@ -148,6 +148,7 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.button_message:
                 intent = new Intent(mContext,Message_activity.class);
+                intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.bt_entertopic:

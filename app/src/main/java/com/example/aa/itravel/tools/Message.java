@@ -1,31 +1,37 @@
 package com.example.aa.itravel.tools;
 
+import java.util.Date;
+
 /**
  * Created by Ynez on 2017/9/8.
  */
 
 public class Message {
-    private Integer messageid;//动态id
+    private Integer messageid;
 
-    private Integer userid;//发布者id
+    private Integer userid;
 
-    private Integer originaluserid;//原发布者
+    private String username;
 
-    private String messagetime;//发布时间
+    private Integer originalmessageid;
 
-    private Integer likenumber;//点赞数
+    private String originalusername;
 
-    private Integer commitnumber;//评论数
+    private String messagetime;
 
-    private Boolean isproved;//是否被举报
+    private Integer likenumber;
 
-    private Boolean isrecommended;//是否推送到首页
+    private Integer commitnumber;
 
-    private Integer messagetype;//标签
+    private Boolean isproved;
 
-    private String messagelocation;//定位
+    private Boolean isrecommended;
 
-    private Integer forwardnumber;//转发数
+    private Integer messagetype;
+
+    private String messagelocation;
+
+    private Integer forwardnumber;
 
     public Integer getMessageid() {
         return messageid;
@@ -43,12 +49,28 @@ public class Message {
         this.userid = userid;
     }
 
-    public Integer getOriginaluserid() {
-        return originaluserid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setOriginaluserid(Integer originaluserid) {
-        this.originaluserid = originaluserid;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getOriginalmessageid() {
+        return originalmessageid;
+    }
+
+    public void setOriginalmessageid(Integer originalmessageid) {
+        this.originalmessageid = originalmessageid;
+    }
+
+    public String getOriginalusername() {
+        return originalusername;
+    }
+
+    public void setOriginalusername(String originalusername) {
+        this.originalusername = originalusername == null ? null : originalusername.trim();
     }
 
     public String getMessagetime() {
@@ -56,7 +78,7 @@ public class Message {
     }
 
     public void setMessagetime(String messagetime) {
-        this.messagetime = messagetime == null ? null : messagetime.trim();
+        this.messagetime = messagetime;
     }
 
     public Integer getLikenumber() {
