@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -27,6 +29,9 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -46,10 +51,11 @@ public class AddNewFriendActivity extends AppCompatActivity {
     String path = Network.URL+ "searchfriend";
     String path1 = Network.URL+ "addfriend";
     String path2 = Network.URL+ "refresh";
+   //String path3 = Network.URL+ "refresh";
 
     Response response;
     OkHttpClient client = new OkHttpClient();
-
+    private static List<MessageBuffer> friendinfo_list =new ArrayList<MessageBuffer>();
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -59,15 +65,20 @@ public class AddNewFriendActivity extends AppCompatActivity {
     @ViewInject(R.id.search_friend)
     private EditText searchfriend;
     @ViewInject(R.id.search_result)
-    private RelativeLayout result;
+    private RelativeLayout resultfriend;
 
     @ViewInject(R.id.newfriend_user)
     private TextView showfriendname;
 
     @ViewInject(R.id.newfriend_request)
     private LinearLayout.LayoutParams requests;
+
     @ViewInject(R.id.frrequest_01)
     private RelativeLayout request1;
+    @ViewInject(R.id.frrequest_user_01)
+    private TextView reqFriend1;
+
+
     @ViewInject(R.id.frrequest_02)
     private RelativeLayout request2;
     @ViewInject(R.id.frrequest_03)
@@ -108,8 +119,8 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
                     if (response.isSuccessful()) {
                         //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-                        //mHandler.obtainMessage(1, response.body().string()).sendToTarget();
-                        System.out.println(response.body().string());
+                        showHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                        //System.out.println(response.body().string());
                     } else {
                         throw new IOException("Unexpected code:" + response);
                     }
@@ -149,7 +160,6 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
     @Event(value = {R.id.bt_search_sure,R.id.frrequest_accept_01,R.id.frrequest_refuse_01,R.id.newfriend_add })
     private void event(View view){
-
         //获取搜索好友id
         searchFriendname = searchfriend.getText().toString();
 
@@ -157,7 +167,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
             case R.id.bt_search_sure:
                 //通过editText内容检索
                 searchRequest(searchFriendname);
-                result.setVisibility(View.VISIBLE);
+                //result.setVisibility(View.VISIBLE);
                 //requests.setMargins(0,0,0,0);
                 break;
             case R.id.newfriend_add:
@@ -268,12 +278,11 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 User re = gson.fromJson(qq, User.class);
                 String friendname=re.getUsername();
 
-                //String back = re.getResult();
-                //System.out.println(re.getResult());
                 if(friendname!=null){
                     Log.i(TAG,"即将跳转");
                     Log.i(TAG,"sessionId"+session);
                     Toast.makeText(AddNewFriendActivity.this,"查找到该好友", Toast.LENGTH_SHORT).show();
+                    resultfriend.setVisibility(View.VISIBLE);
                     showfriendname.setText(re.getUsername());
                 }else {
                     Toast.makeText(AddNewFriendActivity.this,"该好友不存在", Toast.LENGTH_LONG).show();
@@ -292,13 +301,27 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 Result re = gson.fromJson(qq, Result.class);
                 String result=re.getResult();
 
-                //String back = re.getResult();
-                //System.out.println(re.getResult());
                 if(result.equals("true")){
                     Toast.makeText(AddNewFriendActivity.this,"发送请求成功", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(AddNewFriendActivity.this,"发送失败", Toast.LENGTH_LONG).show();
                 }
+            }
+        }
+    };
+
+    private Handler showHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                Log.i(TAG,"进入");
+                String qq = (String) msg.obj;
+                Log.i(TAG, qq);
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
+                friendinfo_list = gson.fromJson(qq,type);
+                reqFriend1.setText(friendinfo_list.get(0).getFromusername());
+                //Log.i("111",friendinfo_list.get(0).getFromusername());
             }
         }
     };
