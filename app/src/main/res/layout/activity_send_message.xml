@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.aa.itravel.activity.SendMessageActivity">
+    <include layout="@layout/title_bar"
+        android:id="@+id/include"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"/>
+    <EditText
+        android:id="@+id/msg_editText"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/include"
+        android:hint="写动态…"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:textColorHint="@color/grayfont"
+        android:textColor="@color/blackfont"/>
+    <ImageView
+        android:id="@+id/msg_addImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/shape_gray_square_bg"
+        android:src="@drawable/img_plus"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_alignBottom="@+id/msg_editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+    <TextView
+        android:id="@+id/msg_addLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/msg_editText"
+        android:layout_marginLeft="10dp"
+        android:text="添加地点..."
+        android:textSize="14dp"
+        android:autoLink="all"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

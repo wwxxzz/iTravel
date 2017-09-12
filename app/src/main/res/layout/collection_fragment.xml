@@ -410,7 +410,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_toRightOf="@+id/cl_head_09"
-                    android:text="发布者07" />
+                    android:text="发布者09" />
 
                 <TextView
                     android:id="@+id/cl_time_09"

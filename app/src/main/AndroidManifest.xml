@@ -82,7 +82,8 @@
         <activity android:name=".activity.Topic_activity4" />
         <activity android:name=".activity.PushCommit" />
         <activity android:name=".activity.SingleMessageActivity" />
-        <activity android:name=".activity.SendMessageActivity"></activity>
+        <activity android:name=".activity.SendMessageActivity" />
+        <activity android:name=".activity.AddNewFriendActivity"></activity>
     </application>
 
 </manifest>
