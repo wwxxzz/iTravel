@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
@@ -51,7 +52,7 @@ public class Register_activity extends AppCompatActivity {
 //    @ViewInject(R.id.et_code)
 //    private EditText code;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/register";
+    String path = Network.URL+"register";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private Handler mHandler = new Handler(){

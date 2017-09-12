@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
@@ -48,7 +49,7 @@ public class Login_activity extends Activity {
     String s;
     Response response;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/login";
+    String path = Network.URL+"login";
    // String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 

@@ -21,6 +21,7 @@ import com.example.aa.itravel.tools.Topic;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.w3c.dom.Text;
 import org.xutils.view.annotation.ViewInject;
 
 import java.io.IOException;
@@ -42,34 +43,14 @@ import okhttp3.Response;
 @SuppressLint("ValidFragment")
 public class CollectionFragment extends Fragment implements View.OnClickListener {
     private String name;
+	private String theme1;
+	private String date1;
 	String TAG = "TOPIC1_Activity";
 	//s用来保存sessionid     发送refresh请求
 	String session;
-	String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/showcollectionoftopic";
-	String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/entertopic";
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private static List<Topic> topic_list =new ArrayList<Topic>();
-	private static String theme1 = "初值";
-    private Handler mHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg){
-            if(msg.what==1){
-                Log.i(TAG,"进入");
-                String qq = (String) msg.obj;
-                Log.i(TAG, qq);
-                Gson gson = new Gson();
-                Type type = new TypeToken<ArrayList<Topic>>(){}.getType();
-                topic_list = gson.fromJson(qq,type);
-	            theme1 = topic_list.get(0).getTheme();
-	            Log.i("HJ",theme1);
-              //  theme1.setText(topic_list.get(0).getTheme());
-//                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//                String d1 = df.format(topic_list.get(0).getDate());
-//                date1.setText(d1);
-            }
-        }
-    };
+	TextView theme_1;
 
+	View view;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +58,20 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
         if (bundle != null) {
             name = bundle.get("name").toString();
 	        session = bundle.get("session").toString();
+	        theme1 = bundle.get("theme1").toString();
+//	        date1 = bundle.get("date1").toString();
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.collection_fragment, null);
-        System.out.println(theme1);
+    view = inflater.inflate(R.layout.collection_fragment, null);
 	    switch (name){
             case "1":
                 view= inflater.inflate(R.layout.topic_collection_fragment, null);
-                showCollectionTopic();
                 view.findViewById(R.id.cl_top_01).setOnClickListener(this);
-	            TextView tv1 = (TextView) view.findViewById(R.id.cl_theme_01);
-	            tv1.setText(theme1);
+	            theme_1 = (TextView) view.findViewById(R.id.cl_theme_01);
+	            theme_1.setText(theme1);
                 break;
             default:
                 view= inflater.inflate(R.layout.collection_fragment, null);
@@ -99,11 +80,19 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
     }
         return view;
     }
-
-    public static CollectionFragment newInstance(String name,String s) {
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		Log.i (TAG, "==onActivityCreated()执行了");
+		super.onActivityCreated(savedInstanceState);
+	}
+    public static CollectionFragment newInstance(String name,String s,Topic th1) {
         Bundle args = new Bundle();
         args.putString("name", name);
 	    args.putString("session",s);
+	    args.putString("theme1",th1.getTheme());
+//	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//	    String d1 = df.format(th1.getDate());
+//	    args.putString("date1",d1);
         CollectionFragment fragment = new CollectionFragment();
         fragment.setArguments(args);
         return fragment;
@@ -114,28 +103,5 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         startActivity(new Intent(getActivity(), Message_activity.class));
     }
-    public void showCollectionTopic(){
-	    //新建一个线程，用于得到服务器响应的参数
-	    new Thread(new Runnable() {
-		    @Override
-		    public void run() {
-			    try {
-				    Request request = new Request.Builder().addHeader("cookie",session).url(path).build();
-				    OkHttpClient okhttpc = new OkHttpClient();
-				    Call call = okhttpc.newCall(request);
-				    Response response = call.execute();
-				    Log.i(TAG,"响应成功");
-				    if (response.isSuccessful()) {
-					    Log.i(TAG,"响应成功");
-					    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-					    mHandler.obtainMessage(1, response.body().string()).sendToTarget();
-				    } else {
-					    throw new IOException("Unexpected code:" + response);
-				    }
-			    } catch (Exception e) {
-				    e.printStackTrace();
-			    }
-		    }
-	    }).start();
-    }
+
 }

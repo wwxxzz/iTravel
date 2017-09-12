@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
@@ -42,8 +43,8 @@ public class ChangeUserInfo extends Activity {
 	String TAG = "CHANGE_INFO_Activity";
 	String session;
 	OkHttpClient client = new OkHttpClient();
-	String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/personalinfo";
-	String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/editpersonalinfo";
+	String path1 = Network.URL+ "personalinfo";
+	String path = Network.URL+"editpersonalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.changename)

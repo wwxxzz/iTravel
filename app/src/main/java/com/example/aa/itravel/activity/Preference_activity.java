@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.PreferredType;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
@@ -82,8 +83,8 @@ public class Preference_activity extends Activity {
     String session;
     Response response;
     OkHttpClient client = new OkHttpClient();
-    String path = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/editpreference";
-    String path1 = "http://223.3.74.248:8080/iTravel_Server_SSM/AndroidService/showpreference";
+    String path = Network.URL+"editpreference";
+    String path1 = Network.URL+"showpreference";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private Handler mmHandler = new Handler(){
