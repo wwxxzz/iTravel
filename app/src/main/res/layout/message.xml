@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include layout="@layout/title_bar"
+        android:id="@+id/include" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/include">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <include layout="@layout/title_bar"
-        android:id="@+id/include" />
             <RelativeLayout
                 android:id="@+id/msg_01"
                 android:layout_width="wrap_content"
@@ -652,6 +656,7 @@
             android:text="没有更多了哦"
             android:textSize="16dp"/>
     </LinearLayout>
+    </ScrollView>
     <fragment
         android:id="@+id/bottombar"
         android:layout_width="match_parent"

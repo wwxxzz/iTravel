@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.adapter.FriendTopAdapter;
@@ -108,13 +107,12 @@ public class Friend_activity extends AppCompatActivity {
             default:break;
         }
         return true;
-
     }
 
 
 
 
-    @Event(value = {R.id.button_home,R.id.button_message})
+    @Event(value = {R.id.button_home,R.id.button_message,R.id.new_friend})
     private void event(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -126,17 +124,10 @@ public class Friend_activity extends AppCompatActivity {
                 intent = new Intent(mContext, Home_activity.class);
                 startActivity(intent);
                 break;
-        }
-        FriendTopFragment mFragment=(FriendTopFragment) FtAdapter.getItem(1);
-        view=mFragment.getView();
-        switch (view.getId()){
-            case R.id.fr_next_01:
-                Toast.makeText(Friend_activity.this,"有效",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(Friend_activity.this,"无效",Toast.LENGTH_SHORT).show();
+            case R.id.new_friend:
+                intent = new Intent(mContext, AddNewFriendActivity.class);
+                startActivity(intent);
                 break;
         }
     }
-
 }

@@ -2,29 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
+        android:id="@+id/new_friend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/newfriend"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/newfriend"
-            android:layout_margin="@dimen/text_margin"/>
+            android:layout_margin="@dimen/text_margin"
+            android:src="@drawable/newfriend" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="新的朋友"
-            android:textSize="22dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/newfriend"/>
+            android:layout_toRightOf="@+id/newfriend"
+            android:text="新的朋友"
+            android:textSize="22dp" />
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="3px"
-            android:layout_marginTop="2dp"
             android:layout_below="@+id/newfriend"
+            android:layout_marginTop="2dp"
             android:background="#bdb6b7" />
     </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
