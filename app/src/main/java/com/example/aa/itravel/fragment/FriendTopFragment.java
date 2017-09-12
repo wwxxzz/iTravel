@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.activity.AddNewFriendActivity;
-import com.example.aa.itravel.activity.Message_activity;
+import com.example.aa.itravel.activity.ShowFriendInfo;
 
 @SuppressLint("ValidFragment")
 public class FriendTopFragment extends Fragment {
@@ -24,7 +24,7 @@ public class FriendTopFragment extends Fragment {
 
 		@Override
 		public void onClick(View view) {
-			startActivity(new Intent(getActivity(), Message_activity.class));
+			startActivity(new Intent(getActivity(), ShowFriendInfo.class));
 		}
 	}
 	public class NewFriend implements OnClickListener{

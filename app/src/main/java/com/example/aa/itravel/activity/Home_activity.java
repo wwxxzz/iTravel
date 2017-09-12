@@ -122,11 +122,11 @@ public class Home_activity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()){
             case R.id.addfriend:
-                intent = new Intent(mContext,Friend_activity.class);
+                intent = new Intent(mContext,AddNewFriendActivity.class);
                 startActivity(intent);
                 break;
             case R.id.newmessage:
-                intent = new Intent(mContext,Message_activity.class);
+                intent = new Intent(mContext,SendMessageActivity.class);
                 startActivity(intent);
                 break;
             default:break;
