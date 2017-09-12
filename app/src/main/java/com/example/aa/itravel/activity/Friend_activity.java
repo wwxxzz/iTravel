@@ -8,12 +8,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.adapter.FriendTopAdapter;
@@ -21,6 +20,7 @@ import com.example.aa.itravel.fragment.FriendTopFragment;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
@@ -38,8 +38,10 @@ import static com.example.aa.itravel.R.id.button_friend;
 public class Friend_activity extends AppCompatActivity {
     private Context mContext;
 
-   // @ViewInject(R.id.title_bar_name)
-   // private TextView textView;
+    @ViewInject(R.id.title_bar_name)
+    private TextView textView;
+    @ViewInject(R.id.iv_right)
+    private ImageView right_button;
 
     private ViewPager vp;
     private TabLayout tabLayout;
@@ -53,7 +55,8 @@ public class Friend_activity extends AppCompatActivity {
         //setContentView(R.layout.friend);
         mContext =this;
         x.view().inject(this);
-       // textView.setText("好友消息");
+        textView.setText("好友消息");
+        right_button.setImageDrawable(getResources().getDrawable(R.drawable.add));
 
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
@@ -76,43 +79,11 @@ public class Friend_activity extends AppCompatActivity {
         //设置下划线的颜色
         tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
-        setSupportActionBar(toolbar);
-
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
+        //setSupportActionBar(toolbar);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.addfriend:
-                //ShowUtils.showToast("点击了扫描");
-                intent = new Intent(mContext,Home_activity.class);
-                startActivity(intent);
-                break;
-            case R.id.newmessage:
-                //ShowUtils.showToast("点击了添加");
-                intent = new Intent(mContext,Message_activity.class);
-                startActivity(intent);
-                break;
-            default:break;
-        }
-        return true;
-    }
-
-
-
-
-    @Event(value = {R.id.button_home,R.id.button_message})
+    @Event(value = {R.id.button_home,R.id.button_message,R.id.iv_right })
     private void event(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -122,6 +93,10 @@ public class Friend_activity extends AppCompatActivity {
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_right:
+                intent =new Intent(mContext,AddNewFriendActivity.class);
                 startActivity(intent);
                 break;
         }

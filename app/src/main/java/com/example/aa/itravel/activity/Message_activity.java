@@ -32,6 +32,7 @@ public class Message_activity extends FragmentActivity {
     private TextView textView;
     @ViewInject(R.id.iv_right)
     private ImageView right_icon;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -39,7 +40,7 @@ public class Message_activity extends FragmentActivity {
         mContext = this;
         x.view().inject(this);
         textView.setText("好友动态");
-        right_icon.setImageResource(R.drawable.img_plus);
+        right_icon.setImageDrawable(getResources().getDrawable(R.drawable.add));
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment) getSupportFragmentManager().findFragmentById(bottombar);
         Button home = (Button) exFragment.getView().findViewById(button_message);

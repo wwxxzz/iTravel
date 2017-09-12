@@ -48,7 +48,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.tr_transfer:
-                intent = new Intent(mContext, PushCommit.class);
+                intent = new Intent(mContext,SendMessageActivity.class);
                 startActivity(intent);
                 break;
         }

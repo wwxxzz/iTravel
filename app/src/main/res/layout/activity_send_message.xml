@@ -42,7 +42,15 @@
         android:layout_below="@+id/msg_editText"
         android:layout_marginLeft="10dp"
         android:text="添加地点..."
-        android:textSize="14dp"
-        android:autoLink="all"/>
+        android:textSize="16dp"/>
+    <TextView
+        android:id="@+id/msg_addLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/msg_addLocation"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="添加标签..."
+        android:textSize="16dp"/>
 
 </RelativeLayout>
