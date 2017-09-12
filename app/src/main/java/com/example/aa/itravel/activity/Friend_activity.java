@@ -38,10 +38,15 @@ import static com.example.aa.itravel.R.id.button_friend;
 public class Friend_activity extends AppCompatActivity {
     private Context mContext;
 
+
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
     @ViewInject(R.id.iv_right)
     private ImageView right_button;
+    String session;
+   // @ViewInject(R.id.title_bar_name)
+   // private TextView textView;
+
 
     private ViewPager vp;
     private TabLayout tabLayout;
@@ -58,6 +63,11 @@ public class Friend_activity extends AppCompatActivity {
         textView.setText("好友消息");
         right_button.setImageDrawable(getResources().getDrawable(R.drawable.add));
 
+        Bundle bundle = this.getIntent().getExtras();
+            /*获取Bundle中的数据，注意类型和key*/
+        session = bundle.getString("sessionID");
+
+
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
         Button home =(Button) exFragment.getView().findViewById(button_friend);
@@ -67,9 +77,9 @@ public class Friend_activity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.FriendTop_tab);
 
         FtAdapter = new FriendTopAdapter(getSupportFragmentManager());
-        fragments.add(FriendTopFragment.newInstance("0"));
-        fragments.add(FriendTopFragment.newInstance("1"));
-        fragments.add(FriendTopFragment.newInstance("2"));
+        fragments.add(FriendTopFragment.newInstance("0",session));
+        fragments.add(FriendTopFragment.newInstance("1",session));
+        fragments.add(FriendTopFragment.newInstance("2",session));
         FtAdapter.setFragments(fragments);
         vp.setAdapter(FtAdapter);
         //设置tabLayout

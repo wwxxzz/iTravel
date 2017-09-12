@@ -10,11 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Network;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 /**
  * Created by aa on 2017/9/12.
@@ -24,7 +29,13 @@ import org.xutils.x;
 public class ShowFriendInfo extends Activity{
 
     private Context mContext;
-
+    String TAG = "SHOW_FRIEND_INFO_Activity";
+    //s用来保存sessionid     发送refresh请求
+    String session;
+    Response response;
+    OkHttpClient client = new OkHttpClient();
+    String path = Network.URL+ "personalinfo";
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @ViewInject(R.id.showname)
     private TextView friend_name;
@@ -59,13 +70,9 @@ public class ShowFriendInfo extends Activity{
 
     @Event(value = R.id.iv_right)
     private void event(View view) {
-        Intent intent;
-        switch (view.getId()) {
-            case R.id.iv_right:
-                intent = new Intent(mContext, Message_activity.class);
-                startActivity(intent);
-                break;
-        }
+        Intent intent = new Intent(mContext, Message_activity.class);
+        startActivity(intent);
+
     }
 
 }

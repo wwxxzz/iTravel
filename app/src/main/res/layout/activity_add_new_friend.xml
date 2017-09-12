@@ -18,8 +18,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
         android:background="#dbdbdb"
-        android:layout_toLeftOf="@+id/search_sure"
-        android:layout_toStartOf="@+id/search_sure">
+        android:layout_toLeftOf="@+id/bt_search_sure"
+        android:layout_toStartOf="@+id/bt_search_sure">
         <ImageView
             android:id="@+id/search_ic"
             android:layout_width="18dp"
@@ -42,7 +42,7 @@
 
     </RelativeLayout>
     <Button
-        android:id="@+id/search_sure"
+        android:id="@+id/bt_search_sure"
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:text="查找"

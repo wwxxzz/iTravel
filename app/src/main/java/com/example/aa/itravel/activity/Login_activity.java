@@ -113,6 +113,7 @@ public class Login_activity extends Activity {
                 break;
         }
     }
+
 private void postRequest(String name,String pwd)  {
 
 
