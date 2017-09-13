@@ -26,8 +26,6 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +77,6 @@ public class Collection_activity extends AppCompatActivity {
 				tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
 				//设置下划线的颜色
 				tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
-
 			}
 		}
 	};

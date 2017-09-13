@@ -43,29 +43,33 @@
             <RelativeLayout
                 android:id="@+id/firend_01"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="visible">
+
                 <ImageView
                     android:id="@+id/fr_head_01"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_01"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_01"
                     android:text="大佬01"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_01"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -76,29 +80,33 @@
             <RelativeLayout
                 android:id="@+id/firend_02"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="visible">
+
                 <ImageView
                     android:id="@+id/fr_head_02"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_02"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_02"
                     android:text="大佬02"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_02"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -109,29 +117,33 @@
             <RelativeLayout
                 android:id="@+id/firend_03"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_03"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_03"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_03"
                     android:text="大佬03"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_03"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -142,29 +154,33 @@
             <RelativeLayout
                 android:id="@+id/firend_04"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_04"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_04"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_04"
                     android:text="大佬04"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_04"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -175,29 +191,33 @@
             <RelativeLayout
                 android:id="@+id/firend_05"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_05"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_05"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_05"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_05"
                     android:text="大佬05"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_05"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -208,29 +228,33 @@
             <RelativeLayout
                 android:id="@+id/firend_06"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_06"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_06"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_06"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_06"
                     android:text="大佬06"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_06"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -241,29 +265,33 @@
             <RelativeLayout
                 android:id="@+id/firend_07"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_07"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_07"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_07"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_07"
                     android:text="大佬07"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_07"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -274,29 +302,33 @@
             <RelativeLayout
                 android:id="@+id/firend_08"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_08"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_08"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_08"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_08"
                     android:text="大佬08"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_08"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -307,29 +339,33 @@
             <RelativeLayout
                 android:id="@+id/firend_09"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_09"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_09"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_09"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_09"
                     android:text="大佬09"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_09"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
@@ -340,29 +376,33 @@
             <RelativeLayout
                 android:id="@+id/firend_10"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="invisible">
+
                 <ImageView
                     android:id="@+id/fr_head_10"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@mipmap/ic_launcher" />
+
                 <TextView
                     android:id="@+id/fr_user_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/fr_head_10"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/fr_head_10"
                     android:text="大佬10"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
                 <Button
                     android:id="@+id/fr_next_10"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next"
-                    android:layout_alignParentRight="true" />
+                    android:background="@drawable/next" />
             </RelativeLayout>
             <View
                 android:layout_width="wrap_content"
