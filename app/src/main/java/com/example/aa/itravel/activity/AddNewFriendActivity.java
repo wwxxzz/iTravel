@@ -51,11 +51,12 @@ public class AddNewFriendActivity extends AppCompatActivity {
     String path = Network.URL+ "searchfriend";
     String path1 = Network.URL+ "addfriend";
     String path2 = Network.URL+ "refresh";
-   //String path3 = Network.URL+ "refresh";
+    String path3 = Network.URL+ "commitfriend";
+    String path4 = Network.URL+ "refusefriend";
 
     Response response;
     OkHttpClient client = new OkHttpClient();
-    private static List<MessageBuffer> friendinfo_list =new ArrayList<MessageBuffer>();
+    private static List<MessageBuffer>  friendinfo_list =new ArrayList<MessageBuffer>();
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -76,11 +77,13 @@ public class AddNewFriendActivity extends AppCompatActivity {
     @ViewInject(R.id.frrequest_01)
     private RelativeLayout request1;
     @ViewInject(R.id.frrequest_user_01)
-    private TextView reqFriend1;
-
+    private TextView reqFriend1;//请求添加的好友的名字
 
     @ViewInject(R.id.frrequest_02)
     private RelativeLayout request2;
+    @ViewInject(R.id.frrequest_user_02)
+    private TextView reqFriend2;//请求添加的好友的名字
+
     @ViewInject(R.id.frrequest_03)
     private RelativeLayout request3;
 
@@ -110,8 +113,15 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 Response response = null;
                 try {
                     //回调
+//                    User user = new User();
+//                    user.setUsername(friendname);
+//                    Gson gson = new GsonBuilder().create();
+//                    String content = gson.toJson(user);
+//
+//                    RequestBody body = RequestBody.create(JSON, content);
+
                     Request request = new Request.Builder().addHeader("cookie",session)
-                            .url(path2)
+                            .url(path2)//.post(body)
                             .build();
                     OkHttpClient okhttpc = new OkHttpClient();
                     Call call = okhttpc.newCall(request);
@@ -171,18 +181,27 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 //requests.setMargins(0,0,0,0);
                 break;
             case R.id.newfriend_add:
-                //添加到好友列表
+                //发送好友请求
                 addRequest(searchFriendname);
                 //Toast.makeText(AddNewFriendActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.frrequest_accept_01:
-                ;//添加到好友列表
-                request1.setVisibility(View.GONE);
+                //同意添加好友
+                commitRequest(reqFriend1.getText().toString());
                 break;
             case R.id.frrequest_refuse_01:
-                ;//从好友列表中删除
-                request1.setVisibility(View.GONE);
+                //拒绝添加好友
+                refuseRequest(reqFriend1.getText().toString());
                 break;
+            case R.id.frrequest_accept_02:
+                //同意添加好友
+                commitRequest(reqFriend2.getText().toString());
+                break;
+            case R.id.frrequest_refuse_02:
+                //拒绝添加好友
+                refuseRequest(reqFriend1.getText().toString());
+                break;
+
         }
     }
 
@@ -202,18 +221,13 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
                     RequestBody body = RequestBody.create(JSON, content);
 
-                    Request request = new Request.Builder()
+                    Request request = new Request.Builder().addHeader("cookie",session)
                             .url(path)
                             .post(body)
                             .build();
                     OkHttpClient okhttpc = new OkHttpClient();
                     Call call = okhttpc.newCall(request);
                     response = call.execute();
-//                    //获取回复的header 剥离sessionId
-//                    Headers headers = response.headers();
-//                    List<String> cookies = headers.values("Set-Cookie");
-//                    String session1 = cookies.get(0);
-//                    session = session1.substring(0,session1.indexOf(";"));
 
                     if (response.code()==200) {
                         //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
@@ -254,6 +268,78 @@ public class AddNewFriendActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
                         aHandler.obtainMessage(1, response.body().string()).sendToTarget();
+
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    private void commitRequest(final String friendname)  {
+
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Response response = null;
+                try {
+                    //回调
+                    User user = new User();
+                    user.setUsername(friendname);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(user);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+
+                    Request request = new Request.Builder().addHeader("cookie",session).url(path3).post(body).build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    response = call.execute();
+                    if (response.isSuccessful()) {
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        cHandler.obtainMessage(1, response.body().string()).sendToTarget();
+
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    private void refuseRequest(final String friendname)  {
+
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Response response = null;
+                try {
+                    //回调
+                    User user = new User();
+                    user.setUsername(friendname);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(user);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+
+                    Request request = new Request.Builder().addHeader("cookie",session).url(path4).post(body).build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    response = call.execute();
+                    if (response.isSuccessful()) {
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        rHandler.obtainMessage(1, response.body().string()).sendToTarget();
 
                     } else {
                         throw new IOException("Unexpected code:" + response);
@@ -320,8 +406,56 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
                 friendinfo_list = gson.fromJson(qq,type);
-                reqFriend1.setText(friendinfo_list.get(0).getFromusername());
+                if(friendinfo_list!=null){
+                    reqFriend1.setText(friendinfo_list.get(0).getFromusername());
+                    request1.setVisibility(View.VISIBLE);
+                    if(friendinfo_list.size()==2){
+                        reqFriend2.setText(friendinfo_list.get(1).getFromusername());
+                        request2.setVisibility(View.VISIBLE);
+                    }
+                }
                 //Log.i("111",friendinfo_list.get(0).getFromusername());
+            }
+        }
+    };
+
+
+    private Handler cHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Log.i(TAG, qq);
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String result=re.getResult();
+
+                if(result.equals("true")){
+                    Toast.makeText(AddNewFriendActivity.this,"同意添加好友", Toast.LENGTH_SHORT).show();
+                    request1.setVisibility(View.GONE);
+                }else {
+                    Toast.makeText(AddNewFriendActivity.this,"同意添加好友失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    };
+
+    private Handler rHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Log.i(TAG, qq);
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String result=re.getResult();
+
+                if(result.equals("true")){
+                    Toast.makeText(AddNewFriendActivity.this,"拒绝添加好友", Toast.LENGTH_SHORT).show();
+                    request1.setVisibility(View.GONE);
+                }else {
+                    Toast.makeText(AddNewFriendActivity.this,"拒绝添加好友失败", Toast.LENGTH_LONG).show();
+                }
             }
         }
     };

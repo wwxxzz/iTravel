@@ -130,141 +130,147 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/newfriend_diliver2"
         android:orientation="vertical">
+
         <RelativeLayout
             android:id="@+id/frrequest_01"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="70dp"
+            android:visibility="invisible">
+
             <ImageView
                 android:id="@+id/frrequest_head_01"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/frrequest_user_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/frrequest_head_01"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/frrequest_head_01"
                 android:text="大佬01"
-                android:textSize="22dp"/>
+                android:textSize="22dp" />
+
             <Button
                 android:id="@+id/frrequest_accept_01"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="11dp"
+                android:layout_toLeftOf="@+id/frrequest_refuse_01"
                 android:background="@color/whitefont"
                 android:text="接受"
                 android:textColor="#f75b47"
-                android:textSize="16dp"
-                android:layout_toLeftOf="@+id/frrequest_refuse_01"/>
+                android:textSize="16dp" />
+
             <Button
                 android:id="@+id/frrequest_refuse_01"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="11dp"
                 android:background="@color/whitefont"
                 android:text="拒绝"
-                android:textSize="16dp"
                 android:textColor="#f75b47"
-                android:layout_alignParentRight="true" />
+                android:textSize="16dp" />
         </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3px"
-            android:background="#bdb6b7" />
+
         <RelativeLayout
             android:id="@+id/frrequest_02"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="70dp"
+            android:visibility="invisible">
+
             <ImageView
                 android:id="@+id/frrequest_head_02"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/frrequest_user_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/frrequest_head_02"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/frrequest_head_02"
                 android:text="大佬02"
-                android:textSize="22dp"/>
+                android:textSize="22dp" />
+
             <Button
                 android:id="@+id/frrequest_accept_02"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="11dp"
+                android:layout_toLeftOf="@+id/frrequest_refuse_02"
                 android:background="@color/whitefont"
                 android:text="接受"
                 android:textColor="#f75b47"
-                android:textSize="16dp"
-                android:layout_toLeftOf="@+id/frrequest_refuse_02"/>
+                android:textSize="16dp" />
+
             <Button
                 android:id="@+id/frrequest_refuse_02"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="11dp"
                 android:background="@color/whitefont"
                 android:text="拒绝"
-                android:textSize="16dp"
                 android:textColor="#f75b47"
-                android:layout_alignParentRight="true" />
+                android:textSize="16dp" />
         </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3px"
-            android:background="#bdb6b7" />
+
         <RelativeLayout
             android:id="@+id/frrequest_03"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="70dp"
+            android:visibility="invisible">
+
             <ImageView
                 android:id="@+id/frrequest_head_03"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/frrequest_user_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/frrequest_head_03"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/frrequest_head_03"
                 android:text="大佬03"
-                android:textSize="22dp"/>
+                android:textSize="22dp" />
+
             <Button
                 android:id="@+id/frrequest_accept_03"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="11dp"
+                android:layout_toLeftOf="@+id/frrequest_refuse_03"
                 android:background="@color/whitefont"
                 android:text="接受"
                 android:textColor="#f75b47"
-                android:textSize="16dp"
-                android:layout_toLeftOf="@+id/frrequest_refuse_03"/>
+                android:textSize="16dp" />
+
             <Button
                 android:id="@+id/frrequest_refuse_03"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="11dp"
                 android:background="@color/whitefont"
                 android:text="拒绝"
-                android:textSize="16dp"
                 android:textColor="#f75b47"
-                android:layout_alignParentRight="true" />
+                android:textSize="16dp" />
         </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3px"
-            android:background="#bdb6b7" />
     </LinearLayout>
 
 </RelativeLayout>
