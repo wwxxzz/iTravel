@@ -9,12 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
 import com.example.aa.itravel.tools.Message;
 import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
+import com.example.aa.itravel.tools.Result;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -26,6 +30,8 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -56,11 +62,43 @@ public class SingleMessageActivity extends AppCompatActivity {
     @ViewInject(R.id.tr_collection)
     private Button collection;
 
+    @ViewInject(R.id.comment_user_01)
+    private TextView c_user_01;
+    @ViewInject(R.id.comment_user_02)
+    private TextView c_user_02;
+    @ViewInject(R.id.comment_user_03)
+    private TextView c_user_03;
+    @ViewInject(R.id.comment_user_04)
+    private TextView c_user_04;
+
+    @ViewInject(R.id.comment_data_01)
+    private TextView c_content_01;
+    @ViewInject(R.id.comment_data_02)
+    private TextView c_content_02;
+    @ViewInject(R.id.comment_data_03)
+    private TextView c_content_03;
+    @ViewInject(R.id.comment_data_04)
+    private TextView c_content_04;
+
+    @ViewInject(R.id.comment_01)
+    private RelativeLayout comment_01;
+    @ViewInject(R.id.comment_02)
+    private RelativeLayout comment_02;
+    @ViewInject(R.id.comment_03)
+    private RelativeLayout comment_03;
+    @ViewInject(R.id.comment_04)
+    private RelativeLayout comment_04;
+
     Integer message_id;
     String session;
-    String path = Network.URL + "showonemessage";
+    String showpath = Network.URL + "showonemessage";
+    String likepath = Network.URL+"likemessage";
+    String showcommentpath = Network.URL+"entermessage";
+    String collectmessagepath = Network.URL+"newcollectionformsg";
+    String showcollectioninfopath = Network.URL+"msgifcollected";
     //private static List<MessageEntityWithBLOBs> mess_list =new ArrayList<MessageEntityWithBLOBs>();
     private static MessageEntityWithBLOBs mess_content =new MessageEntityWithBLOBs();
+    private static List<CommentEntityWithBLOBs> com_list =new ArrayList<CommentEntityWithBLOBs>();
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private Handler mHandler = new Handler(){
         @Override
@@ -78,7 +116,54 @@ public class SingleMessageActivity extends AppCompatActivity {
                 com_num.setText(String.valueOf(mess_content.getCommitnumber()));
                 like_num.setText(String.valueOf(mess_content.getLikenumber()));
                 user.setText(mess_content.getUsername());
+                showComment();
+                showCollection();
             }
+        }
+    };
+    private Handler showCollectionHandler = new Handler(){
+        @Override
+        public void handleMessage(android.os.Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    collection.setSelected(true);
+                }else{
+                }
+            }
+        }
+    };
+
+    private Handler commentHandler = new Handler(){
+        @Override
+        public void handleMessage(android.os.Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<CommentEntityWithBLOBs>>(){}.getType();
+                Log.i("QQ", qq);
+                com_list = gson.fromJson(qq,type);
+
+                c_user_01.setText(com_list.get(0).getCommentatorname());
+                c_user_02.setText(com_list.get(1).getCommentatorname());
+                c_user_03.setText(com_list.get(2).getCommentatorname());
+                c_user_04.setText(com_list.get(3).getCommentatorname());
+                c_content_01.setText(com_list.get(0).getCommentcontent());
+                c_content_02.setText(com_list.get(1).getCommentcontent());
+                c_content_03.setText(com_list.get(2).getCommentcontent());
+                c_content_04.setText(com_list.get(3).getCommentcontent());
+                comment_01.setVisibility(View.VISIBLE);
+                comment_02.setVisibility(View.VISIBLE);
+                comment_03.setVisibility(View.VISIBLE);
+                comment_04.setVisibility(View.VISIBLE);
+                System.out.println(com_list.get(0).getLikenumber());
+            }
+
         }
     };
 
@@ -102,19 +187,28 @@ public class SingleMessageActivity extends AppCompatActivity {
             case R.id.tr_like:
                 like.setSelected(true);
                 try {
-                    int a = Integer.parseInt(like_num.toString());
-                    a+=1;
-                    like_num.setText(String.valueOf(a));
+                    like_num.setText(Integer.valueOf(like_num.getText().toString()) + 1 + "");
+                    Toast.makeText(SingleMessageActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
-                showOneMessage();
+                clicklike();
                 break;
             case R.id.tr_collection:
-                collection.setSelected(true);
+                if (collection.isSelected()){
+                    Toast.makeText(SingleMessageActivity.this,"已收藏",Toast.LENGTH_SHORT).show();
+                }else {
+                    collection.setSelected(true);
+                    Toast.makeText(SingleMessageActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+                }
+                clickcollection();
                 break;
             case R.id.tr_comment_ic:
                 intent = new Intent(mContext, PushCommit.class);
+                intent.putExtra("sessionID", session);
+                intent.putExtra("topicId",0);
+                intent.putExtra("messageID",message_id);
+                intent.putExtra("Index",0);
                 startActivity(intent);
                 break;
             case R.id.tr_transfer:
@@ -123,6 +217,9 @@ public class SingleMessageActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+
     public void showOneMessage(){
         //新建一个线程，用于得到服务器响应的参数
         new Thread(new Runnable() {
@@ -131,24 +228,18 @@ public class SingleMessageActivity extends AppCompatActivity {
                 Response response = null;
                 try {
                     Message mMessage=new Message();
-                    mMessage.setMessageid(3);
-                    mMessage.setLikenumber(Integer.parseInt(like_num.toString()));
+                    mMessage.setMessageid(message_id);
                     Gson gson = new GsonBuilder().create();
                     String content = gson.toJson(mMessage);
-                    Log.i("CONTENT",content.toString());
                     RequestBody body = RequestBody.create(JSON, content);
-                    Log.i("BODY",body.toString());
                     Request request = new Request.Builder()
                             .addHeader("cookie",session)
-                            .url(path)
+                            .url(showpath)
                             .post(body)
                             .build();
-                    Log.i("REQUEST",request.toString());
                     OkHttpClient okhttpc = new OkHttpClient();
                     Call call = okhttpc.newCall(request);
-                    Log.i("CALL",call.toString());
                     response = call.execute();
-                    Log.i("RESPONSE",response.toString());
                     if (response.isSuccessful()) {
                         //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
                         mHandler.obtainMessage(1, response.body().string()).sendToTarget();
@@ -156,6 +247,131 @@ public class SingleMessageActivity extends AppCompatActivity {
                         throw new IOException("Unexpected code:" + response);
                     }
                 } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void clicklike() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                //try {
+                    MessageEntityWithBLOBs mMessage=new MessageEntityWithBLOBs();
+                    mMessage.setMessageid(message_id);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(mMessage);
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Request request = new Request.Builder()
+                            .addHeader("cookie",session)
+                            .url(likepath)
+                            .post(body)
+                            .build();
+            }
+        }).start();
+    }
+    private void clickcollection() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //回调
+                    MessageEntityWithBLOBs mMessage=new MessageEntityWithBLOBs();
+                    mMessage.setMessageid(message_id);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(mMessage);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .url(collectmessagepath)
+                            .post(body)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i("TAG", "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i("TAG", "响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        //collectHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void showComment(){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //回调
+                    MessageEntityWithBLOBs mMessage = new  MessageEntityWithBLOBs();
+                    mMessage.setMessageid(message_id);
+
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(mMessage);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Request request = new Request.Builder().addHeader("cookie",session).url(showcommentpath).post(body).build();
+                    Log.i("TAG", request.toString());
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    //Log.i(TAG,"响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i("RESPONSE","响应成功");
+                        Log.i("TAG", response.toString());
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        commentHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void showCollection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //回调
+                    MessageEntityWithBLOBs mMessage = new  MessageEntityWithBLOBs();
+                    mMessage.setMessageid(message_id);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(mMessage);
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Log.i("MESSAGE","显示收藏");
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .post(body)
+                            .url(showcollectioninfopath)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i("TAG", "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i("TAG", "响应成");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        //System.out.println(response.body().string());
+                        showCollectionHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

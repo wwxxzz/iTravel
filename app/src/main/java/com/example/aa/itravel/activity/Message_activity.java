@@ -147,10 +147,12 @@ public class Message_activity extends FragmentActivity {
         switch (view.getId()) {
             case R.id.button_friend:
                 intent = new Intent(mContext, Friend_activity.class);
+				intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
+				intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.msg_01:

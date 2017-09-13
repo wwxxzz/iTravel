@@ -3,10 +3,9 @@ package com.example.aa.itravel.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -19,7 +18,6 @@ import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
-import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -51,8 +49,9 @@ public class PushCommit extends Activity {
 	private ImageView right_icon;
 	@ViewInject(R.id.editText)
 	private EditText com_content;
-	public Integer ID;
-	public Integer index;
+	public Integer topicID=0;
+	public Integer messageID=0;
+	public Integer index=0;
 	private Handler mHandler = new Handler(){
 		@Override
 		public void handleMessage(Message msg){
@@ -65,8 +64,14 @@ public class PushCommit extends Activity {
 				System.out.println(re.getResult());
 				if(back.equals("true") ){
 					Toast.makeText(PushCommit.this,"评论成功",Toast.LENGTH_SHORT).show();
-
-					if(index == 1){
+					if (index==0){
+						Intent intent = new Intent(mContext,SingleMessageActivity.class);
+						intent.putExtra("sessionID", session);
+						intent.putExtra("messageID",messageID);
+						startActivity(intent);
+						finish();
+					}
+					else if(index == 1){
 						Intent intent = new Intent(mContext,Topic_activity.class);
 						intent.putExtra("sessionID", session);
 						startActivity(intent);
@@ -109,21 +114,27 @@ public class PushCommit extends Activity {
 		Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
 		session = bundle.getString("sessionID");
-		ID = bundle.getInt("topicId");
+		topicID = bundle.getInt("topicId");
+		messageID =bundle.getInt("messageID");
 		index = bundle.getInt("Index");
 	}
 	@Event(value={R.id.iv_right})
 	private void event(View v){
 		//新建一个线程，用于得到服务器响应的参数
+
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				Response response = null;
 				try {
-
 					//回调
 					CommentEntityWithBLOBs comm = new CommentEntityWithBLOBs();
-					comm.setTopicid(ID);
+					if (topicID==0&&messageID!=0){
+						comm.setMessageid(messageID);
+					}else{
+						comm.setTopicid(topicID);
+					}
+
 					comm.setCommentcontent(com_content.toString());
 					Gson gson = new GsonBuilder().create();
 					String content = gson.toJson(comm);
