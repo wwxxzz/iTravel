@@ -87,6 +87,9 @@
         <activity android:name=".activity.SendMessageActivity" />
         <activity android:name=".activity.AddNewFriendActivity"></activity>
         <activity android:name=".activity.ShowFriendInfo"></activity>
+        <activity android:name=".activity.ChatDemoActivity">
+
+        </activity>
 
     </application>
 

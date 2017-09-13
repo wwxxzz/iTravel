@@ -5,6 +5,6 @@ package com.example.aa.itravel.tools;
  */
 
 public class Network {
-	final  static public String URL = "http://223.3.176.96:8080/iTravel_Server_SSM/AndroidService/";
+	final  static public String URL = "http://223.3.78.179:8080/iTravel_Server_SSM/AndroidService/";
 
 }

@@ -104,7 +104,7 @@ public class ChangeUserInfo extends Activity {
 					//Log.i(TAG,"sessionId"+s);
 					Toast.makeText(ChangeUserInfo.this,"修改成功，即将跳转", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent();
-					intent = new Intent(mContext, ShowUserInfo.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					intent = new Intent(mContext, ShowUserInfo.class);
 					intent.putExtra("sessionId", session);
 					startActivity(intent);
 					finish();

@@ -70,7 +70,7 @@ public class ShowFriendInfo extends Activity{
 
     @Event(value = R.id.iv_right)
     private void event(View view) {
-        Intent intent = new Intent(mContext, Message_activity.class);
+        Intent intent = new Intent(mContext,ChatDemoActivity.class);
         startActivity(intent);
 
     }
