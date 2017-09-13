@@ -17,7 +17,8 @@ public class Message {
 
     private String originalusername;
 
-    private String messagetime;
+    //private String messagetime;
+    private Date messagetime;
 
     private Integer likenumber;
 
@@ -73,11 +74,18 @@ public class Message {
         this.originalusername = originalusername == null ? null : originalusername.trim();
     }
 
-    public String getMessagetime() {
+    /*public String getMessagetime() {
+        return messagetime;
+    }*/
+
+    /*public void setMessagetime(String messagetime) {
+        this.messagetime = messagetime;
+    }*/
+    public Date getMessagetime() {
         return messagetime;
     }
 
-    public void setMessagetime(String messagetime) {
+    public void setMessagetime(Date messagetime) {
         this.messagetime = messagetime;
     }
 
