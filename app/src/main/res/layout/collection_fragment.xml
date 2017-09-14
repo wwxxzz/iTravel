@@ -52,8 +52,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/cl_user_01"
-                    android:gravity="center"
                     android:text="概要"
+                    android:gravity="left"
                     android:textSize="20dp" />
             </RelativeLayout>
 
@@ -99,7 +99,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:layout_toRightOf="@+id/cl_user_02"
-                    android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
             </RelativeLayout>

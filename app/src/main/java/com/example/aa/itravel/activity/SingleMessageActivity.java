@@ -228,7 +228,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                 comment.add(comment_04);
                 if (com_list!=null)
                     for(int i=0;i<=com_list.size();i++){
-                        //c_user.get(i).setText(com_list.get(i).getAuthorid());
+                        //c_user.get(i).setText(com_list.get(i).getCommentatorname());
                         //c_content.get(i).setText(com_list.get(i).getCommentcontent());
                         comment.get(i).setVisibility(View.VISIBLE);
                     }
