@@ -53,4 +53,139 @@
         android:text="添加标签..."
         android:textSize="16dp"/>
 
+    <LinearLayout
+        android:id="@+id/ly1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/msg_addLog">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_weight="0.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="美食"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton"
+            android:layout_toEndOf="@+id/radioButton"
+            android:layout_toRightOf="@+id/radioButton"
+            android:text="住宿"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton2"
+            android:layout_toEndOf="@+id/radioButton2"
+            android:layout_toRightOf="@+id/radioButton2"
+            android:text="购物"/>
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="自驾"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ly1">
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_weight="0.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="古镇"/>
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton"
+            android:layout_toEndOf="@+id/radioButton"
+            android:layout_toRightOf="@+id/radioButton"
+            android:text="山地"/>
+
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton2"
+            android:layout_toEndOf="@+id/radioButton2"
+            android:layout_toRightOf="@+id/radioButton2"
+            android:text="邮轮"/>
+
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="穷游"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ly2">
+
+        <RadioButton
+            android:id="@+id/radioButton9"
+            android:layout_weight="0.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="摄影"/>
+
+        <RadioButton
+            android:id="@+id/radioButton10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton"
+            android:layout_toEndOf="@+id/radioButton"
+            android:layout_toRightOf="@+id/radioButton"
+            android:text="国内"/>
+
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_alignTop="@+id/radioButton2"
+            android:layout_toEndOf="@+id/radioButton2"
+            android:layout_toRightOf="@+id/radioButton2"
+            android:text="国外"/>
+
+        <RadioButton
+            android:id="@+id/radioButton12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="情侣"/>
+    </LinearLayout>
+
 </RelativeLayout>

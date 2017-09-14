@@ -155,6 +155,8 @@ public class ShowFriendInfo extends Activity{
     @Event(value = R.id.iv_right)
     private void event(View view) {
         Intent intent = new Intent(mContext,ChatDemoActivity.class);
+        intent.putExtra("sessionID",session);
+        intent.putExtra("friendName",friend_name.getText());
         startActivity(intent);
 
     }

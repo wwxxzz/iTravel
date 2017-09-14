@@ -21,6 +21,8 @@ public class MessageBuffer {
 
     private String messagebcontent;
 
+    private boolean iscomemsg;
+
     public Integer getMessagebid() {
         return messagebid;
     }
@@ -83,5 +85,13 @@ public class MessageBuffer {
 
     public void setMessagebcontent(String messagebcontent) {
         this.messagebcontent = messagebcontent == null ? null : messagebcontent.trim();
+    }
+
+    public boolean isComeMsg() {
+        return iscomemsg;
+    }
+
+    public void setComeMsg(boolean isComeMsg) {
+        this.iscomemsg = isComeMsg;
     }
 }
