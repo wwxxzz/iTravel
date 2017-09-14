@@ -52,6 +52,15 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
     String showcollectionofmsgpath=Network.URL+"showcollection";
 
 	TextView theme_1;
+    TextView theme_2;
+    TextView theme_3;
+    TextView theme_4;
+
+    TextView top_content1;
+    TextView top_content2;
+    TextView top_content3;
+    TextView top_content4;
+
     TextView msg_user;
     TextView msg_time;
     TextView msg_content;
@@ -60,6 +69,7 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private static List<Topic> topic_list =new ArrayList<Topic>();
     private static List<MessageEntityWithBLOBs> msg_list =new ArrayList<MessageEntityWithBLOBs>();
+
     private Handler MessageHandler = new Handler(){
         @Override
         public void handleMessage(Message msg){
@@ -86,7 +96,51 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<Topic>>(){}.getType();
                 topic_list = gson.fromJson(qq,type);
-                theme_1.setText(topic_list.get(0).getTheme());
+                int tnumber=topic_list.size();
+                switch (tnumber){
+                    case 1:
+                        theme_1.setText(topic_list.get(0).getTheme());
+                        top_content1.setText(topic_list.get(0).getTopiccontent());
+                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        theme_1.setText(topic_list.get(0).getTheme());
+                        theme_2.setText(topic_list.get(1).getTheme());
+                        top_content1.setText(topic_list.get(0).getTopiccontent());
+                        top_content2.setText(topic_list.get(1).getTopiccontent());
+                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        theme_1.setText(topic_list.get(0).getTheme());
+                        theme_2.setText(topic_list.get(1).getTheme());
+                        theme_3.setText(topic_list.get(2).getTheme());
+                        top_content1.setText(topic_list.get(0).getTopiccontent());
+                        top_content2.setText(topic_list.get(1).getTopiccontent());
+                        top_content3.setText(topic_list.get(2).getTopiccontent());
+                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
+                        break;
+                    case 4:
+                        theme_1.setText(topic_list.get(0).getTheme());
+                        theme_2.setText(topic_list.get(1).getTheme());
+                        theme_3.setText(topic_list.get(2).getTheme());
+                        theme_4.setText(topic_list.get(3).getTheme());
+                        top_content1.setText(topic_list.get(0).getTopiccontent());
+                        top_content2.setText(topic_list.get(1).getTopiccontent());
+                        top_content3.setText(topic_list.get(2).getTopiccontent());
+                        top_content4.setText(topic_list.get(3).getTopiccontent());
+                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.cl_top_04).setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        break;
+                }
+
+                //theme_1.setText(topic_list.get(0).getTheme());
             }
         }
     };
@@ -108,6 +162,13 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
                 view= inflater.inflate(R.layout.topic_collection_fragment, null);
                 view.findViewById(R.id.cl_top_01).setOnClickListener(this);
 	            theme_1 = (TextView) view.findViewById(R.id.cl_theme_01);
+                theme_2 = (TextView) view.findViewById(R.id.cl_theme_02);
+                theme_3 = (TextView) view.findViewById(R.id.cl_theme_03);
+                theme_4 = (TextView) view.findViewById(R.id.cl_theme_04);
+                top_content1 =(TextView) view.findViewById(R.id.cl_date_01);
+                top_content2 =(TextView) view.findViewById(R.id.cl_date_02);
+                top_content3 =(TextView) view.findViewById(R.id.cl_date_03);
+                top_content4 =(TextView) view.findViewById(R.id.cl_date_04);
                 showcollectionoftopic();
                 break;
             default:

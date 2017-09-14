@@ -11,193 +11,179 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
                 <RelativeLayout
                     android:id="@+id/cl_top_01"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="100dp"
+                    android:visibility="invisible">
+
                         <ImageView
                             android:id="@+id/cl_img_01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:alpha="0.6"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img1"
-                            android:alpha="0.6"/>
+                            android:src="@drawable/img1" />
+
                         <TextView
                             android:id="@+id/cl_theme_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
                             android:text="话题主题"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/cl_date_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="60dp"
                             android:text="17-9-10"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="3px"
+                            android:layout_below="@+id/cl_img_01"
+                            android:layout_marginTop="2dp"
+                            android:background="#bdb6b7" />
                 </RelativeLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="3px"
-                    android:layout_marginTop="2dp"
-                    android:background="#bdb6b7" />
 
                 <RelativeLayout
                     android:id="@+id/cl_top_02"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="100dp"
+                    android:visibility="invisible">
+
+                        <View
+                            android:id="@+id/view6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="3px"
+                            android:layout_below="@+id/cl_img_02"
+                            android:layout_marginTop="2dp"
+                            android:background="#bdb6b7" />
+
                         <ImageView
                             android:id="@+id/cl_img_02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:alpha="0.6"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img2"
-                            android:alpha="0.6"/>
+                            android:src="@drawable/img2" />
+
                         <TextView
                             android:id="@+id/cl_theme_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
                             android:text="话题主题"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/cl_date_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="60dp"
                             android:text="17-9-10"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                 </RelativeLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="3px"
-                    android:layout_marginTop="2dp"
-                    android:background="#bdb6b7" />
 
                 <RelativeLayout
                     android:id="@+id/cl_top_03"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="100dp"
+                    android:visibility="invisible">
+
+                        <View
+                            android:id="@+id/view7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="3px"
+                            android:layout_below="@+id/cl_img_03"
+                            android:layout_marginTop="2dp"
+                            android:background="#bdb6b7" />
+
                         <ImageView
                             android:id="@+id/cl_img_03"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:alpha="0.6"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img3"
-                            android:alpha="0.6"/>
+                            android:src="@drawable/img3" />
+
                         <TextView
                             android:id="@+id/cl_theme_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
                             android:text="话题主题"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/cl_date_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="60dp"
                             android:text="17-9-10"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                 </RelativeLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="3px"
-                    android:layout_marginTop="2dp"
-                    android:background="#bdb6b7" />
 
                 <RelativeLayout
                     android:id="@+id/cl_top_04"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="100dp"
+                    android:visibility="invisible">
+
+                        <View
+                            android:id="@+id/view8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="3px"
+                            android:layout_below="@+id/cl_img_04"
+                            android:layout_marginTop="2dp"
+                            android:background="#bdb6b7" />
+
                         <ImageView
                             android:id="@+id/cl_img_04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:alpha="0.6"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img4"
-                            android:alpha="0.6"/>
+                            android:src="@drawable/img4" />
+
                         <TextView
                             android:id="@+id/cl_theme_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
                             android:text="话题主题"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/cl_date_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
                             android:layout_marginLeft="20dp"
+                            android:layout_marginTop="60dp"
                             android:text="17-9-10"
                             android:textSize="20dp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                 </RelativeLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="3px"
-                    android:layout_marginTop="2dp"
-                    android:background="#bdb6b7" />
-                <RelativeLayout
-                    android:id="@+id/cl_top_05"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-                        <ImageView
-                            android:id="@+id/cl_img_05"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/img1"
-                            android:alpha="0.6" />
-                        <TextView
-                            android:id="@+id/cl_theme_05"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:text="话题主题"
-                            android:textSize="20dp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/cl_date_05"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="60dp"
-                            android:layout_marginLeft="20dp"
-                            android:text="17-9-10"
-                            android:textSize="20dp"
-                            android:textStyle="bold"/>
-                </RelativeLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="3px"
-                    android:layout_marginTop="2dp"
-                    android:background="#bdb6b7" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="没有更多了哦"
-                    android:textSize="16dp"/>
+
         </LinearLayout>
         </ScrollView>
 </LinearLayout>
