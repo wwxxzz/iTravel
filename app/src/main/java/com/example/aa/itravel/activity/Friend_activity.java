@@ -76,6 +76,9 @@ public class Friend_activity extends AppCompatActivity {
 
     String friendname_01;
     String friendname_02;
+    String friendname_03;
+    String friendname_04;
+    String friendname_05;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,26 +181,86 @@ public class Friend_activity extends AppCompatActivity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<User>>(){}.getType();
                 friend_list = gson.fromJson(qq,type);
-                if(friend_list.size()>0){
+                int fnumber=friend_list.size();
+                if(fnumber==1){
                     friendname_01 = friend_list.get(0).getUsername();
                     User friend1 = new User();
                     friend1.setUsername(friendname_01);
-                }
-                if(friend_list.size()==2){
+                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01));
+                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01));
+                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01));
+                }if(fnumber==2){
+                    friendname_01 = friend_list.get(0).getUsername();
+                    User friend1 = new User();
+                    friend1.setUsername(friendname_01);
                     friendname_02 = friend_list.get(1).getUsername();
                     User friend2 = new User();
-                    friend2.setUsername(friendname_01);
+                    friend2.setUsername(friendname_02);
+                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02));
+                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02));
+                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02));
+                }if(fnumber==3){
+                    friendname_01 = friend_list.get(0).getUsername();
+                    User friend1 = new User();
+                    friend1.setUsername(friendname_01);
+                    friendname_02 = friend_list.get(1).getUsername();
+                    User friend2 = new User();
+                    friend2.setUsername(friendname_02);
+                    friendname_03 = friend_list.get(2).getUsername();
+                    User friend3 = new User();
+                    friend3.setUsername(friendname_03);
+                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03));
+                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03));
+                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03));
+                }if(fnumber==4){
+                    friendname_01 = friend_list.get(0).getUsername();
+                    User friend1 = new User();
+                    friend1.setUsername(friendname_01);
+                    friendname_02 = friend_list.get(1).getUsername();
+                    User friend2 = new User();
+                    friend2.setUsername(friendname_02);
+                    friendname_03 = friend_list.get(2).getUsername();
+                    User friend3 = new User();
+                    friend3.setUsername(friendname_03);
+                    friendname_04 = friend_list.get(3).getUsername();
+                    User friend4 = new User();
+                    friend4.setUsername(friendname_04);
+                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
+                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
+                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
+                }if(fnumber==5){
+                    friendname_01 = friend_list.get(0).getUsername();
+                    User friend1 = new User();
+                    friend1.setUsername(friendname_01);
+                    friendname_02 = friend_list.get(1).getUsername();
+                    User friend2 = new User();
+                    friend2.setUsername(friendname_02);
+                    friendname_03 = friend_list.get(2).getUsername();
+                    User friend3 = new User();
+                    friend3.setUsername(friendname_03);
+                    friendname_04 = friend_list.get(3).getUsername();
+                    User friend4 = new User();
+                    friend4.setUsername(friendname_04);
+                    friendname_05 = friend_list.get(4).getUsername();
+                    User friend5 = new User();
+                    friend5.setUsername(friendname_05);
+                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
+                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
+                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
+
+                }if(fnumber==0){
+                fragments.add(FriendTopFragment.newInstance("0",session,fnumber));
+                fragments.add(FriendTopFragment.newInstance("1",session,fnumber));
+                fragments.add(FriendTopFragment.newInstance("2",session,fnumber));
                 }
 
 
-//                Topic to = new Topic();
-//                to.setTheme(theme_1);
-//                to.setDate(friend_list.get(0).getDate());
+
 
                 FtAdapter = new FriendTopAdapter(getSupportFragmentManager());
-                fragments.add(FriendTopFragment.newInstance("0",session,friendname_01/*,friendname_02*/));
-                fragments.add(FriendTopFragment.newInstance("1",session,friendname_01/*,friendname_02*/));
-                fragments.add(FriendTopFragment.newInstance("2",session,friendname_01/*,friendname_02*/));
+//                fragments.add(FriendTopFragment.newInstance("0",session,friendname_01/*,friendname_02*/));
+//                fragments.add(FriendTopFragment.newInstance("1",session,friendname_01/*,friendname_02*/));
+//                fragments.add(FriendTopFragment.newInstance("2",session,friendname_01/*,friendname_02*/));
                 FtAdapter.setFragments(fragments);
                 vp.setAdapter(FtAdapter);
                 //设置tabLayout

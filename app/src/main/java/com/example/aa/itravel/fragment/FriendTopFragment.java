@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -18,8 +17,6 @@ import com.example.aa.itravel.activity.AddNewFriendActivity;
 import com.example.aa.itravel.activity.ShowFriendInfo;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.User;
-
-import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +28,12 @@ import okhttp3.Response;
 @SuppressLint("ValidFragment")
 public class FriendTopFragment extends Fragment {
 	private String name;
-	private FriendData friendData=new FriendData();
+	private int fnumber;
+	private FriendData1 friendData1=new FriendData1();
+	private FriendData2 friendData2=new FriendData2();
+	private FriendData3 friendData3=new FriendData3();
+	private FriendData4 friendData4=new FriendData4();
+	private FriendData5 friendData5=new FriendData5();
 	private NewFriend newFriend=new NewFriend();
 	private Context mContext;
 	String TAG = "SHOW_FRIEND_LIST_Activity";
@@ -50,18 +52,20 @@ public class FriendTopFragment extends Fragment {
 
 	private String fname1;
 	private String fname2;
-
-	TextView friendname1;//请求添加的好友的名字
-	TextView friendname2;//请求添加的好友的名字
-
-	@ViewInject(R.id.firend_01)
-	private RelativeLayout friend01;
-	@ViewInject(R.id.firend_02)
-	private RelativeLayout friend02;
+	private String fname3;
+	private String fname4;
+	private String fname5;
 
 
-	public class FriendData implements OnClickListener{
+	TextView friendname1;
+	TextView friendname2;
+	TextView friendname3;
+	TextView friendname4;
+	TextView friendname5;
 
+
+	//查看第一个好友资料
+	public class FriendData1 implements OnClickListener{
 		@Override
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
@@ -71,6 +75,56 @@ public class FriendTopFragment extends Fragment {
 
 		}
 	}
+
+	//查看第二个好友资料
+	public class FriendData2 implements OnClickListener{
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
+			intent.putExtra("sessionID",session);
+			intent.putExtra("friendname",fname2);
+			startActivity(intent);
+
+		}
+	}
+
+	//查看第三个好友资料
+	public class FriendData3 implements OnClickListener{
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
+			intent.putExtra("sessionID",session);
+			intent.putExtra("friendname",fname3);
+			startActivity(intent);
+
+		}
+	}
+
+	//查看第四个好友资料
+	public class FriendData4 implements OnClickListener{
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
+			intent.putExtra("sessionID",session);
+			intent.putExtra("friendname",fname4);
+			startActivity(intent);
+
+		}
+	}
+
+	//查看第五个好友资料
+	public class FriendData5 implements OnClickListener{
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
+			intent.putExtra("sessionID",session);
+			intent.putExtra("friendname",fname5);
+			startActivity(intent);
+
+		}
+	}
+
+
 	public class NewFriend implements OnClickListener{
 
 		@Override
@@ -89,8 +143,28 @@ public class FriendTopFragment extends Fragment {
 		if (bundle != null) {
 			name = bundle.get("name").toString();
 			session = bundle.get("session").toString();
-			fname1=bundle.get("fname1").toString();
-			//fname2=bundle.get("fname2").toString();
+			fnumber=bundle.getInt("fnumber");
+			if(fnumber==1){
+				fname1=bundle.get("fname1").toString();
+			}if(fnumber==2){
+				fname1=bundle.get("fname1").toString();
+				fname2=bundle.get("fname2").toString();
+			}if(fnumber==3){
+				fname1=bundle.get("fname1").toString();
+				fname2=bundle.get("fname2").toString();
+				fname3=bundle.get("fname3").toString();
+			}if(fnumber==4){
+				fname1=bundle.get("fname1").toString();
+				fname2=bundle.get("fname2").toString();
+				fname3=bundle.get("fname3").toString();
+				fname4=bundle.get("fname4").toString();
+			}if(fnumber==5){
+				fname1=bundle.get("fname1").toString();
+				fname2=bundle.get("fname2").toString();
+				fname3=bundle.get("fname3").toString();
+				fname4=bundle.get("fname4").toString();
+				fname5=bundle.get("fname5").toString();
+			}
 		}
 
 	}
@@ -104,18 +178,87 @@ public class FriendTopFragment extends Fragment {
 		switch (name) {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
-				view.findViewById(R.id.fr_next_01).setOnClickListener(friendData);
 				view.findViewById(R.id.new_friend).setOnClickListener(newFriend);
-				friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-				friendname1.setText(fname1);
-				if(friendname1.toString()!=null){
-					//friend01.setVisibility(View.VISIBLE);
+				if(fnumber==1){
+					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
+					friendname1.setText(fname1);
+					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+
+				}if(fnumber==2){
+					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
+					friendname1.setText(fname1);
+					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
+					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
+					friendname2.setText(fname2);
+					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
+
+				}if(fnumber==3){
+					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
+					friendname1.setText(fname1);
+					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
+					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
+					friendname2.setText(fname2);
+					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
+					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
+					friendname3.setText(fname3);
+					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
+
+				}if(fnumber==4){
+					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
+					friendname1.setText(fname1);
+					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
+					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
+					friendname2.setText(fname2);
+					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
+					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
+					friendname3.setText(fname3);
+					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_04).setOnClickListener(friendData4);
+					friendname4 = (TextView) view.findViewById(R.id.fr_user_04);
+					friendname4.setText(fname4);
+					view.findViewById(R.id.firend_04).setVisibility(View.VISIBLE);
+				}if(fnumber==5){
+					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
+					friendname1.setText(fname1);
+					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
+					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
+					friendname2.setText(fname2);
+					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
+					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
+					friendname3.setText(fname3);
+					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_04).setOnClickListener(friendData4);
+					friendname4 = (TextView) view.findViewById(R.id.fr_user_04);
+					friendname4.setText(fname4);
+					view.findViewById(R.id.firend_04).setVisibility(View.VISIBLE);
+
+					view.findViewById(R.id.fr_next_05).setOnClickListener(friendData5);
+					friendname5 = (TextView) view.findViewById(R.id.fr_user_05);
+					friendname5.setText(fname5);
+					view.findViewById(R.id.firend_05).setVisibility(View.VISIBLE);
 				}
-				friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
-				friendname2.setText(fname2);
-				if(friendname2.toString()!=null){
-					//friend02.setVisibility(View.VISIBLE);
-				}
+
 				break;
 			case "2":
 				view = inflater.inflate(R.layout.chat_fragment, null);
@@ -127,17 +270,78 @@ public class FriendTopFragment extends Fragment {
 		return view;
 	}
 
-	public static FriendTopFragment newInstance(String name,String session,String fname1/*,String fname2*/) {
+	public static FriendTopFragment newInstance(String name,String session,int fnumber) {
 		Bundle args = new Bundle();
 		args.putString("name", name);
 		args.putString("session",session);
-		args.putString("fname1",fname1);
-		//args.putString("fname2",fname2);
-
-
+		args.putInt("fnumber",fnumber);
 		FriendTopFragment fragment = new FriendTopFragment();
 		fragment.setArguments(args);
 		return fragment;
 	}
 
+	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1/*,String fname2*/) {
+		Bundle args = new Bundle();
+		args.putString("name", name);
+		args.putString("session",session);
+		args.putString("fname1",fname1);
+		args.putInt("fnumber",fnumber);
+		FriendTopFragment fragment = new FriendTopFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2) {
+		Bundle args = new Bundle();
+		args.putString("name", name);
+		args.putString("session",session);
+		args.putInt("fnumber",fnumber);
+		args.putString("fname1",fname1);
+		args.putString("fname2",fname2);
+		FriendTopFragment fragment = new FriendTopFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2,String fname3) {
+		Bundle args = new Bundle();
+		args.putString("name", name);
+		args.putString("session",session);
+		args.putString("fname1",fname1);
+		args.putString("fname2",fname2);
+		args.putString("fname3",fname3);
+		args.putInt("fnumber",fnumber);
+		FriendTopFragment fragment = new FriendTopFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2,String fname3,String fname4) {
+		Bundle args = new Bundle();
+		args.putString("name", name);
+		args.putString("session",session);
+		args.putInt("fnumber",fnumber);
+		args.putString("fname1",fname1);
+		args.putString("fname2",fname2);
+		args.putString("fname3",fname3);
+		args.putString("fname4",fname4);
+		FriendTopFragment fragment = new FriendTopFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2,String fname3,String fname4,String fname5) {
+		Bundle args = new Bundle();
+		args.putString("name", name);
+		args.putString("session",session);
+		args.putInt("fnumber",fnumber);
+		args.putString("fname1",fname1);
+		args.putString("fname2",fname2);
+		args.putString("fname3",fname3);
+		args.putString("fname4",fname4);
+		args.putString("fname5",fname5);
+		FriendTopFragment fragment = new FriendTopFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
 }

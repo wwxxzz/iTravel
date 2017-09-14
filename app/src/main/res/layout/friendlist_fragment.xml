@@ -44,7 +44,14 @@
                 android:id="@+id/firend_01"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:visibility="visible">
+                android:visibility="invisible">
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bdb6b7" />
 
                 <ImageView
                     android:id="@+id/fr_head_01"
@@ -71,17 +78,19 @@
                     android:layout_marginTop="11dp"
                     android:background="@drawable/next" />
             </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/firend_02"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:visibility="visible">
+                android:visibility="invisible">
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bdb6b7" />
 
                 <ImageView
                     android:id="@+id/fr_head_02"
@@ -108,17 +117,19 @@
                     android:layout_marginTop="11dp"
                     android:background="@drawable/next" />
             </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/firend_03"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:visibility="invisible">
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bdb6b7" />
 
                 <ImageView
                     android:id="@+id/fr_head_03"
@@ -145,17 +156,19 @@
                     android:layout_marginTop="11dp"
                     android:background="@drawable/next" />
             </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/firend_04"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:visibility="invisible">
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bdb6b7" />
 
                 <ImageView
                     android:id="@+id/fr_head_04"
@@ -182,17 +195,19 @@
                     android:layout_marginTop="11dp"
                     android:background="@drawable/next" />
             </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/firend_05"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:visibility="invisible">
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bdb6b7" />
 
                 <ImageView
                     android:id="@+id/fr_head_05"
@@ -219,196 +234,7 @@
                     android:layout_marginTop="11dp"
                     android:background="@drawable/next" />
             </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
 
-            <RelativeLayout
-                android:id="@+id/firend_06"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/fr_head_06"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/fr_user_06"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/fr_head_06"
-                    android:text="大佬06"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/fr_next_06"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
-            </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
-
-            <RelativeLayout
-                android:id="@+id/firend_07"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/fr_head_07"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/fr_user_07"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/fr_head_07"
-                    android:text="大佬07"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/fr_next_07"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
-            </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
-
-            <RelativeLayout
-                android:id="@+id/firend_08"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/fr_head_08"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/fr_user_08"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/fr_head_08"
-                    android:text="大佬08"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/fr_next_08"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
-            </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
-
-            <RelativeLayout
-                android:id="@+id/firend_09"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/fr_head_09"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/fr_user_09"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/fr_head_09"
-                    android:text="大佬09"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/fr_next_09"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
-            </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
-
-            <RelativeLayout
-                android:id="@+id/firend_10"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/fr_head_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/fr_user_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/fr_head_10"
-                    android:text="大佬10"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/fr_next_10"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
-            </RelativeLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="2dp"
-                android:background="#bdb6b7" />
         </LinearLayout>
 
     </ScrollView>
