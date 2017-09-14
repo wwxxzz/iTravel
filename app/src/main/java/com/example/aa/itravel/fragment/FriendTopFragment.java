@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -24,13 +25,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-<<<<<<< Updated upstream
-=======
 import org.xutils.view.annotation.ViewInject;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,11 +85,9 @@ public class FriendTopFragment extends Fragment {
 	TextView friendname4;
 	TextView friendname5;
 
-<<<<<<< Updated upstream
-=======
-	private static List<TextView> no_content;
-	private static List<TextView> no_comment;
-	private static List<RelativeLayout> notice;
+	private static List<TextView> no_content=new ArrayList<TextView>();
+	private static List<TextView> no_comment=new ArrayList<TextView>();
+	private static List<RelativeLayout> notice=new ArrayList<RelativeLayout>();
 
 	private static List<MessageBuffer> notice_list =new ArrayList<MessageBuffer>();
 	private Handler shownoticeHandler = new Handler(){
@@ -113,8 +109,6 @@ public class FriendTopFragment extends Fragment {
 			}
 		}
 	};
-	public class FriendData implements OnClickListener{
->>>>>>> Stashed changes
 
 	//查看第一个好友资料
 	public class FriendData1 implements OnClickListener{
@@ -338,7 +332,7 @@ public class FriendTopFragment extends Fragment {
 				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent5));
 				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent6));
 				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent7));
-				shownotice();
+				//shownotice();
 				break;
 		}
 		return view;
@@ -403,22 +397,21 @@ public class FriendTopFragment extends Fragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
-<<<<<<< Updated upstream
 
 	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2,String fname3,String fname4,String fname5) {
 		Bundle args = new Bundle();
 		args.putString("name", name);
-		args.putString("session",session);
-		args.putInt("fnumber",fnumber);
-		args.putString("fname1",fname1);
-		args.putString("fname2",fname2);
-		args.putString("fname3",fname3);
-		args.putString("fname4",fname4);
-		args.putString("fname5",fname5);
+		args.putString("session", session);
+		args.putInt("fnumber", fnumber);
+		args.putString("fname1", fname1);
+		args.putString("fname2", fname2);
+		args.putString("fname3", fname3);
+		args.putString("fname4", fname4);
+		args.putString("fname5", fname5);
 		FriendTopFragment fragment = new FriendTopFragment();
 		fragment.setArguments(args);
 		return fragment;
-=======
+	}
 	public void shownotice(){
 		new Thread(new Runnable() {
 			@Override
@@ -454,6 +447,5 @@ public class FriendTopFragment extends Fragment {
 				}
 			}
 		}).start();
->>>>>>> Stashed changes
 	}
 }
