@@ -80,6 +80,26 @@ public class Message_activity extends FragmentActivity {
 	private TextView com_num3;
 	@ViewInject(R.id.tr_likenum03)
 	private TextView like_num3;
+	@ViewInject(R.id.tr_user04)
+	private TextView user4;
+	@ViewInject(R.id.tr_textdata04)
+	private TextView content4;
+	@ViewInject(R.id.tr_time04)
+	private TextView time4;
+	@ViewInject(R.id.tr_commentnum04)
+	private TextView com_num4;
+	@ViewInject(R.id.tr_likenum04)
+	private TextView like_num4;
+	@ViewInject(R.id.tr_user05)
+	private TextView user5;
+	@ViewInject(R.id.tr_textdata05)
+	private TextView content5;
+	@ViewInject(R.id.tr_time05)
+	private TextView time5;
+	@ViewInject(R.id.tr_commentnum05)
+	private TextView com_num5;
+	@ViewInject(R.id.tr_likenum05)
+	private TextView like_num5;
 
 	Integer msgid01;
     String session;
@@ -116,6 +136,17 @@ public class Message_activity extends FragmentActivity {
 				com_num3.setText(String.valueOf(mess_list.get(2).getCommitnumber()));
 				like_num3.setText(String.valueOf(mess_list.get(2).getLikenumber()));
 				user3.setText(mess_list.get(2).getUsername());
+				content4.setText(mess_list.get(3).getMessagecontent());
+				time4.setText(mess_list.get(3).getMessagetime());
+				com_num4.setText(String.valueOf(mess_list.get(3).getCommitnumber()));
+				like_num4.setText(String.valueOf(mess_list.get(3).getLikenumber()));
+				user4.setText(mess_list.get(3).getUsername());
+				content5.setText(mess_list.get(4).getMessagecontent());
+				time5.setText(mess_list.get(4).getMessagetime());
+				com_num5.setText(String.valueOf(mess_list.get(4).getCommitnumber()));
+				like_num5.setText(String.valueOf(mess_list.get(4).getLikenumber()));
+				user5.setText(mess_list.get(4).getUsername());
+
 			}
 
 		}

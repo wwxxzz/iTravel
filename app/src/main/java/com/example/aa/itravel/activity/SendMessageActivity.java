@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,8 +52,35 @@ public class SendMessageActivity extends AppCompatActivity {
     private EditText new_msg;
     @ViewInject(R.id.msg_addImage)
     private ImageView new_image;
+    @ViewInject(R.id.radioButton1)
+    private CheckBox type1;
+    @ViewInject(R.id.radioButton2)
+    private CheckBox type2;
+    @ViewInject(R.id.radioButton3)
+    private CheckBox type3;
+    @ViewInject(R.id.radioButton4)
+    private CheckBox type4;
+    @ViewInject(R.id.radioButton5)
+    private CheckBox type5;
+    @ViewInject(R.id.radioButton6)
+    private CheckBox type6;
+    @ViewInject(R.id.radioButton7)
+    private CheckBox type7;
+    @ViewInject(R.id.radioButton8)
+    private CheckBox type8;
+    @ViewInject(R.id.radioButton9)
+    private CheckBox type9;
+    @ViewInject(R.id.radioButton10)
+    private CheckBox type10;
+    @ViewInject(R.id.radioButton11)
+    private CheckBox type11;
+    @ViewInject(R.id.radioButton12)
+    private CheckBox type12;
+    @ViewInject(R.id.radioButton13)
+    private CheckBox type13;
 
     String session;
+    Integer type = 0;
     String path = Network.URL+"newmessage";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -74,9 +103,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 }else if(back.equals("existed")){
                     Toast.makeText(SendMessageActivity.this,"失效", Toast.LENGTH_LONG).show();
                 }
-
             }
-
         }
     };
     @Override
@@ -91,11 +118,58 @@ public class SendMessageActivity extends AppCompatActivity {
         session = bundle.getString("sessionID");
         //setContentView(R.layout.activity_send_message);
         titlebar.setText("发表动态");
+
         right_icon.setImageDrawable(getResources().getDrawable(R.drawable.tick));;
         addlocation.getPaint().setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
     }
 
-
+   @Event(value={R.id.radioButton1,R.id.radioButton2,R.id.radioButton3,R.id.radioButton4,R.id.radioButton5,
+           R.id.radioButton6,R.id.radioButton7,R.id.radioButton8,R.id.radioButton9,R.id.radioButton10,
+           R.id.radioButton11,R.id.radioButton12,R.id.radioButton13})
+   private void e1(View v){
+       switch (v.getId()){
+           case R.id.radioButton1:
+               type = 1;
+               break;
+           case R.id.radioButton2:
+               type = 2;
+               break;
+           case R.id.radioButton3:
+               type = 3;
+               break;
+           case R.id.radioButton4:
+               type = 4;
+               break;
+           case R.id.radioButton5:
+               type = 5;
+               break;
+           case R.id.radioButton6:
+               type = 6;
+               break;
+           case R.id.radioButton7:
+               type = 7;
+               break;
+           case R.id.radioButton8:
+               type = 8;
+               break;
+           case R.id.radioButton9:
+               type = 9;
+               break;
+           case R.id.radioButton10:
+               type = 10;
+               break;
+           case R.id.radioButton11:
+               type = 11;
+               break;
+           case R.id.radioButton12:
+               type = 12;
+               break;
+           case R.id.radioButton13:
+               type = 13;
+               break;
+       }
+       //Toast.makeText(SendMessageActivity.this,String.valueOf(type), Toast.LENGTH_LONG).show();
+   }
     @Event(value = {R.id.msg_addLocation,R.id.msg_addImage})
     private void event(View view){
         switch (view.getId()){
@@ -106,8 +180,11 @@ public class SendMessageActivity extends AppCompatActivity {
                // new_image.setImageDrawable(getResources().getDrawable(R.drawable.img1));
                 break;
         }
-
     }
+
+
+
+
     @Event(value={R.id.iv_right})
     private void event1(View v){
         //新建一个线程，用于得到服务器响应的参数
@@ -119,7 +196,7 @@ public class SendMessageActivity extends AppCompatActivity {
                     //回调
                     MessageEntityWithBLOBs mess = new MessageEntityWithBLOBs();
                     mess.setMessagecontent(new_msg.getText().toString());
-
+                    mess.setMessagetype(type);
                     Gson gson = new GsonBuilder().create();
                     String content = gson.toJson(mess);
 

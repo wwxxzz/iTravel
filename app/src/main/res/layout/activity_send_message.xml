@@ -53,147 +53,192 @@
         android:text="添加标签..."
         android:textSize="16dp"/>
 
-    <LinearLayout
-        android:id="@+id/ly1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/msg_addLog">
-
-        <RadioButton
+        android:layout_height="match_parent"
+        android:layout_below="@+id/msg_addLog"
+        android:layout_marginTop="15dp">
+        <CheckBox
             android:id="@+id/radioButton1"
-            android:layout_weight="0.25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="美食"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:text="美食"
-            android:button="@drawable/radio_button_style"/>
-
-        <RadioButton
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginLeft="15dp"/>
+        <CheckBox
             android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton"
-            android:layout_toEndOf="@+id/radioButton"
-            android:layout_toRightOf="@+id/radioButton"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/radioButton1"
             android:text="住宿"
-            android:button="@drawable/radio_button_style"/>
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
             android:textAlignment="center"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton2"
-            android:layout_toEndOf="@+id/radioButton2"
+            android:layout_marginLeft="15dp"/>
+        <CheckBox
+            android:id="@+id/radioButton3"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:layout_toRightOf="@+id/radioButton2"
             android:text="购物"
-            android:button="@drawable/radio_button_style"/>
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
             android:textAlignment="center"
-            android:layout_weight="0.25"
+            android:layout_marginLeft="15dp"/>
+
+
+        <CheckBox
+            android:id="@+id/radioButton4"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/radioButton3"
             android:text="自驾"
-            android:button="@drawable/radio_button_style"/>
-    </LinearLayout>
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginLeft="15dp"/>
 
-    <LinearLayout
-        android:id="@+id/ly2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/ly1">
-
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton5"
-            android:layout_weight="0.25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:text="古镇"/>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioButton1"
+            android:text="古镇"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton"
-            android:layout_toEndOf="@+id/radioButton"
-            android:layout_toRightOf="@+id/radioButton"
-            android:text="山地"/>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="山地"
+            android:layout_below="@+id/radioButton2"
+            android:layout_toRightOf="@+id/radioButton1"
+            android:layout_toEndOf="@+id/radioButton1"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton2"
-            android:layout_toEndOf="@+id/radioButton2"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="邮轮"
+            android:layout_below="@+id/radioButton3"
             android:layout_toRightOf="@+id/radioButton2"
-            android:text="邮轮"/>
+            android:layout_toEndOf="@+id/radioButton2"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="穷游"/>
-    </LinearLayout>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="穷游"
+            android:layout_alignBaseline="@+id/radioButton7"
+            android:layout_alignBottom="@+id/radioButton7"
+            android:layout_toRightOf="@+id/radioButton7"
+            android:layout_toEndOf="@+id/radioButton7"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-    <LinearLayout
-        android:id="@+id/ly3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/ly2">
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton9"
-            android:layout_weight="0.25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:text="摄影"/>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioButton5"
+            android:text="摄影"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton"
-            android:layout_toEndOf="@+id/radioButton"
-            android:layout_toRightOf="@+id/radioButton"
-            android:text="国内"/>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="国内"
+            android:layout_below="@+id/radioButton6"
+            android:layout_toRightOf="@+id/radioButton9"
+            android:layout_toEndOf="@+id/radioButton9"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:layout_alignTop="@+id/radioButton2"
-            android:layout_toEndOf="@+id/radioButton2"
-            android:layout_toRightOf="@+id/radioButton2"
-            android:text="国外"/>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="国外"
+            android:layout_below="@+id/radioButton7"
+            android:layout_toRightOf="@+id/radioButton10"
+            android:layout_toEndOf="@+id/radioButton10"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radioButton12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:text="情侣"/>
-    </LinearLayout>
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="情侣"
+            android:layout_below="@+id/radioButton8"
+            android:layout_toRightOf="@+id/radioButton11"
+            android:layout_toEndOf="@+id/radioButton11"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:layout_alignBottom="@+id/radioButton11"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"/>
+
+        <CheckBox
+            android:id="@+id/radioButton13"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="其他"
+            android:button="@null"
+            android:background="@drawable/radio_button_style"
+            android:textColor="@color/radiobutton_textcolor"
+            android:textAlignment="center"
+            android:layout_marginTop="17dp"
+            android:layout_below="@+id/radioButton9"
+            android:layout_alignLeft="@+id/radioButton9"
+            android:layout_alignStart="@+id/radioButton9"/>
+    </RelativeLayout>
 
 </RelativeLayout>
