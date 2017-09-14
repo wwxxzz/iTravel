@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,15 +17,30 @@ import android.widget.TextView;
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.activity.AddNewFriendActivity;
 import com.example.aa.itravel.activity.ShowFriendInfo;
+import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+<<<<<<< Updated upstream
+=======
+import org.xutils.view.annotation.ViewInject;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+
 
 @SuppressLint("ValidFragment")
 public class FriendTopFragment extends Fragment {
@@ -35,6 +52,8 @@ public class FriendTopFragment extends Fragment {
 	private FriendData4 friendData4=new FriendData4();
 	private FriendData5 friendData5=new FriendData5();
 	private NewFriend newFriend=new NewFriend();
+
+
 	private Context mContext;
 	String TAG = "SHOW_FRIEND_LIST_Activity";
 	//s用来保存sessionid     发送refresh请求
@@ -43,12 +62,17 @@ public class FriendTopFragment extends Fragment {
 	OkHttpClient client = new OkHttpClient();
 
 	String path = Network.URL+ "showfriends";
+	String shownoticepath =Network.URL+"refresh";
 
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
+	public final static int TYPE_LIKE=0;
+	public final static int TYPE_COMMENT=1;
+	public final static int TYPE_TRANSFER=2;
+	public final static int TYPE_COLLECT=3;
+
 	public Integer friendID;
 	private static List<User> friend_list =new ArrayList<User>();
-
 
 	private String fname1;
 	private String fname2;
@@ -63,6 +87,34 @@ public class FriendTopFragment extends Fragment {
 	TextView friendname4;
 	TextView friendname5;
 
+<<<<<<< Updated upstream
+=======
+	private static List<TextView> no_content;
+	private static List<TextView> no_comment;
+	private static List<RelativeLayout> notice;
+
+	private static List<MessageBuffer> notice_list =new ArrayList<MessageBuffer>();
+	private Handler shownoticeHandler = new Handler(){
+		@Override
+		public void handleMessage(android.os.Message msg){
+			if(msg.what==1){
+				Log.i("ONEMESSAGE","进入");
+				String qq = (String) msg.obj;
+				Log.i("ONEMESSAGE", qq);
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+				Type type = new TypeToken<List<MessageBuffer>>(){}.getType();
+				notice_list = gson.fromJson(qq,type);
+				for(int i=0;i<=notice_list.size();i++){
+					no_content.get(i).setText(notice_list.get(i).getMessagebcontent());
+					if (notice_list.get(i).getSendtime()!=null)
+						no_comment.get(i).setText(notice_list.get(i).getSendtime());
+					notice.get(i).setVisibility(View.VISIBLE);
+				}
+			}
+		}
+	};
+	public class FriendData implements OnClickListener{
+>>>>>>> Stashed changes
 
 	//查看第一个好友资料
 	public class FriendData1 implements OnClickListener{
@@ -174,7 +226,7 @@ public class FriendTopFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.notice_fragment, null);
+		View view;
 		switch (name) {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
@@ -265,6 +317,28 @@ public class FriendTopFragment extends Fragment {
 				break;
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
+				notice.add((RelativeLayout) view.findViewById(R.id.notice1));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice2));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice3));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice4));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice5));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice6));
+				notice.add((RelativeLayout) view.findViewById(R.id.notice7));
+				no_content.add((TextView) view.findViewById(R.id.no_content1));
+				no_content.add((TextView) view.findViewById(R.id.no_content2));
+				no_content.add((TextView) view.findViewById(R.id.no_content3));
+				no_content.add((TextView) view.findViewById(R.id.no_content4));
+				no_content.add((TextView) view.findViewById(R.id.no_content5));
+				no_content.add((TextView) view.findViewById(R.id.no_content6));
+				no_content.add((TextView) view.findViewById(R.id.no_content7));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent1));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent2));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent3));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent4));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent5));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent6));
+				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent7));
+				shownotice();
 				break;
 		}
 		return view;
@@ -329,6 +403,7 @@ public class FriendTopFragment extends Fragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
+<<<<<<< Updated upstream
 
 	public static FriendTopFragment newInstance(String name,String session,int fnumber,String fname1,String fname2,String fname3,String fname4,String fname5) {
 		Bundle args = new Bundle();
@@ -343,5 +418,42 @@ public class FriendTopFragment extends Fragment {
 		FriendTopFragment fragment = new FriendTopFragment();
 		fragment.setArguments(args);
 		return fragment;
+=======
+	public void shownotice(){
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					//回调
+					MessageBuffer mNotice=new MessageBuffer();
+					mNotice.setMessagebtype(3);
+					Gson gson = new GsonBuilder().create();
+					String content = gson.toJson(mNotice);
+
+					RequestBody body = RequestBody.create(JSON, content);
+
+					Request request = new Request.Builder()
+							.addHeader("cookie", session)
+							.url(shownoticepath)
+							.post(body)
+							.build();
+					Log.i("REQUEST", request.toString());
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i("RESPONSE", response.toString());
+					if (response.isSuccessful()) {
+						Log.i("TAG", "响应成功");
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						shownoticeHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+>>>>>>> Stashed changes
 	}
 }

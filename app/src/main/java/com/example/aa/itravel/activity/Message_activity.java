@@ -102,17 +102,17 @@ public class Message_activity extends FragmentActivity {
 				msgid01=mess_list.get(0).getMessageid();
 
 				content1.setText(mess_list.get(0).getMessagecontent());
-				//time1.setText(mess_list.get(0).getMessagetime());
+				time1.setText(mess_list.get(0).getMessagetime());
 				com_num1.setText(String.valueOf(mess_list.get(0).getCommitnumber()));
 				like_num1.setText(String.valueOf(mess_list.get(0).getLikenumber()));
                 user1.setText(mess_list.get(0).getUsername());
 				content2.setText(mess_list.get(1).getMessagecontent());
-				//time2.setText(mess_list.get(1).getMessagetime());
+				time2.setText(mess_list.get(1).getMessagetime());
 				com_num2.setText(String.valueOf(mess_list.get(1).getCommitnumber()));
 				like_num2.setText(String.valueOf(mess_list.get(1).getLikenumber()));
 				user2.setText(mess_list.get(1).getUsername());
 				content3.setText(mess_list.get(2).getMessagecontent());
-				//time3.setText(mess_list.get(2).getMessagetime());
+				time3.setText(mess_list.get(2).getMessagetime());
 				com_num3.setText(String.valueOf(mess_list.get(2).getCommitnumber()));
 				like_num3.setText(String.valueOf(mess_list.get(2).getLikenumber()));
 				user3.setText(mess_list.get(2).getUsername());

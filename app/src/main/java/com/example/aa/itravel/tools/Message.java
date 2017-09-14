@@ -1,7 +1,5 @@
 package com.example.aa.itravel.tools;
 
-import java.util.Date;
-
 /**
  * Created by Ynez on 2017/9/8.
  */
@@ -17,8 +15,8 @@ public class Message {
 
     private String originalusername;
 
-    //private String messagetime;
-    private Date messagetime;
+    private String messagetime;
+    //private Date messagetime;
 
     private Integer likenumber;
 
@@ -74,20 +72,22 @@ public class Message {
         this.originalusername = originalusername == null ? null : originalusername.trim();
     }
 
-    /*public String getMessagetime() {
+    public String getMessagetime() {
         return messagetime;
-    }*/
+    }
 
-    /*public void setMessagetime(String messagetime) {
+    public void setMessagetime(String messagetime) {
         this.messagetime = messagetime;
-    }*/
-    public Date getMessagetime() {
+    }
+
+    /*public Date getMessagetime() {
         return messagetime;
     }
 
     public void setMessagetime(Date messagetime) {
         this.messagetime = messagetime;
-    }
+    }*/
+
 
     public Integer getLikenumber() {
         return likenumber;

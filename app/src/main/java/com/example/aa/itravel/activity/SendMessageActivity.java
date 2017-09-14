@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
 import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
@@ -51,6 +50,7 @@ public class SendMessageActivity extends AppCompatActivity {
     private EditText new_msg;
     @ViewInject(R.id.msg_addImage)
     private ImageView new_image;
+
     String session;
     String path = Network.URL+"newmessage";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
