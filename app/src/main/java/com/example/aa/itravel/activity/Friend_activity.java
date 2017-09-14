@@ -127,10 +127,12 @@ public class Friend_activity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_message:
                 intent = new Intent(mContext, Message_activity.class);
+                intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
+                intent.putExtra("sessionID",session);
                 startActivity(intent);
                 break;
             case R.id.iv_right:

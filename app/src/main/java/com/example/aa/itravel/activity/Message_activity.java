@@ -1,7 +1,6 @@
 package com.example.aa.itravel.activity;
 
 import android.content.Context;
-import android.content.Entity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,13 +13,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Message;
 import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
-import com.example.aa.itravel.tools.Result;
-import com.example.aa.itravel.tools.Topic;
-import com.example.aa.itravel.tools.Message;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -31,17 +28,13 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static com.example.aa.itravel.R.id.bottombar;
@@ -88,8 +81,10 @@ public class Message_activity extends FragmentActivity {
 	@ViewInject(R.id.tr_likenum03)
 	private TextView like_num3;
 
+	Integer msgid01;
     String session;
 	String path = Network.URL + "showfriendmessage";
+	private static List<Message> msg_list= new ArrayList<Message>();
 	private static List<MessageEntityWithBLOBs> mess_list =new ArrayList<MessageEntityWithBLOBs>();
 
 	private Handler mHandler = new Handler(){
@@ -103,18 +98,21 @@ public class Message_activity extends FragmentActivity {
 				Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
 				mess_list = gson.fromJson(qq,type);
 				System.out.println(mess_list.size());
+
+				msgid01=mess_list.get(0).getMessageid();
+
 				content1.setText(mess_list.get(0).getMessagecontent());
-				time1.setText(mess_list.get(0).getMessagetime());
+				//time1.setText(mess_list.get(0).getMessagetime());
 				com_num1.setText(String.valueOf(mess_list.get(0).getCommitnumber()));
 				like_num1.setText(String.valueOf(mess_list.get(0).getLikenumber()));
                 user1.setText(mess_list.get(0).getUsername());
 				content2.setText(mess_list.get(1).getMessagecontent());
-				time2.setText(mess_list.get(1).getMessagetime());
+				//time2.setText(mess_list.get(1).getMessagetime());
 				com_num2.setText(String.valueOf(mess_list.get(1).getCommitnumber()));
 				like_num2.setText(String.valueOf(mess_list.get(1).getLikenumber()));
 				user2.setText(mess_list.get(1).getUsername());
 				content3.setText(mess_list.get(2).getMessagecontent());
-				time3.setText(mess_list.get(2).getMessagetime());
+				//time3.setText(mess_list.get(2).getMessagetime());
 				com_num3.setText(String.valueOf(mess_list.get(2).getCommitnumber()));
 				like_num3.setText(String.valueOf(mess_list.get(2).getLikenumber()));
 				user3.setText(mess_list.get(2).getUsername());
@@ -149,14 +147,18 @@ public class Message_activity extends FragmentActivity {
         switch (view.getId()) {
             case R.id.button_friend:
                 intent = new Intent(mContext, Friend_activity.class);
+				intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
+				intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.msg_01:
                 intent=new Intent(mContext,SingleMessageActivity.class);
+				intent.putExtra("sessionID", session);
+				intent.putExtra("messageID",msgid01);
                 startActivity(intent);
                 break;
             case R.id.iv_right:

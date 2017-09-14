@@ -137,7 +137,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible">
             <TextView
                 android:id="@+id/comment_user_01"
                 android:layout_width="wrap_content"
@@ -160,7 +161,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible">
             <TextView
                 android:id="@+id/comment_user_02"
                 android:layout_width="wrap_content"
@@ -183,12 +185,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible">
             <TextView
                 android:id="@+id/comment_user_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论者01："
+                android:text="评论者03："
                 android:textSize="14dp"
                 android:textColor="#f75b47"/>
             <TextView
@@ -206,12 +209,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible">
             <TextView
                 android:id="@+id/comment_user_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论者01："
+                android:text="评论者04："
                 android:textSize="14dp"
                 android:textColor="#f75b47"/>
             <TextView
@@ -223,29 +227,6 @@
                 android:layout_alignBaseline="@+id/comment_user_04"
                 android:layout_alignBottom="@+id/comment_user_04"
                 android:layout_toRightOf="@+id/comment_user_04"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/comment_05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                android:id="@+id/comment_user_05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="评论者01："
-                android:textSize="14dp"
-                android:textColor="#f75b47"/>
-            <TextView
-                android:id="@+id/comment_data_05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="评论内容"
-                android:textSize="14dp"
-                android:layout_alignBaseline="@+id/comment_user_05"
-                android:layout_alignBottom="@+id/comment_user_05"
-                android:layout_toRightOf="@+id/comment_user_05"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
