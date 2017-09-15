@@ -83,32 +83,36 @@
             android:id="@+id/tv_bq1"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="标签1" />
+            android:text="标签"
+            android:visibility="invisible" />
+
         <TextView
             android:id="@+id/tv_bq2"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="标签1" />
+            android:text="标签"
+            android:visibility="invisible" />
+
         <TextView
             android:id="@+id/tv_bq3"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="标签1" />
+            android:text="标签"
+            android:visibility="invisible" />
+
         <TextView
             android:id="@+id/tv_bq4"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="标签1" />
+            android:text="标签"
+            android:visibility="invisible" />
+
         <TextView
             android:id="@+id/tv_bq5"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="标签1" />
-        <TextView
-            android:id="@+id/tv_bq6"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="标签1" />
+            android:text="标签"
+            android:visibility="invisible" />
 
 
     </LinearLayout>
@@ -134,7 +138,8 @@
                 android:layout_below="@+id/banner"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo1"
@@ -170,8 +175,9 @@
                 android:layout_alignLeft="@+id/relativeLayout1"
                 android:layout_alignStart="@+id/relativeLayout1"
                 android:layout_below="@+id/relativeLayout1"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo2"
@@ -206,8 +212,9 @@
                 android:layout_alignLeft="@+id/relativeLayout2"
                 android:layout_alignStart="@+id/relativeLayout2"
                 android:layout_below="@+id/relativeLayout2"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo3"
@@ -243,8 +250,9 @@
                 android:layout_alignLeft="@+id/relativeLayout3"
                 android:layout_alignStart="@+id/relativeLayout3"
                 android:layout_below="@+id/relativeLayout3"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo4"
@@ -280,8 +288,9 @@
                 android:layout_alignLeft="@+id/relativeLayout4"
                 android:layout_alignStart="@+id/relativeLayout4"
                 android:layout_below="@+id/relativeLayout4"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo5"
@@ -317,8 +326,9 @@
                 android:layout_alignLeft="@+id/relativeLayout5"
                 android:layout_alignStart="@+id/relativeLayout5"
                 android:layout_below="@+id/relativeLayout5"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/image_photo6"
@@ -346,6 +356,13 @@
 
 
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="没有更多了哦QAQ"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

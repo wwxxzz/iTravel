@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -19,17 +21,36 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
+import com.example.aa.itravel.tools.MessageType;
+import com.example.aa.itravel.tools.Network;
+import com.example.aa.itravel.tools.PreferredType;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static com.example.aa.itravel.R.id.bottombar;
 import static com.example.aa.itravel.R.id.button_home;
@@ -64,26 +85,86 @@ public class Home_activity extends AppCompatActivity {
     //s用来保存sessionid     发送refresh请求
     String session;
 
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            //setContentView(R.layout.home_main);
-            mContext =this;
-            x.view().inject(this);
+    @ViewInject(R.id.tv_bq1)
+    private TextView bq1;
+    @ViewInject(R.id.tv_bq2)
+    private TextView bq2;
+    @ViewInject(R.id.tv_bq3)
+    private TextView bq3;
+    @ViewInject(R.id.tv_bq4)
+    private TextView bq4;
+    @ViewInject(R.id.tv_bq5)
+    private TextView bq5;
 
-            setViewPager();
+    @ViewInject(R.id.tv_username1)
+    private TextView uname1;
+    @ViewInject(R.id.tv_username2)
+    private TextView uname2;
+    @ViewInject(R.id.tv_username3)
+    private TextView uname3;
+    @ViewInject(R.id.tv_username4)
+    private TextView uname4;
+    @ViewInject(R.id.tv_username5)
+    private TextView uname5;
+    @ViewInject(R.id.tv_username6)
+    private TextView uname6;
 
-            //textView.setText("首页推荐");
+    @ViewInject(R.id.tv_topicComment1)
+    private TextView msgcontent1;
+    @ViewInject(R.id.tv_topicComment2)
+    private TextView msgcontent2;
+    @ViewInject(R.id.tv_topicComment3)
+    private TextView msgcontent3;
+    @ViewInject(R.id.tv_topicComment4)
+    private TextView msgcontent4;
+    @ViewInject(R.id.tv_topicComment5)
+    private TextView msgcontent5;
+    @ViewInject(R.id.tv_topicComment6)
+    private TextView msgcontent6;
+
+    @ViewInject(R.id.relativeLayout1)
+    private RelativeLayout recommend1;
+    @ViewInject(R.id.relativeLayout2)
+    private RelativeLayout recommend2;
+    @ViewInject(R.id.relativeLayout3)
+    private RelativeLayout recommend3;
+    @ViewInject(R.id.relativeLayout4)
+    private RelativeLayout recommend4;
+    @ViewInject(R.id.relativeLayout5)
+    private RelativeLayout recommend5;
+    @ViewInject(R.id.relativeLayout6)
+    private RelativeLayout recommend6;
+
+    
+
+    private static List<PreferredType> pre_list =new ArrayList<PreferredType>();
+    private static List<MessageEntityWithBLOBs> msg_list = new ArrayList<MessageEntityWithBLOBs>();
+    String path = Network.URL+"showpreference";
+    String path1 = Network.URL+"showrecommend";
+
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
-            Bundle bundle = this.getIntent().getExtras();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //setContentView(R.layout.home_main);
+        mContext =this;
+        x.view().inject(this);
+
+        setViewPager();
+
+        //textView.setText("首页推荐");
+
+
+        Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-            session = bundle.getString("sessionId");
+        session = bundle.getString("sessionId");
 
-            //设置当前页面 首页 字体为红色
-            Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
-            Button home =(Button) exFragment.getView().findViewById(button_home);
-            home.setTextColor(Color.parseColor("#f75b47"));
+        //设置当前页面 首页 字体为红色
+        Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
+        Button home =(Button) exFragment.getView().findViewById(button_home);
+        home.setTextColor(Color.parseColor("#f75b47"));
 
 
             /*FragmentManager fm = getSupportFragmentManager();
@@ -92,24 +173,27 @@ public class Home_activity extends AppCompatActivity {
             tt.commit();*/
 
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
-            setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
 
 
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-            //监听drawer拉出、隐藏
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.setDrawerListener(toggle);
-            toggle.syncState();
+        //监听drawer拉出、隐藏
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-
-
-        }
-   // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
+        showPreference();
+        showRecommend(pre_list.get(0).getTypeid());
 
 
+    }
+    // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
+
+
+    //标题栏右侧
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -136,9 +220,9 @@ public class Home_activity extends AppCompatActivity {
     }
 
 
-
-   @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
-                        R.id.bt_collection,R.id.bt_preference})
+    //点击事件
+    @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
+            R.id.bt_collection,R.id.bt_preference,R.id.tv_bq1,R.id.tv_bq2,R.id.tv_bq3,R.id.tv_bq4,R.id.tv_bq5})
     private void event(View view){
         Intent intent;
         switch (view.getId()){
@@ -182,7 +266,7 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
-	            intent.putExtra("sessionId", session);
+                intent.putExtra("sessionId", session);
                 startActivity(intent);
                 break;
             case R.id.bt_footprint:
@@ -197,13 +281,357 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.bt_preference:
                 intent = new Intent(mContext,Preference_activity.class);
-	            intent.putExtra("sessionId", session);
+                intent.putExtra("sessionId", session);
                 startActivity(intent);
+                break;
+            case R.id.tv_bq1:
+                System.out.println("点击了第一个标签");
+                showRecommend(pre_list.get(0).getTypeid());
+                break;
+            case R.id.tv_bq2:
+                System.out.println("点击了第2个标签");
+                showRecommend(pre_list.get(1).getTypeid());
+                break;
+            case R.id.tv_bq3:
+                System.out.println("点击了第3个标签");
+                showRecommend(pre_list.get(2).getTypeid());
+                break;
+            case R.id.tv_bq4:
+                System.out.println("点击了第4个标签");
+                showRecommend(pre_list.get(3).getTypeid());
+                break;
+            case R.id.tv_bq5:
+                System.out.println("点击了第5个标签");
+                showRecommend(pre_list.get(4).getTypeid());
                 break;
         }
     }
 
 
+    //显示推荐动态
+    public void showRecommend(final int type){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    MessageType mt = new MessageType();
+                    mt.setTypeid(type);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(mt);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Request request = new Request.Builder()
+                            .addHeader("cookie",session)
+                            .url(path1).post(body)
+                            .build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+
+                        rrHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                        //System.out.println(response.body().string());
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    private Handler rrHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
+                msg_list = gson.fromJson(qq,type);
+                int mnumber;
+                if(msg_list!=null){
+                    mnumber=msg_list.size();
+                    switch (mnumber){
+                        case 0:
+                            recommend1.setVisibility(View.GONE);
+                            recommend2.setVisibility(View.GONE);
+                            recommend3.setVisibility(View.GONE);
+                            recommend4.setVisibility(View.GONE);
+                            recommend5.setVisibility(View.GONE);
+                            recommend6.setVisibility(View.GONE);
+                            break;
+                        case 1:
+                            recommend1.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            break;
+                        case 2:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            break;
+                        case 3:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            recommend3.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            uname3.setText(msg_list.get(2).getUsername());
+                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            break;
+                        case 4:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            recommend3.setVisibility(View.VISIBLE);
+                            recommend4.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            uname3.setText(msg_list.get(2).getUsername());
+                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            uname4.setText(msg_list.get(3).getUsername());
+                            msgcontent4.setText(msg_list.get(3).getMessagecontent());
+                            break;
+                        case 5:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            recommend3.setVisibility(View.VISIBLE);
+                            recommend4.setVisibility(View.VISIBLE);
+                            recommend5.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            uname3.setText(msg_list.get(2).getUsername());
+                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            uname4.setText(msg_list.get(3).getUsername());
+                            msgcontent4.setText(msg_list.get(3).getMessagecontent());
+                            uname5.setText(msg_list.get(4).getUsername());
+                            msgcontent5.setText(msg_list.get(4).getMessagecontent());
+                            break;
+                        case 6:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            recommend3.setVisibility(View.VISIBLE);
+                            recommend4.setVisibility(View.VISIBLE);
+                            recommend5.setVisibility(View.VISIBLE);
+                            recommend6.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            uname3.setText(msg_list.get(2).getUsername());
+                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            uname4.setText(msg_list.get(3).getUsername());
+                            msgcontent4.setText(msg_list.get(3).getMessagecontent());
+                            uname5.setText(msg_list.get(4).getUsername());
+                            msgcontent5.setText(msg_list.get(4).getMessagecontent());
+                            uname6.setText(msg_list.get(5).getUsername());
+                            msgcontent6.setText(msg_list.get(5).getMessagecontent());
+                            break;
+                        default:
+                            recommend1.setVisibility(View.VISIBLE);
+                            recommend2.setVisibility(View.VISIBLE);
+                            recommend3.setVisibility(View.VISIBLE);
+                            recommend4.setVisibility(View.VISIBLE);
+                            recommend5.setVisibility(View.VISIBLE);
+                            recommend6.setVisibility(View.VISIBLE);
+                            uname1.setText(msg_list.get(0).getUsername());
+                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            uname2.setText(msg_list.get(1).getUsername());
+                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            uname3.setText(msg_list.get(2).getUsername());
+                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            uname4.setText(msg_list.get(3).getUsername());
+                            msgcontent4.setText(msg_list.get(3).getMessagecontent());
+                            uname5.setText(msg_list.get(4).getUsername());
+                            msgcontent5.setText(msg_list.get(4).getMessagecontent());
+                            uname6.setText(msg_list.get(5).getUsername());
+                            msgcontent6.setText(msg_list.get(5).getMessagecontent());
+                            break;
+                    }
+                }
+            }
+        }
+    };
+
+
+
+    //显示标签
+    public void showPreference(){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    Request request = new Request.Builder()
+                            .addHeader("cookie",session)
+                            .url(path)
+                            .build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        mmHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                        //System.out.println(response.body().string());
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    private Handler mmHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<PreferredType>>(){}.getType();
+                pre_list = gson.fromJson(qq,type);
+//                System.out.println(pre_list.size());
+                int pnumber;
+                if(pre_list!=null){
+                    pnumber=pre_list.size();
+                    switch (pnumber){
+                        case 1:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            break;
+                        case 2:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq2.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            bq2.setText(prename(pre_list.get(1).getTypeid()));
+                            break;
+                        case 3:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq2.setVisibility(View.VISIBLE);
+                            bq3.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            bq2.setText(prename(pre_list.get(1).getTypeid()));
+                            bq3.setText(prename(pre_list.get(2).getTypeid()));
+                            break;
+                        case 4:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq2.setVisibility(View.VISIBLE);
+                            bq3.setVisibility(View.VISIBLE);
+                            bq4.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            bq2.setText(prename(pre_list.get(1).getTypeid()));
+                            bq3.setText(prename(pre_list.get(2).getTypeid()));
+                            bq4.setText(prename(pre_list.get(3).getTypeid()));
+                            break;
+                        case 5:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq2.setVisibility(View.VISIBLE);
+                            bq3.setVisibility(View.VISIBLE);
+                            bq4.setVisibility(View.VISIBLE);
+                            bq5.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            bq2.setText(prename(pre_list.get(1).getTypeid()));
+                            bq3.setText(prename(pre_list.get(2).getTypeid()));
+                            bq4.setText(prename(pre_list.get(3).getTypeid()));
+                            bq5.setText(prename(pre_list.get(4).getTypeid()));
+                            break;
+                        default:
+                            bq1.setVisibility(View.VISIBLE);
+                            bq2.setVisibility(View.VISIBLE);
+                            bq3.setVisibility(View.VISIBLE);
+                            bq4.setVisibility(View.VISIBLE);
+                            bq5.setVisibility(View.VISIBLE);
+                            bq1.setText(prename(pre_list.get(0).getTypeid()));
+                            bq2.setText(prename(pre_list.get(1).getTypeid()));
+                            bq3.setText(prename(pre_list.get(2).getTypeid()));
+                            bq4.setText(prename(pre_list.get(3).getTypeid()));
+                            bq5.setText(prename(pre_list.get(4).getTypeid()));
+                            break;
+                    }
+                }else {
+                    bq1.setText("美食");
+                    bq2.setText("住宿");
+                    bq3.setText("购物");
+                    bq4.setText("自驾");
+                    bq5.setText("古镇");
+                }
+            }
+
+        }
+
+    };
+
+    private String prename(int id){
+        String name="";
+        switch (id){
+            case 1:
+                name="美食";
+                break;
+            case 2:
+                name="住宿";
+                break;
+            case 3:
+                name="购物";
+                break;
+            case 4:
+                name="自驾";
+                break;
+            case 5:
+                name="古镇";
+                break;
+            case 6:
+                name="山地";
+                break;
+            case 7:
+                name="邮轮";
+                break;
+            case 8:
+                name="穷游";
+                break;
+            case 9:
+                name="摄影";
+                break;
+            case 10:
+                name="国外";
+                break;
+            case 11:
+                name="国内";
+                break;
+            case 12:
+                name="情侣";
+                break;
+            case 13:
+                name="其他";
+                break;
+        }
+        return name;
+    }
+
+
+
+
+
+
+    //轮播图
     private void setViewPager() {
 
         //newsTitle=(TextView)findViewById(R.id.NewsTitle);
