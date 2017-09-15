@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -100,7 +101,16 @@ public class Message_activity extends FragmentActivity {
 	private TextView com_num5;
 	@ViewInject(R.id.tr_likenum05)
 	private TextView like_num5;
-
+    @ViewInject(R.id.me_type_1)
+	private CheckBox type1;
+	@ViewInject(R.id.me_type_2)
+	private CheckBox type2;
+	@ViewInject(R.id.me_type_3)
+	private CheckBox type3;
+	@ViewInject(R.id.me_type_4)
+	private CheckBox type4;
+	@ViewInject(R.id.me_type_5)
+	private CheckBox type5;
 	Integer msgid01;
 	Integer msgid02;
 	Integer msgid03;
@@ -134,32 +144,80 @@ public class Message_activity extends FragmentActivity {
 				com_num1.setText(String.valueOf(mess_list.get(0).getCommitnumber()));
 				like_num1.setText(String.valueOf(mess_list.get(0).getLikenumber()));
                 user1.setText(mess_list.get(0).getUsername());
+				type1.setText(prename(mess_list.get(0).getMessagetype()));
 				content2.setText(mess_list.get(1).getMessagecontent());
 				time2.setText(mess_list.get(1).getMessagetime());
 				com_num2.setText(String.valueOf(mess_list.get(1).getCommitnumber()));
 				like_num2.setText(String.valueOf(mess_list.get(1).getLikenumber()));
 				user2.setText(mess_list.get(1).getUsername());
+				type2.setText(prename(mess_list.get(1).getMessagetype()));
 				content3.setText(mess_list.get(2).getMessagecontent());
 				time3.setText(mess_list.get(2).getMessagetime());
 				com_num3.setText(String.valueOf(mess_list.get(2).getCommitnumber()));
 				like_num3.setText(String.valueOf(mess_list.get(2).getLikenumber()));
 				user3.setText(mess_list.get(2).getUsername());
+				type3.setText(prename(mess_list.get(2).getMessagetype()));
 				content4.setText(mess_list.get(3).getMessagecontent());
 				time4.setText(mess_list.get(3).getMessagetime());
 				com_num4.setText(String.valueOf(mess_list.get(3).getCommitnumber()));
 				like_num4.setText(String.valueOf(mess_list.get(3).getLikenumber()));
 				user4.setText(mess_list.get(3).getUsername());
+				type4.setText(prename(mess_list.get(3).getMessagetype()));
 				content5.setText(mess_list.get(4).getMessagecontent());
 				time5.setText(mess_list.get(4).getMessagetime());
 				com_num5.setText(String.valueOf(mess_list.get(4).getCommitnumber()));
 				like_num5.setText(String.valueOf(mess_list.get(4).getLikenumber()));
 				user5.setText(mess_list.get(4).getUsername());
-
+				type5.setText(prename(mess_list.get(4).getMessagetype()));
 			}
 
 		}
 	};
-
+	private String prename(int id){
+		String name="";
+		switch (id){
+			case 1:
+				name="美食";
+				break;
+			case 2:
+				name="住宿";
+				break;
+			case 3:
+				name="购物";
+				break;
+			case 4:
+				name="自驾";
+				break;
+			case 5:
+				name="古镇";
+				break;
+			case 6:
+				name="山地";
+				break;
+			case 7:
+				name="邮轮";
+				break;
+			case 8:
+				name="穷游";
+				break;
+			case 9:
+				name="摄影";
+				break;
+			case 10:
+				name="国外";
+				break;
+			case 11:
+				name="国内";
+				break;
+			case 12:
+				name="情侣";
+				break;
+			case 13:
+				name="其他";
+				break;
+		}
+		return name;
+	}
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

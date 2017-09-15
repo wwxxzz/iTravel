@@ -132,6 +132,19 @@
                     android:layout_toStartOf="@+id/tr_likenum01"
                     android:gravity="center"
                     android:background="@drawable/like_selector"/>
+
+                <CheckBox
+                    android:id="@+id/me_type_1"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:button="@null"
+                    android:background="@drawable/radio_button_style"
+                    android:textColor="@color/button"
+                    android:textAlignment="center"
+                    android:text="CheckBox"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/tr_like01"
+                    android:layout_toEndOf="@+id/tr_like01"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -268,6 +281,18 @@
                 android:layout_toStartOf="@+id/tr_likenum02"
                 android:background="@drawable/like_selector"
                 android:gravity="center" />
+            <CheckBox
+                android:id="@+id/me_type_2"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:background="@drawable/radio_button_style"
+                android:textColor="@color/button"
+                android:textAlignment="center"
+                android:text="CheckBox"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/tr_comment_ic02"
+                android:layout_alignEnd="@+id/tr_comment_ic02"/>
         </RelativeLayout>
 
         <View
@@ -393,6 +418,18 @@
                 android:layout_toStartOf="@+id/tr_likenum03"
                 android:gravity="center"
                 android:background="@drawable/like_selector"/>
+            <CheckBox
+                android:id="@+id/me_type_3"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:background="@drawable/radio_button_style"
+                android:textColor="@color/button"
+                android:textAlignment="center"
+                android:text="CheckBox"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/tr_collection03"
+                android:layout_alignStart="@+id/tr_collection03"/>
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -516,6 +553,19 @@
                 android:layout_toStartOf="@+id/tr_likenum04"
                 android:gravity="center"
                 android:background="@drawable/like_selector"/>
+            <CheckBox
+                android:id="@+id/me_type_4"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:background="@drawable/radio_button_style"
+                android:textColor="@color/button"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:text="CheckBox"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/tr_collection04"
+                android:layout_alignStart="@+id/tr_collection04"/>
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -640,6 +690,19 @@
                 android:layout_toStartOf="@+id/tr_likenum05"
                 android:gravity="center"
                 android:background="@drawable/like_selector"/>
+            <CheckBox
+                android:id="@+id/me_type_5"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:background="@drawable/radio_button_style"
+                android:textColor="@color/button"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="CheckBox"
+                android:layout_alignLeft="@+id/tr_collection05"
+                android:layout_alignStart="@+id/tr_collection05"/>
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -664,4 +727,5 @@
         android:name="com.example.aa.itravel.fragment.BottomBar"
         android:layout_alignParentBottom="true">
     </fragment>
+
 </RelativeLayout>
