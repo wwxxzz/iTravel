@@ -103,18 +103,18 @@ public class Topic_activity3 extends Activity {
     private TextView user5_like;
     @ViewInject(R.id.tv_likenumber6)
     private TextView user6_like;
-    @ViewInject(R.id.relativeLayout1)
-    private RelativeLayout rl1;
-    @ViewInject(R.id.relativeLayout2)
-    private RelativeLayout rl2;
-    @ViewInject(R.id.relativeLayout3)
-    private RelativeLayout rl3;
-    @ViewInject(R.id.relativeLayout4)
-    private RelativeLayout rl4;
-    @ViewInject(R.id.relativeLayout5)
-    private RelativeLayout rl5;
-    @ViewInject(R.id.relativeLayout6)
-    private RelativeLayout rl6;
+//    @ViewInject(R.id.relativeLayout1)
+//    private RelativeLayout rl1;
+//    @ViewInject(R.id.relativeLayout2)
+//    private RelativeLayout rl2;
+//    @ViewInject(R.id.relativeLayout3)
+//    private RelativeLayout rl3;
+//    @ViewInject(R.id.relativeLayout4)
+//    private RelativeLayout rl4;
+//    @ViewInject(R.id.relativeLayout5)
+//    private RelativeLayout rl5;
+//    @ViewInject(R.id.relativeLayout6)
+//    private RelativeLayout rl6;
 
 
 //	@ViewInject(R.id.topic_id)
@@ -155,37 +155,61 @@ public class Topic_activity3 extends Activity {
                 com_list = gson.fromJson(qq,type);
 	            if(com_list!=null){
                     if(com_list.size()==1){
-                        rl1.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user1_comment.setText(com_list.get(0).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
                     }else if(com_list.size()==2){
-                        rl1.setVisibility(View.VISIBLE);
-                        rl2.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user2_name.setText(com_list.get(1).getCommentatorname());
                         user1_comment.setText(com_list.get(0).getCommentcontent());
                         user2_comment.setText(com_list.get(1).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
                     }else if(com_list.size()==3){
-                        rl1.setVisibility(View.VISIBLE);
-                        rl2.setVisibility(View.VISIBLE);
-                        rl3.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout3).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user2_name.setText(com_list.get(1).getCommentatorname());
                         user3_name.setText(com_list.get(2).getCommentatorname());
                         user1_comment.setText(com_list.get(0).getCommentcontent());
                         user2_comment.setText(com_list.get(1).getCommentcontent());
                         user3_comment.setText(com_list.get(2).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
+                        if(com_list.get(2).getLikenumber()==null){
+                            user3_like.setText(String.valueOf(0));
+                        }else{
+                            user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        }
                     }else if(com_list.size()==4){
-                        rl1.setVisibility(View.VISIBLE);
-                        rl2.setVisibility(View.VISIBLE);
-                        rl3.setVisibility(View.VISIBLE);
-                        rl4.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout3).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout4).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user2_name.setText(com_list.get(1).getCommentatorname());
                         user3_name.setText(com_list.get(2).getCommentatorname());
@@ -194,16 +218,32 @@ public class Topic_activity3 extends Activity {
                         user2_comment.setText(com_list.get(1).getCommentcontent());
                         user3_comment.setText(com_list.get(2).getCommentcontent());
                         user4_comment.setText(com_list.get(3).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
+                        if(com_list.get(2).getLikenumber()==null){
+                            user3_like.setText(String.valueOf(0));
+                        }else{
+                            user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        }
+                        if(com_list.get(3).getLikenumber()==null){
+                            user4_like.setText(String.valueOf(0));
+                        }else{
+                            user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        }
                     }else if(com_list.size()==5){
-                        rl1.setVisibility(View.VISIBLE);
-                        rl2.setVisibility(View.VISIBLE);
-                        rl3.setVisibility(View.VISIBLE);
-                        rl4.setVisibility(View.VISIBLE);
-                        rl5.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout3).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout4).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout5).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user2_name.setText(com_list.get(1).getCommentatorname());
                         user3_name.setText(com_list.get(2).getCommentatorname());
@@ -214,18 +254,38 @@ public class Topic_activity3 extends Activity {
                         user3_comment.setText(com_list.get(2).getCommentcontent());
                         user4_comment.setText(com_list.get(3).getCommentcontent());
                         user5_comment.setText(com_list.get(4).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-                        user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
+                        if(com_list.get(2).getLikenumber()==null){
+                            user3_like.setText(String.valueOf(0));
+                        }else{
+                            user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        }
+                        if(com_list.get(3).getLikenumber()==null){
+                            user4_like.setText(String.valueOf(0));
+                        }else{
+                            user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        }
+                        if(com_list.get(4).getLikenumber()==null){
+                            user5_like.setText(String.valueOf(0));
+                        }else{
+                            user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                        }
                     }else if(com_list.size()==6){
-                        rl1.setVisibility(View.VISIBLE);
-                        rl2.setVisibility(View.VISIBLE);
-                        rl3.setVisibility(View.VISIBLE);
-                        rl4.setVisibility(View.VISIBLE);
-                        rl5.setVisibility(View.VISIBLE);
-                        rl6.setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout3).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout4).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout5).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout6).setVisibility(View.VISIBLE);
                         user1_name.setText(com_list.get(0).getCommentatorname());
                         user2_name.setText(com_list.get(1).getCommentatorname());
                         user3_name.setText(com_list.get(2).getCommentatorname());
@@ -238,12 +298,85 @@ public class Topic_activity3 extends Activity {
                         user4_comment.setText(com_list.get(3).getCommentcontent());
                         user5_comment.setText(com_list.get(4).getCommentcontent());
                         user6_comment.setText(com_list.get(5).getCommentcontent());
-                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-                        user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
-                        user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
+                        if(com_list.get(2).getLikenumber()==null){
+                            user3_like.setText(String.valueOf(0));
+                        }else{
+                            user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        }
+                        if(com_list.get(3).getLikenumber()==null){
+                            user4_like.setText(String.valueOf(0));
+                        }else{
+                            user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        }
+                        if(com_list.get(4).getLikenumber()==null){
+                            user5_like.setText(String.valueOf(0));
+                        }else{
+                            user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                        }
+                        if(com_list.get(5).getLikenumber()==null){
+                            user6_like.setText(String.valueOf(0));
+                        }else{
+                            user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
+                        }
+                    }else if(com_list.size()> 6){
+                        findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout3).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout4).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout5).setVisibility(View.VISIBLE);
+                        findViewById(R.id.relativeLayout6).setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user3_name.setText(com_list.get(2).getCommentatorname());
+                        user4_name.setText(com_list.get(3).getCommentatorname());
+                        user5_name.setText(com_list.get(4).getCommentatorname());
+                        user6_name.setText(com_list.get(5).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user3_comment.setText(com_list.get(2).getCommentcontent());
+                        user4_comment.setText(com_list.get(3).getCommentcontent());
+                        user5_comment.setText(com_list.get(4).getCommentcontent());
+                        user6_comment.setText(com_list.get(5).getCommentcontent());
+                        if(com_list.get(0).getLikenumber()==null){
+                            user1_like.setText(String.valueOf(0));
+                        }else{
+                            user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        }
+                        if(com_list.get(1).getLikenumber()==null){
+                            user2_like.setText(String.valueOf(0));
+                        }else{
+                            user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        }
+                        if(com_list.get(2).getLikenumber()==null){
+                            user3_like.setText(String.valueOf(0));
+                        }else{
+                            user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        }
+                        if(com_list.get(3).getLikenumber()==null){
+                            user4_like.setText(String.valueOf(0));
+                        }else{
+                            user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        }
+                        if(com_list.get(4).getLikenumber()==null){
+                            user5_like.setText(String.valueOf(0));
+                        }else{
+                            user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                        }
+                        if(com_list.get(5).getLikenumber()==null){
+                            user6_like.setText(String.valueOf(0));
+                        }else{
+                            user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
+                        }
                     }
 	            }else{
 		            Toast.makeText(Topic_activity3.this,"没有话题评论", Toast.LENGTH_LONG).show();

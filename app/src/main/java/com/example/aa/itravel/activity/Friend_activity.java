@@ -188,7 +188,6 @@ public class Friend_activity extends AppCompatActivity {
                     friend1.setUsername(friendname_01);
                     fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01));
                     fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01));
-                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01));
                 }if(fnumber==2){
                     friendname_01 = friend_list.get(0).getUsername();
                     User friend1 = new User();

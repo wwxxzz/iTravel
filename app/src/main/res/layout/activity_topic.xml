@@ -86,8 +86,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo1"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView
@@ -141,8 +141,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView
@@ -196,8 +196,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView
@@ -251,8 +251,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo4"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView
@@ -306,8 +306,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo5"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView
@@ -361,8 +361,8 @@
 
                 <ImageView
                     android:id="@+id/image_photo6"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_home"/>
 
                 <TextView

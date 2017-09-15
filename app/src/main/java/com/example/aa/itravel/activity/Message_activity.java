@@ -102,6 +102,10 @@ public class Message_activity extends FragmentActivity {
 	private TextView like_num5;
 
 	Integer msgid01;
+	Integer msgid02;
+	Integer msgid03;
+	Integer msgid04;
+	Integer msgid05;
     String session;
 	String path = Network.URL + "showfriendmessage";
 	private static List<Message> msg_list= new ArrayList<Message>();
@@ -120,6 +124,10 @@ public class Message_activity extends FragmentActivity {
 				System.out.println(mess_list.size());
 
 				msgid01=mess_list.get(0).getMessageid();
+				msgid02=mess_list.get(1).getMessageid();
+				msgid03=mess_list.get(2).getMessageid();
+				msgid04=mess_list.get(3).getMessageid();
+				msgid05=mess_list.get(4).getMessageid();
 
 				content1.setText(mess_list.get(0).getMessagecontent());
 				time1.setText(mess_list.get(0).getMessagetime());
@@ -172,7 +180,7 @@ public class Message_activity extends FragmentActivity {
     }
 
 
-    @Event(value = {R.id.button_friend, R.id.button_home,R.id.msg_01,R.id.iv_right})
+    @Event(value = {R.id.button_friend, R.id.button_home,R.id.msg_01,R.id.msg_02,R.id.msg_03,R.id.msg_04,R.id.msg_05,R.id.iv_right})
     private void event(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -192,6 +200,30 @@ public class Message_activity extends FragmentActivity {
 				intent.putExtra("messageID",msgid01);
                 startActivity(intent);
                 break;
+	        case R.id.msg_02:
+		        intent=new Intent(mContext,SingleMessageActivity.class);
+		        intent.putExtra("sessionID", session);
+		        intent.putExtra("messageID",msgid02);
+		        startActivity(intent);
+		        break;
+	        case R.id.msg_03:
+		        intent=new Intent(mContext,SingleMessageActivity.class);
+		        intent.putExtra("sessionID", session);
+		        intent.putExtra("messageID",msgid03);
+		        startActivity(intent);
+		        break;
+	        case R.id.msg_04:
+		        intent=new Intent(mContext,SingleMessageActivity.class);
+		        intent.putExtra("sessionID", session);
+		        intent.putExtra("messageID",msgid04);
+		        startActivity(intent);
+		        break;
+	        case R.id.msg_05:
+		        intent=new Intent(mContext,SingleMessageActivity.class);
+		        intent.putExtra("sessionID", session);
+		        intent.putExtra("messageID",msgid05);
+		        startActivity(intent);
+		        break;
             case R.id.iv_right:
                 intent=new Intent(mContext,SendMessageActivity.class);
                 intent.putExtra("sessionID", session);

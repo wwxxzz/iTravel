@@ -314,9 +314,6 @@ public class FriendTopFragment extends Fragment {
 					view.findViewById(R.id.firend_05).setVisibility(View.VISIBLE);
 				}
 				break;
-			case "2":
-				view = inflater.inflate(R.layout.chat_fragment, null);
-				break;
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
 				notice.add((RelativeLayout) view.findViewById(R.id.notice1));

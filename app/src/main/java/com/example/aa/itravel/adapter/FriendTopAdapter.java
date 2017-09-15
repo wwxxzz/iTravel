@@ -16,7 +16,7 @@ import java.util.List;
 public class FriendTopAdapter extends FragmentPagerAdapter {
     private Fragment currentFragment;
     private List<Fragment> fragments;
-    private String[] titles = {"通知", "好友", "聊天"};
+    private String[] titles = {"通知", "好友"};
 
     public FriendTopAdapter(FragmentManager fm) {
         super(fm);
