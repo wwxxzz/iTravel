@@ -25,9 +25,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-
-import org.xutils.view.annotation.ViewInject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -61,7 +58,7 @@ public class FriendTopFragment extends Fragment {
 	OkHttpClient client = new OkHttpClient();
 
 	String path = Network.URL + "showfriends";
-	String shownoticepath = Network.URL + "refresh";
+	String shownoticepath = Network.URL + "refreshinform";
 
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -88,7 +85,7 @@ public class FriendTopFragment extends Fragment {
 
 
 	private static List<TextView> no_content = new ArrayList<TextView>();
-	private static List<TextView> no_comment = new ArrayList<TextView>();
+	private static List<TextView> no_time = new ArrayList<TextView>();
 	private static List<RelativeLayout> notice = new ArrayList<RelativeLayout>();
 
 
@@ -104,11 +101,11 @@ public class FriendTopFragment extends Fragment {
 				Type type = new TypeToken<List<MessageBuffer>>() {
 				}.getType();
 				notice_list = gson.fromJson(qq, type);
-				for (int i = 0; i <= notice_list.size(); i++) {
-					no_content.get(i).setText(notice_list.get(i).getMessagebcontent());
-					if (notice_list.get(i).getSendtime() != null)
-						no_comment.get(i).setText(notice_list.get(i).getSendtime());
-					notice.get(i).setVisibility(View.VISIBLE);
+				if (notice_list!= null&&!notice_list.isEmpty())
+				for (int i = 1; i <= notice_list.size(); i++) {
+					no_content.get(i-1).setText(notice_list.get(i-1).getMessagebcontent());
+					no_time.get(i-1).setText(notice_list.get(i-1).getSendtime());
+					notice.get(i-1).setVisibility(View.VISIBLE);
 				}
 			}
 		}
@@ -330,14 +327,14 @@ public class FriendTopFragment extends Fragment {
 				no_content.add((TextView) view.findViewById(R.id.no_content5));
 				no_content.add((TextView) view.findViewById(R.id.no_content6));
 				no_content.add((TextView) view.findViewById(R.id.no_content7));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent1));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent2));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent3));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent4));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent5));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent6));
-				no_comment.add((TextView) view.findViewById(R.id.no_commentcontent7));
-				//shownotice();
+				no_time.add((TextView) view.findViewById(R.id.no_time1));
+				no_time.add((TextView) view.findViewById(R.id.no_time2));
+				no_time.add((TextView) view.findViewById(R.id.no_time3));
+				no_time.add((TextView) view.findViewById(R.id.no_time4));
+				no_time.add((TextView) view.findViewById(R.id.no_time5));
+				no_time.add((TextView) view.findViewById(R.id.no_time6));
+				no_time.add((TextView) view.findViewById(R.id.no_time7));
+				shownotice();
 				break;
 		}
 		return view;

@@ -197,7 +197,7 @@ public class Friend_activity extends AppCompatActivity {
                     friend2.setUsername(friendname_02);
                     fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02));
                     fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02));
-                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02));
+                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02));
                 }if(fnumber==3){
                     friendname_01 = friend_list.get(0).getUsername();
                     User friend1 = new User();
@@ -210,7 +210,7 @@ public class Friend_activity extends AppCompatActivity {
                     friend3.setUsername(friendname_03);
                     fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03));
                     fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03));
-                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03));
+                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03));
                 }if(fnumber==4){
                     friendname_01 = friend_list.get(0).getUsername();
                     User friend1 = new User();
@@ -226,7 +226,7 @@ public class Friend_activity extends AppCompatActivity {
                     friend4.setUsername(friendname_04);
                     fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
                     fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
-                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
+                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
                 }if(fnumber==5){
                     friendname_01 = friend_list.get(0).getUsername();
                     User friend1 = new User();
@@ -245,12 +245,12 @@ public class Friend_activity extends AppCompatActivity {
                     friend5.setUsername(friendname_05);
                     fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
                     fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
-                    fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
+                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
 
                 }if(fnumber==0){
                 fragments.add(FriendTopFragment.newInstance("0",session,fnumber));
                 fragments.add(FriendTopFragment.newInstance("1",session,fnumber));
-                fragments.add(FriendTopFragment.newInstance("2",session,fnumber));
+                //fragments.add(FriendTopFragment.newInstance,("2",sessionfnumber));
                 }
 
 

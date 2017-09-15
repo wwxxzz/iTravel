@@ -36,10 +36,10 @@
             android:layout_toEndOf="@+id/no_image1" />
 
         <TextView
-            android:id="@+id/no_commentcontent1"
+            android:id="@+id/no_time1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论内容"
+            android:text="time"
             android:layout_below="@+id/no_content1"
             android:layout_toRightOf="@+id/no_image1"
             android:layout_toEndOf="@+id/no_image1"
@@ -49,6 +49,7 @@
         android:id="@+id/notice2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:visibility="gone">
 
         <ImageView
@@ -71,10 +72,10 @@
             android:layout_toEndOf="@+id/no_image2" />
 
         <TextView
-            android:id="@+id/no_commentcontent2"
+            android:id="@+id/no_time2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论内容"
+            android:text="time"
             android:layout_below="@+id/no_content2"
             android:layout_toRightOf="@+id/no_image2"
             android:layout_toEndOf="@+id/no_image2"
@@ -84,6 +85,7 @@
         android:id="@+id/notice3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:visibility="gone">
 
         <ImageView
@@ -106,10 +108,10 @@
             android:layout_toEndOf="@+id/no_image3" />
 
         <TextView
-            android:id="@+id/no_commentcontent3"
+            android:id="@+id/no_time3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论内容"
+            android:text="time"
             android:layout_below="@+id/no_content3"
             android:layout_toRightOf="@+id/no_image3"
             android:layout_toEndOf="@+id/no_image3"
@@ -119,6 +121,7 @@
         android:id="@+id/notice4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:visibility="gone">
 
         <ImageView
@@ -141,10 +144,10 @@
             android:layout_toEndOf="@+id/no_image4" />
 
         <TextView
-            android:id="@+id/no_commentcontent4"
+            android:id="@+id/no_time4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论内容"
+            android:text="time"
             android:layout_below="@+id/no_content4"
             android:layout_toRightOf="@+id/no_image4"
             android:layout_toEndOf="@+id/no_image4"
@@ -154,6 +157,7 @@
         android:id="@+id/notice5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:visibility="gone">
 
         <ImageView
@@ -176,10 +180,10 @@
             android:layout_toEndOf="@+id/no_image5" />
 
         <TextView
-            android:id="@+id/no_commentcontent5"
+            android:id="@+id/no_time5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论内容"
+            android:text="time"
             android:layout_below="@+id/no_content5"
             android:layout_toRightOf="@+id/no_image5"
             android:layout_toEndOf="@+id/no_image5"
@@ -189,6 +193,7 @@
     android:id="@+id/notice6"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:visibility="gone">
 
     <ImageView
@@ -211,10 +216,10 @@
         android:layout_toEndOf="@+id/no_image6" />
 
     <TextView
-        android:id="@+id/no_commentcontent6"
+        android:id="@+id/no_time6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="评论内容"
+        android:text="time"
         android:layout_below="@+id/no_content6"
         android:layout_toRightOf="@+id/no_image6"
         android:layout_toEndOf="@+id/no_image6"
@@ -224,6 +229,7 @@
     android:id="@+id/notice7"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:visibility="gone">
 
     <ImageView
@@ -246,10 +252,10 @@
         android:layout_toEndOf="@+id/no_image7" />
 
     <TextView
-        android:id="@+id/no_commentcontent7"
+        android:id="@+id/no_time7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="评论内容"
+        android:text="time"
         android:layout_below="@+id/no_content7"
         android:layout_toRightOf="@+id/no_image7"
         android:layout_toEndOf="@+id/no_image7"
