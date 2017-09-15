@@ -186,7 +186,8 @@ public class Home_activity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.bt_footprint:
-                intent = new Intent(mContext,Footprint_activity.class);
+                intent = new Intent(mContext,FootPrintTestActivity.class);
+                intent.putExtra("sessionId",session);
                 startActivity(intent);
                 break;
             case R.id.bt_collection:

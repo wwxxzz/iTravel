@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 tools:context="com.example.aa.itravel.activity.FootPrintTestActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.amap.api.maps2d.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="26dp" >
+
+
+        </com.amap.api.maps2d.MapView>
+
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="请输入国家"
+            />
+
+        <ImageView
+            android:id="@+id/lightupp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/lightup"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/editText2"
+            android:layout_toEndOf="@+id/editText2"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/show"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/showup"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/lightupp"
+            android:layout_toEndOf="@+id/lightupp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:scaleType="centerInside"
+            />
+
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
