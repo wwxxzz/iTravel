@@ -245,7 +245,6 @@ public class Topic_activity3 extends Activity {
                         user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
                         user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
                     }
-
 	            }else{
 		            Toast.makeText(Topic_activity3.this,"没有话题评论", Toast.LENGTH_LONG).show();
 	            }

@@ -96,35 +96,38 @@ public class Preference_activity extends Activity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<PreferredType>>(){}.getType();
                 pre_list = gson.fromJson(qq,type);
-                for(int i=0; i<pre_list.size(); i++){
-                    if(pre_list.get(i).getTypeid()== 1){
-                        cb1.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 2){
-                        cb2.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 3){
-                        cb3.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 4){
-                        cb4.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 5){
-                        cb5.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 6){
-                        cb6.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 7){
-                        cb7.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 8){
-                        cb8.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 9){
-                        cb9.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 10){
-                        cb10.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 11){
-                        cb11.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 12){
-                        cb12.setChecked(true);
-                    }else if(pre_list.get(i).getTypeid()== 13){
-                        cb13.setChecked(true);
+                if(pre_list != null){
+                    for(int i=0; i<pre_list.size(); i++){
+                        if(pre_list.get(i).getTypeid()== 1){
+                            cb1.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 2){
+                            cb2.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 3){
+                            cb3.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 4){
+                            cb4.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 5){
+                            cb5.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 6){
+                            cb6.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 7){
+                            cb7.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 8){
+                            cb8.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 9){
+                            cb9.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 10){
+                            cb10.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 11){
+                            cb11.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 12){
+                            cb12.setChecked(true);
+                        }else if(pre_list.get(i).getTypeid()== 13){
+                            cb13.setChecked(true);
+                        }
                     }
                 }
+
             }
 
         }
