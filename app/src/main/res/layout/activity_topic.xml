@@ -81,13 +81,14 @@
                 android:layout_below="@+id/tv_topic_con"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo1"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username1"
@@ -115,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username1"
                     android:layout_alignRight="@+id/tv_topicComment1"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like1"
@@ -124,7 +125,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber1"
                     android:layout_toLeftOf="@+id/tv_likenumber1"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -134,14 +135,15 @@
                 android:layout_alignLeft="@+id/relativeLayout1"
                 android:layout_alignStart="@+id/relativeLayout1"
                 android:layout_below="@+id/relativeLayout1"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username2"
@@ -169,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username2"
                     android:layout_alignRight="@+id/tv_topicComment2"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like2"
@@ -178,7 +180,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber2"
                     android:layout_toLeftOf="@+id/tv_likenumber2"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -188,14 +190,15 @@
                 android:layout_alignLeft="@+id/relativeLayout2"
                 android:layout_alignStart="@+id/relativeLayout2"
                 android:layout_below="@+id/relativeLayout2"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo3"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username3"
@@ -223,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username3"
                     android:layout_alignRight="@+id/tv_topicComment3"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like3"
@@ -232,7 +235,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber3"
                     android:layout_toLeftOf="@+id/tv_likenumber3"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -242,14 +245,15 @@
                 android:layout_alignLeft="@+id/relativeLayout3"
                 android:layout_alignStart="@+id/relativeLayout3"
                 android:layout_below="@+id/relativeLayout3"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo4"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username4"
@@ -277,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username4"
                     android:layout_alignRight="@+id/tv_topicComment4"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like4"
@@ -286,7 +290,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber4"
                     android:layout_toLeftOf="@+id/tv_likenumber4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -296,14 +300,15 @@
                 android:layout_alignLeft="@+id/relativeLayout4"
                 android:layout_alignStart="@+id/relativeLayout4"
                 android:layout_below="@+id/relativeLayout4"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo5"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username5"
@@ -331,7 +336,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username5"
                     android:layout_alignRight="@+id/tv_topicComment5"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like5"
@@ -340,7 +345,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber5"
                     android:layout_toLeftOf="@+id/tv_likenumber5"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -350,14 +355,15 @@
                 android:layout_alignLeft="@+id/relativeLayout5"
                 android:layout_alignStart="@+id/relativeLayout5"
                 android:layout_below="@+id/relativeLayout5"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:layout_gravity="center">
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/image_photo6"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_home" />
+                    android:src="@drawable/ic_home"/>
 
                 <TextView
                     android:id="@+id/tv_username6"
@@ -385,7 +391,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/tv_username6"
                     android:layout_alignRight="@+id/tv_topicComment6"
-                    android:text="点赞数" />
+                    android:text="点赞数"/>
 
                 <ImageView
                     android:id="@+id/iv_like6"
@@ -394,7 +400,7 @@
                     android:layout_alignBottom="@+id/tv_likenumber6"
                     android:layout_toLeftOf="@+id/tv_likenumber6"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_like" />
+                    android:src="@drawable/ic_like"/>
             </RelativeLayout>
 
         </LinearLayout>

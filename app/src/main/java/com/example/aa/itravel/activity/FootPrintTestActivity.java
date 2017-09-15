@@ -42,6 +42,7 @@ import com.amap.api.maps2d.model.MyLocationStyle;
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.FootPrintEntity;
 import com.example.aa.itravel.tools.Country;
+import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -70,7 +71,7 @@ import okhttp3.Response;
 
 @ContentView(R.layout.activity_foot_print_test)
 public class FootPrintTestActivity extends AppCompatActivity implements View.OnClickListener {
-	String path = "http://192.168.1.101:8080/iTravel_Server_SSM/AndroidService/";
+	String path = Network.URL;
 	// String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 	String TAG = "FootPrintTestActivity";
@@ -305,13 +306,13 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 	{
 		aMap.addMarker(new MarkerOptions().position(country)
 				.icon(BitmapDescriptorFactory
-						.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+						.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 	}
 	public void newMarker(double latitude,double longtitude )
 	{
 		aMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longtitude))
 				.icon(BitmapDescriptorFactory
-						.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+						.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 	}
 
 	private void postRequest(int typp) {

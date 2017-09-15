@@ -10,13 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.Comment;
 import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.PreferredType;
+import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.Topic;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
@@ -44,11 +47,14 @@ import okhttp3.Response;
 public class Topic_activity3 extends Activity {
     private Context mContext;
 
-    String TAG = "TOPIC1_Activity";
+    String TAG = "TOPIC3_Activity";
     //s用来保存sessionid     发送refresh请求
     String session;
+    View view;
     String path = Network.URL+ "gettopic3";
     String path1 = Network.URL+"entertopic";
+    String path2 = Network.URL+"newcollectionfortopic";
+    String path3 = Network.URL+"topicifcollected";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @ViewInject(R.id.title_bar_name)
@@ -97,6 +103,20 @@ public class Topic_activity3 extends Activity {
     private TextView user5_like;
     @ViewInject(R.id.tv_likenumber6)
     private TextView user6_like;
+    @ViewInject(R.id.relativeLayout1)
+    private RelativeLayout rl1;
+    @ViewInject(R.id.relativeLayout2)
+    private RelativeLayout rl2;
+    @ViewInject(R.id.relativeLayout3)
+    private RelativeLayout rl3;
+    @ViewInject(R.id.relativeLayout4)
+    private RelativeLayout rl4;
+    @ViewInject(R.id.relativeLayout5)
+    private RelativeLayout rl5;
+    @ViewInject(R.id.relativeLayout6)
+    private RelativeLayout rl6;
+
+
 //	@ViewInject(R.id.topic_id)
 //	private TextView topicID;
 
@@ -133,30 +153,146 @@ public class Topic_activity3 extends Activity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<CommentEntityWithBLOBs>>(){}.getType();
                 com_list = gson.fromJson(qq,type);
-                user1_name.setText(com_list.get(0).getCommentatorname());
-                user2_name.setText(com_list.get(1).getCommentatorname());
-                user3_name.setText(com_list.get(2).getCommentatorname());
-                user4_name.setText(com_list.get(3).getCommentatorname());
-                user5_name.setText(com_list.get(4).getCommentatorname());
-                user6_name.setText(com_list.get(5).getCommentatorname());
-                user1_comment.setText(com_list.get(0).getCommentcontent());
-                user2_comment.setText(com_list.get(1).getCommentcontent());
-                user3_comment.setText(com_list.get(2).getCommentcontent());
-                user4_comment.setText(com_list.get(3).getCommentcontent());
-                user5_comment.setText(com_list.get(4).getCommentcontent());
-                user6_comment.setText(com_list.get(5).getCommentcontent());
-                System.out.println(com_list.get(0).getLikenumber());
-                user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-                user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-                user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-                user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-                user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
-                user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
+	            if(com_list!=null){
+                    if(com_list.size()==1){
+                        rl1.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                    }else if(com_list.size()==2){
+                        rl1.setVisibility(View.VISIBLE);
+                        rl2.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                    }else if(com_list.size()==3){
+                        rl1.setVisibility(View.VISIBLE);
+                        rl2.setVisibility(View.VISIBLE);
+                        rl3.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user3_name.setText(com_list.get(2).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user3_comment.setText(com_list.get(2).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                    }else if(com_list.size()==4){
+                        rl1.setVisibility(View.VISIBLE);
+                        rl2.setVisibility(View.VISIBLE);
+                        rl3.setVisibility(View.VISIBLE);
+                        rl4.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user3_name.setText(com_list.get(2).getCommentatorname());
+                        user4_name.setText(com_list.get(3).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user3_comment.setText(com_list.get(2).getCommentcontent());
+                        user4_comment.setText(com_list.get(3).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                    }else if(com_list.size()==5){
+                        rl1.setVisibility(View.VISIBLE);
+                        rl2.setVisibility(View.VISIBLE);
+                        rl3.setVisibility(View.VISIBLE);
+                        rl4.setVisibility(View.VISIBLE);
+                        rl5.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user3_name.setText(com_list.get(2).getCommentatorname());
+                        user4_name.setText(com_list.get(3).getCommentatorname());
+                        user5_name.setText(com_list.get(4).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user3_comment.setText(com_list.get(2).getCommentcontent());
+                        user4_comment.setText(com_list.get(3).getCommentcontent());
+                        user5_comment.setText(com_list.get(4).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                    }else if(com_list.size()==6){
+                        rl1.setVisibility(View.VISIBLE);
+                        rl2.setVisibility(View.VISIBLE);
+                        rl3.setVisibility(View.VISIBLE);
+                        rl4.setVisibility(View.VISIBLE);
+                        rl5.setVisibility(View.VISIBLE);
+                        rl6.setVisibility(View.VISIBLE);
+                        user1_name.setText(com_list.get(0).getCommentatorname());
+                        user2_name.setText(com_list.get(1).getCommentatorname());
+                        user3_name.setText(com_list.get(2).getCommentatorname());
+                        user4_name.setText(com_list.get(3).getCommentatorname());
+                        user5_name.setText(com_list.get(4).getCommentatorname());
+                        user6_name.setText(com_list.get(5).getCommentatorname());
+                        user1_comment.setText(com_list.get(0).getCommentcontent());
+                        user2_comment.setText(com_list.get(1).getCommentcontent());
+                        user3_comment.setText(com_list.get(2).getCommentcontent());
+                        user4_comment.setText(com_list.get(3).getCommentcontent());
+                        user5_comment.setText(com_list.get(4).getCommentcontent());
+                        user6_comment.setText(com_list.get(5).getCommentcontent());
+                        user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
+                        user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
+                        user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
+                        user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
+                        user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
+                        user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
+                    }
+
+	            }else{
+		            Toast.makeText(Topic_activity3.this,"没有话题评论", Toast.LENGTH_LONG).show();
+	            }
+
             }
 
         }
     };
 
+    private Handler cHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Log.i("COMMENT", qq);
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    right_icon.setImageResource(R.drawable.star_c);
+                    Toast.makeText(Topic_activity3.this,"收藏成功", Toast.LENGTH_SHORT).show();
+                }else{
+                    right_icon.setImageResource(R.drawable.star_c);
+                    Toast.makeText(Topic_activity3.this,"已收藏", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+    };
+
+    private Handler dHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    right_icon.setImageResource(R.drawable.star_c);
+                }else{
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,14 +300,15 @@ public class Topic_activity3 extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         x.view().inject(this);
         mContext = this;
-        textView.setText("话题1");
-        Log.i(TAG,"这是话题1");
-        right_icon.setImageResource(R.drawable.heart);
+        textView.setText("话题3");
+        Log.i(TAG,"这是话题3");
+        right_icon.setImageResource(R.drawable.star_co);
         //	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
         session = bundle.getString("sessionID");
+        Log.i(TAG,session);
         showTopic();
 
     }
@@ -245,4 +382,80 @@ public class Topic_activity3 extends Activity {
         startActivity(intent);
         finish();
     }
+
+    @Event(value={R.id.iv_right})
+    private void event1(View v) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    //回调
+                    Topic top = new Topic();
+                    top.setTopicid(topicID);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(top);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .url(path2)
+                            .post(body)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG, "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i(TAG, "响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        cHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void showCollection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //回调
+                    Topic top = new Topic();
+                    top.setTopicid(topicID);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(top);
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Log.i("TOPIC","显示收藏");
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .post(body)
+                            .url(path3)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG, "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i(TAG, "响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        //System.out.println(response.body().string());
+                        dHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
 }

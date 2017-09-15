@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.Comment;
 import com.example.aa.itravel.tools.CommentEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.PreferredType;
+import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.Topic;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
@@ -44,11 +46,13 @@ import okhttp3.Response;
 public class Topic_activity2 extends Activity {
     private Context mContext;
 
-    String TAG = "TOPIC1_Activity";
+    String TAG = "TOPIC2_Activity";
     //s用来保存sessionid     发送refresh请求
     String session;
     String path = Network.URL+"gettopic2";
     String path1 = Network.URL+"entertopic";
+    String path2 = Network.URL+"newcollectionfortopic";
+    String path3 = Network.URL+"topicifcollected";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @ViewInject(R.id.title_bar_name)
@@ -156,7 +160,44 @@ public class Topic_activity2 extends Activity {
 
         }
     };
+    private Handler cHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Log.i("COMMENT", qq);
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    right_icon.setImageResource(R.drawable.star_c);
+                    Toast.makeText(Topic_activity2.this,"收藏成功", Toast.LENGTH_SHORT).show();
+                }else{
+                    right_icon.setImageResource(R.drawable.star_c);
+                    Toast.makeText(Topic_activity2.this,"已收藏", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        }
+    };
+
+    private Handler dHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    right_icon.setImageResource(R.drawable.star_c);
+                }else{
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,14 +205,15 @@ public class Topic_activity2 extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         x.view().inject(this);
         mContext = this;
-        textView.setText("话题1");
-        Log.i(TAG,"这是话题1");
-        right_icon.setImageResource(R.drawable.heart);
+        textView.setText("话题2");
+        Log.i(TAG,"这是话题2");
+        right_icon.setImageResource(R.drawable.star_co);
         //	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
         session = bundle.getString("sessionID");
+        Log.i(TAG,session);
         showTopic();
 
     }
@@ -245,4 +287,79 @@ public class Topic_activity2 extends Activity {
         startActivity(intent);
         finish();
     }
+    @Event(value={R.id.iv_right})
+    private void event1(View v) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    //回调
+                    Topic top = new Topic();
+                    top.setTopicid(topicID);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(top);
+
+                    RequestBody body = RequestBody.create(JSON, content);
+
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .url(path2)
+                            .post(body)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG, "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i(TAG, "响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        cHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void showCollection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //回调
+                    Topic top = new Topic();
+                    top.setTopicid(topicID);
+                    Gson gson = new GsonBuilder().create();
+                    String content = gson.toJson(top);
+                    RequestBody body = RequestBody.create(JSON, content);
+                    Log.i("TOPIC","显示收藏");
+                    Request request = new Request.Builder()
+                            .addHeader("cookie", session)
+                            .post(body)
+                            .url(path3)
+                            .build();
+
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG, "响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i(TAG, "响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        //System.out.println(response.body().string());
+                        dHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
 }

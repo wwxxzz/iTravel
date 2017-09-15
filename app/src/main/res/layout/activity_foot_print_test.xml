@@ -42,11 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="请输入国家"
-            />
+            android:hint="请输入国家"
+            android:textColorHint="@color/grayfont"
+            android:textColor="@color/blackfont"/>
 
         <ImageView
             android:id="@+id/lightupp"
