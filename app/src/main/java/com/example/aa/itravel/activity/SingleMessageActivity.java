@@ -147,25 +147,6 @@ public class SingleMessageActivity extends AppCompatActivity {
             }
         }
     };
-    private Handler LikeHandler = new Handler(){
-        @Override
-        public void handleMessage(android.os.Message msg){
-            if(msg.what==1){
-                String qq = (String) msg.obj;
-                Gson gson = new Gson();
-                Result re = gson.fromJson(qq, Result.class);
-                String back = re.getResult();
-                System.out.println(re.getResult());
-                if(back.equals("true") ){
-                    like.setSelected(true);
-                    like_num.setText(Integer.valueOf(like_num.getText().toString()) + 1 + "");
-                    Toast.makeText(SingleMessageActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(SingleMessageActivity.this,"点赞失败",Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    };
     private Handler showLikeHandler = new Handler() {
         @Override
         public void handleMessage(android.os.Message msg) {
@@ -261,6 +242,9 @@ public class SingleMessageActivity extends AppCompatActivity {
                     Toast.makeText(SingleMessageActivity.this,"已点赞",Toast.LENGTH_SHORT).show();
                 }else{
                     clicklike();
+                    like.setSelected(true);
+                    like_num.setText(Integer.valueOf(like_num.getText().toString()) + 1 + "");
+                    Toast.makeText(SingleMessageActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.tr_collection:
@@ -446,7 +430,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Log.i("TAG", "响应成功");
                     //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-                    LikeHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    //LikeHandler.obtainMessage(1, response.body().string()).sendToTarget();
                 } else {
                     throw new IOException("Unexpected code:" + response);
                 }
