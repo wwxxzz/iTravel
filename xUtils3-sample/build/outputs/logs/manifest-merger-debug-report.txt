@@ -1,0 +1,123 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:2:1-33:12
+	package
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.INTERNET
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:8:5-67
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:8:22-64
+application
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:10:5-31:19
+MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\065635eeabd73c4f5333257a56cc877c5a262965\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\1b8d0be8a414aaa4163029ef49b017870e8f8fba\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a8cddb06140f99dd4da9da6f509bb25b8d6cdf2d\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6163854c0caa0ae8c4c25f806c4c84f623333b25\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6fff4407bb7768dee868a9913e0e0be9ac845c7f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\0ebf2f1241c0f566561c157928e0fa8d92e8ef5c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3bdd0c506f24a7e88e670e332bcedb42620dc034\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3deae7d86a4b5f6073d009a15345ef4cb9872c5c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\2dd47469eaed73a1898738f8484cf08ed1a56f73\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a26ba3bd947e211f23313d9c5a2ee5785e7e91d0\output\AndroidManifest.xml:29:5-20
+MERGED from [iTravel:xutils:unspecified] G:\projects\iTravel\xutils\build\intermediates\bundles\default\AndroidManifest.xml:12:5-20
+	android:label
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:14:9-41
+	android:supportsRtl
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:15:9-35
+	android:allowBackup
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:16:9-40
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:11:9-38
+activity#org.xutils.sample.MainActivity
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:18:9-27:20
+	android:label
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:20:13-45
+	android:theme
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:21:13-56
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:19:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:22:13-26:29
+action#android.intent.action.MAIN
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:23:17-69
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:25:27-74
+activity#org.xutils.sample.BigImageActivity
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:28:9-54
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:28:19-51
+activity#org.xutils.sample.DownloadActivity
+ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:29:9-54
+	android:name
+		ADDED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml:29:19-51
+uses-sdk
+INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\065635eeabd73c4f5333257a56cc877c5a262965\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\1b8d0be8a414aaa4163029ef49b017870e8f8fba\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a8cddb06140f99dd4da9da6f509bb25b8d6cdf2d\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\81d610e9419c55fc5c1825c6709197a4320f768c\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6163854c0caa0ae8c4c25f806c4c84f623333b25\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6fff4407bb7768dee868a9913e0e0be9ac845c7f\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\0ebf2f1241c0f566561c157928e0fa8d92e8ef5c\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3bdd0c506f24a7e88e670e332bcedb42620dc034\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3deae7d86a4b5f6073d009a15345ef4cb9872c5c\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\2dd47469eaed73a1898738f8484cf08ed1a56f73\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a26ba3bd947e211f23313d9c5a2ee5785e7e91d0\output\AndroidManifest.xml:21:5-23:58
+MERGED from [iTravel:xutils:unspecified] G:\projects\iTravel\xutils\build\intermediates\bundles\default\AndroidManifest.xml:8:5-10:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+		INJECTED from G:\projects\iTravel\xUtils3-sample\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\065635eeabd73c4f5333257a56cc877c5a262965\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\1b8d0be8a414aaa4163029ef49b017870e8f8fba\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a8cddb06140f99dd4da9da6f509bb25b8d6cdf2d\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\81d610e9419c55fc5c1825c6709197a4320f768c\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:transition:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6163854c0caa0ae8c4c25f806c4c84f623333b25\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\6fff4407bb7768dee868a9913e0e0be9ac845c7f\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\0ebf2f1241c0f566561c157928e0fa8d92e8ef5c\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3bdd0c506f24a7e88e670e332bcedb42620dc034\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\3deae7d86a4b5f6073d009a15345ef4cb9872c5c\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\2dd47469eaed73a1898738f8484cf08ed1a56f73\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\a26ba3bd947e211f23313d9c5a2ee5785e7e91d0\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:design:26.0.0-alpha1] C:\Users\Ynez\.android\build-cache\e111c96fa46d246653d2b2c80cfeca8e56a026ce\output\AndroidManifest.xml:26:9-47

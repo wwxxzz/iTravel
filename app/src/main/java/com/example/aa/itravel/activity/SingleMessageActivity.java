@@ -89,6 +89,9 @@ public class SingleMessageActivity extends AppCompatActivity {
     @ViewInject(R.id.comment_04)
     private RelativeLayout comment_04;
 
+    @ViewInject(R.id.nocomment)
+    private TextView nocomment;
+
     Integer message_id;
     String session;
 
@@ -101,7 +104,6 @@ public class SingleMessageActivity extends AppCompatActivity {
     String collectmessagepath = Network.URL+"newcollectionformsg";
     String transferpath=Network.URL+"forwardmessage";
 
-    //private static List<MessageEntityWithBLOBs> mess_list =new ArrayList<MessageEntityWithBLOBs>();
     private static MessageEntityWithBLOBs mess_content =new MessageEntityWithBLOBs();
     private static List<CommentEntityWithBLOBs> com_list =new ArrayList<CommentEntityWithBLOBs>();
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -145,6 +147,25 @@ public class SingleMessageActivity extends AppCompatActivity {
             }
         }
     };
+    private Handler LikeHandler = new Handler(){
+        @Override
+        public void handleMessage(android.os.Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Gson gson = new Gson();
+                Result re = gson.fromJson(qq, Result.class);
+                String back = re.getResult();
+                System.out.println(re.getResult());
+                if(back.equals("true") ){
+                    like.setSelected(true);
+                    like_num.setText(Integer.valueOf(like_num.getText().toString()) + 1 + "");
+                    Toast.makeText(SingleMessageActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(SingleMessageActivity.this,"点赞失败",Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    };
     private Handler showLikeHandler = new Handler() {
         @Override
         public void handleMessage(android.os.Message msg) {
@@ -156,9 +177,9 @@ public class SingleMessageActivity extends AppCompatActivity {
                 System.out.println(re.getResult());
                 if (back.equals("true")) {
                     like.setSelected(true);
-                } else {
+                } /*else {
                     like.setSelected(false);
-                }
+                }*/
             }
         }
     };
@@ -171,35 +192,11 @@ public class SingleMessageActivity extends AppCompatActivity {
                 Result re = gson.fromJson(qq, Result.class);
                 String back = re.getResult();
                 System.out.println(re.getResult());
-                if(back.equals("true") ){
+                if(back.equals("true") )
                     Toast.makeText(SingleMessageActivity.this,"转发成功", Toast.LENGTH_SHORT).show();
-                }else{
-                    //collection.setSelected(false);
-                }
             }
         }
     };
-    /*private Handler collectHandler = new Handler(){
-        @Override
-        public void handleMessage(android.os.Message msg){
-            if(msg.what==1){
-                String qq = (String) msg.obj;
-                Log.i("COMMENT", qq);
-                Gson gson = new Gson();
-                Result re = gson.fromJson(qq, Result.class);
-                String back = re.getResult();
-                System.out.println(re.getResult());
-                if(back.equals("true") ){
-                    collection.setSelected(true);
-                    Toast.makeText(SingleMessageActivity.this,"收藏成功", Toast.LENGTH_SHORT).show();
-                }else{
-                    collection.setSelected(true);
-                    Toast.makeText(SingleMessageActivity.this,"已收藏", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }
-    };*/
 
     private Handler commentHandler = new Handler(){
         @Override
@@ -226,13 +223,18 @@ public class SingleMessageActivity extends AppCompatActivity {
                 comment.add(comment_02);
                 comment.add(comment_03);
                 comment.add(comment_04);
-                if (com_list!=null)
-                    for(int i=0;i<=com_list.size();i++){
-                        //c_user.get(i).setText(com_list.get(i).getCommentatorname());
-                        //c_content.get(i).setText(com_list.get(i).getCommentcontent());
-                        comment.get(i).setVisibility(View.VISIBLE);
+                //Log.i("Comment",com_list.toString());
+                //Log.i("Comment",com_list.get(0).getCommentatorname());
+                //Log.i("Comment",com_list.get(0).getCommentcontent().toString());
+                if (com_list!=null&&!com_list.isEmpty()) {
+                    for (int i = 1; i <= com_list.size(); i++) {
+                        comment.get(i - 1).setVisibility(View.VISIBLE);
+                        c_user.get(i - 1).setText(com_list.get(i-1).getCommentatorname());
+                        c_content.get(i - 1).setText(com_list.get(i-1).getCommentcontent());
                     }
-                //System.out.println(com_list.get(0).getLikenumber());
+                }else {
+                    nocomment.setVisibility(View.VISIBLE);
+                }
             }
         }
     };
@@ -259,11 +261,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                     Toast.makeText(SingleMessageActivity.this,"已点赞",Toast.LENGTH_SHORT).show();
                 }else{
                     clicklike();
-                    like.setSelected(true);
-                    like_num.setText(Integer.valueOf(like_num.getText().toString()) + 1 + "");
-                    Toast.makeText(SingleMessageActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.tr_collection:
                 if (collection.isSelected()){
@@ -430,8 +428,7 @@ public class SingleMessageActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Response response = null;
-                //try {
+                try {
                 MessageEntityWithBLOBs mMessage=new MessageEntityWithBLOBs();
                 mMessage.setMessageid(message_id);
                 Gson gson = new GsonBuilder().create();
@@ -441,7 +438,21 @@ public class SingleMessageActivity extends AppCompatActivity {
                         .addHeader("cookie",session)
                         .url(likepath)
                         .post(body)
-                            .build();
+                        .build();
+                OkHttpClient okhttpc = new OkHttpClient();
+                Call call = okhttpc.newCall(request);
+                Response response = call.execute();
+                Log.i("TAG", "响应成功");
+                if (response.isSuccessful()) {
+                    Log.i("TAG", "响应成功");
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    LikeHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                } else {
+                    throw new IOException("Unexpected code:" + response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             }
         }).start();
     }

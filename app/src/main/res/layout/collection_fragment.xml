@@ -19,7 +19,8 @@
             <RelativeLayout
                 android:id="@+id/cl_msg_01"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_01"
@@ -55,18 +56,19 @@
                     android:text="概要"
                     android:gravity="left"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_01"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_02"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_02"
@@ -101,18 +103,19 @@
                     android:layout_toRightOf="@+id/cl_user_02"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_02"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_03"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_03"
@@ -148,18 +151,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_03"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_04"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_04"
@@ -195,18 +199,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_04"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_05"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_05"
@@ -242,18 +247,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_05"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_06"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_06"
@@ -289,18 +295,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_06"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_07"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_07"
@@ -336,18 +343,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_07"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_08"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_08"
@@ -383,18 +391,19 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_08"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
 
             <RelativeLayout
                 android:id="@+id/cl_msg_09"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cl_head_09"
@@ -430,13 +439,14 @@
                     android:gravity="center"
                     android:text="概要"
                     android:textSize="20dp" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="3px"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cl_time_09"
+                    android:background="#bdb6b7" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3px"
-                android:layout_marginTop="5dp"
-                android:background="#bdb6b7" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

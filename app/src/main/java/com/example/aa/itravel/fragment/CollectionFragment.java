@@ -11,10 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
 import com.example.aa.itravel.activity.SingleMessageActivity;
+import com.example.aa.itravel.activity.Topic_activity;
+import com.example.aa.itravel.activity.Topic_activity2;
+import com.example.aa.itravel.activity.Topic_activity3;
+import com.example.aa.itravel.activity.Topic_activity4;
 import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Topic;
@@ -37,13 +42,8 @@ import okhttp3.Response;
  * Created by Ynez on 2017/9/8.
  */
 @SuppressLint("ValidFragment")
-public class CollectionFragment extends Fragment implements View.OnClickListener {
+public class CollectionFragment extends Fragment {
     private String name="null";
-	/*private String theme1="nul";
-    private String user="null";
-    private String time="null";
-    private String content="null";
-	private String date1;*/
 	String TAG = "TOPIC1_Activity";
 	//s用来保存sessionid     发送refresh请求
 	String session;
@@ -61,10 +61,10 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
     TextView top_content3;
     TextView top_content4;
 
-    TextView msg_user;
-    TextView msg_time;
-    TextView msg_content;
-
+    List<RelativeLayout> cl_msg=new ArrayList<RelativeLayout>();
+    List<TextView> cl_msg_user=new ArrayList<TextView>();
+    List<TextView> cl_msg_time=new ArrayList<TextView>();
+    List<TextView> cl_msg_content=new ArrayList<TextView>();
 	View view;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private static List<Topic> topic_list =new ArrayList<Topic>();
@@ -80,9 +80,15 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
                 Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
                 msg_list = gson.fromJson(qq,type);
-                msg_user.setText(msg_list.get(0).getUsername());
-                msg_time.setText(msg_list.get(0).getMessagetime());
-                msg_content.setText(msg_list.get(0).getMessagecontent());
+                if(msg_list!=null&&!msg_list.isEmpty()) {
+                    for (int i = 1; i <= msg_list.size(); i++) {
+                        cl_msg_user.get(i - 1).setText(msg_list.get(i - 1).getUsername());
+                        cl_msg_time.get(i - 1).setText(msg_list.get(i - 1).getMessagetime());
+                        cl_msg_content.get(i - 1).setText(msg_list.get(i - 1).getMessagecontent());
+                        cl_msg.get(i-1).setOnClickListener(new MsgEvent(msg_list.get(i - 1).getMessageid()));
+                        cl_msg.get(i - 1).setVisibility(View.VISIBLE);
+                    }
+                }
             }
         }
     };
@@ -96,48 +102,59 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<Topic>>(){}.getType();
                 topic_list = gson.fromJson(qq,type);
-                int tnumber=topic_list.size();
-                switch (tnumber){
-                    case 1:
-                        theme_1.setText(topic_list.get(0).getTheme());
-                        top_content1.setText(topic_list.get(0).getTopiccontent());
-                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
-                        break;
-                    case 2:
-                        theme_1.setText(topic_list.get(0).getTheme());
-                        theme_2.setText(topic_list.get(1).getTheme());
-                        top_content1.setText(topic_list.get(0).getTopiccontent());
-                        top_content2.setText(topic_list.get(1).getTopiccontent());
-                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
-                        break;
-                    case 3:
-                        theme_1.setText(topic_list.get(0).getTheme());
-                        theme_2.setText(topic_list.get(1).getTheme());
-                        theme_3.setText(topic_list.get(2).getTheme());
-                        top_content1.setText(topic_list.get(0).getTopiccontent());
-                        top_content2.setText(topic_list.get(1).getTopiccontent());
-                        top_content3.setText(topic_list.get(2).getTopiccontent());
-                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
-                        break;
-                    case 4:
-                        theme_1.setText(topic_list.get(0).getTheme());
-                        theme_2.setText(topic_list.get(1).getTheme());
-                        theme_3.setText(topic_list.get(2).getTheme());
-                        theme_4.setText(topic_list.get(3).getTheme());
-                        top_content1.setText(topic_list.get(0).getTopiccontent());
-                        top_content2.setText(topic_list.get(1).getTopiccontent());
-                        top_content3.setText(topic_list.get(2).getTopiccontent());
-                        top_content4.setText(topic_list.get(3).getTopiccontent());
-                        view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
-                        view.findViewById(R.id.cl_top_04).setVisibility(View.VISIBLE);
-                        break;
-                    default:
-                        break;
+                if(topic_list!=null&&!topic_list.isEmpty()) {
+                    switch (topic_list.size()) {
+                        case 1:
+                            theme_1.setText(topic_list.get(0).getTheme());
+                            top_content1.setText(topic_list.get(0).getTopiccontent());
+                            view.findViewById(R.id.cl_top_01).setOnClickListener(new TopicEvent1());
+                            view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                            break;
+                        case 2:
+                            theme_1.setText(topic_list.get(0).getTheme());
+                            theme_2.setText(topic_list.get(1).getTheme());
+                            top_content1.setText(topic_list.get(0).getTopiccontent());
+                            top_content2.setText(topic_list.get(1).getTopiccontent());
+                            view.findViewById(R.id.cl_top_01).setOnClickListener(new TopicEvent1());
+                            view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_02).setOnClickListener(new TopicEvent2());
+                            view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                            break;
+                        case 3:
+                            theme_1.setText(topic_list.get(0).getTheme());
+                            theme_2.setText(topic_list.get(1).getTheme());
+                            theme_3.setText(topic_list.get(2).getTheme());
+                            top_content1.setText(topic_list.get(0).getTopiccontent());
+                            top_content2.setText(topic_list.get(1).getTopiccontent());
+                            top_content3.setText(topic_list.get(2).getTopiccontent());
+                            view.findViewById(R.id.cl_top_01).setOnClickListener(new TopicEvent1());
+                            view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_02).setOnClickListener(new TopicEvent2());
+                            view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_03).setOnClickListener(new TopicEvent3());
+                            view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
+                            break;
+                        case 4:
+                            theme_1.setText(topic_list.get(0).getTheme());
+                            theme_2.setText(topic_list.get(1).getTheme());
+                            theme_3.setText(topic_list.get(2).getTheme());
+                            theme_4.setText(topic_list.get(3).getTheme());
+                            top_content1.setText(topic_list.get(0).getTopiccontent());
+                            top_content2.setText(topic_list.get(1).getTopiccontent());
+                            top_content3.setText(topic_list.get(2).getTopiccontent());
+                            top_content4.setText(topic_list.get(3).getTopiccontent());
+                            view.findViewById(R.id.cl_top_01).setOnClickListener(new TopicEvent1());
+                            view.findViewById(R.id.cl_top_01).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_02).setOnClickListener(new TopicEvent2());
+                            view.findViewById(R.id.cl_top_02).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_03).setOnClickListener(new TopicEvent3());
+                            view.findViewById(R.id.cl_top_03).setVisibility(View.VISIBLE);
+                            view.findViewById(R.id.cl_top_04).setOnClickListener(new TopicEvent4());
+                            view.findViewById(R.id.cl_top_04).setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 //theme_1.setText(topic_list.get(0).getTheme());
@@ -160,7 +177,6 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
 	    switch (name){
             case "1":
                 view= inflater.inflate(R.layout.topic_collection_fragment, null);
-                view.findViewById(R.id.cl_top_01).setOnClickListener(this);
 	            theme_1 = (TextView) view.findViewById(R.id.cl_theme_01);
                 theme_2 = (TextView) view.findViewById(R.id.cl_theme_02);
                 theme_3 = (TextView) view.findViewById(R.id.cl_theme_03);
@@ -173,10 +189,23 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
                 break;
             default:
                 view= inflater.inflate(R.layout.collection_fragment, null);
-                view.findViewById(R.id.cl_msg_01).setOnClickListener(this);
-                msg_user =(TextView) view.findViewById(R.id.cl_user_01);
-                msg_time =(TextView) view.findViewById(R.id.cl_time_01);
-                msg_content =(TextView) view.findViewById(R.id.cl_data_01);
+
+                cl_msg.add((RelativeLayout) view.findViewById(R.id.cl_msg_01));
+                cl_msg.add((RelativeLayout) view.findViewById(R.id.cl_msg_02));
+                cl_msg.add((RelativeLayout) view.findViewById(R.id.cl_msg_03));
+                cl_msg.add((RelativeLayout) view.findViewById(R.id.cl_msg_04));
+                cl_msg_user.add((TextView) view.findViewById(R.id.cl_user_01));
+                cl_msg_user.add((TextView) view.findViewById(R.id.cl_user_02));
+                cl_msg_user.add((TextView) view.findViewById(R.id.cl_user_03));
+                cl_msg_user.add((TextView) view.findViewById(R.id.cl_user_04));
+                cl_msg_time.add((TextView) view.findViewById(R.id.cl_time_01));
+                cl_msg_time.add((TextView) view.findViewById(R.id.cl_time_02));
+                cl_msg_time.add((TextView) view.findViewById(R.id.cl_time_03));
+                cl_msg_time.add((TextView) view.findViewById(R.id.cl_time_04));
+                cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_01));
+                cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_02));
+                cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_03));
+                cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_04));
                 showcollectionofmsg();
                 break;
     }
@@ -244,8 +273,50 @@ public class CollectionFragment extends Fragment implements View.OnClickListener
         }).start();
     }
 
-    @Override
-    public void onClick(View view) {
-        startActivity(new Intent(getActivity(), SingleMessageActivity.class));
-    }
+
+    public class MsgEvent implements  View.OnClickListener {
+        private Integer msgid;
+        MsgEvent(Integer id){
+            msgid=id;
+        }
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getActivity(), SingleMessageActivity.class);
+            intent.putExtra("sessionID", session);
+            intent.putExtra("messageID",msgid);
+            startActivity(intent);
+        }
+    };
+    public class TopicEvent1 implements  View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getActivity(), Topic_activity.class);
+            intent.putExtra("sessionID", session);
+            startActivity(intent);
+        }
+    };
+    public class TopicEvent2 implements  View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getActivity(), Topic_activity2.class);
+            intent.putExtra("sessionID", session);
+            startActivity(intent);
+        }
+    };
+    public class TopicEvent3 implements  View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getActivity(), Topic_activity3.class);
+            intent.putExtra("sessionID", session);
+            startActivity(intent);
+        }
+    };
+    public class TopicEvent4 implements  View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent(getActivity(), Topic_activity4.class);
+            intent.putExtra("sessionID", session);
+            startActivity(intent);
+        }
+    };
 }

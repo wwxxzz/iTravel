@@ -134,8 +134,7 @@ public class PushCommit extends Activity {
 					}else{
 						comm.setTopicid(topicID);
 					}
-
-					comm.setCommentcontent(com_content.toString());
+					comm.setCommentcontent(com_content.getText().toString());
 					Gson gson = new GsonBuilder().create();
 					String content = gson.toJson(comm);
 
