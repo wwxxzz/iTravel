@@ -105,7 +105,7 @@ public class ChangeUserInfo extends Activity {
 					Toast.makeText(ChangeUserInfo.this,"修改成功，即将跳转", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent();
 					intent = new Intent(mContext, ShowUserInfo.class);
-					intent.putExtra("sessionId", session);
+					intent.putExtra("sessionID", session);
 					startActivity(intent);
 					finish();
 				}else {
@@ -148,7 +148,7 @@ public class ChangeUserInfo extends Activity {
 		titlebar.setText("修改资料");
 		right_icon.setImageResource(R.drawable.save);
 
-		session = bundle.getString("sessionId");
+		session = bundle.getString("sessionID");
 		Log.i("CHANGE",session);
 		new Thread(runnable).start();  //启动子线程
 

@@ -140,6 +140,7 @@ public class Friend_activity extends AppCompatActivity {
                 break;
             case R.id.iv_right:
                 intent =new Intent(mContext,AddNewFriendActivity.class);
+                intent.putExtra("sessionID",session);
                 startActivity(intent);
                 break;
         }

@@ -159,7 +159,7 @@ public class Home_activity extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionId");
+        session = bundle.getString("sessionID");
 
         //设置当前页面 首页 字体为红色
         Fragment exFragment = (Fragment)getSupportFragmentManager().findFragmentById(bottombar);
@@ -266,22 +266,22 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
-                intent.putExtra("sessionId", session);
+                intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.bt_footprint:
                 intent = new Intent(mContext,FootPrintTestActivity.class);
-                intent.putExtra("sessionId",session);
+                intent.putExtra("sessionID",session);
                 startActivity(intent);
                 break;
             case R.id.bt_collection:
                 intent = new Intent(mContext,Collection_activity.class);
-                intent.putExtra("sessionId", session);
+                intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.bt_preference:
                 intent = new Intent(mContext,Preference_activity.class);
-                intent.putExtra("sessionId", session);
+                intent.putExtra("sessionID", session);
                 startActivity(intent);
                 break;
             case R.id.tv_bq1:

@@ -90,7 +90,7 @@ public class Collection_activity extends AppCompatActivity {
         /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionId");
+        session = bundle.getString("sessionID");
 		clAdapter = new CollectionAdapter(getSupportFragmentManager());
 		fragments.add(CollectionFragment.newInstance("0",session));
 		fragments.add(CollectionFragment.newInstance("1",session));

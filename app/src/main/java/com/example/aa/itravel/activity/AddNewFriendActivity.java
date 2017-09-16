@@ -366,7 +366,6 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
                 if(friendname!=null){
                     Log.i(TAG,"即将跳转");
-                    Log.i(TAG,"sessionId"+session);
                     Toast.makeText(AddNewFriendActivity.this,"查找到该好友", Toast.LENGTH_SHORT).show();
                     resultfriend.setVisibility(View.VISIBLE);
                     showfriendname.setText(re.getUsername());

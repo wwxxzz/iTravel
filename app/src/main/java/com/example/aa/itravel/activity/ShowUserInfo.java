@@ -100,7 +100,7 @@ public class ShowUserInfo extends Activity {
 		titlebar.setText("个人资料");
 		right_icon.setImageResource(R.drawable.edit);
         /*获取Bundle中的数据，注意类型和key*/
-		session = bundle.getString("sessionId");
+		session = bundle.getString("sessionID");
 		Log.i(TAG,session);
 		new Thread(runnable).start();  //启动子线程
 	}
@@ -132,7 +132,7 @@ public class ShowUserInfo extends Activity {
 	@Event(value={R.id.iv_right})
 	private void event(View view){
 		Intent intent = new Intent(mContext,ChangeUserInfo.class);
-		intent.putExtra("sessionId", session);
+		intent.putExtra("sessionID", session);
 		startActivity(intent);
 		finish();
 	}

@@ -111,7 +111,7 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 		init();
 		initialize();
 		Bundle bundle = this.getIntent().getExtras();
-		session_id= bundle.getString("sessionId");
+		session_id= bundle.getString("sessionID");
 		ed=(EditText)findViewById(R.id.editText2);
 		show = (ImageView)findViewById(R.id.show    );
 		show.setOnClickListener(this);
@@ -345,8 +345,6 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 						OkHttpClient okhttpc = new OkHttpClient();
 						Call call = okhttpc.newCall(request);
 						response = call.execute();
-						//获取回复的header 剥离sessionId
-
 
 						if (response.code() == 200) {
 							//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
@@ -362,8 +360,6 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 						OkHttpClient okhttpc = new OkHttpClient();
 						Call call = okhttpc.newCall(request);
 						response = call.execute();
-						//获取回复的header 剥离sessionId
-
 
 						if (response.code() == 200) {
 							//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui

@@ -162,7 +162,7 @@ public class Preference_activity extends Activity {
 		/*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
          /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionId");
+        session = bundle.getString("sessionID");
         Log.i(TAG,session);
         showPreference();
     }
