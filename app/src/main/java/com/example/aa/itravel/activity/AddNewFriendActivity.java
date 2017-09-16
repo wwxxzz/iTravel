@@ -405,9 +405,11 @@ public class AddNewFriendActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
                 friendinfo_list = gson.fromJson(qq,type);
-                if(friendinfo_list!=null){
-                    reqFriend1.setText(friendinfo_list.get(0).getFromusername());
-                    request1.setVisibility(View.VISIBLE);
+                if(friendinfo_list!= null){
+                    if(friendinfo_list.size()==1){
+                        reqFriend1.setText(friendinfo_list.get(0).getFromusername());
+                        request1.setVisibility(View.VISIBLE);
+                    }
                     if(friendinfo_list.size()==2){
                         reqFriend2.setText(friendinfo_list.get(1).getFromusername());
                         request2.setVisibility(View.VISIBLE);
