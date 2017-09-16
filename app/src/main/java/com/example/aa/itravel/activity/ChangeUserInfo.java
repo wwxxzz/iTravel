@@ -1,16 +1,22 @@
 package com.example.aa.itravel.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -23,8 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.GetImage;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
+import com.example.aa.itravel.tools.UploadUtil;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -34,10 +42,13 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -48,7 +59,6 @@ import okhttp3.Response;
  */
 @ContentView(R.layout.changeinfo)
 public class ChangeUserInfo extends Activity {
-
 	protected static final int CHOOSE_PICTURE = 0;
 	protected static final int TAKE_PICTURE = 1;
 	private static final int CROP_SMALL_PICTURE = 2;
@@ -63,10 +73,11 @@ public class ChangeUserInfo extends Activity {
 	String TAG = "CHANGE_INFO_Activity";
 	String session;
 	OkHttpClient client = new OkHttpClient();
-	String path1 = Network.URL+ "personalinfo";
-	String path = Network.URL+"editpersonalinfo";
+	String path1 = Network.URL + "personalinfo";
+	String path = Network.URL + "editpersonalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
+	private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+	private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");
 	@ViewInject(R.id.changename)
 	private EditText user_name;
 	@ViewInject(R.id.changelocation)
@@ -84,31 +95,33 @@ public class ChangeUserInfo extends Activity {
 	@ViewInject(R.id.toolbar)
 	private Toolbar toolbar;
 	@ViewInject(R.id.title_bar_name)
-	private  TextView titlebar;
+	private TextView titlebar;
 	@ViewInject(R.id.iv_right)
 	private ImageView right_icon;
+	@ViewInject(R.id.im_photo)
+	private ImageView photo;
 
 	private Context mContext;
-	private Handler mHandler = new Handler(){
+	private Handler mHandler = new Handler() {
 		@Override
-		public void handleMessage(Message msg){
-			if(msg.what==1){
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
 				String qq = (String) msg.obj;
 				Log.i(TAG, qq);
 				Gson gson = new Gson();
 				Result re = gson.fromJson(qq, Result.class);
 				String back = re.getResult();
 				System.out.println(re.getResult());
-				if(back.equals("true") ){
-					Log.i(TAG,"修改成功");
+				if (back.equals("true")) {
+					Log.i(TAG, "修改成功");
 					//Log.i(TAG,"sessionId"+s);
-					Toast.makeText(ChangeUserInfo.this,"修改成功，即将跳转", Toast.LENGTH_SHORT).show();
+					Toast.makeText(ChangeUserInfo.this, "修改成功，即将跳转", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent();
 					intent = new Intent(mContext, ShowUserInfo.class);
 					intent.putExtra("sessionID", session);
 					startActivity(intent);
 					finish();
-				}else {
+				} else {
 					//Toast.makeText(Login_activity.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
 				}
 
@@ -116,11 +129,26 @@ public class ChangeUserInfo extends Activity {
 
 		}
 	};
-	private Handler mmHandler = new Handler(){
+
+	private Handler uplHandler = new Handler() {
 		@Override
-		public void handleMessage(Message msg){
-			if(msg.what==1){
-				Log.i(TAG,"进入");
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				String qq = (String) msg.obj;
+				Log.i(TAG, qq);
+				System.out.println(qq);
+
+			}
+		}
+	}
+
+			;
+
+	private Handler mmHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				Log.i(TAG, "进入");
 				//		Toast.makeText(ShowUserInfo.this,"成功", Toast.LENGTH_SHORT);
 				String qq = (String) msg.obj;
 				Log.i(TAG, qq);
@@ -137,6 +165,20 @@ public class ChangeUserInfo extends Activity {
 
 		}
 	};
+	private Handler imgHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				Log.i(TAG, "进入");
+				Toast.makeText(ChangeUserInfo.this,"成功", Toast.LENGTH_SHORT);
+
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo.setImageBitmap(bmp);
+			}
+
+		}
+	};
+
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG, "onCreate");
 		super.onCreate(savedInstanceState);
@@ -149,8 +191,13 @@ public class ChangeUserInfo extends Activity {
 		right_icon.setImageResource(R.drawable.save);
 
 		session = bundle.getString("sessionID");
-		Log.i("CHANGE",session);
+		Log.i("CHANGE", session);
 		new Thread(runnable).start();  //启动子线程
+		//从左到右依次是 文件名 以及处理请求的handler
+		//	new Thread(new GetImage("galer.jpg",imgHandler)).start();
+		//File f = new File("/sdcard/Pictures/galer.jpg");
+		//从左到右参数依次是文件、图片类型、本Activity的类名.this 以及处理请求的handler
+		//	new Thread(new UploadUtil(f,"jpg",ChangeUserInfo.this,uplHandler)).start();
 
 		/*Button btn_change = (Button) findViewById(R.id.btn_change);
 		iv_personal_icon = (ImageView) findViewById(R.id.im_photo);
@@ -170,7 +217,6 @@ public class ChangeUserInfo extends Activity {
 		});
 
 
-
 	}
 
 	/**
@@ -178,24 +224,25 @@ public class ChangeUserInfo extends Activity {
 	 */
 	private void selectPicture() {
 		// TODO Auto-generated method stub
-		Intent intent=new Intent();
+		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_PICK);//Pick an item from the data
 		intent.setType("image/*");//从所有图片中进行选择
 		startActivityForResult(intent, 1);
 	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode==RESULT_OK) {//从相册选择照片不裁切
+		if (resultCode == RESULT_OK) {//从相册选择照片不裁切
 			try {
 				Uri selectedImage = data.getData(); //获取系统返回的照片的Uri
-				String[] filePathColumn = { MediaStore.Images.Media.DATA };
-				Cursor cursor =getContentResolver().query(selectedImage,
+				String[] filePathColumn = {MediaStore.Images.Media.DATA};
+				Cursor cursor = getContentResolver().query(selectedImage,
 						filePathColumn, null, null, null);//从系统表中查询指定Uri对应的照片
 				cursor.moveToFirst();
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				String picturePath = cursor.getString(columnIndex);  //获取照片路径
 				cursor.close();
-				Bitmap bitmap= BitmapFactory.decodeFile(picturePath);
+				Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
 				image.setImageBitmap(bitmap);
 			} catch (Exception e) {
 				// TODO Auto-generatedcatch block
@@ -204,6 +251,7 @@ public class ChangeUserInfo extends Activity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -224,10 +272,8 @@ public class ChangeUserInfo extends Activity {
 	}
 
 
-
-
-	@Event(value={R.id.iv_right})
-	private void event(View v){
+	@Event(value = {R.id.iv_right})
+	private void event(View v) {
 		//新建一个线程，用于得到服务器响应的参数
 		new Thread(new Runnable() {
 			String username = user_name.getText().toString();
@@ -257,7 +303,7 @@ public class ChangeUserInfo extends Activity {
 
 					RequestBody body = RequestBody.create(JSON, content);
 
-					Request request = new Request.Builder().addHeader("cookie",session).post(body).url(path).build();
+					Request request = new Request.Builder().addHeader("cookie", session).post(body).url(path).build();
 					OkHttpClient okhttpc = new OkHttpClient();
 					Call call = okhttpc.newCall(request);
 					response = call.execute();
@@ -276,17 +322,17 @@ public class ChangeUserInfo extends Activity {
 	}
 
 	//新线程进行网络请求
-	Runnable runnable = new Runnable(){
+	Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
 			try {
-				Request request = new Request.Builder().addHeader("cookie",session).url(path1).build();
+				Request request = new Request.Builder().addHeader("cookie", session).url(path1).build();
 				OkHttpClient okhttpc = new OkHttpClient();
 				Call call = okhttpc.newCall(request);
 				Response response = call.execute();
-				Log.i(TAG,"响应成功");
+				Log.i(TAG, "响应成功");
 				if (response.isSuccessful()) {
-					Log.i(TAG,"响应成功");
+					Log.i(TAG, "响应成功");
 					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
 					mmHandler.obtainMessage(1, response.body().string()).sendToTarget();
 				} else {
@@ -299,12 +345,69 @@ public class ChangeUserInfo extends Activity {
 		}
 	};
 
+		Runnable runnableimg = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					URL url = new URL(Network.IMGURL + "galesaur.jpg");
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					Message msg = new Message();
+					msg.what = 1;
+					msg.obj = pp;
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.handleMessage(msg);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
 
+	Runnable runnableimgupload = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					int REQUEST_EXTERNAL_STORAGE = 1;
+					String[] PERMISSIONS_STORAGE = {
+							Manifest.permission.READ_EXTERNAL_STORAGE,
+							Manifest.permission.WRITE_EXTERNAL_STORAGE
+					};
+					int permission = ActivityCompat.checkSelfPermission(ChangeUserInfo.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-	/**
-	 * 显示修改头像的对话框
-	 */
-	/*protected void showChoosePicDialog() {
+					if (permission != PackageManager.PERMISSION_GRANTED) {
+						// We don't have permission so prompt the user
+						ActivityCompat.requestPermissions(
+								ChangeUserInfo.this,
+								PERMISSIONS_STORAGE,
+								REQUEST_EXTERNAL_STORAGE
+						);
+					}
+					MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+					File f = new File("/sdcard/Pictures/galer.jpg");
+					builder.addFormDataPart("img", f.getName(), RequestBody.create(MEDIA_TYPE_JPG, f));
+					MultipartBody requestBody = builder.build();
+
+					Request request = new Request.Builder().addHeader("cookie", session).url(Network.URL + "springUpload").post(requestBody).build();
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i(TAG, "响应成功");
+					if (response.isSuccessful()) {
+						Log.i(TAG, "响应成功");
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						uplHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		/**
+		 * 显示修改头像的对话框
+		 */
+	protected void showChoosePicDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("设置头像");
 		String[] items = { "选择本地照片", "拍照" };
@@ -333,35 +436,35 @@ public class ChangeUserInfo extends Activity {
 			}
 		});
 		builder.create().show();
-	}*/
-
-
-	/*@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (resultCode == RESULT_OK) { // 如果返回码是可以用的
-			switch (requestCode) {
-				case TAKE_PICTURE:
-					startPhotoZoom(tempUri); // 开始对图片进行裁剪处理
-					break;
-				case CHOOSE_PICTURE:
-					startPhotoZoom(data.getData()); // 开始对图片进行裁剪处理
-					break;
-				case CROP_SMALL_PICTURE:
-					if (data != null) {
-						setImageToView(data); // 让刚才选择裁剪得到的图片显示在界面上
-					}
-					break;
-			}
-		}
 	}
-*/
+
+//
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		super.onActivityResult(requestCode, resultCode, data);
+//		if (resultCode == RESULT_OK) { // 如果返回码是可以用的
+//			switch (requestCode) {
+//				case TAKE_PICTURE:
+//					startPhotoZoom(tempUri); // 开始对图片进行裁剪处理
+//					break;
+//				case CHOOSE_PICTURE:
+//					startPhotoZoom(data.getData()); // 开始对图片进行裁剪处理
+//					break;
+//				case CROP_SMALL_PICTURE:
+//					if (data != null) {
+//						setImageToView(data); // 让刚才选择裁剪得到的图片显示在界面上
+//					}
+//					break;
+//			}
+//		}
+//	}
+
 	/**
 	 * 裁剪图片方法实现
 	 *
 	 * @param uri
 	 */
-	/*protected void startPhotoZoom(Uri uri) {
+	protected void startPhotoZoom(Uri uri) {
 		if (uri == null) {
 			Log.i("tag", "The uri is not exist.");
 		}
@@ -379,7 +482,7 @@ public class ChangeUserInfo extends Activity {
 		intent.putExtra("return-data", true);
 		startActivityForResult(intent, CROP_SMALL_PICTURE);
 
-	}*/
+	}
 
 	/**
 	 * 保存裁剪之后的图片数据
@@ -388,7 +491,7 @@ public class ChangeUserInfo extends Activity {
 	 *
 	 * @param //picdata
 	 */
-	/*protected void setImageToView(Intent data) {
+	protected void setImageToView(Intent data) {
 		Bundle extras = data.getExtras();
 		if (extras != null) {
 			Bitmap photo = extras.getParcelable("data");
@@ -412,6 +515,6 @@ public class ChangeUserInfo extends Activity {
 			// 拿着imagePath上传了
 			// ...
 		}
-	}*/
+	}
 
 }
