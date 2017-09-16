@@ -138,7 +138,7 @@ public class Home_activity extends AppCompatActivity {
     @ViewInject(R.id.relativeLayout6)
     private RelativeLayout recommend6;
 
-    
+
 
     private static List<PreferredType> pre_list =new ArrayList<PreferredType>();
     private static List<MessageEntityWithBLOBs> msg_list = new ArrayList<MessageEntityWithBLOBs>();
@@ -147,6 +147,50 @@ public class Home_activity extends AppCompatActivity {
     String path2 = Network.URL+ "personalinfo";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
+    private int bqnumber=1;
+
+    //设置标签颜色
+    private void bqColor(int bq){
+        switch (bq){
+            case 1:
+                bq1.setTextColor(Color.parseColor("#f75b47"));
+                bq2.setTextColor(Color.parseColor("#595959"));
+                bq3.setTextColor(Color.parseColor("#595959"));
+                bq4.setTextColor(Color.parseColor("#595959"));
+                bq5.setTextColor(Color.parseColor("#595959"));
+                break;
+            case 2:
+                bq1.setTextColor(Color.parseColor("#595959"));
+                bq2.setTextColor(Color.parseColor("#f75b47"));
+                bq3.setTextColor(Color.parseColor("#595959"));
+                bq4.setTextColor(Color.parseColor("#595959"));
+                bq5.setTextColor(Color.parseColor("#595959"));
+                break;
+            case 3:
+                bq1.setTextColor(Color.parseColor("#595959"));
+                bq2.setTextColor(Color.parseColor("#595959"));
+                bq3.setTextColor(Color.parseColor("#f75b47"));
+                bq4.setTextColor(Color.parseColor("#595959"));
+                bq5.setTextColor(Color.parseColor("#595959"));
+                break;
+            case 4:
+                bq1.setTextColor(Color.parseColor("#595959"));
+                bq2.setTextColor(Color.parseColor("#595959"));
+                bq3.setTextColor(Color.parseColor("#595959"));
+                bq4.setTextColor(Color.parseColor("#f75b47"));
+                bq5.setTextColor(Color.parseColor("#595959"));
+                break;
+            case 5:
+                bq1.setTextColor(Color.parseColor("#595959"));
+                bq2.setTextColor(Color.parseColor("#595959"));
+                bq3.setTextColor(Color.parseColor("#595959"));
+                bq4.setTextColor(Color.parseColor("#595959"));
+                bq5.setTextColor(Color.parseColor("#f75b47"));
+                break;
+            default:
+                break;
+        }
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,7 +233,18 @@ public class Home_activity extends AppCompatActivity {
         toggle.syncState();
         showUserInfo();
         showPreference();
-        //showRecommend(pre_list.get(0).getTypeid());
+
+//        //如果偏好列表不空，就默认显示第一个偏好的内容
+//        //如果列表为空，就显示美食标签的内容
+//        if(pre_list!=null){
+//            showRecommend(1);
+//            //showRecommend(pre_list.get(0).getTypeid());
+//        }else{
+//            showRecommend(1);
+//        }
+
+        showRecommend(1);
+        bqColor(bqnumber);
 
 
     }
@@ -290,23 +345,33 @@ public class Home_activity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.tv_bq1:
-                System.out.println("点击了第一个标签");
+                System.out.println("点击了第1个标签");
+                bqnumber=1;
+                bqColor(bqnumber);
                 showRecommend(pre_list.get(0).getTypeid());
                 break;
             case R.id.tv_bq2:
                 System.out.println("点击了第2个标签");
+                bqnumber=2;
+                bqColor(bqnumber);
                 showRecommend(pre_list.get(1).getTypeid());
                 break;
             case R.id.tv_bq3:
                 System.out.println("点击了第3个标签");
+                bqnumber=3;
+                bqColor(bqnumber);
                 showRecommend(pre_list.get(2).getTypeid());
                 break;
             case R.id.tv_bq4:
                 System.out.println("点击了第4个标签");
+                bqnumber=4;
+                bqColor(bqnumber);
                 showRecommend(pre_list.get(3).getTypeid());
                 break;
             case R.id.tv_bq5:
                 System.out.println("点击了第5个标签");
+                bqnumber=5;
+                bqColor(bqnumber);
                 showRecommend(pre_list.get(4).getTypeid());
                 break;
         }
