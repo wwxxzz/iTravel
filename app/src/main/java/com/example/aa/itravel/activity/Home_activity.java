@@ -29,6 +29,7 @@ import com.example.aa.itravel.tools.MessageEntityWithBLOBs;
 import com.example.aa.itravel.tools.MessageType;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.PreferredType;
+import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -85,6 +86,8 @@ public class Home_activity extends AppCompatActivity {
     //s用来保存sessionid     发送refresh请求
     String session;
 
+    @ViewInject(R.id.tv_name)
+    private TextView username;
     @ViewInject(R.id.tv_bq1)
     private TextView bq1;
     @ViewInject(R.id.tv_bq2)
@@ -141,7 +144,7 @@ public class Home_activity extends AppCompatActivity {
     private static List<MessageEntityWithBLOBs> msg_list = new ArrayList<MessageEntityWithBLOBs>();
     String path = Network.URL+"showpreference";
     String path1 = Network.URL+"showrecommend";
-
+    String path2 = Network.URL+ "personalinfo";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
@@ -184,9 +187,9 @@ public class Home_activity extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
+        showUserInfo();
         showPreference();
-        showRecommend(pre_list.get(0).getTypeid());
+        //showRecommend(pre_list.get(0).getTypeid());
 
 
     }
@@ -207,10 +210,12 @@ public class Home_activity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.addfriend:
                 intent = new Intent(mContext,AddNewFriendActivity.class);
+                intent.putExtra("sessionID",session);
                 startActivity(intent);
                 break;
             case R.id.newmessage:
                 intent = new Intent(mContext,SendMessageActivity.class);
+                intent.putExtra("sessionID",session);
                 startActivity(intent);
                 break;
             default:break;
@@ -813,6 +818,43 @@ public class Home_activity extends AppCompatActivity {
         }
 
     }
+    public void showUserInfo(){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Request request = new Request.Builder().addHeader("cookie",session).url(path2).build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    Log.i(TAG,"响应成功");
+                    if (response.isSuccessful()) {
+                        Log.i(TAG,"响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        uHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+            }
+        }).start();
+    }
+    private Handler uHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==1){
+                String qq = (String) msg.obj;
+                Log.i(TAG, qq);
+                Gson gson = new Gson();
+                User re = gson.fromJson(qq, User.class);
+                username.setText(re.getUsername());
+            }
 
+        }
+
+    };
 }

@@ -67,7 +67,6 @@ public class Login_activity extends Activity {
                 System.out.println(re.getResult());
                 if(back.equals("true") ){
                     Log.i(TAG,"即将跳转");
-                    Log.i(TAG,"sessionId"+s);
                     Toast.makeText(Login_activity.this,"登陆成功，即将跳转", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent = new Intent(mContext, Home_activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
