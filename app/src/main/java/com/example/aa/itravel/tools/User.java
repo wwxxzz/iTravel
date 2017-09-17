@@ -17,6 +17,8 @@ public class User {
 
 	private String usersex;
 
+	private String userphoto;
+
 	private Boolean isproved;
 
 	private Boolean isblocked;
@@ -40,8 +42,6 @@ public class User {
 	private String useremail;
 
 	private String userbirth;
-
-	private byte[] userphoto;
 
 	public Integer getUserid() {
 		return userid;
@@ -81,6 +81,14 @@ public class User {
 
 	public void setUsersex(String usersex) {
 		this.usersex = usersex == null ? null : usersex.trim();
+	}
+
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto == null ? null : userphoto.trim();
 	}
 
 	public Boolean getIsproved() {
@@ -176,19 +184,7 @@ public class User {
 	}
 
 	public void setUserbirth(String userbirth) {
-		this.userbirth = userbirth;
-	}
-
-	public byte[] getUserphoto() {
-		return userphoto;
-	}
-
-	public void setUserphoto(byte[] userphoto) {
-		this.userphoto = userphoto;
-	}
-
-	public void setPassword(String s) {
-
+		this.userbirth = userbirth == null ? null : userbirth.trim();
 	}
 }
 

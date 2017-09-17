@@ -30,7 +30,6 @@ public class GetImage implements Runnable {
             //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
             handler.handleMessage(msg);
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }

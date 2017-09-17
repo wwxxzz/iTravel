@@ -78,6 +78,7 @@ public class ChangeUserInfo extends Activity {
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 	private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
 	private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");
+	String user_photo;
 	@ViewInject(R.id.changename)
 	private EditText user_name;
 	@ViewInject(R.id.changelocation)
@@ -136,13 +137,10 @@ public class ChangeUserInfo extends Activity {
 			if (msg.what == 1) {
 				String qq = (String) msg.obj;
 				Log.i(TAG, qq);
-				System.out.println(qq);
-
+				System.out.println("1234"+qq);
 			}
 		}
-	}
-
-			;
+	};
 
 	private Handler mmHandler = new Handler() {
 		@Override
@@ -154,6 +152,9 @@ public class ChangeUserInfo extends Activity {
 				Log.i(TAG, qq);
 				Gson gson = new Gson();
 				User re = gson.fromJson(qq, User.class);
+				user_photo = re.getUserphoto();
+				//从左到右依次是 文件名 以及处理请求的handler
+				System.out.println(user_photo);
 				user_name.setText(re.getUsername());
 				user_location.setText(re.getUserlocation());
 				user_career.setText(re.getUsercareer());
@@ -161,17 +162,35 @@ public class ChangeUserInfo extends Activity {
 				user_phone.setText(re.getUsertel());
 				user_birth.setText(re.getUserbirth());
 				user_sex.setText(re.getUsersex());
+				getImage(user_photo);
 			}
 
 		}
 	};
+	public void getImage(String userphoto){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + user_photo);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					Message msg = new Message();
+//					msg.what = 1;
+//					msg.obj = pp;
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(1, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
 	private Handler imgHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			if (msg.what == 1) {
-				Log.i(TAG, "进入");
-				Toast.makeText(ChangeUserInfo.this,"成功", Toast.LENGTH_SHORT);
-
 				Bitmap bmp = (Bitmap) msg.obj;
 				photo.setImageBitmap(bmp);
 			}
@@ -194,7 +213,7 @@ public class ChangeUserInfo extends Activity {
 		Log.i("CHANGE", session);
 		new Thread(runnable).start();  //启动子线程
 		//从左到右依次是 文件名 以及处理请求的handler
-		//	new Thread(new GetImage("galer.jpg",imgHandler)).start();
+		//new Thread(new GetImage("galer.jpg",imgHandler)).start();
 		//File f = new File("/sdcard/Pictures/galer.jpg");
 		//从左到右参数依次是文件、图片类型、本Activity的类名.this 以及处理请求的handler
 		//	new Thread(new UploadUtil(f,"jpg",ChangeUserInfo.this,uplHandler)).start();
@@ -229,12 +248,14 @@ public class ChangeUserInfo extends Activity {
 		intent.setType("image/*");//从所有图片中进行选择
 		startActivityForResult(intent, 1);
 	}
-
+    File f;
+	String filename;
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {//从相册选择照片不裁切
 			try {
 				Uri selectedImage = data.getData(); //获取系统返回的照片的Uri
+				System.out.println(selectedImage.toString());
 				String[] filePathColumn = {MediaStore.Images.Media.DATA};
 				Cursor cursor = getContentResolver().query(selectedImage,
 						filePathColumn, null, null, null);//从系统表中查询指定Uri对应的照片
@@ -242,8 +263,16 @@ public class ChangeUserInfo extends Activity {
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				String picturePath = cursor.getString(columnIndex);  //获取照片路径
 				cursor.close();
+				System.out.println(picturePath);
 				Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
 				image.setImageBitmap(bitmap);
+				f = new File(picturePath);
+				//从左到右参数依次是文件、图片类型、本Activity的类名.this 以及处理请求的handler
+				System.out.println(f.getName());
+				filename = f.getName();
+				new Thread(new UploadUtil(f,"jpg",ChangeUserInfo.this,uplHandler)).start();
+				//从左到右依次是 文件名 以及处理请求的handler
+				//new Thread(new GetImage(f.getName(),imgHandler)).start();
 			} catch (Exception e) {
 				// TODO Auto-generatedcatch block
 				e.printStackTrace();
@@ -297,6 +326,7 @@ public class ChangeUserInfo extends Activity {
 					user.setUseremail(useremail);
 					user.setUsersex(usersex);
 					user.setUserbirth(userbirth);
+					user.setUserphoto(filename);
 
 					Gson gson = new GsonBuilder().create();
 					String content = gson.toJson(user);

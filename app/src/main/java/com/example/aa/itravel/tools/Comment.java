@@ -15,7 +15,11 @@ public class Comment {
 
 	private String commentatorname;
 
+
+
 	private Integer likenumber;
+
+
 
 	public Integer getCommentid() {
 		return commentid;
@@ -57,6 +61,7 @@ public class Comment {
 		this.commentatorname = commentatorname == null ? null : commentatorname.trim();
 	}
 
+
 	public Integer getLikenumber() {
 		return likenumber;
 	}
@@ -64,4 +69,5 @@ public class Comment {
 	public void setLikenumber(Integer likenumber) {
 		this.likenumber = likenumber;
 	}
+
 }

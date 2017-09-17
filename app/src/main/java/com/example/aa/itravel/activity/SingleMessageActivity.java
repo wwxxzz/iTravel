@@ -2,6 +2,8 @@ package com.example.aa.itravel.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +49,10 @@ public class SingleMessageActivity extends AppCompatActivity {
     private Context mContext;
     @ViewInject(R.id.title_bar_name)
     private TextView textView;
-
+    @ViewInject(R.id.ic_head)
+    private ImageView head;
+    @ViewInject(R.id.tr_imagedata)
+    private ImageView pic;
     @ViewInject(R.id.tr_user)
     private TextView user;
     @ViewInject(R.id.tr_textdata)
@@ -94,7 +101,8 @@ public class SingleMessageActivity extends AppCompatActivity {
 
     Integer message_id;
     String session;
-
+    String user_head;
+    String me_pic;
     String showpath = Network.URL + "showonemessage";
     String showcommentpath = Network.URL+"entermessage";
     String showcollectioninfopath = Network.URL+"msgifcollected";
@@ -123,12 +131,74 @@ public class SingleMessageActivity extends AppCompatActivity {
                 com_num.setText(String.valueOf(mess_content.getCommitnumber()));
                 like_num.setText(String.valueOf(mess_content.getLikenumber()));
                 user.setText(mess_content.getUsername());
+                user_head = mess_content.getUserimage();
+                me_pic = mess_content.getMessageimage();
+                getUserImage(user_head);
+                getImage(me_pic);
                 showComment();
                 showCollection();
                 showLike();
             }
         }
     };
+    public void getUserImage(final String userphoto1){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto1);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler photoHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                head.setImageBitmap(bmp);
+            }
+        }
+    };
+    private Handler imgHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                System.out.println("第一个");
+                Bitmap bmp = (Bitmap) msg.obj;
+                pic.setImageBitmap(bmp);
+            }
+        }
+    };
+
+    public void getImage(final String userphoto1){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto1);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    imgHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
     private Handler showCollectionHandler = new Handler(){
         @Override

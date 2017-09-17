@@ -23,7 +23,7 @@ public class Topic {
 
 	private Integer topicimgpos;
 
-	private byte[] topicimg;
+	private String topicimg;
 
 	public Integer getTopicid() {
 		return topicid;
@@ -89,11 +89,11 @@ public class Topic {
 		this.topicimgpos = topicimgpos;
 	}
 
-	public byte[] getTopicimg() {
+	public String getTopicimg() {
 		return topicimg;
 	}
 
-	public void setTopicimg(byte[] topicimg) {
-		this.topicimg = topicimg;
+	public void setTopicimg(String topicimg) {
+		this.topicimg = topicimg == null ? null : topicimg.trim();
 	}
 }

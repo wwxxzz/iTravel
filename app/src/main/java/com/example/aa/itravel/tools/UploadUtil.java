@@ -70,7 +70,7 @@ public class UploadUtil implements Runnable {
             Response response = call.execute();
             Log.i(TAG, "响应成功");
             if (response.isSuccessful()) {
-                Log.i(TAG, "响应成功");
+                System.out.println("图片上传成功");
                 //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
                 handler.obtainMessage(1, response.body().string()).sendToTarget();
             } else {

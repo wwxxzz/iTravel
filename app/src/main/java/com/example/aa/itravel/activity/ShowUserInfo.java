@@ -3,6 +3,8 @@ package com.example.aa.itravel.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.GetImage;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -23,11 +27,13 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
+import java.net.URL;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -42,8 +48,10 @@ public class ShowUserInfo extends Activity {
 	Response response;
 	OkHttpClient client = new OkHttpClient();
 	String path = Network.URL+ "personalinfo";
+	String user_photo;
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
+	@ViewInject(R.id.im_photo)
+	private ImageView photo;
 	@ViewInject(R.id.showname)
 	private TextView user_name;
 	@ViewInject(R.id.showlocation)
@@ -82,11 +90,46 @@ public class ShowUserInfo extends Activity {
 				user_phone.setText(re.getUsertel());
 				user_birth.setText(re.getUserbirth());
 				user_sex.setText(re.getUsersex());
+				user_photo = re.getUserphoto();
+				//从左到右依次是 文件名 以及处理请求的handler
+				System.out.println(user_photo);
+				getImage(user_photo);
+				//new Thread(new GetImage(user_photo,imgHandler)).start();
 			}
 
 		}
 	};
 
+	public void getImage(final String userphoto){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					Message msg = new Message();
+//					msg.what = 1;
+//					msg.obj = pp;
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(1, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	private Handler imgHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo.setImageBitmap(bmp);
+			}
+
+		}
+	};
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG,"onCreate");
 		super.onCreate(savedInstanceState);

@@ -1,7 +1,11 @@
 package com.example.aa.itravel.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,6 +45,7 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -85,7 +90,9 @@ public class Home_activity extends AppCompatActivity {
     String TAG = "HOME_Activity";
     //s用来保存sessionid     发送refresh请求
     String session;
-
+    String user_photo;
+    @ViewInject(R.id.iv_photo)
+    private ImageView userphoto;
     @ViewInject(R.id.tv_name)
     private TextView username;
     @ViewInject(R.id.tv_bq1)
@@ -281,7 +288,7 @@ public class Home_activity extends AppCompatActivity {
 
 
     //点击事件
-    @Event(value = {R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
+    @Event(value = {R.id.btn_exit,R.id.button_friend,R.id.button_message,R.id.bt_entertopic,R.id.bt_info,R.id.bt_footprint,
             R.id.bt_collection,R.id.bt_preference,R.id.tv_bq1,R.id.tv_bq2,R.id.tv_bq3,R.id.tv_bq4,R.id.tv_bq5})
     private void event(View view){
         Intent intent;
@@ -323,6 +330,44 @@ public class Home_activity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                 }
+                break;
+            case R.id.btn_exit:
+                System.out.println("退出");
+                new AlertDialog.Builder(Home_activity.this).setTitle("系  统  提  示")//设置对话框标题
+
+                        .setMessage("确 定 要 退 出 系 统 吗 ？")//设置显示的内容
+
+                        .setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮
+
+
+
+                            @Override
+
+                            public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件
+
+                                // TODO Auto-generated method stub
+
+                                android.os.Process.killProcess(android.os.Process.myPid());    //获取PID
+                                System.exit(0);   //常规java、c#的标准退出法，返回值为0代表正常退出
+
+                            }
+
+                        }).setNegativeButton("返回",new DialogInterface.OnClickListener() {//添加返回按钮
+
+
+                    @Override
+
+                    public void onClick(DialogInterface dialog, int which) {//响应事件
+
+                        // TODO Auto-generated method stub
+
+                        Log.i("alertdialog"," 请保存数据！");
+
+                    }
+
+                }).show();//在按键响应事件中显示此对话框
+
+
                 break;
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);
@@ -917,9 +962,42 @@ public class Home_activity extends AppCompatActivity {
                 Gson gson = new Gson();
                 User re = gson.fromJson(qq, User.class);
                 username.setText(re.getUsername());
+                user_photo = re.getUserphoto();
+                System.out.println(user_photo);
+                getImage(user_photo);
             }
 
         }
 
+    };
+    public void getImage(String userphoto){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + user_photo);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    Message msg = new Message();
+//					msg.what = 1;
+//					msg.obj = pp;
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    imgHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler imgHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                userphoto.setImageBitmap(bmp);
+            }
+
+        }
     };
 }

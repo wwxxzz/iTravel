@@ -50,7 +50,7 @@
 
     <ImageView
 
-        android:id="@+id/iv_user_image"
+        android:id="@+id/to_user_img"
 
         android:layout_width="40dp"
 
@@ -76,7 +76,7 @@
 
         android:layout_marginRight="5dp"
 
-        android:layout_toLeftOf="@+id/iv_user_image"
+        android:layout_toLeftOf="@+id/to_user_img"
 
         android:gravity="left|center"
 

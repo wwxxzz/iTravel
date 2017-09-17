@@ -5,17 +5,18 @@ package com.example.aa.itravel.tools;
  */
 
 public class CommentEntityWithBLOBs extends Comment {
-	private byte[] commentatorimg;
+	private String commentatorimg;
 
 	private String commentcontent;
 
-	public byte[] getCommentatorimg() {
+	public String getCommentatorimg() {
 		return commentatorimg;
 	}
 
-	public void setCommentatorimg(byte[] commentatorimg) {
-		this.commentatorimg = commentatorimg;
+	public void setCommentatorimg(String commentatorimg) {
+		this.commentatorimg = commentatorimg == null ? null : commentatorimg.trim();
 	}
+
 
 	public String getCommentcontent() {
 		return commentcontent;

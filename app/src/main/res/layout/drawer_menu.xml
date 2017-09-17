@@ -130,6 +130,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/preference"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/collection"
@@ -138,9 +139,9 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_preference"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="50dp"/>
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/ic_preference"/>
 
                 <Button
                     android:id="@+id/bt_preference"
@@ -149,7 +150,30 @@
                     android:layout_height="wrap_content"
                     android:background="#11000000"
                     android:text="偏好设置"
-                    android:textColor="@color/whitefont" />
+                    android:textColor="@color/whitefont"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/preference">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    app:srcCompat="@drawable/exit"/>
+
+                <Button
+                    android:id="@+id/btn_exit"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#11000000"
+                    android:text="退出程序"
+                    android:textColor="@color/whitefont"/>
             </RelativeLayout>
 
 

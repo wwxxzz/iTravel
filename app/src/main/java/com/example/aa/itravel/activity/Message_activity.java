@@ -2,6 +2,8 @@ package com.example.aa.itravel.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +33,7 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,11 +115,41 @@ public class Message_activity extends FragmentActivity {
 	private CheckBox type4;
 	@ViewInject(R.id.me_type_5)
 	private CheckBox type5;
+	@ViewInject(R.id.ic_head01)
+	private ImageView photo1;
+	@ViewInject(R.id.ic_head02)
+	private ImageView photo2;
+	@ViewInject(R.id.ic_head03)
+	private ImageView photo3;
+	@ViewInject(R.id.ic_head04)
+	private ImageView photo4;
+	@ViewInject(R.id.ic_head05)
+	private ImageView photo5;
+	@ViewInject(R.id.tr_imagedata01)
+	private ImageView pic1;
+	@ViewInject(R.id.tr_imagedata02)
+	private ImageView pic2;
+	@ViewInject(R.id.tr_imagedata03)
+	private ImageView pic3;
+	@ViewInject(R.id.tr_imagedata04)
+	private ImageView pic4;
+	@ViewInject(R.id.tr_imagedata05)
+	private ImageView pic5;
 	Integer msgid01;
 	Integer msgid02;
 	Integer msgid03;
 	Integer msgid04;
 	Integer msgid05;
+	String me_photo1;
+	String me_photo2;
+	String me_photo3;
+	String me_photo4;
+	String me_photo5;
+	String me_pic1;
+	String me_pic2;
+	String me_pic3;
+	String me_pic4;
+	String me_pic5;
     String session;
 	String path = Network.URL + "showfriendmessage";
 	private static List<Message> msg_list= new ArrayList<Message>();
@@ -176,6 +209,28 @@ public class Message_activity extends FragmentActivity {
 					like_num5.setText(String.valueOf(mess_list.get(4).getLikenumber()));
 					user5.setText(mess_list.get(4).getUsername());
 					type5.setText(prename(mess_list.get(4).getMessagetype()));
+					me_photo1 = mess_list.get(0).getUserimage();
+					System.out.println(me_photo1);
+					me_photo2 = mess_list.get(1).getUserimage();
+					me_photo3 = mess_list.get(2).getUserimage();
+					me_photo4 = mess_list.get(3).getUserimage();
+					me_photo5 = mess_list.get(4).getUserimage();
+					me_pic1 = mess_list.get(0).getMessageimage();
+					System.out.println(me_pic1);
+					me_pic2 = mess_list.get(1).getMessageimage();
+					me_pic3 = mess_list.get(2).getMessageimage();
+					me_pic4 = mess_list.get(3).getMessageimage();
+					me_pic5 = mess_list.get(4).getMessageimage();
+					getImage1(me_pic1);
+					getImage2(me_pic2);
+					getImage3(me_pic3);
+					getImage4(me_pic4);
+					getImage5(me_pic5);
+					getUserImage1(me_photo1);
+					getUserImage2(me_photo2);
+					getUserImage3(me_photo3);
+					getUserImage4(me_photo4);
+					getUserImage5(me_photo5);
 				}else if(mess_list.size() == 0){
 					Toast.makeText(Message_activity.this,"暂无好友动态哦~", Toast.LENGTH_LONG).show();
 				}else if(mess_list.size()==1){
@@ -188,6 +243,10 @@ public class Message_activity extends FragmentActivity {
 					like_num1.setText(String.valueOf(mess_list.get(0).getLikenumber()));
 					user1.setText(mess_list.get(0).getUsername());
 					type1.setText(prename(mess_list.get(0).getMessagetype()));
+					me_pic1 = mess_list.get(0).getMessageimage();
+					me_photo1 = mess_list.get(0).getUserimage();
+					getImage1(me_pic1);
+					getUserImage1(me_photo1);
 				}else if(mess_list.size()==2){
 					findViewById(R.id.msg_01).setVisibility(View.VISIBLE);
 					findViewById(R.id.msg_02).setVisibility(View.VISIBLE);
@@ -206,6 +265,14 @@ public class Message_activity extends FragmentActivity {
 					like_num2.setText(String.valueOf(mess_list.get(1).getLikenumber()));
 					user2.setText(mess_list.get(1).getUsername());
 					type2.setText(prename(mess_list.get(1).getMessagetype()));
+					me_pic1 = mess_list.get(0).getMessageimage();
+					me_pic2 = mess_list.get(1).getMessageimage();
+					me_photo1 = mess_list.get(0).getUserimage();
+					me_photo2 = mess_list.get(1).getUserimage();
+					getImage1(me_pic1);
+					getImage2(me_pic2);
+					getUserImage1(me_photo1);
+					getUserImage2(me_photo2);
 				}else if(mess_list.size()==3){
 					findViewById(R.id.msg_01).setVisibility(View.VISIBLE);
 					findViewById(R.id.msg_02).setVisibility(View.VISIBLE);
@@ -232,6 +299,18 @@ public class Message_activity extends FragmentActivity {
 					like_num3.setText(String.valueOf(mess_list.get(2).getLikenumber()));
 					user3.setText(mess_list.get(2).getUsername());
 					type3.setText(prename(mess_list.get(2).getMessagetype()));
+					me_pic1 = mess_list.get(0).getMessageimage();
+					me_pic2 = mess_list.get(1).getMessageimage();
+					me_pic3 = mess_list.get(2).getMessageimage();
+					me_photo1 = mess_list.get(0).getUserimage();
+					me_photo2 = mess_list.get(1).getUserimage();
+					me_photo3 = mess_list.get(2).getUserimage();
+					getImage1(me_pic1);
+					getImage2(me_pic2);
+					getImage3(me_pic3);
+					getUserImage1(me_photo1);
+					getUserImage2(me_photo2);
+					getUserImage3(me_photo3);
 				}else if(mess_list.size()==4){
 					findViewById(R.id.msg_01).setVisibility(View.VISIBLE);
 					findViewById(R.id.msg_02).setVisibility(View.VISIBLE);
@@ -266,10 +345,256 @@ public class Message_activity extends FragmentActivity {
 					like_num4.setText(String.valueOf(mess_list.get(3).getLikenumber()));
 					user4.setText(mess_list.get(3).getUsername());
 					type4.setText(prename(mess_list.get(3).getMessagetype()));
+					me_pic1 = mess_list.get(0).getMessageimage();
+					me_pic2 = mess_list.get(1).getMessageimage();
+					me_pic3 = mess_list.get(2).getMessageimage();
+					me_pic4 = mess_list.get(3).getMessageimage();
+					me_photo1 = mess_list.get(0).getUserimage();
+					me_photo2 = mess_list.get(1).getUserimage();
+					me_photo3 = mess_list.get(2).getUserimage();
+					me_photo4 = mess_list.get(3).getUserimage();
+					getImage1(me_pic1);
+					getImage2(me_pic2);
+					getImage3(me_pic3);
+					getImage4(me_pic4);
+					getUserImage1(me_photo1);
+					getUserImage2(me_photo2);
+					getUserImage3(me_photo3);
+					getUserImage4(me_photo4);
 				}
-
 			}
-
+		}
+	};
+	public void getImage1(final String userphoto1){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto1);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					System.out.println("进入handler");
+					imgHandler.obtainMessage(1, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage1(final String userphoto1){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto1);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(1, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getImage2(final String userphoto2) {
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto2);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(2, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage2(final String userphoto2){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto2);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(2, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getImage3(final String userphoto3) {
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto3);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(3, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage3(final String userphoto3){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto3);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(3, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getImage4(final String userphoto4) {
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto4);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(4, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage4(final String userphoto4){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto4);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(4, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getImage5(final String userphoto5) {
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto5);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					imgHandler.obtainMessage(5, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage5(final String userphoto5){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto5);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(5, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	private Handler imgHandler = new Handler() {
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == 1) {
+				System.out.println("第一个");
+				Bitmap bmp = (Bitmap) msg.obj;
+				pic1.setImageBitmap(bmp);
+			}
+			if (msg.what == 2) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				pic2.setImageBitmap(bmp);
+			}
+			if (msg.what == 3) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				pic3.setImageBitmap(bmp);
+			}
+			if (msg.what == 4) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				pic4.setImageBitmap(bmp);
+			}
+			if (msg.what == 5) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				pic5.setImageBitmap(bmp);
+			}
+		}
+	};
+	private Handler photoHandler = new Handler() {
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == 1) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo1.setImageBitmap(bmp);
+			}
+			if (msg.what == 2) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo2.setImageBitmap(bmp);
+			}
+			if (msg.what == 3) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo3.setImageBitmap(bmp);
+			}
+			if (msg.what == 4) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo4.setImageBitmap(bmp);
+			}
+			if (msg.what == 5) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				photo5.setImageBitmap(bmp);
+			}
 		}
 	};
 	private String prename(int id){

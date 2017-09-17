@@ -45,7 +45,7 @@ public class ShowFriendInfo extends Activity{
     Response response;
 
     String fname;
-
+    Integer friend_id;
     OkHttpClient client = new OkHttpClient();
     String path = Network.URL+ "friendpersonalinfo";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -84,7 +84,6 @@ public class ShowFriendInfo extends Activity{
         /*获取Bundle中的数据，注意类型和key*/
         session = bundle.getString("sessionID");
         fname=bundle.get("friendname").toString();
-
 
         showFriendInfoRequest(fname);
 
@@ -138,7 +137,7 @@ public class ShowFriendInfo extends Activity{
                 //Log.i(TAG, qq);
                 Gson gson = new Gson();
                 User re = gson.fromJson(qq, User.class);
-
+                friend_id = re.getUserid();
                 friend_name.setText(re.getUsername());
                 friend_location.setText(re.getUserlocation());
                 friend_career.setText(re.getUsercareer());
@@ -157,6 +156,8 @@ public class ShowFriendInfo extends Activity{
         Intent intent = new Intent(mContext,ChatDemoActivity.class);
         intent.putExtra("sessionID",session);
         intent.putExtra("friendName",friend_name.getText());
+        System.out.println(friend_id);
+        intent.putExtra("friendID",friend_id);
         startActivity(intent);
 
     }

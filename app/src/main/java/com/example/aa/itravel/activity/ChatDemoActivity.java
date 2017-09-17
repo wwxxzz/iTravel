@@ -6,12 +6,15 @@ package com.example.aa.itravel.activity;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,6 +35,7 @@ import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.ChatEntity;
 import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
+import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,10 +59,19 @@ public class ChatDemoActivity extends Activity {
 	private List<MessageBuffer> chatList = null;
 	private List<MessageBuffer> chatList1 = new ArrayList<MessageBuffer>();
 	private ChatAdapter chatAdapter = null;
-    String session;
+    @ViewInject(R.id.from_user_img)
+    private ImageView from_img;
+	@ViewInject(R.id.to_user_img)
+	private ImageView to_img;
+	String session;
 	String friendname;
+	Integer friendid;
+	Integer myid;
+	String tophoto;
+	String formphoto;
 	String path = Network.URL+ "sendmessage";
 	String path1 = Network.URL + "refresh";
+	String path2 = Network.URL+ "personalinfo";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,8 +84,10 @@ public class ChatDemoActivity extends Activity {
         /*获取Bundle中的数据，注意类型和key*/
 		session = bundle.getString("sessionID");
 		friendname=bundle.get("friendName").toString();
+		friendid = bundle.getInt("friendID");
 		titlebar = (TextView) this.findViewById(R.id.title_bar_name);
 		titlebar.setText("与"+friendname+"聊天中");
+		new Thread(runnable).start();  //启动子线程
 		contentEditText = (EditText) this.findViewById(R.id.et_content);
 		sendButton = (Button) this.findViewById(R.id.btn_send);
 		chatListView = (ListView) this.findViewById(R.id.listview);
@@ -93,6 +108,69 @@ public class ChatDemoActivity extends Activity {
 		});
 	}
 
+	//新线程进行网络请求
+	Runnable runnable = new Runnable(){
+		@Override
+		public void run() {
+			try {
+				Request request = new Request.Builder().addHeader("cookie",session).url(path2).build();
+				OkHttpClient okhttpc = new OkHttpClient();
+				Call call = okhttpc.newCall(request);
+				Response response = call.execute();
+				if (response.isSuccessful()) {
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					mmHandler.obtainMessage(1, response.body().string()).sendToTarget();
+				} else {
+					throw new IOException("Unexpected code:" + response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	};
+	private Handler mmHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg){
+			if(msg.what==1){
+				String qq = (String) msg.obj;
+				Gson gson = new Gson();
+				User re = gson.fromJson(qq, User.class);
+				myid = re.getUserid();
+				tophoto = re.getUserphoto();
+				//getToImage(tophoto);
+			}
+
+		}
+	};
+//	public void getToImage(final String userphoto1){
+//		//新建一个线程，用于得到服务器响应的参数
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				Response response = null;
+//				try {
+//					URL url = new URL(Network.IMGURL + userphoto1);
+//					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+//					android.os.Message msg = new android.os.Message();
+//					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+//					System.out.println("进入handler");
+//					imgHandler.obtainMessage(1, pp).sendToTarget();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}).start();
+//	}
+//
+//	private Handler imgHandler = new Handler() {
+//		@Override
+//		public void handleMessage(android.os.Message msg) {
+//			if (msg.what == 1) {
+//				Bitmap bmp = (Bitmap) msg.obj;
+//				to_img.setImageBitmap(bmp);
+//			}
+//		}
+//	};
 	public void showMessage(){
 		Log.i("TEST","进入函数");
 		//新建一个线程，用于得到服务器响应的参数
@@ -132,20 +210,22 @@ public class ChatDemoActivity extends Activity {
 				Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
 				chatList1 = gson.fromJson(qq,type);
 				System.out.println("转化");
+                if(chatList != null){
+	                for(int i = 0;i<chatList1.size();i++){
+		                MessageBuffer chatEntity = new MessageBuffer();
+		                if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==friendid&&chatList1.get(i).getTouserid()==myid){
+			                chatEntity.setComeMsg(true);
+			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
+		                }else if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==myid&&chatList1.get(i).getTouserid()==friendid){
+			                chatEntity.setComeMsg(false);
+			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
+		                }
+		                chatList.add(chatEntity);
+	                }
+                }
 
-				for(int i = 0;i<chatList1.size();i++){
-					MessageBuffer chatEntity = new MessageBuffer();
-					if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromusername().equals(friendname)){
-						chatEntity.setComeMsg(true);
-						chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
-						chatEntity.setSendtime(chatList1.get(i).getSendtime());
-					}else if(chatList1.get(i).getMessagebtype()==2&&!chatList1.get(i).getFromusername().equals(friendname)){
-						chatEntity.setComeMsg(false);
-						chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
-						chatEntity.setSendtime(chatList1.get(i).getSendtime());
-					}
-					chatList.add(chatEntity);
-				}
 			}
 		}
 	};
@@ -253,7 +333,7 @@ public class ChatDemoActivity extends Activity {
 				}
 				chatHolder.timeTextView = (TextView) convertView.findViewById(R.id.tv_time);
 				chatHolder.contentTextView = (TextView) convertView.findViewById(R.id.tv_content);
-				chatHolder.userImageView = (ImageView) convertView.findViewById(R.id.iv_user_image);
+				//chatHolder.userImageView = (ImageView) convertView.findViewById(R.id.iv_user_image);
 				convertView.setTag(chatHolder);
 			}else {
 				chatHolder = (ChatHolder)convertView.getTag();

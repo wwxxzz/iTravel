@@ -7,7 +7,7 @@ package com.example.aa.itravel.tools;
 public class MessageEntityWithBLOBs extends Message {
 	private String messagecontent;
 
-	private byte[] messageimage;
+	private String messageimage;
 
 	public String getMessagecontent() {
 		return messagecontent;
@@ -17,11 +17,11 @@ public class MessageEntityWithBLOBs extends Message {
 		this.messagecontent = messagecontent == null ? null : messagecontent.trim();
 	}
 
-	public byte[] getMessageimage() {
+	public String getMessageimage() {
 		return messageimage;
 	}
 
-	public void setMessageimage(byte[] messageimage) {
-		this.messageimage = messageimage;
+	public void setMessageimage(String messageimage) {
+		this.messageimage = messageimage == null ? null : messageimage.trim();
 	}
 }
