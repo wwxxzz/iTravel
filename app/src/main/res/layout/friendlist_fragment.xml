@@ -55,9 +55,10 @@
 
                 <ImageView
                     android:id="@+id/fr_head_01"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
@@ -94,9 +95,10 @@
 
                 <ImageView
                     android:id="@+id/fr_head_02"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
@@ -133,9 +135,10 @@
 
                 <ImageView
                     android:id="@+id/fr_head_03"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
@@ -172,9 +175,10 @@
 
                 <ImageView
                     android:id="@+id/fr_head_04"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
@@ -211,9 +215,10 @@
 
                 <ImageView
                     android:id="@+id/fr_head_05"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView

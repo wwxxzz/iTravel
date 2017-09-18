@@ -3,6 +3,8 @@ package com.example.aa.itravel.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +30,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,25 +72,16 @@ public class FriendTopFragment extends Fragment {
 	public final static int TYPE_COLLECT = 3;
 
 	public Integer friendID;
-	private static List<User> friend_list = new ArrayList<User>();
-
-	private String fname1;
-	private String fname2;
-	private String fname3;
-	private String fname4;
-	private String fname5;
-
-
-	TextView friendname1;
-	TextView friendname2;
-	TextView friendname3;
-	TextView friendname4;
-	TextView friendname5;
-
 
 	private static List<TextView> no_content = new ArrayList<TextView>();
 	private static List<TextView> no_time = new ArrayList<TextView>();
 	private static List<RelativeLayout> notice = new ArrayList<RelativeLayout>();
+
+	private static List<TextView> friend_name =new ArrayList<TextView>();
+	private static List<ImageView> friend_photo=new ArrayList<ImageView>();
+	private static List<User> friend_list = new ArrayList<User>();
+	private static List<RelativeLayout> friend = new ArrayList<RelativeLayout>();
+
 
 
 	private static List<MessageBuffer> notice_list = new ArrayList<MessageBuffer>();
@@ -98,8 +93,7 @@ public class FriendTopFragment extends Fragment {
 				String qq = (String) msg.obj;
 				Log.i("ONEMESSAGE", qq);
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-				Type type = new TypeToken<List<MessageBuffer>>() {
-				}.getType();
+				Type type = new TypeToken<List<MessageBuffer>>() {}.getType();
 				notice_list = gson.fromJson(qq, type);
 				if (notice_list!= null&&!notice_list.isEmpty())
 				for (int i = 1; i <= notice_list.size(); i++) {
@@ -117,7 +111,7 @@ public class FriendTopFragment extends Fragment {
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
 			intent.putExtra("sessionID", session);
-			intent.putExtra("friendname", fname1);
+			intent.putExtra("friendname",friend_name.get(0).getText().toString());
 			startActivity(intent);
 
 		}
@@ -129,7 +123,7 @@ public class FriendTopFragment extends Fragment {
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
 			intent.putExtra("sessionID", session);
-			intent.putExtra("friendname", fname2);
+			intent.putExtra("friendname", friend_name.get(1).getText().toString());
 			startActivity(intent);
 
 		}
@@ -141,7 +135,7 @@ public class FriendTopFragment extends Fragment {
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
 			intent.putExtra("sessionID", session);
-			intent.putExtra("friendname", fname3);
+			intent.putExtra("friendname", friend_name.get(2).getText().toString());
 			startActivity(intent);
 
 		}
@@ -153,7 +147,7 @@ public class FriendTopFragment extends Fragment {
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
 			intent.putExtra("sessionID", session);
-			intent.putExtra("friendname", fname4);
+			intent.putExtra("friendname", friend_name.get(3).getText().toString());
 			startActivity(intent);
 
 		}
@@ -165,7 +159,7 @@ public class FriendTopFragment extends Fragment {
 		public void onClick(View view) {
 			Intent intent = new Intent(getActivity(), ShowFriendInfo.class);
 			intent.putExtra("sessionID", session);
-			intent.putExtra("friendname", fname5);
+			intent.putExtra("friendname", friend_name.get(4).getText().toString());
 			startActivity(intent);
 
 		}
@@ -190,32 +184,7 @@ public class FriendTopFragment extends Fragment {
 		if (bundle != null) {
 			name = bundle.get("name").toString();
 			session = bundle.get("session").toString();
-			fnumber = bundle.getInt("fnumber");
-			if (fnumber == 1) {
-				fname1 = bundle.get("fname1").toString();
-			}
-			if (fnumber == 2) {
-				fname1 = bundle.get("fname1").toString();
-				fname2 = bundle.get("fname2").toString();
-			}
-			if (fnumber == 3) {
-				fname1 = bundle.get("fname1").toString();
-				fname2 = bundle.get("fname2").toString();
-				fname3 = bundle.get("fname3").toString();
-			}
-			if (fnumber == 4) {
-				fname1 = bundle.get("fname1").toString();
-				fname2 = bundle.get("fname2").toString();
-				fname3 = bundle.get("fname3").toString();
-				fname4 = bundle.get("fname4").toString();
-			}
-			if (fnumber == 5) {
-				fname1 = bundle.get("fname1").toString();
-				fname2 = bundle.get("fname2").toString();
-				fname3 = bundle.get("fname3").toString();
-				fname4 = bundle.get("fname4").toString();
-				fname5 = bundle.get("fname5").toString();
-			}
+
 		}
 
 	}
@@ -228,89 +197,32 @@ public class FriendTopFragment extends Fragment {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
 				view.findViewById(R.id.new_friend).setOnClickListener(newFriend);
-				if (fnumber == 1) {
-					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
-					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-					friendname1.setText(fname1);
-					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
+				//查看好友资料
+				view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
+				view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
+				view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
+				view.findViewById(R.id.fr_next_04).setOnClickListener(friendData4);
+				view.findViewById(R.id.fr_next_05).setOnClickListener(friendData5);
+				//显示好友
+				friend.add((RelativeLayout) view.findViewById(R.id.firend_01));
+				friend.add((RelativeLayout) view.findViewById(R.id.firend_02));
+				friend.add((RelativeLayout) view.findViewById(R.id.firend_03));
+				friend.add((RelativeLayout) view.findViewById(R.id.firend_04));
+				friend.add((RelativeLayout) view.findViewById(R.id.firend_05));
+				friend_name.add((TextView) view.findViewById(R.id.fr_user_01));
+				friend_name.add((TextView) view.findViewById(R.id.fr_user_02));
+				friend_name.add((TextView) view.findViewById(R.id.fr_user_03));
+				friend_name.add((TextView) view.findViewById(R.id.fr_user_04));
+				friend_name.add((TextView) view.findViewById(R.id.fr_user_05));
+				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_01));
+				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_02));
+				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_03));
+				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_04));
+				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_05));
 
-				}
-				if (fnumber == 2) {
-					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
-					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-					friendname1.setText(fname1);
-					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
-					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
-					friendname2.setText(fname2);
-					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
-
-				}
-				if (fnumber == 3) {
-					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
-					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-					friendname1.setText(fname1);
-					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
-					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
-					friendname2.setText(fname2);
-					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
-					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
-					friendname3.setText(fname3);
-					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
-				}
-				if (fnumber == 4) {
-					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
-					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-					friendname1.setText(fname1);
-					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
-					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
-					friendname2.setText(fname2);
-					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
-					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
-					friendname3.setText(fname3);
-					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_04).setOnClickListener(friendData4);
-					friendname4 = (TextView) view.findViewById(R.id.fr_user_04);
-					friendname4.setText(fname4);
-					view.findViewById(R.id.firend_04).setVisibility(View.VISIBLE);
-				}
-				if (fnumber == 5) {
-					view.findViewById(R.id.fr_next_01).setOnClickListener(friendData1);
-					friendname1 = (TextView) view.findViewById(R.id.fr_user_01);
-					friendname1.setText(fname1);
-					view.findViewById(R.id.firend_01).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_02).setOnClickListener(friendData2);
-					friendname2 = (TextView) view.findViewById(R.id.fr_user_02);
-					friendname2.setText(fname2);
-					view.findViewById(R.id.firend_02).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_03).setOnClickListener(friendData3);
-					friendname3 = (TextView) view.findViewById(R.id.fr_user_03);
-					friendname3.setText(fname3);
-					view.findViewById(R.id.firend_03).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_04).setOnClickListener(friendData4);
-					friendname4 = (TextView) view.findViewById(R.id.fr_user_04);
-					friendname4.setText(fname4);
-					view.findViewById(R.id.firend_04).setVisibility(View.VISIBLE);
-
-					view.findViewById(R.id.fr_next_05).setOnClickListener(friendData5);
-					friendname5 = (TextView) view.findViewById(R.id.fr_user_05);
-					friendname5.setText(fname5);
-					view.findViewById(R.id.firend_05).setVisibility(View.VISIBLE);
-				}
+				showFriendRequest();
 				break;
+
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
 				notice.add((RelativeLayout) view.findViewById(R.id.notice1));
@@ -340,80 +252,16 @@ public class FriendTopFragment extends Fragment {
 		return view;
 	}
 
-	public static FriendTopFragment newInstance(String name, String session, int fnumber) {
+	public static FriendTopFragment newInstance(String name,String s) {
 		Bundle args = new Bundle();
 		args.putString("name", name);
-		args.putString("session", session);
-		args.putInt("fnumber", fnumber);
+		args.putString("session",s);
 		FriendTopFragment fragment = new FriendTopFragment();
 		fragment.setArguments(args);
 		return fragment;
 	}
 
-	public static FriendTopFragment newInstance(String name, String session, int fnumber, String fname1/*,String fname2*/) {
-		Bundle args = new Bundle();
-		args.putString("name", name);
-		args.putString("session", session);
-		args.putString("fname1", fname1);
-		args.putInt("fnumber", fnumber);
-		FriendTopFragment fragment = new FriendTopFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
 
-	public static FriendTopFragment newInstance(String name, String session, int fnumber, String fname1, String fname2) {
-		Bundle args = new Bundle();
-		args.putString("name", name);
-		args.putString("session", session);
-		args.putInt("fnumber", fnumber);
-		args.putString("fname1", fname1);
-		args.putString("fname2", fname2);
-		FriendTopFragment fragment = new FriendTopFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
-
-	public static FriendTopFragment newInstance(String name, String session, int fnumber, String fname1, String fname2, String fname3) {
-		Bundle args = new Bundle();
-		args.putString("name", name);
-		args.putString("session", session);
-		args.putString("fname1", fname1);
-		args.putString("fname2", fname2);
-		args.putString("fname3", fname3);
-		args.putInt("fnumber", fnumber);
-		FriendTopFragment fragment = new FriendTopFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
-
-	public static FriendTopFragment newInstance(String name, String session, int fnumber, String fname1, String fname2, String fname3, String fname4) {
-		Bundle args = new Bundle();
-		args.putString("name", name);
-		args.putString("session", session);
-		args.putInt("fnumber", fnumber);
-		args.putString("fname1", fname1);
-		args.putString("fname2", fname2);
-		args.putString("fname3", fname3);
-		args.putString("fname4", fname4);
-		FriendTopFragment fragment = new FriendTopFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
-
-	public static FriendTopFragment newInstance(String name, String session, int fnumber, String fname1, String fname2, String fname3, String fname4, String fname5) {
-		Bundle args = new Bundle();
-		args.putString("name", name);
-		args.putString("session", session);
-		args.putInt("fnumber", fnumber);
-		args.putString("fname1", fname1);
-		args.putString("fname2", fname2);
-		args.putString("fname3", fname3);
-		args.putString("fname4", fname4);
-		args.putString("fname5", fname5);
-		FriendTopFragment fragment = new FriendTopFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
 
 	public void shownotice() {
 		new Thread(new Runnable() {
@@ -451,4 +299,192 @@ public class FriendTopFragment extends Fragment {
 			}
 		}).start();
 	}
+
+	public void showFriendRequest(){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+					//RequestBody body = RequestBody.create(JSON, content);
+                    Request request = new Request.Builder().addHeader("cookie",session).url(path)./*post(body).*/build();
+                    OkHttpClient okhttpc = new OkHttpClient();
+                    Call call = okhttpc.newCall(request);
+                    Response response = call.execute();
+                    //Log.i(TAG,"响应成功");
+                    if (response.isSuccessful()) {
+                        //Log.i(TAG,"响应成功");
+                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    } else {
+                        throw new IOException("Unexpected code:" + response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+	private Handler mHandler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg){
+//            if(msg.what==1){
+//                //Log.i(TAG,"进入");
+//                String qq = (String) msg.obj;
+//                //Log.i(TAG, qq);
+//                Gson gson = new Gson();
+//                Type type = new TypeToken<ArrayList<User>>(){}.getType();
+//                friend_list = gson.fromJson(qq,type);
+//                int fnumber=friend_list.size();
+//            }
+//        }
+
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == 1) {
+				Log.i("ONEMESSAGE", "进入");
+				String qq = (String) msg.obj;
+				Log.i("ONEMESSAGE", qq);
+				Gson gson = new Gson();
+				Type type = new TypeToken<List<User>>() {}.getType();
+				friend_list = gson.fromJson(qq, type);
+				if (friend_list!= null&&!friend_list.isEmpty()&&friend_list.size()<6)
+					for (int i = 1; i <= friend_list.size(); i++) {
+						friend_name.get(i-1).setText(friend_list.get(i-1).getUsername());
+
+						String fre_photo=friend_list.get(i-1).getUserphoto();
+						System.out.println("wenjianming  "+fre_photo);
+						switch (i){
+							case 1:getUserImage1(fre_photo);break;
+							case 2:getUserImage2(fre_photo);break;
+							case 3:getUserImage3(fre_photo);break;
+							case 4:getUserImage4(fre_photo);break;
+							case 5:getUserImage5(fre_photo);break;
+							default:break;
+						}
+						friend.get(i-1).setVisibility(View.VISIBLE);
+					}
+			}
+		}
+	};
+
+	//显示头像
+	public void getUserImage1(final String userphoto1){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto1);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(1, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage2(final String userphoto2){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto2);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(2, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage3(final String userphoto3){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto3);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(3, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage4(final String userphoto4){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto4);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(4, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	public void getUserImage5(final String userphoto5){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Response response = null;
+				try {
+					URL url = new URL(Network.IMGURL + userphoto5);
+					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+					android.os.Message msg = new android.os.Message();
+					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+					photoHandler.obtainMessage(5, pp).sendToTarget();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+
+	private Handler photoHandler = new Handler() {
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			if (msg.what == 1) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				friend_photo.get(0).setImageBitmap(bmp);
+			}
+			if (msg.what == 2) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				friend_photo.get(1).setImageBitmap(bmp);
+			}
+			if (msg.what == 3) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				friend_photo.get(2).setImageBitmap(bmp);
+			}
+			if (msg.what == 4) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				friend_photo.get(3).setImageBitmap(bmp);
+			}
+			if (msg.what == 5) {
+				Bitmap bmp = (Bitmap) msg.obj;
+				friend_photo.get(4).setImageBitmap(bmp);
+			}
+		}
+	};
+
 }

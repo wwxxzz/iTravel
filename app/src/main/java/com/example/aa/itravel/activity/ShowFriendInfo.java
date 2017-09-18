@@ -3,6 +3,8 @@ package com.example.aa.itravel.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +25,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
+import java.net.URL;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -70,6 +73,10 @@ public class ShowFriendInfo extends Activity{
     private  TextView titlebar;
     @ViewInject(R.id.iv_right)
     private ImageView right_icon;
+    @ViewInject(R.id.imageView)
+    private ImageView friendphoto;
+
+    String friend_photo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +91,8 @@ public class ShowFriendInfo extends Activity{
         /*获取Bundle中的数据，注意类型和key*/
         session = bundle.getString("sessionID");
         fname=bundle.get("friendname").toString();
+
+        System.out.println(fname);
 
         showFriendInfoRequest(fname);
 
@@ -137,6 +146,9 @@ public class ShowFriendInfo extends Activity{
                 //Log.i(TAG, qq);
                 Gson gson = new Gson();
                 User re = gson.fromJson(qq, User.class);
+                System.out.println(friend_photo);
+                friend_photo = re.getUserphoto();
+                getUserImage(friend_photo);
                 friend_id = re.getUserid();
                 friend_name.setText(re.getUsername());
                 friend_location.setText(re.getUserlocation());
@@ -150,16 +162,46 @@ public class ShowFriendInfo extends Activity{
         }
     };
 
-
-    @Event(value = R.id.iv_right)
-    private void event(View view) {
-        Intent intent = new Intent(mContext,ChatDemoActivity.class);
-        intent.putExtra("sessionID",session);
-        intent.putExtra("friendName",friend_name.getText());
-        System.out.println(friend_id);
-        intent.putExtra("friendID",friend_id);
-        startActivity(intent);
-
+    public void getUserImage(final String userphoto1){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto1);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
-}
+    private Handler photoHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                friendphoto.setImageBitmap(bmp);
+            }
+
+        }
+    };
+
+
+        @Event(value = R.id.iv_right)
+        private void event(View view) {
+            Intent intent = new Intent(mContext, ChatDemoActivity.class);
+            intent.putExtra("sessionID", session);
+            intent.putExtra("friendName", friend_name.getText());
+            System.out.println(friend_id);
+            intent.putExtra("friendID", friend_id);
+            startActivity(intent);
+
+        }
+
+    }
