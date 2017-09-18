@@ -99,14 +99,10 @@ public class Friend_activity extends AppCompatActivity {
         //设置tabLayout
         tabLayout.setupWithViewPager(vp);
         //设置文字的颜色
-        tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
+        tabLayout.setTabTextColors(Color.GRAY, Color.parseColor("#f75b47"));
         //设置下划线的颜色
-        tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f75b47"));
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.home_toolbar);
-        //setSupportActionBar(toolbar);
-
-//        showFriendRequest();
 
 
     }
@@ -133,131 +129,4 @@ public class Friend_activity extends AppCompatActivity {
         }
     }
 
-//
-//    public void showFriendRequest(){
-//        //新建一个线程，用于得到服务器响应的参数
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Request request = new Request.Builder().addHeader("cookie",session).url(path).build();
-//                    OkHttpClient okhttpc = new OkHttpClient();
-//                    Call call = okhttpc.newCall(request);
-//                    Response response = call.execute();
-//                    //Log.i(TAG,"响应成功");
-//                    if (response.isSuccessful()) {
-//                        //Log.i(TAG,"响应成功");
-//                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-//                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
-//                    } else {
-//                        throw new IOException("Unexpected code:" + response);
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-//    }
-//
-//    private Handler mHandler = new Handler(){
-//        @Override
-//        public void handleMessage(Message msg){
-//            if(msg.what==1){
-//                //Log.i(TAG,"进入");
-//                String qq = (String) msg.obj;
-//                //Log.i(TAG, qq);
-//                Gson gson = new Gson();
-//                Type type = new TypeToken<ArrayList<User>>(){}.getType();
-//                friend_list = gson.fromJson(qq,type);
-//                int fnumber=friend_list.size();
-//                if(fnumber==1){
-//                    friendname_01 = friend_list.get(0).getUsername();
-//                    User friend1 = new User();
-//                    friend1.setUsername(friendname_01);
-//                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01));
-//                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01));
-//                }if(fnumber==2){
-//                    friendname_01 = friend_list.get(0).getUsername();
-//                    User friend1 = new User();
-//                    friend1.setUsername(friendname_01);
-//                    friendname_02 = friend_list.get(1).getUsername();
-//                    User friend2 = new User();
-//                    friend2.setUsername(friendname_02);
-//                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02));
-//                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02));
-//                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02));
-//                }if(fnumber==3){
-//                    friendname_01 = friend_list.get(0).getUsername();
-//                    User friend1 = new User();
-//                    friend1.setUsername(friendname_01);
-//                    friendname_02 = friend_list.get(1).getUsername();
-//                    User friend2 = new User();
-//                    friend2.setUsername(friendname_02);
-//                    friendname_03 = friend_list.get(2).getUsername();
-//                    User friend3 = new User();
-//                    friend3.setUsername(friendname_03);
-//                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03));
-//                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03));
-//                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03));
-//                }if(fnumber==4){
-//                    friendname_01 = friend_list.get(0).getUsername();
-//                    User friend1 = new User();
-//                    friend1.setUsername(friendname_01);
-//                    friendname_02 = friend_list.get(1).getUsername();
-//                    User friend2 = new User();
-//                    friend2.setUsername(friendname_02);
-//                    friendname_03 = friend_list.get(2).getUsername();
-//                    User friend3 = new User();
-//                    friend3.setUsername(friendname_03);
-//                    friendname_04 = friend_list.get(3).getUsername();
-//                    User friend4 = new User();
-//                    friend4.setUsername(friendname_04);
-//                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
-//                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
-//                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04));
-//                }if(fnumber==5){
-//                    friendname_01 = friend_list.get(0).getUsername();
-//                    User friend1 = new User();
-//                    friend1.setUsername(friendname_01);
-//                    friendname_02 = friend_list.get(1).getUsername();
-//                    User friend2 = new User();
-//                    friend2.setUsername(friendname_02);
-//                    friendname_03 = friend_list.get(2).getUsername();
-//                    User friend3 = new User();
-//                    friend3.setUsername(friendname_03);
-//                    friendname_04 = friend_list.get(3).getUsername();
-//                    User friend4 = new User();
-//                    friend4.setUsername(friendname_04);
-//                    friendname_05 = friend_list.get(4).getUsername();
-//                    User friend5 = new User();
-//                    friend5.setUsername(friendname_05);
-//                    fragments.add(FriendTopFragment.newInstance("0",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
-//                    fragments.add(FriendTopFragment.newInstance("1",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
-//                    //fragments.add(FriendTopFragment.newInstance("2",session,fnumber,friendname_01,friendname_02,friendname_03,friendname_04,friendname_05));
-//
-//                }if(fnumber==0){
-//                fragments.add(FriendTopFragment.newInstance("0",session,fnumber));
-//                fragments.add(FriendTopFragment.newInstance("1",session,fnumber));
-//                //fragments.add(FriendTopFragment.newInstance,("2",sessionfnumber));
-//                }
-//
-//
-//
-//
-//                FtAdapter = new FriendTopAdapter(getSupportFragmentManager());
-////                fragments.add(FriendTopFragment.newInstance("0",session,friendname_01/*,friendname_02*/));
-////                fragments.add(FriendTopFragment.newInstance("1",session,friendname_01/*,friendname_02*/));
-////                fragments.add(FriendTopFragment.newInstance("2",session,friendname_01/*,friendname_02*/));
-//                FtAdapter.setFragments(fragments);
-//                vp.setAdapter(FtAdapter);
-//                //设置tabLayout
-//                tabLayout.setupWithViewPager(vp);
-//                //设置文字的颜色
-//                tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
-//                //设置下划线的颜色
-//                tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
-//
-//            }
-//        }
-//    };
 }

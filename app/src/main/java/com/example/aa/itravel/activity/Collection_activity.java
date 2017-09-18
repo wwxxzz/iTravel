@@ -99,9 +99,9 @@ public class Collection_activity extends AppCompatActivity {
 		//设置tabLayout
 		tabLayout.setupWithViewPager(vp);
 		//设置文字的颜色
-		tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
+		tabLayout.setTabTextColors(Color.GRAY, Color.parseColor("#f75b47"));
 		//设置下划线的颜色
-		tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
+		tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f75b47"));
     }
 	/*public void showCollectionTopic(){
 		//新建一个线程，用于得到服务器响应的参数
