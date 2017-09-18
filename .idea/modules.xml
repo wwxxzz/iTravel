@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/iTravel.iml" filepath="$PROJECT_DIR$/iTravel.iml" />
       <module fileurl="file://$PROJECT_DIR$/xUtils3-sample/xUtils3-sample.iml" filepath="$PROJECT_DIR$/xUtils3-sample/xUtils3-sample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xUtils3-sample/xUtils3-sample.iml" filepath="$PROJECT_DIR$/xUtils3-sample/xUtils3-sample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xutils/xutils.iml" filepath="$PROJECT_DIR$/xutils/xutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/xutils/xutils.iml" filepath="$PROJECT_DIR$/xutils/xutils.iml" />
     </modules>
   </component>

@@ -2,6 +2,8 @@ package com.example.aa.itravel.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,6 +32,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +69,8 @@ public class CollectionFragment extends Fragment {
     List<TextView> cl_msg_user=new ArrayList<TextView>();
     List<TextView> cl_msg_time=new ArrayList<TextView>();
     List<TextView> cl_msg_content=new ArrayList<TextView>();
+    List<ImageView> cl_msg_photo = new ArrayList<ImageView>();
+    List<String> cl_msg_pic = new ArrayList<String>();
 	View view;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private static List<Topic> topic_list =new ArrayList<Topic>();
@@ -85,11 +91,74 @@ public class CollectionFragment extends Fragment {
                         cl_msg_user.get(i).setText(msg_list.get(i).getUsername());
                         cl_msg_time.get(i).setText(msg_list.get(i).getMessagetime());
                         cl_msg_content.get(i).setText(msg_list.get(i).getMessagecontent());
+                        cl_msg_pic.add(msg_list.get(i).getUserimage());
+                        getMsgImage(i,cl_msg_pic.get(i));
                         cl_msg.get(i).setOnClickListener(new MsgEvent(msg_list.get(i).getMessageid()));
                         cl_msg.get(i).setVisibility(View.VISIBLE);
                     }
                 }
             }
+        }
+    };
+    public void getMsgImage(final int i,final String userphoto){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    msgHandler.obtainMessage(i, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler msgHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 0) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(0).setImageBitmap(bmp);
+            }
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(1).setImageBitmap(bmp);
+            }
+            if (msg.what == 2) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(2).setImageBitmap(bmp);
+            }
+            if (msg.what == 3) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(3).setImageBitmap(bmp);
+            }
+            if (msg.what == 4) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(4).setImageBitmap(bmp);
+            }
+            if (msg.what == 5) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(5).setImageBitmap(bmp);
+            }
+            if (msg.what == 6) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(6).setImageBitmap(bmp);
+            }
+            if (msg.what == 7) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(7).setImageBitmap(bmp);
+            }
+            if (msg.what == 8) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                cl_msg_photo.get(8).setImageBitmap(bmp);
+            }
+
         }
     };
     private Handler TopicHandler = new Handler(){
@@ -226,6 +295,15 @@ public class CollectionFragment extends Fragment {
                 cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_07));
                 cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_08));
                 cl_msg_content.add((TextView) view.findViewById(R.id.cl_data_09));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_01));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_02));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_03));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_04));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_05));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_06));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_07));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_08));
+                cl_msg_photo.add((ImageView)view.findViewById(R.id.cl_head_09));
                 showcollectionofmsg();
                 break;
     }
