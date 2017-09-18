@@ -145,7 +145,25 @@ public class Home_activity extends AppCompatActivity {
     @ViewInject(R.id.relativeLayout6)
     private RelativeLayout recommend6;
 
+    String me_photo1;
+    String me_photo2;
+    String me_photo3;
+    String me_photo4;
+    String me_photo5;
+    String me_photo6;
 
+    @ViewInject(R.id.image_photo1)
+    private ImageView photo1;
+    @ViewInject(R.id.image_photo2)
+    private ImageView photo2;
+    @ViewInject(R.id.image_photo3)
+    private ImageView photo3;
+    @ViewInject(R.id.image_photo4)
+    private ImageView photo4;
+    @ViewInject(R.id.image_photo5)
+    private ImageView photo5;
+    @ViewInject(R.id.image_photo6)
+    private ImageView photo6;
 
     private static List<PreferredType> pre_list =new ArrayList<PreferredType>();
     private static List<MessageEntityWithBLOBs> msg_list = new ArrayList<MessageEntityWithBLOBs>();
@@ -393,31 +411,47 @@ public class Home_activity extends AppCompatActivity {
                 System.out.println("点击了第1个标签");
                 bqnumber=1;
                 bqColor(bqnumber);
-                showRecommend(pre_list.get(0).getTypeid());
+                if(pre_list!=null){
+                    showRecommend(pre_list.get(0).getTypeid());
+                }else{
+                    showRecommend(1);}
                 break;
             case R.id.tv_bq2:
                 System.out.println("点击了第2个标签");
                 bqnumber=2;
                 bqColor(bqnumber);
-                showRecommend(pre_list.get(1).getTypeid());
+                if(pre_list!=null){
+                    showRecommend(pre_list.get(1).getTypeid());
+                }else{
+                    showRecommend(2);}
                 break;
             case R.id.tv_bq3:
                 System.out.println("点击了第3个标签");
                 bqnumber=3;
                 bqColor(bqnumber);
-                showRecommend(pre_list.get(2).getTypeid());
+                if(pre_list!=null){
+                    showRecommend(pre_list.get(2).getTypeid());
+                }else{
+                    showRecommend(3);}
                 break;
             case R.id.tv_bq4:
                 System.out.println("点击了第4个标签");
                 bqnumber=4;
                 bqColor(bqnumber);
-                showRecommend(pre_list.get(3).getTypeid());
+                if(pre_list!=null){
+                    showRecommend(pre_list.get(3).getTypeid());
+                }else{
+                    showRecommend(4);}
                 break;
             case R.id.tv_bq5:
                 System.out.println("点击了第5个标签");
                 bqnumber=5;
                 bqColor(bqnumber);
-                showRecommend(pre_list.get(4).getTypeid());
+                if(pre_list!=null){
+                    showRecommend(pre_list.get(4).getTypeid());
+                }else{
+                    showRecommend(5);
+                }
                 break;
         }
     }
@@ -485,6 +519,8 @@ public class Home_activity extends AppCompatActivity {
                             recommend1.setVisibility(View.VISIBLE);
                             uname1.setText(msg_list.get(0).getUsername());
                             msgcontent1.setText(msg_list.get(0).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
                             break;
                         case 2:
                             recommend1.setVisibility(View.VISIBLE);
@@ -493,6 +529,10 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent1.setText(msg_list.get(0).getMessagecontent());
                             uname2.setText(msg_list.get(1).getUsername());
                             msgcontent2.setText(msg_list.get(1).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
                             break;
                         case 3:
                             recommend1.setVisibility(View.VISIBLE);
@@ -504,6 +544,12 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent2.setText(msg_list.get(1).getMessagecontent());
                             uname3.setText(msg_list.get(2).getUsername());
                             msgcontent3.setText(msg_list.get(2).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
+                            me_photo3 = msg_list.get(2).getUserimage();
+                            getUserImage3(me_photo3);
                             break;
                         case 4:
                             recommend1.setVisibility(View.VISIBLE);
@@ -518,6 +564,14 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent3.setText(msg_list.get(2).getMessagecontent());
                             uname4.setText(msg_list.get(3).getUsername());
                             msgcontent4.setText(msg_list.get(3).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
+                            me_photo3 = msg_list.get(2).getUserimage();
+                            getUserImage3(me_photo3);
+                            me_photo4 = msg_list.get(3).getUserimage();
+                            getUserImage4(me_photo4);
                             break;
                         case 5:
                             recommend1.setVisibility(View.VISIBLE);
@@ -535,6 +589,16 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent4.setText(msg_list.get(3).getMessagecontent());
                             uname5.setText(msg_list.get(4).getUsername());
                             msgcontent5.setText(msg_list.get(4).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
+                            me_photo3 = msg_list.get(2).getUserimage();
+                            getUserImage3(me_photo3);
+                            me_photo4 = msg_list.get(3).getUserimage();
+                            getUserImage4(me_photo4);
+                            me_photo5 = msg_list.get(4).getUserimage();
+                            getUserImage5(me_photo5);
                             break;
                         case 6:
                             recommend1.setVisibility(View.VISIBLE);
@@ -555,6 +619,18 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent5.setText(msg_list.get(4).getMessagecontent());
                             uname6.setText(msg_list.get(5).getUsername());
                             msgcontent6.setText(msg_list.get(5).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
+                            me_photo3 = msg_list.get(2).getUserimage();
+                            getUserImage3(me_photo3);
+                            me_photo4 = msg_list.get(3).getUserimage();
+                            getUserImage4(me_photo4);
+                            me_photo5 = msg_list.get(4).getUserimage();
+                            getUserImage5(me_photo5);
+                            me_photo6 = msg_list.get(5).getUserimage();
+                            getUserImage6(me_photo6);
                             break;
                         default:
                             recommend1.setVisibility(View.VISIBLE);
@@ -575,6 +651,18 @@ public class Home_activity extends AppCompatActivity {
                             msgcontent5.setText(msg_list.get(4).getMessagecontent());
                             uname6.setText(msg_list.get(5).getUsername());
                             msgcontent6.setText(msg_list.get(5).getMessagecontent());
+                            me_photo1 = msg_list.get(0).getUserimage();
+                            getUserImage1(me_photo1);
+                            me_photo2 = msg_list.get(1).getUserimage();
+                            getUserImage2(me_photo2);
+                            me_photo3 = msg_list.get(2).getUserimage();
+                            getUserImage3(me_photo3);
+                            me_photo4 = msg_list.get(3).getUserimage();
+                            getUserImage4(me_photo4);
+                            me_photo5 = msg_list.get(4).getUserimage();
+                            getUserImage5(me_photo5);
+                            me_photo6 = msg_list.get(5).getUserimage();
+                            getUserImage6(me_photo6);
                             break;
                     }
                 }
@@ -582,7 +670,145 @@ public class Home_activity extends AppCompatActivity {
         }
     };
 
+    //显示头像
+    public void getUserImage1(final String userphoto1){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto1);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getUserImage2(final String userphoto2){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto2);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(2, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getUserImage3(final String userphoto3){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto3);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(3, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getUserImage4(final String userphoto4){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto4);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(4, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getUserImage5(final String userphoto5){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto5);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(5, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getUserImage6(final String userphoto6){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto6);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    photoHandler.obtainMessage(6, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
+    private Handler photoHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo1.setImageBitmap(bmp);
+            }
+            if (msg.what == 2) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo2.setImageBitmap(bmp);
+            }
+            if (msg.what == 3) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo3.setImageBitmap(bmp);
+            }
+            if (msg.what == 4) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo4.setImageBitmap(bmp);
+            }
+            if (msg.what == 5) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo5.setImageBitmap(bmp);
+            }
+            if (msg.what == 6) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo6.setImageBitmap(bmp);
+            }
+        }
+    };
 
     //显示标签
     public void showPreference(){
@@ -683,6 +909,11 @@ public class Home_activity extends AppCompatActivity {
                             break;
                     }
                 }else {
+                    bq1.setVisibility(View.VISIBLE);
+                    bq2.setVisibility(View.VISIBLE);
+                    bq3.setVisibility(View.VISIBLE);
+                    bq4.setVisibility(View.VISIBLE);
+                    bq5.setVisibility(View.VISIBLE);
                     bq1.setText("美食");
                     bq2.setText("住宿");
                     bq3.setText("购物");
