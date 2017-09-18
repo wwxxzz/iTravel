@@ -123,7 +123,7 @@ public class ChangeUserInfo extends Activity {
 					startActivity(intent);
 					finish();
 				} else {
-					//Toast.makeText(Login_activity.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
+					Toast.makeText(ChangeUserInfo.this,"用户名已存在", Toast.LENGTH_LONG).show();
 				}
 
 			}

@@ -81,7 +81,7 @@
         android:visibility="gone">
         <ImageView
             android:id="@+id/newfriend_head"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -139,11 +139,11 @@
 
             <ImageView
                 android:id="@+id/frrequest_head_01"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/round_logo" />
 
             <TextView
                 android:id="@+id/frrequest_user_01"
@@ -186,11 +186,11 @@
 
             <ImageView
                 android:id="@+id/frrequest_head_02"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/round_logo" />
 
             <TextView
                 android:id="@+id/frrequest_user_02"
@@ -233,11 +233,11 @@
 
             <ImageView
                 android:id="@+id/frrequest_head_03"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/round_logo" />
 
             <TextView
                 android:id="@+id/frrequest_user_03"

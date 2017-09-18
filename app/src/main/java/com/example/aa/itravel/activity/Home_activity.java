@@ -75,7 +75,7 @@ public class Home_activity extends AppCompatActivity {
     private LinearLayout ll_dotGroup;
     //private TextView newsTitle;
     //存储图片
-    private int imgResIds[] = new int[]{R.drawable.topic3,R.drawable.topic4,R.drawable.topic2,R.drawable.topic1};
+    private int imgResIds[] = new int[]{R.drawable.topic4,R.drawable.topic2,R.drawable.topic3,R.drawable.topic1};
     //存储目录
     //private String textview[] = new String[]{"门前大桥下","游过一群鸭","快来快来数一数","二四六七八","233333"};
 
@@ -144,7 +144,18 @@ public class Home_activity extends AppCompatActivity {
     private RelativeLayout recommend5;
     @ViewInject(R.id.relativeLayout6)
     private RelativeLayout recommend6;
-
+//    @ViewInject(R.id.me_view1)
+//    private RelativeLayout view1;
+//    @ViewInject(R.id.me_view2)
+//    private RelativeLayout view2;
+//    @ViewInject(R.id.me_view3)
+//    private RelativeLayout view3;
+//    @ViewInject(R.id.me_view4)
+//    private RelativeLayout view4;
+//    @ViewInject(R.id.me_view5)
+//    private RelativeLayout view5;
+//    @ViewInject(R.id.me_view6)
+//    private RelativeLayout view6;
     String me_photo1;
     String me_photo2;
     String me_photo3;

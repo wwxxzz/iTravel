@@ -1,6 +1,8 @@
 package com.example.aa.itravel.activity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +33,7 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +54,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
     String session;
     String path = Network.URL+ "searchfriend";
     String path1 = Network.URL+ "addfriend";
-    String path2 = Network.URL+ "refresh";
+    String path2 = Network.URL+ "refreshfriend";
     String path3 = Network.URL+ "commitfriend";
     String path4 = Network.URL+ "refusefriend";
 
@@ -67,7 +71,9 @@ public class AddNewFriendActivity extends AppCompatActivity {
     private EditText searchfriend;
     @ViewInject(R.id.search_result)
     private RelativeLayout resultfriend;
-
+    @ViewInject(R.id.newfriend_head)
+    private ImageView showfriendphoto;
+    String friendphoto;
     @ViewInject(R.id.newfriend_user)
     private TextView showfriendname;
 
@@ -84,8 +90,11 @@ public class AddNewFriendActivity extends AppCompatActivity {
     @ViewInject(R.id.frrequest_user_02)
     private TextView reqFriend2;//请求添加的好友的名字
 
+
     @ViewInject(R.id.frrequest_03)
     private RelativeLayout request3;
+    @ViewInject(R.id.frrequest_user_03)
+    private TextView reqFriend3;//请求添加的好友的名字
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -369,13 +378,43 @@ public class AddNewFriendActivity extends AppCompatActivity {
                     Toast.makeText(AddNewFriendActivity.this,"查找到该好友", Toast.LENGTH_SHORT).show();
                     resultfriend.setVisibility(View.VISIBLE);
                     showfriendname.setText(re.getUsername());
+                    friendphoto = re.getUserphoto();
+                    getUserImg(friendphoto);
+
                 }else {
                     Toast.makeText(AddNewFriendActivity.this,"该好友不存在", Toast.LENGTH_LONG).show();
                 }
             }
         }
     };
-
+    public void getUserImg(final String userphoto){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    topicHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler topicHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                showfriendphoto.setImageBitmap(bmp);
+            }
+        }
+    };
     private Handler aHandler = new Handler(){
         @Override
         public void handleMessage(Message msg){
@@ -401,7 +440,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
             if(msg.what==1){
                 Log.i(TAG,"进入");
                 String qq = (String) msg.obj;
-                Log.i(TAG, qq);
+                Log.i("ADDADD", qq);
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
                 friendinfo_list = gson.fromJson(qq,type);
@@ -413,6 +452,10 @@ public class AddNewFriendActivity extends AppCompatActivity {
                     if(friendinfo_list.size()==2){
                         reqFriend2.setText(friendinfo_list.get(1).getFromusername());
                         request2.setVisibility(View.VISIBLE);
+                    }
+                    if(friendinfo_list.size()==3){
+                        reqFriend3.setText(friendinfo_list.get(2).getFromusername());
+                        request3.setVisibility(View.VISIBLE);
                     }
                 }
                 //Log.i("111",friendinfo_list.get(0).getFromusername());

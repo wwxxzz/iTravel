@@ -210,7 +210,7 @@ public class ChatDemoActivity extends Activity {
 				Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
 				chatList1 = gson.fromJson(qq,type);
 				System.out.println("转化");
-                if(chatList != null){
+                if(chatList1 != null){
 	                for(int i = 0;i<chatList1.size();i++){
 		                MessageBuffer chatEntity = new MessageBuffer();
 		                if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==friendid&&chatList1.get(i).getTouserid()==myid){
