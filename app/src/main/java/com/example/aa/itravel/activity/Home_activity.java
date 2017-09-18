@@ -76,7 +76,7 @@ public class Home_activity extends AppCompatActivity {
     private LinearLayout ll_dotGroup;
     //private TextView newsTitle;
     //存储图片
-    private int imgResIds[] = new int[]{R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4};
+    private int imgResIds[] = new int[]{R.drawable.topic1,R.drawable.topic2,R.drawable.topic3,R.drawable.topic4};
     //存储目录
     //private String textview[] = new String[]{"门前大桥下","游过一群鸭","快来快来数一数","二四六七八","233333"};
 

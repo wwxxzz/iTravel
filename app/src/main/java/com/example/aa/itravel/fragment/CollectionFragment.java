@@ -81,12 +81,12 @@ public class CollectionFragment extends Fragment {
                 Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
                 msg_list = gson.fromJson(qq,type);
                 if(msg_list!=null&&!msg_list.isEmpty()) {
-                    for (int i = 1; i <= msg_list.size(); i++) {
-                        cl_msg_user.get(i - 1).setText(msg_list.get(i - 1).getUsername());
-                        cl_msg_time.get(i - 1).setText(msg_list.get(i - 1).getMessagetime());
-                        cl_msg_content.get(i - 1).setText(msg_list.get(i - 1).getMessagecontent());
-                        cl_msg.get(i-1).setOnClickListener(new MsgEvent(msg_list.get(i - 1).getMessageid()));
-                        cl_msg.get(i - 1).setVisibility(View.VISIBLE);
+                    for (int i = 0; i < msg_list.size(); i++) {
+                        cl_msg_user.get(i).setText(msg_list.get(i).getUsername());
+                        cl_msg_time.get(i).setText(msg_list.get(i).getMessagetime());
+                        cl_msg_content.get(i).setText(msg_list.get(i).getMessagecontent());
+                        cl_msg.get(i).setOnClickListener(new MsgEvent(msg_list.get(i).getMessageid()));
+                        cl_msg.get(i).setVisibility(View.VISIBLE);
                     }
                 }
             }
