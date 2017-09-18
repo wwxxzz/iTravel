@@ -3,6 +3,8 @@ package com.example.aa.itravel.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,6 +35,7 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,19 +106,27 @@ public class Topic_activity3 extends Activity {
     private TextView user5_like;
     @ViewInject(R.id.tv_likenumber6)
     private TextView user6_like;
-//    @ViewInject(R.id.relativeLayout1)
-//    private RelativeLayout rl1;
-//    @ViewInject(R.id.relativeLayout2)
-//    private RelativeLayout rl2;
-//    @ViewInject(R.id.relativeLayout3)
-//    private RelativeLayout rl3;
-//    @ViewInject(R.id.relativeLayout4)
-//    private RelativeLayout rl4;
-//    @ViewInject(R.id.relativeLayout5)
-//    private RelativeLayout rl5;
-//    @ViewInject(R.id.relativeLayout6)
-//    private RelativeLayout rl6;
-
+    @ViewInject(R.id.image_photo1)
+    private ImageView photo1;
+    @ViewInject(R.id.image_photo2)
+    private ImageView photo2;
+    @ViewInject(R.id.image_photo3)
+    private ImageView photo3;
+    @ViewInject(R.id.image_photo4)
+    private ImageView photo4;
+    @ViewInject(R.id.image_photo5)
+    private ImageView photo5;
+    @ViewInject(R.id.image_photo6)
+    private ImageView photo6;
+    String user_photo1;
+    String user_photo2;
+    String user_photo3;
+    String user_photo4;
+    String user_photo5;
+    String user_photo6;
+    @ViewInject(R.id.image_topic)
+    private ImageView topic_pic;
+    String topic_img;
 
 //	@ViewInject(R.id.topic_id)
 //	private TextView topicID;
@@ -137,9 +148,39 @@ public class Topic_activity3 extends Activity {
                 topic_content.setText(top.getTopiccontent());
                 topicID = top.getTopicid();
 //				topicID.setText(top.getTopicid());
+                topic_img = top.getTopicimg();
+                getTopicImg(topic_img);
                 Log.i(TAG,"进入函数");
                 showComment();
 
+            }
+        }
+    };
+    public void getTopicImg(final String userphoto){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    topicHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler topicHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                topic_pic.setImageBitmap(bmp);
             }
         }
     };
@@ -163,6 +204,8 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
                     }else if(com_list.size()==2){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -180,6 +223,10 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
                     }else if(com_list.size()==3){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -205,6 +252,12 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
+                        user_photo3 = com_list.get(2).getCommentatorimg();
+                        getComImg3(user_photo3);
                     }else if(com_list.size()==4){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -238,6 +291,14 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
+                        user_photo3 = com_list.get(2).getCommentatorimg();
+                        getComImg3(user_photo3);
+                        user_photo4 = com_list.get(3).getCommentatorimg();
+                        getComImg4(user_photo4);
                     }else if(com_list.size()==5){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -279,6 +340,16 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
+                        user_photo3 = com_list.get(2).getCommentatorimg();
+                        getComImg3(user_photo3);
+                        user_photo4 = com_list.get(3).getCommentatorimg();
+                        getComImg4(user_photo4);
+                        user_photo5 = com_list.get(4).getCommentatorimg();
+                        getComImg5(user_photo5);
                     }else if(com_list.size()==6){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -328,6 +399,18 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
+                        user_photo3 = com_list.get(2).getCommentatorimg();
+                        getComImg3(user_photo3);
+                        user_photo4 = com_list.get(3).getCommentatorimg();
+                        getComImg4(user_photo4);
+                        user_photo5 = com_list.get(4).getCommentatorimg();
+                        getComImg5(user_photo5);
+                        user_photo6 = com_list.get(5).getCommentatorimg();
+                        getComImg6(user_photo6);
                     }else if(com_list.size()> 6){
                         findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
                         findViewById(R.id.relativeLayout2).setVisibility(View.VISIBLE);
@@ -377,6 +460,18 @@ public class Topic_activity3 extends Activity {
                         }else{
                             user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
                         }
+                        user_photo1 = com_list.get(0).getCommentatorimg();
+                        getComImg1(user_photo1);
+                        user_photo2 = com_list.get(1).getCommentatorimg();
+                        getComImg2(user_photo2);
+                        user_photo3 = com_list.get(2).getCommentatorimg();
+                        getComImg3(user_photo3);
+                        user_photo4 = com_list.get(3).getCommentatorimg();
+                        getComImg4(user_photo4);
+                        user_photo5 = com_list.get(4).getCommentatorimg();
+                        getComImg5(user_photo5);
+                        user_photo6 = com_list.get(5).getCommentatorimg();
+                        getComImg6(user_photo6);
                     }
 	            }else{
 		            Toast.makeText(Topic_activity3.this,"没有话题评论", Toast.LENGTH_LONG).show();
@@ -386,7 +481,149 @@ public class Topic_activity3 extends Activity {
 
         }
     };
-
+    public void getComImg1(final String userphoto1){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto1);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(1, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getComImg2(final String userphoto2){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto2);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(2, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getComImg3(final String userphoto3){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto3);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(3, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getComImg4(final String userphoto4){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto4);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(4, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getComImg5(final String userphoto5){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto5);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(5, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void getComImg6(final String userphoto6){
+        //新建一个线程，用于得到服务器响应的参数
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Response response = null;
+                try {
+                    URL url = new URL(Network.IMGURL + userphoto6);
+                    Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+                    android.os.Message msg = new android.os.Message();
+                    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                    System.out.println("进入handler");
+                    photoHandler.obtainMessage(6, pp).sendToTarget();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    private Handler photoHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 1) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo1.setImageBitmap(bmp);
+            }
+            if (msg.what == 2) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo2.setImageBitmap(bmp);
+            }
+            if (msg.what == 3) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo3.setImageBitmap(bmp);
+            }
+            if (msg.what == 4) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo4.setImageBitmap(bmp);
+            }
+            if (msg.what == 5) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo5.setImageBitmap(bmp);
+            }
+            if (msg.what == 6) {
+                Bitmap bmp = (Bitmap) msg.obj;
+                photo6.setImageBitmap(bmp);
+            }
+        }
+    };
     private Handler cHandler = new Handler(){
         @Override
         public void handleMessage(Message msg){
@@ -478,7 +715,7 @@ public class Topic_activity3 extends Activity {
                 try {
                     //回调
                     Topic topi = new Topic();
-                    System.out.println(topicID+"sdjkhsajk大家啊都卡啊拉萨大家了");
+                    System.out.println(topicID);
                     topi.setTopicid(topicID);
 
                     Gson gson = new GsonBuilder().create();

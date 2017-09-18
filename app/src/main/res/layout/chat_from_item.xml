@@ -60,7 +60,7 @@
 
         android:layout_alignParentTop="true"
 
-        android:background="@drawable/star_c"
+        android:background="@drawable/head_icon02"
 
         android:focusable="false" />
 
