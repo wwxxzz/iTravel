@@ -8,10 +8,13 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.Code;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
@@ -48,6 +51,11 @@ public class Register_activity extends AppCompatActivity {
     private EditText password;
     @ViewInject(R.id.et_password2)
     private EditText ensurepwd;
+
+    private ImageView iv_showCode;
+    //产生的验证码
+    private String realCode;
+    private EditText et_phoneCode;
     //验证码暂时不做
 //    @ViewInject(R.id.et_code)
 //    private EditText code;
@@ -85,8 +93,36 @@ public class Register_activity extends AppCompatActivity {
         //setContentView(R.layout.register);
         x.view().inject(this);
         mContext =this;
+
+        et_phoneCode = (EditText) findViewById(R.id.et_phoneCodes);
+        iv_showCode = (ImageView) findViewById(R.id.iv_showCode);
+        //将验证码用图片的形式显示出来
+        iv_showCode.setImageBitmap(Code.getInstance().createBitmap());
+        realCode = Code.getInstance().getCode().toLowerCase();
     }
 
+//    @Event(value={R.id.iv_showCode,R.id.submit})
+//    private void event1(View v) {
+//        switch (v.getId()) {
+//            case R.id.iv_showCode:
+//                System.out.println("验证码");
+//                iv_showCode.setImageBitmap(Code.getInstance().createBitmap());
+//                realCode = Code.getInstance().getCode().toLowerCase();
+//                Log.i("验证码", "realCode" + realCode);
+//                break;
+//            case R.id.submit:
+//                String phoneCode = et_phoneCode.getText().toString().toLowerCase();
+//                String msg = "生成的验证码：" + realCode + "输入的验证码:" + phoneCode;
+//                Toast.makeText(Register_activity.this, msg, Toast.LENGTH_LONG).show();
+//
+//                if (phoneCode.equals(realCode)) {
+//                    Toast.makeText(Register_activity.this, phoneCode + "验证码正确", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(Register_activity.this, phoneCode + "验证码错误", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
+//        }
+//    }
     public void checkUser(){
         //新建一个线程，用于得到服务器响应的参数
         new Thread(new Runnable() {
@@ -143,23 +179,44 @@ public class Register_activity extends AppCompatActivity {
         }
 
     }
-    boolean checkCode(){
-        //验证码确认
-        return true;
-    }
-
-    @Event(value = {R.id.bt_register})
+    @Event(value = {R.id.bt_register,R.id.iv_showCode})
     private void event(View view){
-
-       if(checkPwd()&&checkCode()){
-            Log.i("I", "成功");
-            checkUser();
-            Log.i("I", "成功");
-        }else if(!checkPwd()){
-            Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(Register_activity.this,"验证码错误",Toast.LENGTH_SHORT).show();
+        switch (view.getId()) {
+            case R.id.iv_showCode:
+                System.out.println("验证码");
+                iv_showCode.setImageBitmap(Code.getInstance().createBitmap());
+                realCode = Code.getInstance().getCode().toLowerCase();
+                Log.i("验证码", "realCode" + realCode);
+                break;
+            case R.id.bt_register:
+                String phoneCode = et_phoneCode.getText().toString().toLowerCase();
+                String msg = "生成的验证码：" + realCode + "输入的验证码:" + phoneCode;
+               // Toast.makeText(Register_activity.this, msg, Toast.LENGTH_LONG).show();
+                if (phoneCode.equals(realCode)) {
+                    //Toast.makeText(Register_activity.this, phoneCode + "验证码正确", Toast.LENGTH_SHORT).show();
+                    if(checkPwd()){
+                        Log.i("I", "成功");
+                        checkUser();
+                        Toast.makeText(Register_activity.this, phoneCode + "注册成功", Toast.LENGTH_SHORT).show();
+                    }else if(!checkPwd()){
+                        Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(Register_activity.this,"验证码错误",Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(Register_activity.this, phoneCode + "验证码错误", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
+//       if(checkPwd()){
+//            Log.i("I", "成功");
+//            checkUser();
+//            Log.i("I", "成功");
+//        }else if(!checkPwd()){
+//            Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
+//        }else {
+//            Toast.makeText(Register_activity.this,"验证码错误",Toast.LENGTH_SHORT).show();
+//        }
 
     }
 }

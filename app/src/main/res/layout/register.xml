@@ -142,44 +142,60 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/tv_code"
+                <LinearLayout
+                    android:id="@+id/yanzhengma"
                     android:layout_width="wrap_content"
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tv_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignTop="@+id/et_code"
+                        android:text="验证码"
+                        android:textSize="25dp"/>
+
+                    <EditText
+                        android:id="@+id/et_phoneCodes"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edit_bg"
+                        android:hint="请输入下方验证码"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_showCode"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignTop="@+id/et_code"
-                    android:text="验证码"
-                    android:textSize="25dp" />
+                    android:layout_below="@+id/et_phoneCodes"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="10dp"/>
 
-                <EditText
-                    android:id="@+id/et_code"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/edit_bg"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:padding="10dp" />
+            </LinearLayout>
 
-                <Button
-                    android:id="@+id/bt_sendcode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/et_code"
-                    android:layout_alignBottom="@+id/et_code"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@color/button"
-                    android:text="发送验证码"
-                    android:textColor="@color/whitefont" />
-            </RelativeLayout>
-
+            <!--<Button-->
+                <!--android:id="@+id/submit"-->
+                <!--style="@style/Widget.AppCompat.Button.Colored"-->
+                <!--android:layout_width="300dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:text="提交验证码"-->
+                <!--android:textSize="18sp"-->
+                <!--android:textColor="@color/whitefont" />-->
             <CheckBox
                 android:id="@+id/checkBox"
                 android:layout_width="match_parent"
