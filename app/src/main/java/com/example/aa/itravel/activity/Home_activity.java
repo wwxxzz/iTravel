@@ -351,7 +351,7 @@ public class Home_activity extends AppCompatActivity {
                 break;
             case R.id.btn_exit:
                 System.out.println("退出");
-                new AlertDialog.Builder(Home_activity.this).setTitle("系  统  提  示")//设置对话框标题
+                AlertDialog exitDialog=new AlertDialog.Builder(Home_activity.this).setTitle("系  统  提  示")//设置对话框标题
 
                         .setMessage("确 定 要 退 出 系 统 吗 ？")//设置显示的内容
 
@@ -383,9 +383,8 @@ public class Home_activity extends AppCompatActivity {
 
                     }
 
-                }).show();//在按键响应事件中显示此对话框
-
-
+                }).create();//在按键响应事件中显示此对话框
+                exitDialog.show();
                 break;
             case R.id.bt_info:
                 intent = new Intent(mContext,ShowUserInfo.class);

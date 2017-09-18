@@ -22,7 +22,7 @@
             android:layout_alignParentStart="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:visibility="invisible">
+            >
 
             <ImageView
                 android:id="@+id/ic_head01"
@@ -150,11 +150,12 @@
                 android:id="@+id/me_type_1"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
+                android:layout_alignLeft="@+id/tr_collection01"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/tr_like01"
-                android:layout_toRightOf="@+id/tr_like01"
+                android:layout_alignStart="@+id/tr_collection01"
                 android:background="@drawable/radio_button_style"
                 android:button="@null"
+                android:clickable="false"
                 android:text="CheckBox"
                 android:textAlignment="center"
                 android:textColor="@color/button"/>
@@ -302,9 +303,10 @@
                 android:id="@+id/me_type_2"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:layout_alignEnd="@+id/tr_comment_ic02"
+                android:layout_alignLeft="@+id/tr_collection02"
                 android:layout_alignParentTop="true"
-                android:layout_alignRight="@+id/tr_comment_ic02"
+                android:clickable="false"
+                android:layout_alignStart="@+id/tr_collection02"
                 android:background="@drawable/radio_button_style"
                 android:button="@null"
                 android:text="CheckBox"
@@ -458,6 +460,7 @@
                 android:layout_alignStart="@+id/tr_collection03"
                 android:background="@drawable/radio_button_style"
                 android:button="@null"
+                android:clickable="false"
                 android:text="CheckBox"
                 android:textAlignment="center"
                 android:textColor="@color/button"/>
@@ -611,6 +614,7 @@
                 android:background="@drawable/radio_button_style"
                 android:button="@null"
                 android:text="CheckBox"
+                android:clickable="false"
                 android:textAlignment="center"
                 android:textColor="@color/button"/>
         </RelativeLayout>
@@ -763,6 +767,7 @@
                 android:background="@drawable/radio_button_style"
                 android:button="@null"
                 android:text="CheckBox"
+                android:clickable="false"
                 android:textAlignment="center"
                 android:textColor="@color/button"/>
         </RelativeLayout>

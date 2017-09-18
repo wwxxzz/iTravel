@@ -29,9 +29,9 @@
             android:id="@+id/no_content1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" dalao点赞了你的动态： 今天天气超级棒"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:text="dalao点赞了你的动态： 今天天气超级棒"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/no_image1"
             android:layout_toEndOf="@+id/no_image1" />
 
@@ -40,10 +40,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
+            android:textSize="16sp"
             android:layout_below="@+id/no_content1"
             android:layout_toRightOf="@+id/no_image1"
             android:layout_toEndOf="@+id/no_image1"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/notice2"
@@ -65,9 +66,9 @@
             android:id="@+id/no_content2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" dalao点赞了你的动态： 今天天气超级棒"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:text="dalao点赞了你的动态： 今天天气超级棒"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/no_image2"
             android:layout_toEndOf="@+id/no_image2" />
 
@@ -76,10 +77,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
+            android:textSize="16sp"
             android:layout_below="@+id/no_content2"
             android:layout_toRightOf="@+id/no_image2"
             android:layout_toEndOf="@+id/no_image2"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/notice3"
@@ -101,9 +103,9 @@
             android:id="@+id/no_content3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" dalao点赞了你的动态： 今天天气超级棒"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:text="dalao点赞了你的动态： 今天天气超级棒"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/no_image3"
             android:layout_toEndOf="@+id/no_image3" />
 
@@ -112,10 +114,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
+            android:textSize="16sp"
             android:layout_below="@+id/no_content3"
             android:layout_toRightOf="@+id/no_image3"
             android:layout_toEndOf="@+id/no_image3"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/notice4"
@@ -137,9 +140,9 @@
             android:id="@+id/no_content4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" dalao点赞了你的动态： 今天天气超级棒"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:text="dalao点赞了你的动态： 今天天气超级棒"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/no_image4"
             android:layout_toEndOf="@+id/no_image4" />
 
@@ -148,10 +151,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
+            android:textSize="16sp"
             android:layout_below="@+id/no_content4"
             android:layout_toRightOf="@+id/no_image4"
             android:layout_toEndOf="@+id/no_image4"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/notice5"
@@ -173,9 +177,9 @@
             android:id="@+id/no_content5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" dalao点赞了你的动态： 今天天气超级棒"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:text="dalao点赞了你的动态： 今天天气超级棒"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/no_image5"
             android:layout_toEndOf="@+id/no_image5" />
 
@@ -184,10 +188,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
+            android:textSize="16sp"
             android:layout_below="@+id/no_content5"
             android:layout_toRightOf="@+id/no_image5"
             android:layout_toEndOf="@+id/no_image5"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
     android:id="@+id/notice6"
@@ -209,9 +214,9 @@
         android:id="@+id/no_content6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" dalao点赞了你的动态： 今天天气超级棒"
-        android:textSize="14sp"
-        android:layout_marginTop="5dp"
+        android:text="dalao点赞了你的动态： 今天天气超级棒"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/no_image6"
         android:layout_toEndOf="@+id/no_image6" />
 
@@ -220,10 +225,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="time"
+        android:textSize="16sp"
         android:layout_below="@+id/no_content6"
         android:layout_toRightOf="@+id/no_image6"
         android:layout_toEndOf="@+id/no_image6"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="10dp"/>
 </RelativeLayout>
     <RelativeLayout
     android:id="@+id/notice7"
@@ -245,9 +251,9 @@
         android:id="@+id/no_content7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" dalao点赞了你的动态： 今天天气超级棒"
-        android:textSize="14sp"
-        android:layout_marginTop="5dp"
+        android:text="dalao点赞了你的动态： 今天天气超级棒"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/no_image7"
         android:layout_toEndOf="@+id/no_image7" />
 
@@ -256,10 +262,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="time"
+        android:textSize="16sp"
         android:layout_below="@+id/no_content7"
         android:layout_toRightOf="@+id/no_image7"
         android:layout_toEndOf="@+id/no_image7"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="10dp"/>
 </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
