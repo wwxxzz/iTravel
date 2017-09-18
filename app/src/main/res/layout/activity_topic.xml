@@ -80,9 +80,10 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tv_topic_con"
                 android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:visibility="invisible">
+                >
 
                 <ImageView
                     android:id="@+id/image_photo1"
@@ -92,7 +93,7 @@
 
                 <TextView
                     android:id="@+id/tv_username1"
-                    android:layout_width="60dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
@@ -102,20 +103,22 @@
 
                 <TextView
                     android:id="@+id/tv_topicComment1"
-                    android:layout_width="300dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/image_photo1"
-                    android:layout_toRightOf="@+id/image_photo1"
                     android:text="TextView"
-                    android:textAlignment="center"/>
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/image_photo1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/tv_likenumber1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/tv_username1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
                     android:layout_alignRight="@+id/tv_topicComment1"
+                    android:layout_alignParentRight="true"
                     android:text="点赞数"/>
 
                 <ImageView
