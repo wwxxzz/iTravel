@@ -71,7 +71,6 @@ import static com.example.aa.itravel.R.id.button_home;
 public class Home_activity extends AppCompatActivity {
 
     private Context mContext;
-
     private ViewPager view_pager;
     private LinearLayout ll_dotGroup;
     //private TextView newsTitle;
@@ -91,6 +90,7 @@ public class Home_activity extends AppCompatActivity {
     //s用来保存sessionid     发送refresh请求
     String session;
     String user_photo;
+    List<Integer> msgid_list=new ArrayList<Integer>();
     @ViewInject(R.id.iv_photo)
     private ImageView userphoto;
     @ViewInject(R.id.tv_name)
@@ -352,38 +352,22 @@ public class Home_activity extends AppCompatActivity {
             case R.id.btn_exit:
                 System.out.println("退出");
                 AlertDialog exitDialog=new AlertDialog.Builder(Home_activity.this).setTitle("系  统  提  示")//设置对话框标题
-
-                        .setMessage("确 定 要 退 出 系 统 吗 ？")//设置显示的内容
-
-                        .setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮
-
-
-
-                            @Override
-
-                            public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件
-
-                                // TODO Auto-generated method stub
-
-                                android.os.Process.killProcess(android.os.Process.myPid());    //获取PID
-                                System.exit(0);   //常规java、c#的标准退出法，返回值为0代表正常退出
-
-                            }
-
-                        }).setNegativeButton("返回",new DialogInterface.OnClickListener() {//添加返回按钮
-
-
-                    @Override
-
-                    public void onClick(DialogInterface dialog, int which) {//响应事件
-
-                        // TODO Auto-generated method stub
-
-                        Log.i("alertdialog"," 请保存数据！");
-
-                    }
-
-                }).create();//在按键响应事件中显示此对话框
+                        .setMessage("确 定 要 退 出 登 录 吗 ？")//设置显示的内容
+                        .setPositiveButton("确定",
+                                new DialogInterface.OnClickListener() {//添加确定按钮
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件
+                                        Home_activity.this.finish();
+                                        Intent i = new Intent(mContext,Login_activity.class);
+                                        startActivity(i);
+                                    }
+                                }).setNegativeButton("返回",
+                                new DialogInterface.OnClickListener() {//添加返回按钮
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {//响应事件
+                                        Log.i("alertdialog"," 请保存数据！");
+                                    }
+                                }).create();//在按键响应事件中显示此对话框
                 exitDialog.show();
                 break;
             case R.id.bt_info:
@@ -455,7 +439,48 @@ public class Home_activity extends AppCompatActivity {
         }
     }
 
-
+@Event(value = {R.id.relativeLayout1,R.id.relativeLayout2,R.id.relativeLayout3,R.id.relativeLayout4,R.id.relativeLayout5,R.id.relativeLayout6})
+private void msgevent(View view){
+    Intent intent;
+    switch (view.getId()){
+        case R.id.relativeLayout1:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(0));
+            startActivity(intent);
+            break;
+        case R.id.relativeLayout2:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(1));
+            startActivity(intent);
+            break;
+        case R.id.relativeLayout3:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(2));
+            startActivity(intent);
+            break;
+        case R.id.relativeLayout4:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(3));
+            startActivity(intent);
+            break;
+        case R.id.relativeLayout5:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(4));
+            startActivity(intent);
+            break;
+        case R.id.relativeLayout6:
+            intent=new Intent(mContext,SingleMessageActivity.class);
+            intent.putExtra("sessionID",session);
+            intent.putExtra("messageID",msgid_list.get(5));
+            startActivity(intent);
+            break;
+    }
+}
     //显示推荐动态
     public void showRecommend(final int type){
         //新建一个线程，用于得到服务器响应的参数
@@ -505,6 +530,9 @@ public class Home_activity extends AppCompatActivity {
                 int mnumber;
                 if(msg_list!=null){
                     mnumber=msg_list.size();
+                    for(int i=0;i<msg_list.size();i++){
+                        msgid_list.add(msg_list.get(i).getMessageid());
+                    }
                     switch (mnumber){
                         case 0:
                             recommend1.setVisibility(View.GONE);
