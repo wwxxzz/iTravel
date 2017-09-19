@@ -12,7 +12,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <RelativeLayout
             android:id="@+id/msg_01"
@@ -22,7 +25,7 @@
             android:layout_alignParentStart="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            >
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/ic_head01"
@@ -31,6 +34,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:scaleType="fitXY"
                 android:background="@drawable/ic_home"/>
 
             <TextView
@@ -67,7 +71,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tr_textdata01"
-                android:background="@drawable/img1"/>
+                android:scaleType="fitXY"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tr_location01"
@@ -185,7 +190,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/ic_home"/>
+                android:background="@drawable/ic_home"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_user02"
@@ -220,7 +226,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tr_textdata02"
-                android:background="@drawable/img1"/>
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tr_location02"
@@ -336,7 +342,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/ic_home"/>
+                android:background="@drawable/ic_home"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_user03"
@@ -372,7 +379,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tr_textdata03"
-                android:background="@drawable/img1"/>
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_location03"
@@ -488,7 +495,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/ic_home"/>
+                android:background="@drawable/ic_home"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_user04"
@@ -524,7 +532,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tr_textdata04"
-                android:background="@drawable/img1"/>
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_location04"
@@ -641,7 +649,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/ic_home"/>
+                android:background="@drawable/ic_home"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_user05"
@@ -677,7 +686,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tr_textdata05"
-                android:background="@drawable/img1"/>
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tr_location05"

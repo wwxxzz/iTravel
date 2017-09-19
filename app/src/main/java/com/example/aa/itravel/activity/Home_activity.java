@@ -546,12 +546,6 @@ private void msgevent(View view){
                     }
                     switch (mnumber){
                         case 0:
-                            recommend1.setVisibility(View.GONE);
-                            recommend2.setVisibility(View.GONE);
-                            recommend3.setVisibility(View.GONE);
-                            recommend4.setVisibility(View.GONE);
-                            recommend5.setVisibility(View.GONE);
-                            recommend6.setVisibility(View.GONE);
                             break;
                         case 1:
                             recommend1.setVisibility(View.VISIBLE);
@@ -671,36 +665,6 @@ private void msgevent(View view){
                             getUserImage6(me_photo6);
                             break;
                         default:
-                            recommend1.setVisibility(View.VISIBLE);
-                            recommend2.setVisibility(View.VISIBLE);
-                            recommend3.setVisibility(View.VISIBLE);
-                            recommend4.setVisibility(View.VISIBLE);
-                            recommend5.setVisibility(View.VISIBLE);
-                            recommend6.setVisibility(View.VISIBLE);
-                            uname1.setText(msg_list.get(0).getUsername());
-                            msgcontent1.setText(msg_list.get(0).getMessagecontent());
-                            uname2.setText(msg_list.get(1).getUsername());
-                            msgcontent2.setText(msg_list.get(1).getMessagecontent());
-                            uname3.setText(msg_list.get(2).getUsername());
-                            msgcontent3.setText(msg_list.get(2).getMessagecontent());
-                            uname4.setText(msg_list.get(3).getUsername());
-                            msgcontent4.setText(msg_list.get(3).getMessagecontent());
-                            uname5.setText(msg_list.get(4).getUsername());
-                            msgcontent5.setText(msg_list.get(4).getMessagecontent());
-                            uname6.setText(msg_list.get(5).getUsername());
-                            msgcontent6.setText(msg_list.get(5).getMessagecontent());
-                            me_photo1 = msg_list.get(0).getUserimage();
-                            getUserImage1(me_photo1);
-                            me_photo2 = msg_list.get(1).getUserimage();
-                            getUserImage2(me_photo2);
-                            me_photo3 = msg_list.get(2).getUserimage();
-                            getUserImage3(me_photo3);
-                            me_photo4 = msg_list.get(3).getUserimage();
-                            getUserImage4(me_photo4);
-                            me_photo5 = msg_list.get(4).getUserimage();
-                            getUserImage5(me_photo5);
-                            me_photo6 = msg_list.get(5).getUserimage();
-                            getUserImage6(me_photo6);
                             break;
                     }
                 }

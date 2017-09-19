@@ -66,6 +66,8 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
     @ViewInject(R.id.title_bar_name)
     private TextView title;
+    @ViewInject(R.id.iv_right)
+    private ImageView right_icon;
 
     @ViewInject(R.id.search_friend)
     private EditText searchfriend;
@@ -109,7 +111,7 @@ public class AddNewFriendActivity extends AppCompatActivity {
         /*获取Bundle中的数据，注意类型和key*/
         session = bundle.getString("sessionID");
         title.setText("添加好友");
-
+        right_icon.setVisibility(View.INVISIBLE);
         showFriendRequest();
 
     }

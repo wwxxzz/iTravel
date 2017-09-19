@@ -6,7 +6,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aa.itravel.R;
@@ -26,6 +28,8 @@ public class Collection_activity extends AppCompatActivity {
 	String TAG = "COL_TO_Activity";
 	@ViewInject(R.id.title_bar_name)
     private TextView title;
+    @ViewInject(R.id.iv_right)
+    private ImageView right_icon;
 	private static MessageEntityWithBLOBs mMessage = new MessageEntityWithBLOBs();
     private ViewPager vp;
     private TabLayout tabLayout;
@@ -87,6 +91,7 @@ public class Collection_activity extends AppCompatActivity {
         vp = (ViewPager) findViewById(R.id.cl_viewpage);
         tabLayout = (TabLayout) findViewById(R.id.cl_tab);
         title.setText("查看收藏");
+        right_icon.setVisibility(View.INVISIBLE);
         /*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/

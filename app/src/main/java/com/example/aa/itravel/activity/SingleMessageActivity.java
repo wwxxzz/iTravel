@@ -176,6 +176,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                 System.out.println("第一个");
                 Bitmap bmp = (Bitmap) msg.obj;
                 pic.setImageBitmap(bmp);
+                pic.setVisibility(View.VISIBLE);
             }
         }
     };

@@ -553,22 +553,27 @@ public class Message_activity extends FragmentActivity {
 				System.out.println("第一个");
 				Bitmap bmp = (Bitmap) msg.obj;
 				pic1.setImageBitmap(bmp);
+				pic1.setVisibility(View.VISIBLE);
 			}
 			if (msg.what == 2) {
 				Bitmap bmp = (Bitmap) msg.obj;
 				pic2.setImageBitmap(bmp);
+				pic2.setVisibility(View.VISIBLE);
 			}
 			if (msg.what == 3) {
 				Bitmap bmp = (Bitmap) msg.obj;
 				pic3.setImageBitmap(bmp);
+				pic3.setVisibility(View.VISIBLE);
 			}
 			if (msg.what == 4) {
 				Bitmap bmp = (Bitmap) msg.obj;
 				pic4.setImageBitmap(bmp);
+				pic4.setVisibility(View.VISIBLE);
 			}
 			if (msg.what == 5) {
 				Bitmap bmp = (Bitmap) msg.obj;
 				pic5.setImageBitmap(bmp);
+				pic5.setVisibility(View.VISIBLE);
 			}
 		}
 	};

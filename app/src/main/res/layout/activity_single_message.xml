@@ -11,12 +11,15 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:id="@+id/ic_head"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_home"
+            android:scaleType="fitXY"
             android:layout_alignParentLeft="true" />
         <TextView
             android:id="@+id/tr_user"
@@ -40,16 +43,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="动态正文"
+            android:layout_marginTop="5dp"
             android:layout_below="@+id/ic_head"
             android:textSize="16dp"/>
         <ImageView
             android:id="@+id/tr_imagedata"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/img1"
+            android:scaleType="fitXY"
             android:layout_below="@+id/tr_textdata"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:adjustViewBounds="true"
+            android:visibility="gone"/>
         <TextView
             android:id="@+id/tr_location"
             android:layout_width="wrap_content"
@@ -61,7 +67,6 @@
             android:layout_below="@+id/tr_imagedata"
             android:layout_alignRight="@+id/ic_head05"
             android:layout_alignEnd="@+id/ic_head05" />
-
         <Button
             android:id="@+id/tr_transfer"
             android:layout_width="28dp"

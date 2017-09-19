@@ -1,32 +1,22 @@
 package com.example.aa.itravel.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.example.aa.itravel.R;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
-
-import com.amap.api.location.AMapLocationListener;
+import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
@@ -36,12 +26,9 @@ import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocation;
-import com.amap.api.maps2d.model.MyLocationStyle;
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.tools.FootPrintEntity;
 import com.example.aa.itravel.tools.Country;
+import com.example.aa.itravel.tools.FootPrintEntity;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.Result;
 import com.google.gson.Gson;
@@ -49,20 +36,13 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.Event;
-import org.xutils.x;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
-import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -72,6 +52,7 @@ import okhttp3.Response;
 @ContentView(R.layout.activity_foot_print_test)
 public class FootPrintTestActivity extends AppCompatActivity implements View.OnClickListener {
 	String path = Network.URL;
+
 	// String path1 = "http://223.3.82.239:8080/iTravel_Server_SSM/AndroidService/refresh";
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 	String TAG = "FootPrintTestActivity";
@@ -85,8 +66,8 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 	private TextView mLocationErrText;
 	private static final int STROKE_COLOR = Color.argb(180, 3, 145, 255);
 	private static final int FILL_COLOR = Color.argb(10, 0, 0, 180);
-	private ImageView show;
-	private ImageView light;
+	private Button show;
+	private Button light;
 	private String s;
 	private int type;
 	private String countryy;
@@ -113,15 +94,10 @@ public class FootPrintTestActivity extends AppCompatActivity implements View.OnC
 		Bundle bundle = this.getIntent().getExtras();
 		session_id= bundle.getString("sessionID");
 		ed=(EditText)findViewById(R.id.editText2);
-		show = (ImageView)findViewById(R.id.show    );
+		show = (Button)findViewById(R.id.show);
 		show.setOnClickListener(this);
-		light = (ImageView)findViewById(R.id.lightupp );
+		light = (Button)findViewById(R.id.lightupp );
 		light.setOnClickListener(this);
-
-
-		;
-
-
 	}
 	private Handler mHandler = new Handler(){
 		@Override

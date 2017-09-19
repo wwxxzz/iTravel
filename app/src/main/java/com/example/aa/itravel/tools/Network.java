@@ -8,8 +8,8 @@ import android.graphics.Matrix;
  */
 
 public class Network {
-	final  static public String URL = "http://223.3.90.24:8080/iTravel_Server_SSM/AndroidService/";
-	final static public String IMGURL = "http://223.3.90.24:8080/iTravel_Server_SSM/images/";
+	final  static public String URL = "http://223.3.75.214:8080/iTravel_Server_SSM/AndroidService/";
+	final static public String IMGURL = "http://223.3.75.214:8080/iTravel_Server_SSM/images/";
 	static public Bitmap edit(Bitmap bm)
 	{
 		int width = bm.getWidth();

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,6 @@ import com.example.aa.itravel.R;
 import com.example.aa.itravel.tools.Network;
 import com.example.aa.itravel.tools.PreferredType;
 import com.example.aa.itravel.tools.Result;
-import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -47,7 +46,8 @@ public class Preference_activity extends Activity {
     private Context mContext;
     @ViewInject(R.id.title_bar_name)
     private TextView title;
-
+    @ViewInject(R.id.iv_right)
+    private ImageView right_icon;
    // private static List<CheckBox> checkBoxs=new ArrayList<CheckBox>();
     private static List<PreferredType> preferred_types = new ArrayList<PreferredType>();
     private static List<PreferredType> pre_list =new ArrayList<PreferredType>();
@@ -98,7 +98,49 @@ public class Preference_activity extends Activity {
                 pre_list = gson.fromJson(qq,type);
                 if(pre_list != null){
                     for(int i=0; i<pre_list.size(); i++){
-                        if(pre_list.get(i).getTypeid()== 1){
+                        switch (pre_list.get(i).getTypeid()){
+                            case 1:
+                                cb1.setChecked(true);
+                                break;
+                            case 2:
+                                cb2.setChecked(true);
+                                break;
+                            case 3:
+                                cb3.setChecked(true);
+                                break;
+                            case 4:
+                                cb4.setChecked(true);
+                                break;
+                            case 5:
+                                cb5.setChecked(true);
+                                break;
+                            case 6:
+                                cb6.setChecked(true);
+                                break;
+                            case 7:
+                                cb7.setChecked(true);
+                                break;
+                            case 8:
+                                cb8.setChecked(true);
+                                break;
+                            case 9:
+                                cb9.setChecked(true);
+                                break;
+                            case 10:
+                                cb10.setChecked(true);
+                                break;
+                            case 11:
+                                cb11.setChecked(true);
+                                break;
+                            case 12:
+                                cb12.setChecked(true);
+                                break;
+                            default:
+                                cb13.setChecked(true);
+                                break;
+
+                        }
+                        /*if(pre_list.get(i).getTypeid()== 1){
                             cb1.setChecked(true);
                         }else if(pre_list.get(i).getTypeid()== 2){
                             cb2.setChecked(true);
@@ -124,7 +166,7 @@ public class Preference_activity extends Activity {
                             cb12.setChecked(true);
                         }else if(pre_list.get(i).getTypeid()== 13){
                             cb13.setChecked(true);
-                        }
+                        }*/
                     }
                 }
 
@@ -158,7 +200,7 @@ public class Preference_activity extends Activity {
         mContext = this;
         x.view().inject(this);
         title.setText("偏好设置");
-
+        right_icon.setVisibility(View.INVISIBLE);
 		/*获取Intent中的Bundle对象*/
         Bundle bundle = this.getIntent().getExtras();
          /*获取Bundle中的数据，注意类型和key*/
@@ -170,6 +212,7 @@ public class Preference_activity extends Activity {
     @Event(value = R.id.bt_savePreference)
     private void event(View view){
         //PreferenceAdapter
+        preferred_types.clear();
         if(cb1.isChecked()){
             PreferredType pt1 = new PreferredType();
             pt1.setTypeid(1);
@@ -243,6 +286,7 @@ public class Preference_activity extends Activity {
                 Response response = null;
                 try {
                     Gson gson = new GsonBuilder().create();
+                    Log.i("PR",preferred_types.toString());
                     String content = gson.toJson(preferred_types);
 
                     RequestBody body = RequestBody.create(JSON, content);

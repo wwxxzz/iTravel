@@ -8,7 +8,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -101,7 +100,7 @@ public class Register_activity extends AppCompatActivity {
         realCode = Code.getInstance().getCode().toLowerCase();
     }
 
-//    @Event(value={R.id.iv_showCode,R.id.submit})
+    //    @Event(value={R.id.iv_showCode,R.id.submit})
 //    private void event1(View v) {
 //        switch (v.getId()) {
 //            case R.id.iv_showCode:
@@ -170,13 +169,18 @@ public class Register_activity extends AppCompatActivity {
         String user_psw2 = ensurepwd.getText().toString();
         Log.i("TST",user_psw1);
         Log.i("TES",user_psw2);
-        if(user_psw1.equals(user_psw2)){
-            Log.i("YE","suce");
-            return true;
+        if(user_psw1 != null&& user_psw2!= null){
+            if(user_psw1.equals(user_psw2)){
+                Log.i("YE","suce");
+                return true;
+            }else{
+                Log.i("NO","fail");
+                return false;
+            }
         }else{
-            Log.i("NO","fail");
             return false;
         }
+
 
     }
     @Event(value = {R.id.bt_register,R.id.iv_showCode})
@@ -191,13 +195,13 @@ public class Register_activity extends AppCompatActivity {
             case R.id.bt_register:
                 String phoneCode = et_phoneCode.getText().toString().toLowerCase();
                 String msg = "生成的验证码：" + realCode + "输入的验证码:" + phoneCode;
-               // Toast.makeText(Register_activity.this, msg, Toast.LENGTH_LONG).show();
+                // Toast.makeText(Register_activity.this, msg, Toast.LENGTH_LONG).show();
                 if (phoneCode.equals(realCode)) {
                     //Toast.makeText(Register_activity.this, phoneCode + "验证码正确", Toast.LENGTH_SHORT).show();
                     if(checkPwd()){
                         Log.i("I", "成功");
                         checkUser();
-                        Toast.makeText(Register_activity.this, phoneCode + "注册成功", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Register_activity.this, "注册成功", Toast.LENGTH_SHORT).show();
                     }else if(!checkPwd()){
                         Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
                     }else {
