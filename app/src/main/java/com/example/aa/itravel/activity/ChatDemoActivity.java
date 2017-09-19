@@ -4,8 +4,17 @@ package com.example.aa.itravel.activity;
  * Created by admin on 2017/9/13.
  */
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,20 +31,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.aa.itravel.R;
+import com.example.aa.itravel.tools.ChatEntity;
 import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
+import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
+import org.xutils.view.annotation.ViewInject;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -50,20 +56,19 @@ public class ChatDemoActivity extends Activity {
 	private EditText contentEditText = null;
 	private ListView chatListView = null;
 	private TextView titlebar = null;
-	private ImageView right_icon=null;
 	private List<MessageBuffer> chatList = null;
 	private List<MessageBuffer> chatList1 = new ArrayList<MessageBuffer>();
 	private ChatAdapter chatAdapter = null;
-    /*@ViewInject(R.id.from_user_img)
+    @ViewInject(R.id.from_user_img)
     private ImageView from_img;
 	@ViewInject(R.id.to_user_img)
-	private ImageView to_img;*/
+	private ImageView to_img;
 	String session;
 	String friendname;
 	Integer friendid;
 	Integer myid;
 	String tophoto;
-	//String formphoto;
+	String formphoto;
 	String path = Network.URL+ "sendmessage";
 	String path1 = Network.URL + "refresh";
 	String path2 = Network.URL+ "personalinfo";
@@ -82,8 +87,6 @@ public class ChatDemoActivity extends Activity {
 		friendid = bundle.getInt("friendID");
 		titlebar = (TextView) this.findViewById(R.id.title_bar_name);
 		titlebar.setText("与"+friendname+"聊天中");
-		right_icon=(ImageView) this.findViewById(R.id.iv_right);
-		right_icon.setVisibility(View.GONE);
 		new Thread(runnable).start();  //启动子线程
 		contentEditText = (EditText) this.findViewById(R.id.et_content);
 		sendButton = (Button) this.findViewById(R.id.btn_send);
@@ -133,12 +136,41 @@ public class ChatDemoActivity extends Activity {
 				Gson gson = new Gson();
 				User re = gson.fromJson(qq, User.class);
 				myid = re.getUserid();
-				//tophoto = re.getUserphoto();
+				tophoto = re.getUserphoto();
 				//getToImage(tophoto);
 			}
 
 		}
 	};
+//	public void getToImage(final String userphoto1){
+//		//新建一个线程，用于得到服务器响应的参数
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				Response response = null;
+//				try {
+//					URL url = new URL(Network.IMGURL + userphoto1);
+//					Bitmap pp = BitmapFactory.decodeStream(url.openStream());
+//					android.os.Message msg = new android.os.Message();
+//					//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+//					System.out.println("进入handler");
+//					imgHandler.obtainMessage(1, pp).sendToTarget();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}).start();
+//	}
+//
+//	private Handler imgHandler = new Handler() {
+//		@Override
+//		public void handleMessage(android.os.Message msg) {
+//			if (msg.what == 1) {
+//				Bitmap bmp = (Bitmap) msg.obj;
+//				to_img.setImageBitmap(bmp);
+//			}
+//		}
+//	};
 	public void showMessage(){
 		Log.i("TEST","进入函数");
 		//新建一个线程，用于得到服务器响应的参数
@@ -171,6 +203,7 @@ public class ChatDemoActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg){
 			if(msg.what==1){
+				Log.i("dasa","进入xianhi");
 				String qq = (String) msg.obj;
 				System.out.println(qq);
 				Gson gson = new Gson();
@@ -192,6 +225,7 @@ public class ChatDemoActivity extends Activity {
 		                chatList.add(chatEntity);
 	                }
                 }
+
 			}
 		}
 	};
@@ -305,9 +339,9 @@ public class ChatDemoActivity extends Activity {
 				chatHolder = (ChatHolder)convertView.getTag();
 			}
 			SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-            //Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-            //String str = formatter.format(curDate);
-			chatHolder.timeTextView.setText(chatList.get(position).getSendtime());
+            Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+            String str = formatter.format(curDate);
+			chatHolder.timeTextView.setText(str);
 			chatHolder.contentTextView.setText(chatList.get(position).getMessagebcontent());
 			//chatHolder.userImageView.setImageResource(chatList.get(position).getUserImage());
 			return convertView;
