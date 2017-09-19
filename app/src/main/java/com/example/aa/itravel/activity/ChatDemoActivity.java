@@ -4,17 +4,8 @@ package com.example.aa.itravel.activity;
  * Created by admin on 2017/9/13.
  */
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,17 +22,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.tools.ChatEntity;
 import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
-import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ViewInject;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -56,6 +53,7 @@ public class ChatDemoActivity extends Activity {
 	private EditText contentEditText = null;
 	private ListView chatListView = null;
 	private TextView titlebar = null;
+	private ImageView right_icon=null;
 	private List<MessageBuffer> chatList = null;
 	private List<MessageBuffer> chatList1 = new ArrayList<MessageBuffer>();
 	private ChatAdapter chatAdapter = null;
@@ -87,6 +85,8 @@ public class ChatDemoActivity extends Activity {
 		friendid = bundle.getInt("friendID");
 		titlebar = (TextView) this.findViewById(R.id.title_bar_name);
 		titlebar.setText("与"+friendname+"聊天中");
+		right_icon=(ImageView) this.findViewById(R.id.iv_right);
+		right_icon.setVisibility(View.GONE);
 		new Thread(runnable).start();  //启动子线程
 		contentEditText = (EditText) this.findViewById(R.id.et_content);
 		sendButton = (Button) this.findViewById(R.id.btn_send);
@@ -203,7 +203,6 @@ public class ChatDemoActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg){
 			if(msg.what==1){
-				Log.i("dasa","进入xianhi");
 				String qq = (String) msg.obj;
 				System.out.println(qq);
 				Gson gson = new Gson();

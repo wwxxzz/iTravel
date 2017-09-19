@@ -43,19 +43,19 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="昵称  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/tv_name"
-                    android:layout_alignBottom="@+id/tv_name"
-                    android:layout_toEndOf="@+id/tv_name"
-                    android:layout_toRightOf="@+id/tv_name"
                     android:text="dalao"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp"
+                    android:layout_alignBaseline="@+id/tv_name"
+                    android:layout_alignBottom="@+id/tv_name"
+                    android:layout_toRightOf="@+id/tv_name"
+                    android:layout_toEndOf="@+id/tv_name" />
 
             </RelativeLayout>
 
@@ -71,7 +71,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="性别  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showsex"
@@ -83,7 +83,7 @@
                     android:layout_toRightOf="@+id/tv_sex"
                     android:text="sex"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -98,7 +98,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="生日  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showbirthday"
@@ -110,7 +110,7 @@
                     android:layout_toRightOf="@+id/tv_birthday"
                     android:text=" 2 月 31 日"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -127,7 +127,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="职业  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showoccupation"
@@ -138,7 +138,7 @@
                     android:layout_toRightOf="@+id/tv_occupation"
                     android:text="搬砖"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -154,7 +154,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="所在地  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showlocation"
@@ -166,7 +166,7 @@
                     android:layout_toRightOf="@+id/tv_location"
                     android:text="江苏 南京"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="邮箱  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showemail"
@@ -193,7 +193,7 @@
                     android:layout_toRightOf="@+id/tv_email"
                     android:text="123456789@qq.com"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -209,7 +209,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:text="手机  "
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/showphone"
@@ -221,7 +221,7 @@
                     android:layout_toRightOf="@+id/tv_phone"
                     android:text="12345678901"
                     android:textColor="@color/blackfont"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </LinearLayout>
