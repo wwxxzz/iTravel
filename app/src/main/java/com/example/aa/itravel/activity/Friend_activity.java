@@ -102,9 +102,6 @@ public class Friend_activity extends AppCompatActivity {
         tabLayout.setTabTextColors(Color.GRAY, Color.parseColor("#f75b47"));
         //设置下划线的颜色
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f75b47"));
-
-
-
     }
 
     @Event(value = {R.id.button_home,R.id.button_message,R.id.iv_right })

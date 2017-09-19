@@ -4,17 +4,8 @@ package com.example.aa.itravel.activity;
  * Created by admin on 2017/9/13.
  */
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,17 +22,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.aa.itravel.R;
-import com.example.aa.itravel.tools.ChatEntity;
 import com.example.aa.itravel.tools.MessageBuffer;
 import com.example.aa.itravel.tools.Network;
-import com.example.aa.itravel.tools.Result;
 import com.example.aa.itravel.tools.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.xutils.view.annotation.ViewInject;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -281,7 +278,9 @@ public class ChatDemoActivity extends Activity {
 		private LayoutInflater inflater = null;
 		private int COME_MSG = 0;
 		private int TO_MSG = 1;
-
+		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+		String str = formatter.format(curDate);
 		public ChatAdapter(Context context,List<MessageBuffer> chatList){
 			this.context = context;
 			this.chatList = chatList;
@@ -338,10 +337,12 @@ public class ChatDemoActivity extends Activity {
 			}else {
 				chatHolder = (ChatHolder)convertView.getTag();
 			}
-			SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-            Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-            String str = formatter.format(curDate);
-			chatHolder.timeTextView.setText(str);
+			if(chatList.get(position).getSendtime()!=null&&!chatList.get(position).getSendtime().isEmpty()){
+				chatHolder.timeTextView.setText(chatList.get(position).getSendtime());
+			}else{
+				chatHolder.timeTextView.setText(str);
+			}
+
 			chatHolder.contentTextView.setText(chatList.get(position).getMessagebcontent());
 			//chatHolder.userImageView.setImageResource(chatList.get(position).getUserImage());
 			return convertView;

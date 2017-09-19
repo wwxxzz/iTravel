@@ -144,18 +144,7 @@ public class Home_activity extends AppCompatActivity {
     private RelativeLayout recommend5;
     @ViewInject(R.id.relativeLayout6)
     private RelativeLayout recommend6;
-//    @ViewInject(R.id.me_view1)
-//    private RelativeLayout view1;
-//    @ViewInject(R.id.me_view2)
-//    private RelativeLayout view2;
-//    @ViewInject(R.id.me_view3)
-//    private RelativeLayout view3;
-//    @ViewInject(R.id.me_view4)
-//    private RelativeLayout view4;
-//    @ViewInject(R.id.me_view5)
-//    private RelativeLayout view5;
-//    @ViewInject(R.id.me_view6)
-//    private RelativeLayout view6;
+
     String me_photo1;
     String me_photo2;
     String me_photo3;
@@ -279,10 +268,8 @@ public class Home_activity extends AppCompatActivity {
 //            showRecommend(1);
 //        }
 
-        showRecommend(1);
+        //showRecommend(1);
         bqColor(bqnumber);
-
-
     }
     // @Event(value = {R.id.bt_friend,R.id.bt_message,R.id.prefence,R.id.footprint})
 
@@ -450,7 +437,16 @@ public class Home_activity extends AppCompatActivity {
         }
     }
 
-@Event(value = {R.id.relativeLayout1,R.id.relativeLayout2,R.id.relativeLayout3,R.id.relativeLayout4,R.id.relativeLayout5,R.id.relativeLayout6})
+    private void iniList() {
+        recommend1.setVisibility(View.GONE);
+        recommend2.setVisibility(View.GONE);
+        recommend3.setVisibility(View.GONE);
+        recommend4.setVisibility(View.GONE);
+        recommend5.setVisibility(View.GONE);
+        recommend6.setVisibility(View.GONE);
+    }
+
+    @Event(value = {R.id.relativeLayout1,R.id.relativeLayout2,R.id.relativeLayout3,R.id.relativeLayout4,R.id.relativeLayout5,R.id.relativeLayout6})
 private void msgevent(View view){
     Intent intent;
     switch (view.getId()){
@@ -534,6 +530,7 @@ private void msgevent(View view){
         @Override
         public void handleMessage(Message msg){
             if(msg.what==1){
+                msgid_list.clear();
                 String qq = (String) msg.obj;
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
@@ -546,6 +543,7 @@ private void msgevent(View view){
                     }
                     switch (mnumber){
                         case 0:
+                            iniList();
                             break;
                         case 1:
                             recommend1.setVisibility(View.VISIBLE);
@@ -665,6 +663,7 @@ private void msgevent(View view){
                             getUserImage6(me_photo6);
                             break;
                         default:
+                            iniList();
                             break;
                     }
                 }
@@ -848,7 +847,6 @@ private void msgevent(View view){
         public void handleMessage(Message msg){
             if(msg.what==1){
                 String qq = (String) msg.obj;
-
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<PreferredType>>(){}.getType();
                 pre_list = gson.fromJson(qq,type);
@@ -856,6 +854,7 @@ private void msgevent(View view){
                 int pnumber;
                 if(pre_list!=null){
                     pnumber=pre_list.size();
+                    showRecommend(pre_list.get(0).getTypeid());
                     switch (pnumber){
                         case 1:
                             bq1.setVisibility(View.VISIBLE);
@@ -911,6 +910,7 @@ private void msgevent(View view){
                             break;
                     }
                 }else {
+                    showRecommend(1);
                     bq1.setVisibility(View.VISIBLE);
                     bq2.setVisibility(View.VISIBLE);
                     bq3.setVisibility(View.VISIBLE);

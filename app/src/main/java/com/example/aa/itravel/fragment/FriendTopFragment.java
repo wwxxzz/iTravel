@@ -184,11 +184,17 @@ public class FriendTopFragment extends Fragment {
 		if (bundle != null) {
 			name = bundle.get("name").toString();
 			session = bundle.get("session").toString();
-
 		}
 
 	}
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            shownotice();
+            showFriendRequest();
+        }
+    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
