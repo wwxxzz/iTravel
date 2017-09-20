@@ -183,6 +183,19 @@ public class Register_activity extends AppCompatActivity {
 
 
     }
+    boolean checkEmpty()
+    {
+        String usertel = user.getText().toString();
+        String username = name.getText().toString();
+        String password= ensurepwd.getText().toString();
+        if(usertel.equals("")||username.equals("")||password.equals(""))
+        {
+            return false;
+        }else
+        {
+            return true;
+        }
+    }
     @Event(value = {R.id.bt_register,R.id.iv_showCode})
     private void event(View view){
         switch (view.getId()) {
@@ -198,13 +211,17 @@ public class Register_activity extends AppCompatActivity {
                 // Toast.makeText(Register_activity.this, msg, Toast.LENGTH_LONG).show();
                 if (phoneCode.equals(realCode)) {
                     //Toast.makeText(Register_activity.this, phoneCode + "验证码正确", Toast.LENGTH_SHORT).show();
-                    if(checkPwd()){
+                    if(checkPwd()&&checkEmpty()){
                         Log.i("I", "成功");
                         checkUser();
                         //Toast.makeText(Register_activity.this, "注册成功", Toast.LENGTH_SHORT).show();
                     }else if(!checkPwd()){
                         Toast.makeText(Register_activity.this,"两次密码不一致",Toast.LENGTH_SHORT).show();
-                    }else {
+                    }else if(!checkEmpty())
+                    {
+                        Toast.makeText(Register_activity.this,"有空格为空",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
                         Toast.makeText(Register_activity.this,"验证码错误",Toast.LENGTH_SHORT).show();
                     }
                 } else {

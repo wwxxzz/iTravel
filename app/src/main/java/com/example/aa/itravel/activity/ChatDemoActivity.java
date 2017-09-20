@@ -56,8 +56,8 @@ public class ChatDemoActivity extends Activity {
 	private List<MessageBuffer> chatList = null;
 	private List<MessageBuffer> chatList1 = new ArrayList<MessageBuffer>();
 	private ChatAdapter chatAdapter = null;
-    @ViewInject(R.id.from_user_img)
-    private ImageView from_img;
+	@ViewInject(R.id.from_user_img)
+	private ImageView from_img;
 	@ViewInject(R.id.to_user_img)
 	private ImageView to_img;
 	String session;
@@ -139,7 +139,7 @@ public class ChatDemoActivity extends Activity {
 
 		}
 	};
-//	public void getToImage(final String userphoto1){
+	//	public void getToImage(final String userphoto1){
 //		//新建一个线程，用于得到服务器响应的参数
 //		new Thread(new Runnable() {
 //			@Override
@@ -207,21 +207,23 @@ public class ChatDemoActivity extends Activity {
 				Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
 				chatList1 = gson.fromJson(qq,type);
 				System.out.println("转化");
-                if(chatList1 != null){
-	                for(int i = 0;i<chatList1.size();i++){
-		                MessageBuffer chatEntity = new MessageBuffer();
-		                if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==friendid&&chatList1.get(i).getTouserid()==myid){
-			                chatEntity.setComeMsg(true);
-			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
-			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
-		                }else if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==myid&&chatList1.get(i).getTouserid()==friendid){
-			                chatEntity.setComeMsg(false);
-			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
-			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
-		                }
-		                chatList.add(chatEntity);
-	                }
-                }
+				if(chatList1 != null){
+					for(int i = 0;i<chatList1.size();i++){
+						MessageBuffer chatEntity = new MessageBuffer();
+						if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==friendid&&chatList1.get(i).getTouserid()==myid){
+							chatEntity.setComeMsg(true);
+							chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+							chatEntity.setSendtime(chatList1.get(i).getSendtime());
+							chatList.add(chatEntity);
+						}else if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==myid&&chatList1.get(i).getTouserid()==friendid){
+							chatEntity.setComeMsg(false);
+							chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+							chatEntity.setSendtime(chatList1.get(i).getSendtime());
+							chatList.add(chatEntity);
+						}
+
+					}
+				}
 
 			}
 		}
@@ -342,20 +344,14 @@ public class ChatDemoActivity extends Activity {
 			}else{
 				chatHolder.timeTextView.setText(str);
 			}
-
 			chatHolder.contentTextView.setText(chatList.get(position).getMessagebcontent());
 			//chatHolder.userImageView.setImageResource(chatList.get(position).getUserImage());
 			return convertView;
 		}
-
 		private class ChatHolder{
 			private TextView timeTextView;
 			private ImageView userImageView;
 			private TextView contentTextView;
 		}
 	}
-
-
 }
-
-

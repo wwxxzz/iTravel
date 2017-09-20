@@ -46,6 +46,7 @@ import okhttp3.Response;
 public class FriendTopFragment extends Fragment {
 	private String name;
 	private int fnumber;
+	LayoutInflater inf;
 	private FriendData1 friendData1 = new FriendData1();
 	private FriendData2 friendData2 = new FriendData2();
 	private FriendData3 friendData3 = new FriendData3();
@@ -88,19 +89,23 @@ public class FriendTopFragment extends Fragment {
 	private Handler shownoticeHandler = new Handler() {
 		@Override
 		public void handleMessage(android.os.Message msg) {
+			notice_list.clear();
 			if (msg.what == 1) {
-				Log.i("ONEMESSAGE", "进入");
 				String qq = (String) msg.obj;
-				Log.i("ONEMESSAGE", qq);
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 				Type type = new TypeToken<List<MessageBuffer>>() {}.getType();
 				notice_list = gson.fromJson(qq, type);
+				Log.i("NOTICE",notice_list.toString());
 				if (notice_list!= null&&!notice_list.isEmpty())
-				for (int i = 1; i <= notice_list.size(); i++) {
-					no_content.get(i-1).setText(notice_list.get(i-1).getMessagebcontent());
-					no_time.get(i-1).setText(notice_list.get(i-1).getSendtime());
-					notice.get(i-1).setVisibility(View.VISIBLE);
-				}
+					for (int i = 0; i < notice_list.size(); i++) {
+						Log.i("UI", "更新成功");
+						Log.i("NOTICE",notice.toString());
+						notice.get(i).setVisibility(View.VISIBLE);
+						Log.i("NOTICE",no_content.toString());
+						no_content.get(i).setText(notice_list.get(i).getMessagebcontent());
+						Log.i("NOTICE",no_time.toString());
+						no_time.get(i).setText(notice_list.get(i).getSendtime());
+					}
 			}
 		}
 	};
@@ -187,17 +192,35 @@ public class FriendTopFragment extends Fragment {
 		}
 
 	}
-    @Override
+    /*@Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
             shownotice();
             showFriendRequest();
+			Log.i("Hidden","success");
         }
     }
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+	public void onStart() {
+		super.onStart();
+		shownotice();
+		showFriendRequest();
+		Log.i("START","success");
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		notice.clear();
+		no_content.clear();
+		no_time.clear();
+		notice_list.clear();
+	}*/
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 		View view;
 		switch (name) {
 			case "1":
@@ -225,33 +248,40 @@ public class FriendTopFragment extends Fragment {
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_03));
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_04));
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_05));
-
 				showFriendRequest();
 				break;
 
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
-				notice.add((RelativeLayout) view.findViewById(R.id.notice1));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice2));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice3));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice4));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice5));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice6));
-				notice.add((RelativeLayout) view.findViewById(R.id.notice7));
-				no_content.add((TextView) view.findViewById(R.id.no_content1));
-				no_content.add((TextView) view.findViewById(R.id.no_content2));
-				no_content.add((TextView) view.findViewById(R.id.no_content3));
-				no_content.add((TextView) view.findViewById(R.id.no_content4));
-				no_content.add((TextView) view.findViewById(R.id.no_content5));
-				no_content.add((TextView) view.findViewById(R.id.no_content6));
-				no_content.add((TextView) view.findViewById(R.id.no_content7));
-				no_time.add((TextView) view.findViewById(R.id.no_time1));
-				no_time.add((TextView) view.findViewById(R.id.no_time2));
-				no_time.add((TextView) view.findViewById(R.id.no_time3));
-				no_time.add((TextView) view.findViewById(R.id.no_time4));
-				no_time.add((TextView) view.findViewById(R.id.no_time5));
-				no_time.add((TextView) view.findViewById(R.id.no_time6));
-				no_time.add((TextView) view.findViewById(R.id.no_time7));
+				if(notice.isEmpty()){
+					notice.add((RelativeLayout) view.findViewById(R.id.notice1));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice2));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice3));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice4));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice5));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice6));
+					notice.add((RelativeLayout) view.findViewById(R.id.notice7));
+				}
+				if(no_content.isEmpty()){
+					no_content.add((TextView) view.findViewById(R.id.no_content1));
+					no_content.add((TextView) view.findViewById(R.id.no_content2));
+					no_content.add((TextView) view.findViewById(R.id.no_content3));
+					no_content.add((TextView) view.findViewById(R.id.no_content4));
+					no_content.add((TextView) view.findViewById(R.id.no_content5));
+					no_content.add((TextView) view.findViewById(R.id.no_content6));
+					no_content.add((TextView) view.findViewById(R.id.no_content7));
+				}
+				if(no_time.isEmpty()) {
+					no_time.add((TextView) view.findViewById(R.id.no_time1));
+					no_time.add((TextView) view.findViewById(R.id.no_time2));
+					no_time.add((TextView) view.findViewById(R.id.no_time3));
+					no_time.add((TextView) view.findViewById(R.id.no_time4));
+					no_time.add((TextView) view.findViewById(R.id.no_time5));
+					no_time.add((TextView) view.findViewById(R.id.no_time6));
+					no_time.add((TextView) view.findViewById(R.id.no_time7));
+				}
+				Log.i("CV","success");
+				Log.i("NOTICE",notice.toString());
 				shownotice();
 				break;
 		}
@@ -334,18 +364,6 @@ public class FriendTopFragment extends Fragment {
     }
 
 	private Handler mHandler = new Handler(){
-//        @Override
-//        public void handleMessage(Message msg){
-//            if(msg.what==1){
-//                //Log.i(TAG,"进入");
-//                String qq = (String) msg.obj;
-//                //Log.i(TAG, qq);
-//                Gson gson = new Gson();
-//                Type type = new TypeToken<ArrayList<User>>(){}.getType();
-//                friend_list = gson.fromJson(qq,type);
-//                int fnumber=friend_list.size();
-//            }
-//        }
 
 		public void handleMessage(android.os.Message msg) {
 			if (msg.what == 1) {

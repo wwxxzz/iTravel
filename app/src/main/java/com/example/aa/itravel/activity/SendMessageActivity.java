@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -109,10 +108,10 @@ public class SendMessageActivity extends AppCompatActivity {
                 System.out.println(re.getResult());
                 if(back.equals("true") ){
                     Toast.makeText(SendMessageActivity.this,"发布成功",Toast.LENGTH_SHORT).show();
-                     Intent intent= new Intent(mContext, Message_activity.class);
+                    Intent intent= new Intent(mContext, Message_activity.class);
                     intent.putExtra("sessionID", session);
                     startActivity(intent);
-                     finish();
+                    finish();
                 }else if(back.equals("existed")){
                     Toast.makeText(SendMessageActivity.this,"失效", Toast.LENGTH_LONG).show();
                 }
@@ -143,53 +142,53 @@ public class SendMessageActivity extends AppCompatActivity {
 
     }
 
-   @Event(value={R.id.radioButton1,R.id.radioButton2,R.id.radioButton3,R.id.radioButton4,R.id.radioButton5,
-           R.id.radioButton6,R.id.radioButton7,R.id.radioButton8,R.id.radioButton9,R.id.radioButton10,
-           R.id.radioButton11,R.id.radioButton12,R.id.radioButton13})
-   private void e1(View v){
-       switch (v.getId()){
-           case R.id.radioButton1:
-               type = 1;
-               break;
-           case R.id.radioButton2:
-               type = 2;
-               break;
-           case R.id.radioButton3:
-               type = 3;
-               break;
-           case R.id.radioButton4:
-               type = 4;
-               break;
-           case R.id.radioButton5:
-               type = 5;
-               break;
-           case R.id.radioButton6:
-               type = 6;
-               break;
-           case R.id.radioButton7:
-               type = 7;
-               break;
-           case R.id.radioButton8:
-               type = 8;
-               break;
-           case R.id.radioButton9:
-               type = 9;
-               break;
-           case R.id.radioButton10:
-               type = 10;
-               break;
-           case R.id.radioButton11:
-               type = 11;
-               break;
-           case R.id.radioButton12:
-               type = 12;
-               break;
-           case R.id.radioButton13:
-               type = 13;
-               break;
-       }
-       //Toast.makeText(SendMessageActivity.this,String.valueOf(type), Toast.LENGTH_LONG).show();
-   }
+    @Event(value={R.id.radioButton1,R.id.radioButton2,R.id.radioButton3,R.id.radioButton4,R.id.radioButton5,
+            R.id.radioButton6,R.id.radioButton7,R.id.radioButton8,R.id.radioButton9,R.id.radioButton10,
+            R.id.radioButton11,R.id.radioButton12,R.id.radioButton13})
+    private void e1(View v){
+        switch (v.getId()){
+            case R.id.radioButton1:
+                type = 1;
+                break;
+            case R.id.radioButton2:
+                type = 2;
+                break;
+            case R.id.radioButton3:
+                type = 3;
+                break;
+            case R.id.radioButton4:
+                type = 4;
+                break;
+            case R.id.radioButton5:
+                type = 5;
+                break;
+            case R.id.radioButton6:
+                type = 6;
+                break;
+            case R.id.radioButton7:
+                type = 7;
+                break;
+            case R.id.radioButton8:
+                type = 8;
+                break;
+            case R.id.radioButton9:
+                type = 9;
+                break;
+            case R.id.radioButton10:
+                type = 10;
+                break;
+            case R.id.radioButton11:
+                type = 11;
+                break;
+            case R.id.radioButton12:
+                type = 12;
+                break;
+            case R.id.radioButton13:
+                type = 13;
+                break;
+        }
+        //Toast.makeText(SendMessageActivity.this,String.valueOf(type), Toast.LENGTH_LONG).show();
+    }
     @Event(value = {R.id.msg_addLocation,R.id.msg_addImage})
     private void event(View view){
         switch (view.getId()){
@@ -197,7 +196,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 addlocation.setText("中国江苏南京");
                 break;
             case R.id.msg_addImage:
-               // new_image.setImageDrawable(getResources().getDrawable(R.drawable.img1));
+                // new_image.setImageDrawable(getResources().getDrawable(R.drawable.img1));
                 break;
         }
     }
@@ -205,40 +204,45 @@ public class SendMessageActivity extends AppCompatActivity {
     @Event(value={R.id.iv_right})
     private void event1(View v){
         //新建一个线程，用于得到服务器响应的参数
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Response response = null;
-                try {
-                    //回调
-                    MessageEntityWithBLOBs mess = new MessageEntityWithBLOBs();
-                    mess.setMessagecontent(new_msg.getText().toString());
-                    mess.setMessagetype(type);
-                    mess.setMessageimage(filename);
-                    Gson gson = new GsonBuilder().create();
-                    String content = gson.toJson(mess);
+        if(!new_msg.getText().toString().equals("")&&type!=0) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Response response = null;
+                    try {
+                        //回调
+                        MessageEntityWithBLOBs mess = new MessageEntityWithBLOBs();
+                        mess.setMessagecontent(new_msg.getText().toString());
+                        mess.setMessagetype(type);
+                        mess.setMessageimage(filename);
+                        Gson gson = new GsonBuilder().create();
+                        String content = gson.toJson(mess);
 
-                    RequestBody body = RequestBody.create(JSON, content);
+                        RequestBody body = RequestBody.create(JSON, content);
 
-                    Request request = new Request.Builder()
-                            .addHeader("cookie",session)
-                            .url(path)
-                            .post(body)
-                            .build();
-                    OkHttpClient okhttpc = new OkHttpClient();
-                    Call call = okhttpc.newCall(request);
-                    response = call.execute();
-                    if (response.isSuccessful()) {
-                        //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
-                    } else {
-                        throw new IOException("Unexpected code:" + response);
+                        Request request = new Request.Builder()
+                                .addHeader("cookie", session)
+                                .url(path)
+                                .post(body)
+                                .build();
+                        OkHttpClient okhttpc = new OkHttpClient();
+                        Call call = okhttpc.newCall(request);
+                        response = call.execute();
+                        if (response.isSuccessful()) {
+                            //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+                            mHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                        } else {
+                            throw new IOException("Unexpected code:" + response);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-            }
-        }).start();
+            }).start();
+        }else
+        {
+            Toast.makeText(SendMessageActivity.this,"内容与标签不能为空",Toast.LENGTH_SHORT).show();
+        }
     }
 //    @Event(value={R.id.msg_addImage})
 //    private void addImg(View v){

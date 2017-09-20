@@ -46,13 +46,15 @@ import okhttp3.Response;
 public class Topic_activity extends Activity {
 	private Context mContext;
 
-    String TAG = "TOPIC1_Activity";
-    //s用来保存sessionid     发送refresh请求
-    String session;
+	String TAG = "TOPIC1_Activity";
+	//s用来保存sessionid     发送refresh请求
+	String session;
 	String path = Network.URL+ "gettopic1";
 	String path1 =Network.URL+ "entertopic";
 	String path2 = Network.URL+"newcollectionfortopic";
 	String path3 = Network.URL+"topicifcollected";
+	String path4 = Network.URL+"likecomment";
+	int idd = 0;
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.title_bar_name)
@@ -65,8 +67,8 @@ public class Topic_activity extends Activity {
 	private TextView topic_theme;
 	@ViewInject(R.id.tv_topic_con)
 	private TextView topic_content;
-    @ViewInject(R.id.tv_username1)
-    private  TextView user1_name;
+	@ViewInject(R.id.tv_username1)
+	private  TextView user1_name;
 	@ViewInject(R.id.tv_username2)
 	private  TextView user2_name;
 	@ViewInject(R.id.tv_username3)
@@ -101,7 +103,7 @@ public class Topic_activity extends Activity {
 	private TextView user5_like;
 	@ViewInject(R.id.tv_likenumber6)
 	private TextView user6_like;
-//	@ViewInject(R.id.topic_id)
+	//	@ViewInject(R.id.topic_id)
 //	private TextView topicID;
 	@ViewInject(R.id.image_photo1)
 	private ImageView photo1;
@@ -115,14 +117,32 @@ public class Topic_activity extends Activity {
 	private ImageView photo5;
 	@ViewInject(R.id.image_photo6)
 	private ImageView photo6;
+	@ViewInject(R.id.iv_like1)
+	private ImageView like1;
+	@ViewInject(R.id.iv_like2)
+	private ImageView like2;
+	@ViewInject(R.id.iv_like3)
+	private ImageView like3;
+	@ViewInject(R.id.iv_like4)
+	private ImageView like4;
+	@ViewInject(R.id.iv_like5)
+	private ImageView like5;
+	@ViewInject(R.id.iv_like6)
+	private ImageView like6;
 	String user_photo1;
 	String user_photo2;
 	String user_photo3;
 	String user_photo4;
 	String user_photo5;
 	String user_photo6;
-    @ViewInject(R.id.image_topic)
-    private ImageView topic_pic;
+	int comid1;
+	int comid2;
+	int comid3;
+	int comid4;
+	int comid5;
+	int comid6;
+	@ViewInject(R.id.image_topic)
+	private ImageView topic_pic;
 	String topic_img;
 	public Integer topicID;
 	private static List<CommentEntityWithBLOBs> com_list =new ArrayList<CommentEntityWithBLOBs>();
@@ -144,6 +164,57 @@ public class Topic_activity extends Activity {
 				Log.i(TAG,"进入函数");
 				showComment();
 				showCollection();
+
+			}
+		}
+	};
+	private Handler lcHandler = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg){
+			if(msg.what==1){
+				switch(idd)
+				{
+					case 1:
+						user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()+1));
+						like1.setClickable(false);
+						break;
+					case 2:
+						user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()+1));
+						like2.setClickable(false);
+						break;
+					case 3:
+						user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()+1));
+						like3.setClickable(false);
+						break;
+					case 4:
+						user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()+1));
+						like4.setClickable(false);
+						break;
+					case 5:
+						user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()+1));
+						like5.setClickable(false);
+						break;
+					case 6:
+						user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()+1));
+						like6.setClickable(false);
+						break;
+				}
+				String qq = (String) msg.obj;
+				Log.i(TAG, qq);
+				Gson gson = new Gson();
+				Result rs = gson.fromJson(qq, Result.class);
+				String back = rs.getResult();
+				System.out.println(rs.getResult());
+				if(back.equals("true") ){
+					Log.i(TAG,"即将跳转");
+					Toast.makeText(Topic_activity.this,"点赞成功", Toast.LENGTH_SHORT).show();
+
+				}else {
+					Toast.makeText(Topic_activity.this,"可能网有点卡", Toast.LENGTH_LONG).show();
+				}
+				Log.i(TAG,"进入函数");
+
 
 			}
 		}
@@ -235,6 +306,7 @@ public class Topic_activity extends Activity {
 							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
 						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
+						comid1 = com_list.get(0).getCommentid();
 						getComImg1(user_photo1);
 					}else if(com_list.size()==2){
 						findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
@@ -243,6 +315,8 @@ public class Topic_activity extends Activity {
 						user2_name.setText(com_list.get(1).getCommentatorname());
 						user1_comment.setText(com_list.get(0).getCommentcontent());
 						user2_comment.setText(com_list.get(1).getCommentcontent());
+						comid1 = com_list.get(0).getCommentid();
+						comid2 = com_list.get(1).getCommentid();
 						if(com_list.get(0).getLikenumber()==null){
 							user1_like.setText(String.valueOf(0));
 						}else{
@@ -267,6 +341,9 @@ public class Topic_activity extends Activity {
 						user1_comment.setText(com_list.get(0).getCommentcontent());
 						user2_comment.setText(com_list.get(1).getCommentcontent());
 						user3_comment.setText(com_list.get(2).getCommentcontent());
+						comid1 = com_list.get(0).getCommentid();
+						comid2 = com_list.get(1).getCommentid();
+						comid3 = com_list.get(2).getCommentid();
 						if(com_list.get(0).getLikenumber()==null){
 							user1_like.setText(String.valueOf(0));
 						}else{
@@ -301,6 +378,10 @@ public class Topic_activity extends Activity {
 						user2_comment.setText(com_list.get(1).getCommentcontent());
 						user3_comment.setText(com_list.get(2).getCommentcontent());
 						user4_comment.setText(com_list.get(3).getCommentcontent());
+						comid1 = com_list.get(0).getCommentid();
+						comid2 = com_list.get(1).getCommentid();
+						comid3 = com_list.get(2).getCommentid();
+						comid4= com_list.get(3).getCommentid();
 						if(com_list.get(0).getLikenumber()==null){
 							user1_like.setText(String.valueOf(0));
 						}else{
@@ -345,6 +426,11 @@ public class Topic_activity extends Activity {
 						user3_comment.setText(com_list.get(2).getCommentcontent());
 						user4_comment.setText(com_list.get(3).getCommentcontent());
 						user5_comment.setText(com_list.get(4).getCommentcontent());
+						comid1 = com_list.get(0).getCommentid();
+						comid2 = com_list.get(1).getCommentid();
+						comid3 = com_list.get(2).getCommentid();
+						comid4= com_list.get(3).getCommentid();
+						comid5 = com_list.get(4).getCommentid();
 						if(com_list.get(0).getLikenumber()==null){
 							user1_like.setText(String.valueOf(0));
 						}else{
@@ -399,6 +485,12 @@ public class Topic_activity extends Activity {
 						user4_comment.setText(com_list.get(3).getCommentcontent());
 						user5_comment.setText(com_list.get(4).getCommentcontent());
 						user6_comment.setText(com_list.get(5).getCommentcontent());
+						comid1 = com_list.get(0).getCommentid();
+						comid2 = com_list.get(1).getCommentid();
+						comid3 = com_list.get(2).getCommentid();
+						comid4= com_list.get(3).getCommentid();
+						comid5 = com_list.get(4).getCommentid();
+						comid6= com_list.get(5).getCommentid();
 						if(com_list.get(0).getLikenumber()==null){
 							user1_like.setText(String.valueOf(0));
 						}else{
@@ -655,47 +747,47 @@ public class Topic_activity extends Activity {
 		}
 	};
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        x.view().inject(this);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		x.view().inject(this);
 		mContext = this;
-        textView.setText("话题1");
+		textView.setText("话题1");
 		Log.i(TAG,"这是话题1");
 		right_icon.setImageResource(R.drawable.star_co);
-	//	comment_img.setImageResource(R.drawable.topic_comment);
+		//	comment_img.setImageResource(R.drawable.topic_comment);
          /*获取Intent中的Bundle对象*/
-        Bundle bundle = this.getIntent().getExtras();
+		Bundle bundle = this.getIntent().getExtras();
             /*获取Bundle中的数据，注意类型和key*/
-        session = bundle.getString("sessionID");
-        Log.i(TAG,session);
-        showTopic();
-    }
-    public void showTopic(){
-	    //新建一个线程，用于得到服务器响应的参数
-	    new Thread(new Runnable() {
-		    @Override
-		    public void run() {
-			    try {
+		session = bundle.getString("sessionID");
+		Log.i(TAG,session);
+		showTopic();
+	}
+	public void showTopic(){
+		//新建一个线程，用于得到服务器响应的参数
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
 
-				    Request request = new Request.Builder().addHeader("cookie",session).url(path).build();
-				    OkHttpClient okhttpc = new OkHttpClient();
-				    Call call = okhttpc.newCall(request);
-				    Response response = call.execute();
-				    Log.i(TAG,"响应成功");
-				    if (response.isSuccessful()) {
-					    Log.i(TAG,"响应成功");
-					    //将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-					    mmHandler.obtainMessage(1, response.body().string()).sendToTarget();
-				    } else {
-					    throw new IOException("Unexpected code:" + response);
-				    }
-			    } catch (Exception e) {
-				    e.printStackTrace();
-			    }
-		    }
-	    }).start();
-    }
+					Request request = new Request.Builder().addHeader("cookie",session).url(path).build();
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i(TAG,"响应成功");
+					if (response.isSuccessful()) {
+						Log.i(TAG,"响应成功");
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						mmHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
 
 	public void showComment(){
 		//新建一个线程，用于得到服务器响应的参数
@@ -740,7 +832,86 @@ public class Topic_activity extends Activity {
 		startActivity(intent);
 		finish();
 	}
+	@Event(value={R.id.iv_like1,R.id.iv_like2,R.id.iv_like3,R.id.iv_like4,R.id.iv_like5,R.id.iv_like6})
+	private void event2(View v)
+	{
 
+		switch(v.getId())
+		{
+			case R.id.iv_like1:
+				idd = 1;
+				break;
+			case R.id.iv_like2:
+				idd = 2;
+				break;
+			case R.id.iv_like3:
+				idd = 3;
+				break;
+			case R.id.iv_like4:
+				idd = 4;
+				break;
+			case R.id.iv_like5:
+				idd = 5;
+				break;
+			case R.id.iv_like6:
+				idd = 6;
+				break;
+		}
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					CommentEntityWithBLOBs ce  = new CommentEntityWithBLOBs();
+					switch(idd)
+					{
+						case 1:
+							ce.setCommentid(comid1);
+							break;
+						case 2:
+							ce.setCommentid(comid2);
+							break;
+						case 3:
+							ce.setCommentid(comid3);
+							break;
+						case 4:
+							ce.setCommentid(comid4);
+							break;
+						case 5:
+							ce.setCommentid(comid5);
+							break;
+						case 6:
+							ce.setCommentid(comid6);
+							break;
+					}
+
+					Gson gson = new GsonBuilder().create();
+					String content = gson.toJson(ce);
+
+					RequestBody body = RequestBody.create(JSON, content);
+
+					Request request = new Request.Builder()
+							.addHeader("cookie", session)
+							.url(path4)
+							.post(body)
+							.build();
+
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i(TAG, "响应成功");
+					if (response.isSuccessful()) {
+						Log.i(TAG, "响应成功");
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						lcHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
 	@Event(value={R.id.iv_right})
 	private void event1(View v) {
 		new Thread(new Runnable() {
@@ -780,39 +951,39 @@ public class Topic_activity extends Activity {
 		}).start();
 	}
 	public void showCollection(){
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						//回调
-						Topic top = new Topic();
-						top.setTopicid(topicID);
-						Gson gson = new GsonBuilder().create();
-						String content = gson.toJson(top);
-						RequestBody body = RequestBody.create(JSON, content);
-						Log.i("TOPIC","显示收藏");
-						Request request = new Request.Builder()
-								.addHeader("cookie", session)
-								.post(body)
-								.url(path3)
-								.build();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					//回调
+					Topic top = new Topic();
+					top.setTopicid(topicID);
+					Gson gson = new GsonBuilder().create();
+					String content = gson.toJson(top);
+					RequestBody body = RequestBody.create(JSON, content);
+					Log.i("TOPIC","显示收藏");
+					Request request = new Request.Builder()
+							.addHeader("cookie", session)
+							.post(body)
+							.url(path3)
+							.build();
 
-						OkHttpClient okhttpc = new OkHttpClient();
-						Call call = okhttpc.newCall(request);
-						Response response = call.execute();
+					OkHttpClient okhttpc = new OkHttpClient();
+					Call call = okhttpc.newCall(request);
+					Response response = call.execute();
+					Log.i(TAG, "响应成功");
+					if (response.isSuccessful()) {
 						Log.i(TAG, "响应成功");
-						if (response.isSuccessful()) {
-							Log.i(TAG, "响应成功");
-							//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-							//System.out.println(response.body().string());
-							dHandler.obtainMessage(1, response.body().string()).sendToTarget();
-						} else {
-							throw new IOException("Unexpected code:" + response);
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
+						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
+						//System.out.println(response.body().string());
+						dHandler.obtainMessage(1, response.body().string()).sendToTarget();
+					} else {
+						throw new IOException("Unexpected code:" + response);
 					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			}).start();
+			}
+		}).start();
 	}
 }

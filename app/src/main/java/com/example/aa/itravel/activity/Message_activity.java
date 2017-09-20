@@ -675,11 +675,13 @@ public class Message_activity extends FragmentActivity {
                 intent = new Intent(mContext, Friend_activity.class);
 				intent.putExtra("sessionID", session);
                 startActivity(intent);
+				this.finish();
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
 				intent.putExtra("sessionID", session);
                 startActivity(intent);
+				this.finish();
                 break;
             case R.id.msg_01:
                 intent=new Intent(mContext,SingleMessageActivity.class);
