@@ -150,6 +150,7 @@ private void postRequest(String name,String pwd)  {
                     mHandler.obtainMessage(1, response.body().string()).sendToTarget();
 
                 } else {
+                    Toast.makeText(Login_activity.this,"服务器连接失败", Toast.LENGTH_SHORT).show();
                     throw new IOException("Unexpected code:" + response);
                 }
             } catch (IOException e) {

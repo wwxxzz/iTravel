@@ -53,8 +53,6 @@ public class Topic_activity4 extends Activity {
 	String path1 =Network.URL+ "entertopic";
 	String path2 = Network.URL+"newcollectionfortopic";
 	String path3 = Network.URL+"topicifcollected";
-	String path4 = Network.URL+"likecomment";
-	int idd = 0;
 	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 	@ViewInject(R.id.title_bar_name)
@@ -91,18 +89,6 @@ public class Topic_activity4 extends Activity {
 	private TextView user5_comment;
 	@ViewInject(R.id.tv_topicComment6)
 	private TextView user6_comment;
-	@ViewInject(R.id.tv_likenumber1)
-	private TextView user1_like;
-	@ViewInject(R.id.tv_likenumber2)
-	private TextView user2_like;
-	@ViewInject(R.id.tv_likenumber3)
-	private TextView user3_like;
-	@ViewInject(R.id.tv_likenumber4)
-	private TextView user4_like;
-	@ViewInject(R.id.tv_likenumber5)
-	private TextView user5_like;
-	@ViewInject(R.id.tv_likenumber6)
-	private TextView user6_like;
 	//	@ViewInject(R.id.topic_id)
 //	private TextView topicID;
 	@ViewInject(R.id.image_photo1)
@@ -117,30 +103,12 @@ public class Topic_activity4 extends Activity {
 	private ImageView photo5;
 	@ViewInject(R.id.image_photo6)
 	private ImageView photo6;
-	@ViewInject(R.id.iv_like1)
-	private ImageView like1;
-	@ViewInject(R.id.iv_like2)
-	private ImageView like2;
-	@ViewInject(R.id.iv_like3)
-	private ImageView like3;
-	@ViewInject(R.id.iv_like4)
-	private ImageView like4;
-	@ViewInject(R.id.iv_like5)
-	private ImageView like5;
-	@ViewInject(R.id.iv_like6)
-	private ImageView like6;
 	String user_photo1;
 	String user_photo2;
 	String user_photo3;
 	String user_photo4;
 	String user_photo5;
 	String user_photo6;
-	int comid1;
-	int comid2;
-	int comid3;
-	int comid4;
-	int comid5;
-	int comid6;
 	@ViewInject(R.id.image_topic)
 	private ImageView topic_pic;
 	String topic_img;
@@ -164,57 +132,6 @@ public class Topic_activity4 extends Activity {
 				Log.i(TAG,"进入函数");
 				showComment();
 				showCollection();
-
-			}
-		}
-	};
-	private Handler lcHandler = new Handler()
-	{
-		@Override
-		public void handleMessage(Message msg){
-			if(msg.what==1){
-				switch(idd)
-				{
-					case 1:
-						user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()+1));
-						like1.setClickable(false);
-						break;
-					case 2:
-						user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()+1));
-						like2.setClickable(false);
-						break;
-					case 3:
-						user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()+1));
-						like3.setClickable(false);
-						break;
-					case 4:
-						user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()+1));
-						like4.setClickable(false);
-						break;
-					case 5:
-						user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()+1));
-						like5.setClickable(false);
-						break;
-					case 6:
-						user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()+1));
-						like6.setClickable(false);
-						break;
-				}
-				String qq = (String) msg.obj;
-				Log.i(TAG, qq);
-				Gson gson = new Gson();
-				Result rs = gson.fromJson(qq, Result.class);
-				String back = rs.getResult();
-				System.out.println(rs.getResult());
-				if(back.equals("true") ){
-					Log.i(TAG,"即将跳转");
-					Toast.makeText(Topic_activity4.this,"点赞成功", Toast.LENGTH_SHORT).show();
-
-				}else {
-					Toast.makeText(Topic_activity4.this,"可能网有点卡", Toast.LENGTH_LONG).show();
-				}
-				Log.i(TAG,"进入函数");
-
 
 			}
 		}
@@ -300,13 +217,7 @@ public class Topic_activity4 extends Activity {
 						findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
 						user1_name.setText(com_list.get(0).getCommentatorname());
 						user1_comment.setText(com_list.get(0).getCommentcontent());
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
-						comid1 = com_list.get(0).getCommentid();
 						getComImg1(user_photo1);
 					}else if(com_list.size()==2){
 						findViewById(R.id.relativeLayout1).setVisibility(View.VISIBLE);
@@ -315,18 +226,6 @@ public class Topic_activity4 extends Activity {
 						user2_name.setText(com_list.get(1).getCommentatorname());
 						user1_comment.setText(com_list.get(0).getCommentcontent());
 						user2_comment.setText(com_list.get(1).getCommentcontent());
-						comid1 = com_list.get(0).getCommentid();
-						comid2 = com_list.get(1).getCommentid();
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -341,24 +240,6 @@ public class Topic_activity4 extends Activity {
 						user1_comment.setText(com_list.get(0).getCommentcontent());
 						user2_comment.setText(com_list.get(1).getCommentcontent());
 						user3_comment.setText(com_list.get(2).getCommentcontent());
-						comid1 = com_list.get(0).getCommentid();
-						comid2 = com_list.get(1).getCommentid();
-						comid3 = com_list.get(2).getCommentid();
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
-						if(com_list.get(2).getLikenumber()==null){
-							user3_like.setText(String.valueOf(0));
-						}else{
-							user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -378,30 +259,6 @@ public class Topic_activity4 extends Activity {
 						user2_comment.setText(com_list.get(1).getCommentcontent());
 						user3_comment.setText(com_list.get(2).getCommentcontent());
 						user4_comment.setText(com_list.get(3).getCommentcontent());
-						comid1 = com_list.get(0).getCommentid();
-						comid2 = com_list.get(1).getCommentid();
-						comid3 = com_list.get(2).getCommentid();
-						comid4= com_list.get(3).getCommentid();
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
-						if(com_list.get(2).getLikenumber()==null){
-							user3_like.setText(String.valueOf(0));
-						}else{
-							user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-						}
-						if(com_list.get(3).getLikenumber()==null){
-							user4_like.setText(String.valueOf(0));
-						}else{
-							user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -426,36 +283,6 @@ public class Topic_activity4 extends Activity {
 						user3_comment.setText(com_list.get(2).getCommentcontent());
 						user4_comment.setText(com_list.get(3).getCommentcontent());
 						user5_comment.setText(com_list.get(4).getCommentcontent());
-						comid1 = com_list.get(0).getCommentid();
-						comid2 = com_list.get(1).getCommentid();
-						comid3 = com_list.get(2).getCommentid();
-						comid4= com_list.get(3).getCommentid();
-						comid5 = com_list.get(4).getCommentid();
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
-						if(com_list.get(2).getLikenumber()==null){
-							user3_like.setText(String.valueOf(0));
-						}else{
-							user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-						}
-						if(com_list.get(3).getLikenumber()==null){
-							user4_like.setText(String.valueOf(0));
-						}else{
-							user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-						}
-						if(com_list.get(4).getLikenumber()==null){
-							user5_like.setText(String.valueOf(0));
-						}else{
-							user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -485,42 +312,6 @@ public class Topic_activity4 extends Activity {
 						user4_comment.setText(com_list.get(3).getCommentcontent());
 						user5_comment.setText(com_list.get(4).getCommentcontent());
 						user6_comment.setText(com_list.get(5).getCommentcontent());
-						comid1 = com_list.get(0).getCommentid();
-						comid2 = com_list.get(1).getCommentid();
-						comid3 = com_list.get(2).getCommentid();
-						comid4= com_list.get(3).getCommentid();
-						comid5 = com_list.get(4).getCommentid();
-						comid6= com_list.get(5).getCommentid();
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
-						if(com_list.get(2).getLikenumber()==null){
-							user3_like.setText(String.valueOf(0));
-						}else{
-							user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-						}
-						if(com_list.get(3).getLikenumber()==null){
-							user4_like.setText(String.valueOf(0));
-						}else{
-							user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-						}
-						if(com_list.get(4).getLikenumber()==null){
-							user5_like.setText(String.valueOf(0));
-						}else{
-							user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
-						}
-						if(com_list.get(5).getLikenumber()==null){
-							user6_like.setText(String.valueOf(0));
-						}else{
-							user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -552,36 +343,6 @@ public class Topic_activity4 extends Activity {
 						user4_comment.setText(com_list.get(3).getCommentcontent());
 						user5_comment.setText(com_list.get(4).getCommentcontent());
 						user6_comment.setText(com_list.get(5).getCommentcontent());
-						if(com_list.get(0).getLikenumber()==null){
-							user1_like.setText(String.valueOf(0));
-						}else{
-							user1_like.setText(String.valueOf(com_list.get(0).getLikenumber()));
-						}
-						if(com_list.get(1).getLikenumber()==null){
-							user2_like.setText(String.valueOf(0));
-						}else{
-							user2_like.setText(String.valueOf(com_list.get(1).getLikenumber()));
-						}
-						if(com_list.get(2).getLikenumber()==null){
-							user3_like.setText(String.valueOf(0));
-						}else{
-							user3_like.setText(String.valueOf(com_list.get(2).getLikenumber()));
-						}
-						if(com_list.get(3).getLikenumber()==null){
-							user4_like.setText(String.valueOf(0));
-						}else{
-							user4_like.setText(String.valueOf(com_list.get(3).getLikenumber()));
-						}
-						if(com_list.get(4).getLikenumber()==null){
-							user5_like.setText(String.valueOf(0));
-						}else{
-							user5_like.setText(String.valueOf(com_list.get(4).getLikenumber()));
-						}
-						if(com_list.get(5).getLikenumber()==null){
-							user6_like.setText(String.valueOf(0));
-						}else{
-							user6_like.setText(String.valueOf(com_list.get(5).getLikenumber()));
-						}
 						user_photo1 = com_list.get(0).getCommentatorimg();
 						getComImg1(user_photo1);
 						user_photo2 = com_list.get(1).getCommentatorimg();
@@ -831,86 +592,6 @@ public class Topic_activity4 extends Activity {
 		intent.putExtra("Index",1);
 		startActivity(intent);
 		finish();
-	}
-	@Event(value={R.id.iv_like1,R.id.iv_like2,R.id.iv_like3,R.id.iv_like4,R.id.iv_like5,R.id.iv_like6})
-	private void event2(View v)
-	{
-
-		switch(v.getId())
-		{
-			case R.id.iv_like1:
-				idd = 1;
-				break;
-			case R.id.iv_like2:
-				idd = 2;
-				break;
-			case R.id.iv_like3:
-				idd = 3;
-				break;
-			case R.id.iv_like4:
-				idd = 4;
-				break;
-			case R.id.iv_like5:
-				idd = 5;
-				break;
-			case R.id.iv_like6:
-				idd = 6;
-				break;
-		}
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					CommentEntityWithBLOBs ce  = new CommentEntityWithBLOBs();
-					switch(idd)
-					{
-						case 1:
-							ce.setCommentid(comid1);
-							break;
-						case 2:
-							ce.setCommentid(comid2);
-							break;
-						case 3:
-							ce.setCommentid(comid3);
-							break;
-						case 4:
-							ce.setCommentid(comid4);
-							break;
-						case 5:
-							ce.setCommentid(comid5);
-							break;
-						case 6:
-							ce.setCommentid(comid6);
-							break;
-					}
-
-					Gson gson = new GsonBuilder().create();
-					String content = gson.toJson(ce);
-
-					RequestBody body = RequestBody.create(JSON, content);
-
-					Request request = new Request.Builder()
-							.addHeader("cookie", session)
-							.url(path4)
-							.post(body)
-							.build();
-
-					OkHttpClient okhttpc = new OkHttpClient();
-					Call call = okhttpc.newCall(request);
-					Response response = call.execute();
-					Log.i(TAG, "响应成功");
-					if (response.isSuccessful()) {
-						Log.i(TAG, "响应成功");
-						//将服务器响应的参数response.body().string())发送到hanlder中，并更新ui
-						lcHandler.obtainMessage(1, response.body().string()).sendToTarget();
-					} else {
-						throw new IOException("Unexpected code:" + response);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
 	}
 	@Event(value={R.id.iv_right})
 	private void event1(View v) {

@@ -95,9 +95,8 @@ public class FriendTopFragment extends Fragment {
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 				Type type = new TypeToken<List<MessageBuffer>>() {}.getType();
 				notice_list = gson.fromJson(qq, type);
-				Log.i("NOTICE",notice_list.toString());
 				if (notice_list!= null&&!notice_list.isEmpty())
-					for (int i = 0; i < notice_list.size(); i++) {
+					for (int i = 0; i < notice_list.size() && i<=6; i++) {
 						Log.i("UI", "更新成功");
 						notice.get(i).setVisibility(View.VISIBLE);
 						no_content.get(i).setText(notice_list.get(i).getMessagebcontent());
@@ -215,7 +214,6 @@ public class FriendTopFragment extends Fragment {
 		no_time.clear();
 		notice_list.clear();
 	}*/
-    private View rootView;//缓存Fragment view
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.notice_fragment, null);

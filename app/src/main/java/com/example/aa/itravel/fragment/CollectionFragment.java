@@ -86,11 +86,18 @@ public class CollectionFragment extends Fragment {
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
                 Type type = new TypeToken<ArrayList<MessageEntityWithBLOBs>>(){}.getType();
                 msg_list = gson.fromJson(qq,type);
+                String str;
                 if(msg_list!=null&&!msg_list.isEmpty()) {
                     for (int i = 0; i < msg_list.size(); i++) {
+                        Log.i("aa",msg_list.get(i).getUsername());
                         cl_msg_user.get(i).setText(msg_list.get(i).getUsername());
                         cl_msg_time.get(i).setText(msg_list.get(i).getMessagetime());
-                        cl_msg_content.get(i).setText(msg_list.get(i).getMessagecontent());
+
+                        str=msg_list.get(i).getMessagecontent();
+                        if(str.length()>10)
+                            str=str.substring(0,10)+"...";
+                        cl_msg_content.get(i).setText(str);
+
                         cl_msg_pic.add(msg_list.get(i).getUserimage());
                         getMsgImage(i,cl_msg_pic.get(i));
                         cl_msg.get(i).setOnClickListener(new MsgEvent(msg_list.get(i).getMessageid()));
