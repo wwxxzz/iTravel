@@ -207,6 +207,7 @@ public class ChatDemoActivity extends Activity {
 				Type type = new TypeToken<ArrayList<MessageBuffer>>(){}.getType();
 				chatList1 = gson.fromJson(qq,type);
 				System.out.println("转化");
+
 				if(chatList1 != null){
 					for(int i = 0;i<chatList1.size();i++){
 						MessageBuffer chatEntity = new MessageBuffer();
@@ -224,6 +225,23 @@ public class ChatDemoActivity extends Activity {
 
 					}
 				}
+                if(chatList1 != null){
+	                for(int i = 0;i<chatList1.size();i++){
+		                MessageBuffer chatEntity = new MessageBuffer();
+		                if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==friendid&&chatList1.get(i).getTouserid()==myid){
+			                chatEntity.setComeMsg(true);
+			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
+			                chatList.add(chatEntity);
+		                }else if(chatList1.get(i).getMessagebtype()==2&&chatList1.get(i).getFromuserid()==myid&&chatList1.get(i).getTouserid()==friendid){
+			                chatEntity.setComeMsg(false);
+			                chatEntity.setMessagebcontent(chatList1.get(i).getMessagebcontent());
+			                chatEntity.setSendtime(chatList1.get(i).getSendtime());
+			                chatList.add(chatEntity);
+		                }
+
+	                }
+                }
 
 			}
 		}

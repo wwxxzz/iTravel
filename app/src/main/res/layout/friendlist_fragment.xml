@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="3px"
                     android:layout_alignParentBottom="true"
-                    android:background="#bdb6b7" />
+                    android:background="#bdb6b7"/>
 
                 <ImageView
                     android:id="@+id/fr_head_01"
@@ -59,7 +59,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/ic_launcher"/>
 
                 <TextView
                     android:id="@+id/fr_user_01"
@@ -69,7 +69,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@+id/fr_head_01"
                     android:text="大佬01"
-                    android:textSize="22dp" />
+                    android:textSize="22dp"/>
 
                 <Button
                     android:id="@+id/fr_next_01"
@@ -77,7 +77,7 @@
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
+                    android:background="@drawable/next"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="3px"
                     android:layout_alignParentBottom="true"
-                    android:background="#bdb6b7" />
+                    android:background="#bdb6b7"/>
 
                 <ImageView
                     android:id="@+id/fr_head_02"
@@ -99,7 +99,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/ic_launcher"/>
 
                 <TextView
                     android:id="@+id/fr_user_02"
@@ -109,7 +109,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@+id/fr_head_02"
                     android:text="大佬02"
-                    android:textSize="22dp" />
+                    android:textSize="22dp"/>
 
                 <Button
                     android:id="@+id/fr_next_02"
@@ -117,7 +117,7 @@
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/next" />
+                    android:background="@drawable/next"/>
             </RelativeLayout>
 
             <RelativeLayout
