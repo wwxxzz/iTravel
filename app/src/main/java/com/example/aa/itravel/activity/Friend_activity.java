@@ -112,13 +112,13 @@ public class Friend_activity extends AppCompatActivity {
                 intent = new Intent(mContext, Message_activity.class);
                 intent.putExtra("sessionID", session);
                 startActivity(intent);
-                this.finish();
+                finish();
                 break;
             case R.id.button_home:
                 intent = new Intent(mContext, Home_activity.class);
                 intent.putExtra("sessionID",session);
                 startActivity(intent);
-                this.finish();
+                finish();
                 break;
             case R.id.iv_right:
                 intent =new Intent(mContext,AddNewFriendActivity.class);

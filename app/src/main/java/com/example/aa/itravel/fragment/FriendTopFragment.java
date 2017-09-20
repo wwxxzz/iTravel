@@ -61,7 +61,7 @@ public class FriendTopFragment extends Fragment {
 	String session;
 	Response response;
 	OkHttpClient client = new OkHttpClient();
-
+	View view;
 	String path = Network.URL + "showfriends";
 	String shownoticepath = Network.URL + "refreshinform";
 
@@ -74,14 +74,14 @@ public class FriendTopFragment extends Fragment {
 
 	public Integer friendID;
 
-	private static List<TextView> no_content = new ArrayList<TextView>();
-	private static List<TextView> no_time = new ArrayList<TextView>();
-	private static List<RelativeLayout> notice = new ArrayList<RelativeLayout>();
+	List<TextView> no_content = new ArrayList<TextView>();
+	List<TextView> no_time = new ArrayList<TextView>();
+	List<RelativeLayout> notice = new ArrayList<RelativeLayout>();
 
-	private static List<TextView> friend_name =new ArrayList<TextView>();
-	private static List<ImageView> friend_photo=new ArrayList<ImageView>();
-	private static List<User> friend_list = new ArrayList<User>();
-	private static List<RelativeLayout> friend = new ArrayList<RelativeLayout>();
+	List<TextView> friend_name =new ArrayList<TextView>();
+	List<ImageView> friend_photo=new ArrayList<ImageView>();
+	List<User> friend_list = new ArrayList<User>();
+	List<RelativeLayout> friend = new ArrayList<RelativeLayout>();
 
 
 
@@ -99,11 +99,8 @@ public class FriendTopFragment extends Fragment {
 				if (notice_list!= null&&!notice_list.isEmpty())
 					for (int i = 0; i < notice_list.size(); i++) {
 						Log.i("UI", "更新成功");
-						Log.i("NOTICE",notice.toString());
 						notice.get(i).setVisibility(View.VISIBLE);
-						Log.i("NOTICE",no_content.toString());
 						no_content.get(i).setText(notice_list.get(i).getMessagebcontent());
-						Log.i("NOTICE",no_time.toString());
 						no_time.get(i).setText(notice_list.get(i).getSendtime());
 					}
 			}
@@ -221,7 +218,7 @@ public class FriendTopFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-		View view;
+		view=inflater.inflate(R.layout.notice_fragment, null);;
 		switch (name) {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
@@ -248,9 +245,9 @@ public class FriendTopFragment extends Fragment {
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_03));
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_04));
 				friend_photo.add((ImageView) view.findViewById(R.id.fr_head_05));
+				System.out.println("显示好友请求");
 				showFriendRequest();
 				break;
-
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
 				if(notice.isEmpty()){
