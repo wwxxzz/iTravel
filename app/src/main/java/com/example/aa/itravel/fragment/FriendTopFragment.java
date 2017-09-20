@@ -215,10 +215,10 @@ public class FriendTopFragment extends Fragment {
 		no_time.clear();
 		notice_list.clear();
 	}*/
-
+    private View rootView;//缓存Fragment view
 	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-		view=inflater.inflate(R.layout.notice_fragment, null);;
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.notice_fragment, null);
 		switch (name) {
 			case "1":
 				view = inflater.inflate(R.layout.friendlist_fragment, null);
@@ -250,7 +250,7 @@ public class FriendTopFragment extends Fragment {
 				break;
 			default:
 				view = inflater.inflate(R.layout.notice_fragment, null);
-				if(notice.isEmpty()){
+				if (notice.isEmpty()) {
 					notice.add((RelativeLayout) view.findViewById(R.id.notice1));
 					notice.add((RelativeLayout) view.findViewById(R.id.notice2));
 					notice.add((RelativeLayout) view.findViewById(R.id.notice3));
@@ -259,7 +259,7 @@ public class FriendTopFragment extends Fragment {
 					notice.add((RelativeLayout) view.findViewById(R.id.notice6));
 					notice.add((RelativeLayout) view.findViewById(R.id.notice7));
 				}
-				if(no_content.isEmpty()){
+				if (no_content.isEmpty()) {
 					no_content.add((TextView) view.findViewById(R.id.no_content1));
 					no_content.add((TextView) view.findViewById(R.id.no_content2));
 					no_content.add((TextView) view.findViewById(R.id.no_content3));
@@ -268,7 +268,7 @@ public class FriendTopFragment extends Fragment {
 					no_content.add((TextView) view.findViewById(R.id.no_content6));
 					no_content.add((TextView) view.findViewById(R.id.no_content7));
 				}
-				if(no_time.isEmpty()) {
+				if (no_time.isEmpty()) {
 					no_time.add((TextView) view.findViewById(R.id.no_time1));
 					no_time.add((TextView) view.findViewById(R.id.no_time2));
 					no_time.add((TextView) view.findViewById(R.id.no_time3));
@@ -277,14 +277,13 @@ public class FriendTopFragment extends Fragment {
 					no_time.add((TextView) view.findViewById(R.id.no_time6));
 					no_time.add((TextView) view.findViewById(R.id.no_time7));
 				}
-				Log.i("CV","success");
-				Log.i("NOTICE",notice.toString());
+				Log.i("CV", "success");
+				Log.i("NOTICE", notice.toString());
 				shownotice();
 				break;
 		}
 		return view;
 	}
-
 	public static FriendTopFragment newInstance(String name,String s) {
 		Bundle args = new Bundle();
 		args.putString("name", name);
@@ -296,7 +295,7 @@ public class FriendTopFragment extends Fragment {
 
 
 
-	public void shownotice() {
+	public boolean shownotice() {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -331,6 +330,7 @@ public class FriendTopFragment extends Fragment {
 				}
 			}
 		}).start();
+		return true;
 	}
 
 	public void showFriendRequest(){
