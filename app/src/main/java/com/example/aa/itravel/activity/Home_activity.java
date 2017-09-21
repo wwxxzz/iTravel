@@ -493,6 +493,12 @@ private void msgevent(View view){
     //显示推荐动态
     public void showRecommend(final int type){
         //新建一个线程，用于得到服务器响应的参数
+        recommend1.setVisibility(View.GONE);
+        recommend2.setVisibility(View.GONE);
+        recommend3.setVisibility(View.GONE);
+        recommend4.setVisibility(View.GONE);
+        recommend5.setVisibility(View.GONE);
+        recommend6.setVisibility(View.GONE);
         new Thread(new Runnable() {
             @Override
             public void run() {

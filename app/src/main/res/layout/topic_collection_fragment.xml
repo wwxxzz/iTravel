@@ -15,7 +15,7 @@
                 <RelativeLayout
                     android:id="@+id/cl_top_01"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:visibility="gone">
 
                         <ImageView
@@ -43,7 +43,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="60dp"
                             android:text="17-9-10"
-                            android:textSize="20dp"
+                            android:textSize="12dp"
                             android:textStyle="bold" />
 
                         <View
@@ -58,7 +58,7 @@
                 <RelativeLayout
                     android:id="@+id/cl_top_02"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:visibility="gone">
 
                         <View
@@ -94,14 +94,14 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="60dp"
                             android:text="17-9-10"
-                            android:textSize="20dp"
+                            android:textSize="12dp"
                             android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/cl_top_03"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:visibility="gone">
 
                         <View
@@ -137,14 +137,14 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="60dp"
                             android:text="17-9-10"
-                            android:textSize="20dp"
+                            android:textSize="12dp"
                             android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/cl_top_04"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:visibility="gone">
 
                         <View
@@ -180,7 +180,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="60dp"
                             android:text="17-9-10"
-                            android:textSize="20dp"
+                            android:textSize="12dp"
                             android:textStyle="bold" />
                 </RelativeLayout>
                 <TextView

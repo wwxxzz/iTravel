@@ -89,14 +89,13 @@ public class FriendTopFragment extends Fragment {
 	private Handler shownoticeHandler = new Handler() {
 		@Override
 		public void handleMessage(android.os.Message msg) {
-			notice_list.clear();
 			if (msg.what == 1) {
 				String qq = (String) msg.obj;
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 				Type type = new TypeToken<List<MessageBuffer>>() {}.getType();
 				notice_list = gson.fromJson(qq, type);
 				if (notice_list!= null&&!notice_list.isEmpty())
-					for (int i = 0; i < notice_list.size() && i<=6; i++) {
+					for (int i = 0; i < notice_list.size() && i<7; i++) {
 						Log.i("UI", "更新成功");
 						notice.get(i).setVisibility(View.VISIBLE);
 						no_content.get(i).setText(notice_list.get(i).getMessagebcontent());

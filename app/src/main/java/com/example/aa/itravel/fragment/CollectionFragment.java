@@ -88,7 +88,7 @@ public class CollectionFragment extends Fragment {
                 msg_list = gson.fromJson(qq,type);
                 String str;
                 if(msg_list!=null&&!msg_list.isEmpty()) {
-                    for (int i = 0; i < msg_list.size(); i++) {
+                    for (int i = 0; i < msg_list.size()&&i<9; i++) {
                         Log.i("aa",msg_list.get(i).getUsername());
                         cl_msg_user.get(i).setText(msg_list.get(i).getUsername());
                         cl_msg_time.get(i).setText(msg_list.get(i).getMessagetime());

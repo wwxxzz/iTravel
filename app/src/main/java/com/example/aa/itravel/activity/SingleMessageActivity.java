@@ -279,7 +279,7 @@ public class SingleMessageActivity extends AppCompatActivity {
                 //Log.i("Comment",com_list.get(0).getCommentatorname());
                 //Log.i("Comment",com_list.get(0).getCommentcontent().toString());
                 if (com_list!=null&&!com_list.isEmpty()) {
-                    for (int i = 1; i <= com_list.size(); i++) {
+                    for (int i = 1; i <= com_list.size()&&i<4; i++) {
                         comment.get(i - 1).setVisibility(View.VISIBLE);
                         c_user.get(i - 1).setText(com_list.get(i-1).getCommentatorname());
                         c_content.get(i - 1).setText(com_list.get(i-1).getCommentcontent());

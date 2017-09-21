@@ -311,7 +311,7 @@ public class Message_activity extends FragmentActivity {
 					getUserImage1(me_photo1);
 					getUserImage2(me_photo2);
 					getUserImage3(me_photo3);
-				}else if(mess_list.size()==4){
+				}else{
 					findViewById(R.id.msg_01).setVisibility(View.VISIBLE);
 					findViewById(R.id.msg_02).setVisibility(View.VISIBLE);
 					findViewById(R.id.msg_03).setVisibility(View.VISIBLE);
